@@ -1,16 +1,15 @@
 ---
-title: "Test CVE Page"
-date: 2025-07-15
-draft: false
+title: "Welcome"
+date: 2025-08-10
+type: page
 ---
-
 ## CAPECs
 - [Complete CAPEC graph](visualizer.html?jsonfile=CAPEC-FULL.json) : contains every CAPECs, with edges between CAPECs that are related (`ChildOf` relationship)
-- [Subgraphs per META CAPEC](/CAPECs/)
+- [Subgraphs per META CAPEC](/gen/CAPECs/)
 
 ## CWEs
 - [Complete CWE graph](visualizer.html?jsonfile=CWE-FULL.json) : contains every CWEs, with edges between CWEs that are related (`ChildOf` relationship)
-- [Subgraphs per Pillar and Class CWEs](/CWEs/)
+- [Subgraphs per Pillar and Class CWEs](/gen/CWEs/)
 
 ## CAPECs + CWE
 - ⚠️ This is quite resource heavy

@@ -4,6 +4,7 @@ import networkx as nx
 from networkx.readwrite import json_graph
 from enum import Enum
 from typing import List
+from product_cybersecurity.utils.markdownutils import get_markdown_frontmatter
 import json
 import argparse
 import os
@@ -83,11 +84,10 @@ def save_capec_md(capec_collection: CapecCollection, md_filepath: str) -> None:
             meta_capec.append(capec)
     
     sorted_metacapec = sorted(meta_capec, key=lambda x: x.Name)
-    md = []
-
+    md = get_markdown_frontmatter("CAPEC List", draft=False)
     md.append("## List of Meta CAPECs")
     for c in sorted_metacapec:
-        md.append(f"- [{c.ID} {c.Name}](../visualizer.html?jsonfile={c.ID}.json)")
+        md.append(f"- [{c.ID} {c.Name}](../../visualizer.html?jsonfile={c.ID}.json)")
 
     with open(md_filepath, "w") as f:
         f.write('\n'.join(md))
@@ -161,16 +161,15 @@ def save_cwe_md(cwe_collection: CweCollection, md_filepath: str) -> None:
 
     sorted_pillar_cwe = sorted(pillar_cwe, key=lambda x: x.Name)
     sorted_class_cwe = sorted(class_cwe, key=lambda x: x.Name)
-    md = []
-
-    md.append("## List of Pillar CWEs with class CWEs")
+    md = get_markdown_frontmatter("CWE List", draft=False)
+    md.append("# List of Pillar CWEs with class CWEs")
     for pil in sorted_pillar_cwe:
         md.append(f"### [{pil.ID} {pil.Name}](../visualizer.html?jsonfile={pil.ID}.json)")
         for cla in sorted_class_cwe:
             if cla.Related_CWEs:
                 for rel in cla.Related_CWEs:
                     if rel.CWE_ID == pil.ID and rel.Nature == RelatedCweNatureEnum.CHILD_OF:
-                        md.append(f"- [{cla.ID} {cla.Name}](../visualizer.html?jsonfile={cla.ID}.json)")
+                        md.append(f"- [{cla.ID} {cla.Name}](../../visualizer.html?jsonfile={cla.ID}.json)")
         md.append("")
 
     with open(md_filepath, "w") as f:
