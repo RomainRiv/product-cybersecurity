@@ -1,0 +1,21 @@
+name: Check Download Step
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  check-download:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: Install Just
+        run: sudo snap install --edge --classic just
+      - name: Run download step
+        run: just download
