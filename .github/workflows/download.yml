@@ -17,5 +17,9 @@ jobs:
           submodules: recursive
       - name: Install Just
         run: sudo snap install --edge --classic just
+      - name: Install uv
+        run: |
+          curl -Ls https://astral.sh/uv/install.sh | bash
+          export PATH="$HOME/.local/bin:$PATH"
       - name: Run download step
         run: just download
