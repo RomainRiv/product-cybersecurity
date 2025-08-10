@@ -1,5 +1,5 @@
 baseURL = "https://romainriv.github.io/product-cybersecurity/"
-theme = "papermod"  # or your theme folder name in /themes
+theme = "PaperMod"  # or your theme folder name in /themes
 title="Product Cybersecurity"
 
 [menu]
