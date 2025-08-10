@@ -25,6 +25,8 @@ jobs:
         run: just download
       - name: Run install step
         run: just install
+      - name: Run generate step
+        run: just generate
 
   build-site:
     needs: download
