@@ -20,7 +20,7 @@ jobs:
       - name: Install uv
         run: |
           curl -Ls https://astral.sh/uv/install.sh | bash
-          export PATH="$HOME/.local/bin:$PATH"
+          echo '$HOME/.local/bin' >> $GITHUB_PATH
       - name: Run download step
         run: just download
       - name: Run install step
@@ -32,35 +32,38 @@ jobs:
     env:
       HUGO_VERSION: 0.148.0
     steps:
-      - name: Update git submodules
-        run: |
-          git submodule update --init --recursive
+      - name: Checkout (with submodules)
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          # fetch-depth: 0           # uncomment if you need full history (usually not needed)
+
       - name: Install Hugo CLI
         run: |
           wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb \
           && sudo dpkg -i ${{ runner.temp }}/hugo.deb
+
       - name: Install Dart Sass
         run: sudo snap install dart-sass
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          submodules: recursive
-      # - name: Setup Pages
-      #   id: pages
-      #   uses: actions/configure-pages@v5
+
       - name: Install Node.js dependencies
-        run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
         working-directory: www
+        run: |
+          if [[ -f package-lock.json || -f npm-shrinkwrap.json ]]; then
+            npm ci
+          fi
+
+      - name: Sanity check theme dir
+        run: |
+          ls -la www/themes || true
+          ls -la www/themes/PaperMod || true
+
       - name: Build with Hugo
+        working-directory: www
         env:
           HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
           HUGO_ENVIRONMENT: production
         run: |
-          hugo \
-            --minify \
-            --baseURL "${{ steps.pages.outputs.base_url }}/"
-        working-directory: www
-      # - name: Upload artifact
-      #   uses: actions/upload-pages-artifact@v3
-      #   with:
-      #     path: www/public
+          hugo --minify
+          # If you enable the Pages step, you can add:
+          # --baseURL "${{ steps.pages.outputs.base_url }}/"
