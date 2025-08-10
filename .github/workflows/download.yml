@@ -15,6 +15,9 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: recursive
+      - name: Update git submodules
+        run: |
+          git submodule update --init --recursive
       - name: Install Just
         run: sudo snap install --edge --classic just
       - name: Install uv
@@ -27,6 +30,7 @@ jobs:
         run: just install
 
   build-site:
+    needs: download
     runs-on: ubuntu-latest
     env:
       HUGO_VERSION: 0.148.0
