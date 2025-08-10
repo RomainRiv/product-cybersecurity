@@ -895,6 +895,39 @@ wheels = [
 ]
 
 [[package]]
+name = "product-cybersecurity"
+version = "0.1.0"
+source = { editable = "." }
+dependencies = [
+    { name = "datamodel-code-generator", extra = ["http"] },
+    { name = "ipykernel" },
+    { name = "networkx", extra = ["default"] },
+    { name = "polars" },
+    { name = "pyarrow" },
+    { name = "pydantic" },
+    { name = "requests" },
+    { name = "tdqm" },
+    { name = "types-networkx" },
+    { name = "types-requests" },
+    { name = "types-tqdm" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "datamodel-code-generator", extras = ["http"], specifier = ">=0.31.2" },
+    { name = "ipykernel", specifier = ">=6.29.5" },
+    { name = "networkx", extras = ["default"], specifier = ">=3.5" },
+    { name = "polars", specifier = ">=1.31.0" },
+    { name = "pyarrow", specifier = ">=20.0.0" },
+    { name = "pydantic", specifier = ">=2.11.7" },
+    { name = "requests", specifier = ">=2.32.3" },
+    { name = "tdqm", specifier = ">=0.0.1" },
+    { name = "types-networkx", specifier = ">=3.5.0.20250701" },
+    { name = "types-requests", specifier = ">=2.32.4.20250611" },
+    { name = "types-tqdm", specifier = ">=4.67.0.20250516" },
+]
+
+[[package]]
 name = "prompt-toolkit"
 version = "3.0.51"
 source = { registry = "https://pypi.org/simple" }
@@ -1241,39 +1274,6 @@ dependencies = [
     { name = "tqdm" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/5a/38/58c9e22b95e98666fe29f35e217ab6126a03798dadf3f4f8f3e5f898510b/tdqm-0.0.1.tar.gz", hash = "sha256:f050004a76b1d22f70b78209b48781353c82440215b6ba7d22b1f499b05a0101", size = 1388, upload-time = "2020-08-19T20:16:22.191Z" }
-
-[[package]]
-name = "temp-product-cyber-data"
-version = "0.1.0"
-source = { virtual = "." }
-dependencies = [
-    { name = "datamodel-code-generator", extra = ["http"] },
-    { name = "ipykernel" },
-    { name = "networkx", extra = ["default"] },
-    { name = "polars" },
-    { name = "pyarrow" },
-    { name = "pydantic" },
-    { name = "requests" },
-    { name = "tdqm" },
-    { name = "types-networkx" },
-    { name = "types-requests" },
-    { name = "types-tqdm" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "datamodel-code-generator", extras = ["http"], specifier = ">=0.31.2" },
-    { name = "ipykernel", specifier = ">=6.29.5" },
-    { name = "networkx", extras = ["default"], specifier = ">=3.5" },
-    { name = "polars", specifier = ">=1.31.0" },
-    { name = "pyarrow", specifier = ">=20.0.0" },
-    { name = "pydantic", specifier = ">=2.11.7" },
-    { name = "requests", specifier = ">=2.32.3" },
-    { name = "tdqm", specifier = ">=0.0.1" },
-    { name = "types-networkx", specifier = ">=3.5.0.20250701" },
-    { name = "types-requests", specifier = ">=2.32.4.20250611" },
-    { name = "types-tqdm", specifier = ">=4.67.0.20250516" },
-]
 
 [[package]]
 name = "tornado"

@@ -9,7 +9,7 @@ all: download install generate
 
 # Download CAPEC, CWE and CVE data
 download:
-    cyber-data-downloader --capec-output download/capec/attack_patterns.xml --cwe-output download/cwe/cwec_v4.13.xml --cve-feed-download-dir download/cve_feed --cve-github-download-dir download/cve_github 
+    uv run src/product_cybersecurity/cli/downloader.py --capec-output download/capec/attack_patterns.xml --cwe-output download/cwe/cwec_v4.13.xml --cve-github-download-dir download/cve_github 
 
 
 # Install (convert) CAPEC and CWE data to JSON and decompress CVEs

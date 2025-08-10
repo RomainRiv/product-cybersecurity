@@ -2,39 +2,47 @@ import argparse
 import requests
 import os
 import zipfile
-import io
+from tqdm import tqdm
 
 CAPEC_URL = "https://capec.mitre.org/data/xml/capec_latest.xml"
 CWEC_URL = "https://cwe.mitre.org/data/xml/cwec_latest.xml.zip"
 CVES_GITHUB_URL = "https://github.com/CVEProject/cvelistV5/archive/refs/heads/main.zip"
 CVE_FEED_URL = "https://nvd.nist.gov/feeds/json/cve/2.0/"
 
+def download_with_progress(url, dest_path):
+    """Download a file with tqdm progress bar."""
+    response = requests.get(url, stream=True)
+    response.raise_for_status()
+    total = int(response.headers.get('content-length', 0))
+    with open(dest_path, "wb") as f, tqdm(
+        total=total, unit='B', unit_scale=True, desc=os.path.basename(dest_path)
+    ) as pbar:
+        for chunk in response.iter_content(chunk_size=8192):
+            if chunk:
+                f.write(chunk)
+                pbar.update(len(chunk))
+
 def download_capec(url, dest_path):
     dest_folder = os.path.dirname(dest_path)
     if not os.path.exists(dest_folder):
         os.makedirs(dest_folder)
-    
     print(f"Downloading CAPEC from {url}")
-    response = requests.get(url)
-    response.raise_for_status()
-    
-    with open(dest_path, "wb") as f:
-        f.write(response.content)
+    download_with_progress(url, dest_path)
     print(f"CAPEC file saved to {dest_path}")
 
 def download_cwe(url, dest_path):
     dest_folder = os.path.dirname(dest_path)
     if not os.path.exists(dest_folder):
         os.makedirs(dest_folder)
-
     print(f"Downloading CWE from {url}")
-    response = requests.get(url)
-    response.raise_for_status()
-
-    with zipfile.ZipFile(io.BytesIO(response.content)) as z:
+    # Download zip to temp file with progress
+    temp_zip = dest_path + ".tmp"
+    download_with_progress(url, temp_zip)
+    with zipfile.ZipFile(temp_zip) as z:
         xml_filename = [name for name in z.namelist() if name.endswith('.xml')][0]
         with z.open(xml_filename) as source, open(dest_path, 'wb') as target:
             target.write(source.read())
+    os.remove(temp_zip)
     print(f"CWE file saved to {dest_path}")
 
 
@@ -44,21 +52,14 @@ def download_cves_from_github(url, dest_dir):
     """
     if not os.path.exists(dest_dir):
         os.makedirs(dest_dir)
-
     zip_filename = os.path.join(dest_dir, "cvelistV5-main.zip")
-
     print(f"Downloading CVEs from GitHub repository at {url} to {zip_filename}")
     try:
-        response = requests.get(url)
-        response.raise_for_status()
+        download_with_progress(url, zip_filename)
+        print(f"CVE GitHub zip file saved to {zip_filename}")
     except requests.exceptions.RequestException as e:
         print(f"Could not download {url}: {e}. Aborting.")
         return
-
-    with open(zip_filename, 'wb') as f:
-        f.write(response.content)
-
-    print(f"CVE GitHub zip file saved to {zip_filename}")
 
 
 def main():
