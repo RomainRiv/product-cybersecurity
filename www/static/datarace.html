@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Responsive D3 Bar-Chart Race (Configurable Top-N)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <style>
+    :root {
+      --bg-color: #fff;
+      --text-color: #000;
+      --controls-bg: #f7f7f7;
+      --border-color: #e0e0e0;
+      --grid-line-color: #e0e0e0;
+      --ticker-color: #000;
+    }
+    html.dark {
+      --bg-color: #2e2e33;
+      --text-color: #d2d2d3;
+      --controls-bg: #3a3a40;
+      --border-color: #515151;
+      --grid-line-color: #515151;
+      --ticker-color: #d2d2d3;
+    }
+    html,body{margin:0;padding:0;font-family:sans-serif;background:var(--bg-color);color:var(--text-color);transition:background-color 0.3s, color 0.3s;}
+    #chartWrapper{max-height:80vh;overflow-y:auto;border:1px solid var(--border-color)}
+    #controls{display:flex;align-items:center;padding:12px;background:var(--controls-bg);border-bottom:1px solid var(--border-color);font-size:14px;flex-wrap:wrap;gap:16px}
+    .control-item{display:flex;align-items:center;gap:6px}
+    .date-control{flex-grow:1;min-width:200px}
+    #dateSlider{width:100%}
+    #playPauseBtn{background:transparent;border:1px solid var(--border-color);border-radius:4px;padding:4px 8px;cursor:pointer;color:var(--text-color)}
+    #playPauseBtn:hover{background:rgba(128,128,128,0.1)}
+    input[type=number]{width:60px;padding:4px;border:1px solid var(--border-color);border-radius:4px;background:var(--bg-color);color:var(--text-color)}
+    label{font-size:12px;color:var(--text-color)}
+    svg{display:block;width:100%;height:auto}
+    .value{fill:var(--text-color);font-size:12px;font-weight:bold;pointer-events:none}
+    .name{fill:var(--text-color);font-size:12px;font-weight:bold;pointer-events:none}
+    .tick line { stroke: var(--grid-line-color); }
+    .tick text { fill: var(--text-color); }
+    .ticker { fill: var(--ticker-color); }
+  </style>
+</head>
+<body>
+  <div id="controls">
+    <div class="control-item">
+      <label for="topN">Top</label>
+      <input id="topN" type="number" min="1" step="1" value="10">
+    </div>
+    <div class="control-item">
+      <label for="speed">Speed (ms)</label>
+      <input id="speed" type="number" min="10" step="10" value="200">
+    </div>
+    <button id="playPauseBtn">⏸️</button>
+    <div class="control-item date-control">
+      <input id="dateSlider" type="range" min="0" max="0" value="0" step="1">
+      <span id="sliderDate"></span>
+    </div>
+  </div>
+  <div id="chartWrapper"><svg></svg></div>
+
+  <script>
+// THEME SWITCHING
+function applyTheme(theme) {
+  document.documentElement.classList.toggle('dark', theme === 'dark');
+}
+
+window.addEventListener('message', event => {
+  if (event.data.theme) {
+    applyTheme(event.data.theme);
+  }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  if (window.parent) {
+    window.parent.postMessage({ getTheme: true }, '*');
+  }
+});
+
+// ---------------------------------------------------------------------------
+//  USER-CONFIGURABLE PARAMETER (updated via input)
+// ---------------------------------------------------------------------------
+const params = new URLSearchParams(window.location.search);
+const urlTopN = parseInt(params.get('topN'), 10);
+const urlSpeed = parseInt(params.get('speed'), 10);
+
+const nInput = document.getElementById('topN');
+const speedInput = document.getElementById('speed');
+
+if (!isNaN(urlTopN) && urlTopN > 0) {
+  nInput.value = urlTopN;
+}
+if (!isNaN(urlSpeed) && urlSpeed >= 10) {
+  speedInput.value = urlSpeed;
+}
+
+let TOP_N = +nInput.value;  // how many bars visible
+let FRAME_MS = +speedInput.value || 250;
+
+// attach change handler
+nInput.addEventListener('change', () => {
+  const v = Math.max(1, +nInput.value|0);
+  nInput.value = v;
+  TOP_N = v;
+  showKeyframe(sliderIndex);
+});
+
+speedInput.addEventListener('change', () => {
+  const v = Math.max(10, +speedInput.value | 0);
+  speedInput.value = v;
+  FRAME_MS = v;
+  // restart();
+});
+
+// ---------------------------------------------------------------------------
+//  CONSTANTS
+// ---------------------------------------------------------------------------
+const LABEL_SPACE         = 160; // px – reserved for names
+const NAME_PADDING        = 6;   // px – gap between label space and bar
+const BAR_STEP            = 30;  // px – vertical step (bar+gutter)
+const BAR_GUTTER          = 4;   // px – gap between bars
+const BAR_HEIGHT          = BAR_STEP - BAR_GUTTER;
+const INTERPOLATION_STEPS = 10;  // tween frames between yearly snapshots
+// const FRAME_MS            = 250; // ms per tween frame
+const VALUE_LABEL_OFFSET  = 6;   // px – gap between bar end and value label
+
+// ---------------------------------------------------------------------------
+//  GLOBALS
+// ---------------------------------------------------------------------------
+const wrapper = document.getElementById('chartWrapper');
+const svg     = d3.select('svg');
+let WIDTH  = wrapper.clientWidth || 960;
+let HEIGHT = 400; // temp, updated when data loaded / on TOP_N change
+// give extra space on the right so value labels are always visible
+const margin = {top:16,right:80,bottom:8,left:LABEL_SPACE+NAME_PADDING};
+
+// scales
+const x = d3.scaleLinear();
+const yPixel = rank => margin.top + rank * BAR_STEP; // direct pixel placement
+const formatNumber = d3.format(',d');
+const formatDate   = d3.utcFormat('%Y');
+
+// groups
+const gAxis   = svg.append('g').attr('class', 'axis');
+const gBars   = svg.append('g').attr('fill-opacity',0.7);
+const gValues = svg.append('g');
+const gNames  = svg.append('g');
+const ticker  = svg.append('text')
+  .attr('class', 'ticker')
+  .style('font-weight','bold')
+  .style('font-variant-numeric','tabular-nums');
+
+// data storage
+let keyframes, names, prev, next;
+let isSliderActive = false;
+let sliderIndex = 0;
+let isPlaying = false; // Default to paused
+let animationPromise = null;
+
+//--------------------------------------------------------------------------
+//  MAIN LOAD & BUILD FUNCTION --------------------------------------------
+//--------------------------------------------------------------------------
+function loadData(){
+  const params = new URLSearchParams(window.location.search);
+  const requestedFile = params.get('csv');
+  let csvFile = null;
+
+  if (requestedFile) {
+    // Sanitize to prevent directory traversal and only allow files under 'data/'.
+    // Support both relative (preferred) and absolute paths (for local/dev).
+    const safe = (s)=> typeof s === 'string'
+      && !s.includes('..')
+      && /\.csv(?:\?|$)/i.test(s);
+
+    if (safe(requestedFile) && requestedFile.startsWith('data/')) {
+      // Relative to the site/project base path (works on GitHub Pages)
+      csvFile = requestedFile;
+    } else {
+      try {
+        const url = new URL(requestedFile, window.location.href);
+        if (url.origin === window.location.origin && safe(url.pathname) && url.pathname.includes('/data/')) {
+          csvFile = url.pathname; // absolute path under the same origin
+        }
+      } catch (e) {
+        console.error('Error parsing CSV file path', e);
+      }
+    }
+  }
+
+  if (!csvFile) {
+    console.warn("No valid CSV file specified in 'csv' parameter. Must be a file in /data/ directory.");
+    svg.selectAll('*').remove();
+    svg.append('text')
+      .attr('x', '50%')
+      .attr('y', '50%')
+      .attr('text-anchor', 'middle')
+      .attr('class', 'name') // reuse style
+      .text('Please provide a valid CSV file from the /data/ directory.');
+    return Promise.resolve();
+  }
+
+  return d3.csv(csvFile, d3.autoType).then(data => {
+    if (!data || data.length === 0) {
+        svg.selectAll('*').remove();
+        svg.append('text')
+          .attr('x', '50%')
+          .attr('y', '50%')
+          .attr('text-anchor', 'middle')
+          .attr('class', 'name') // reuse style
+          .text(`Error: Could not load or parse data from ${csvFile}`);
+        return;
+    }
+    names = Array.from(new Set(data.map(d=>d.name)));
+
+    // rollup year -> name -> value
+    const dateValues = Array.from(
+      d3.rollup(data, ([d])=>d.value, d=>+d.date, d=>d.name)
+    ).map(([date,map])=>[new Date(date), map])
+     .sort(([a],[b])=>d3.ascending(a,b));
+
+    function rank(valueOf){
+      const items = names.map(name=>({name,value:valueOf(name)||0}));
+      items.sort((a,b)=>d3.descending(a.value,b.value));
+      items.forEach((d,i)=>d.rank=i);
+      return items;
+    }
+
+    // build keyframes
+    keyframes=[];
+    let ka,a,kb,b;
+    for([[ka,a],[kb,b]] of d3.pairs(dateValues)){
+      for(let i=0;i<INTERPOLATION_STEPS;++i){
+        const t=i/INTERPOLATION_STEPS;
+        keyframes.push([
+          new Date(ka*(1-t)+kb*t),
+          rank(name => (a.get(name)||0)*(1-t) + (b.get(name)||0)*t)
+        ]);
+      }
+    }
+    keyframes.push([new Date(kb), rank(name=>b.get(name)||0)]);
+
+    // Setup slider
+    const dateSlider = document.getElementById('dateSlider');
+    dateSlider.min = 0;
+    dateSlider.max = keyframes.length - 1;
+    dateSlider.value = 0;
+    document.getElementById('sliderDate').textContent = formatDate(keyframes[0][0]);
+
+    dateSlider.addEventListener('input', function() {
+      isSliderActive = true;
+      isPlaying = false;
+      document.getElementById('playPauseBtn').textContent = '▶️';
+      sliderIndex = +this.value;
+      showKeyframe(sliderIndex);
+    });
+    dateSlider.addEventListener('change', function() {
+      isSliderActive = true;
+      isPlaying = false;
+      document.getElementById('playPauseBtn').textContent = '▶️';
+      sliderIndex = +this.value;
+      showKeyframe(sliderIndex);
+    });
+
+    // Play/Pause button
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    playPauseBtn.addEventListener('click', function() {
+      if (isPlaying) {
+        isPlaying = false;
+        isSliderActive = true;
+        playPauseBtn.textContent = '▶️';
+      } else {
+        isPlaying = true;
+        isSliderActive = false;
+        playPauseBtn.textContent = '⏸️';
+        animate(sliderIndex);
+      }
+    });
+
+    const nameframes = d3.groups(keyframes.flatMap(([,data])=>data), d=>d.name);
+    prev = new Map(nameframes.flatMap(([,d])=>d3.pairs(d,(a,b)=>[b,a])));
+    next = new Map(nameframes.flatMap(([,d])=>d3.pairs(d)));
+
+    // color scale by category
+    const color = (()=>{
+      const scale = d3.scaleOrdinal(d3.schemeTableau10);
+      const catByName = new Map(data.map(d=>[d.name,d.category]));
+      const cats = Array.from(catByName.values()).filter(Boolean);
+      if(cats.length) scale.domain(cats);
+      return d=>scale(catByName.get(d.name));
+    })();
+
+    // store for updates
+    loadData.color = color;
+  });
+}
+
+function showKeyframe(idx) {
+  if (!keyframes || !keyframes[idx]) return;
+  const frame = keyframes[idx];
+  setupGeometry();
+  updateAxis(frame[1][0].value, svg.transition().duration(0));
+  updateBars(frame, svg.transition().duration(0));
+  updateValues(frame, svg.transition().duration(0));
+  updateNames(frame, svg.transition().duration(0));
+  ticker.text(formatDate(frame[0]));
+  document.getElementById('sliderDate').textContent = formatDate(frame[0]);
+}
+
+function setupGeometry(){
+  HEIGHT = margin.top + BAR_STEP * TOP_N + margin.bottom;
+  WIDTH  = wrapper.clientWidth || 960;
+  svg.attr('viewBox',[0,0,WIDTH,HEIGHT]);
+  x.range([margin.left, WIDTH - margin.right]);
+  gAxis.attr('transform',`translate(0,${margin.top})`);
+  ticker
+    .attr('x', WIDTH-100)
+    .attr('y', HEIGHT - margin.bottom - BAR_STEP/2)
+    .attr('dy','0.32em')
+    .style('font-size', `${BAR_STEP}px`);
+}
+
+function updateAxis(maxVal, t){
+  x.domain([0,maxVal]);
+  gAxis.transition(t)
+    .call(d3.axisTop(x)
+      .ticks(WIDTH/160)
+      .tickSizeInner(-BAR_STEP*TOP_N)
+    )
+    .call(g=>{
+      g.select('.tick:first-of-type text').remove();
+      g.select('.domain').remove();
+    });
+}
+
+function selectData(frame){
+  return frame.filter(d=>d.rank<TOP_N);
+}
+
+function updateBars([,frame],t){
+  const bars = gBars.selectAll('rect')
+    .data(selectData(frame), d=>d.name)
+    .join(
+      enter=>enter.append('rect')
+        .attr('fill', loadData.color)
+        .attr('height', BAR_HEIGHT)
+        .attr('x', x(0))
+        .attr('y', d=> yPixel((prev.get(d)||d).rank))
+        .attr('width', d=> x((prev.get(d)||d).value)-x(0)),
+      update=>update,
+      exit=>exit.transition(t).remove()
+        .attr('y', d=>yPixel((next.get(d)||d).rank))
+        .attr('width', d=>x((next.get(d)||d).value)-x(0))
+    )
+    .call(sel=>sel.transition(t)
+      .attr('y', d=>yPixel(d.rank))
+      .attr('width', d=>x(d.value)-x(0)));
+}
+
+function updateValues([,frame],t){
+  const values = gValues.selectAll('text.value')
+    .data(selectData(frame), d=>d.name)
+    .join(
+      enter=>enter.append('text')
+        .attr('class','value')
+        .attr('text-anchor','start')
+        .attr('y', d=>yPixel((prev.get(d)||d).rank)+BAR_HEIGHT/2)
+        .attr('x', d=>x((prev.get(d)||d).value)+VALUE_LABEL_OFFSET)
+        .text(d=>formatNumber((prev.get(d)||d).value)),
+      update=>update,
+      exit=>exit.transition(t).remove()
+        .attr('y', d=>yPixel((next.get(d)||d).rank)+BAR_HEIGHT/2)
+    )
+    .call(sel=>sel.transition(t)
+      .attr('y', d=>yPixel(d.rank)+BAR_HEIGHT/2)
+      .attr('x', d=>x(d.value)+VALUE_LABEL_OFFSET)
+      .tween('text', function(d){
+        const self=d3.select(this);
+        const i=d3.interpolateNumber((prev.get(d)||d).value, d.value);
+        return t=>{
+          const v=i(t);
+          self.text(formatNumber(Math.round(v)));
+        };
+      }));
+}
+
+function updateNames([,frame],t){
+  const namesSel = gNames.selectAll('text.name')
+    .data(selectData(frame), d=>d.name)
+    .join(
+      enter=>enter.append('text')
+        .attr('class','name')
+        .attr('text-anchor','end')
+        .attr('y', d=>yPixel((prev.get(d)||d).rank)+BAR_HEIGHT/2)
+        .attr('x', margin.left - NAME_PADDING)
+        .text(d=>d.name),
+      update=>update,
+      exit=>exit.transition(t).remove()
+        .attr('y', d=>yPixel((next.get(d)||d).rank)+BAR_HEIGHT/2)
+    )
+    .call(sel=>sel.transition(t)
+      .attr('y', d=>yPixel(d.rank)+BAR_HEIGHT/2));
+}
+
+async function animate(startIdx=0){
+  const dateSlider = document.getElementById('dateSlider');
+  for(let i=startIdx; i<keyframes.length; ++i){
+    if (!isPlaying || isSliderActive) break;
+    sliderIndex = i;
+    dateSlider.value = i;
+    document.getElementById('sliderDate').textContent = formatDate(keyframes[i][0]);
+    const t = svg.transition().duration(FRAME_MS).ease(d3.easeLinear);
+    updateAxis(keyframes[i][1][0].value, t);
+    updateBars(keyframes[i], t);
+    updateValues(keyframes[i], t);
+    updateNames(keyframes[i], t);
+    ticker.text(formatDate(keyframes[i][0]));
+    await t.end();
+  }
+}
+
+//--------------------------------------------------------------------------
+//  RESTART (on initial load or when TOP_N changes) -------------------------
+//--------------------------------------------------------------------------
+function restart(){
+  // stop any ongoing transitions
+  svg.interrupt();
+
+  // reset groups
+  gBars.selectAll('*').remove();
+  gValues.selectAll('*').remove();
+  gNames.selectAll('*').remove();
+  gAxis.selectAll('*').remove();
+
+  isSliderActive = false;
+  isPlaying = true;
+  document.getElementById('playPauseBtn').textContent = '⏸️';
+  document.getElementById('dateSlider').value = 0;
+  document.getElementById('sliderDate').textContent = keyframes ? formatDate(keyframes[0][0]) : '';
+  setupGeometry();
+  animate();
+}
+
+//--------------------------------------------------------------------------
+//  INITIAL LOAD & RUN ------------------------------------------------------
+//--------------------------------------------------------------------------
+loadData().then(()=>{
+  setupGeometry();
+  document.getElementById('playPauseBtn').textContent = '▶️';
+  showKeyframe(0); // Show the first frame but do not animate
+
+  // handle responsive width
+  new ResizeObserver(entries=>{
+    for(const entry of entries){
+      const newW = entry.contentRect.width;
+      if(newW!==WIDTH){
+        WIDTH=newW;
+        setupGeometry(); // recompute ranges & positions
+      }
+    }
+  }).observe(wrapper);
+});
+  </script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+name: Build and deploy
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  download:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: Install Just
+        run: sudo snap install --edge --classic just
+      - name: Install uv
+        run: |
+          curl -Ls https://astral.sh/uv/install.sh | bash
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+      - name: Run download step
+        run: just download
+      - name: Run install step
+        run: just install
+      - name: Run generate step
+        run: just generate
+      - name: Upload generated sources
+        uses: actions/upload-artifact@v4
+        with:
+          name: generated-sources
+          path: www/
+
+  build-site:
+    needs: download
+    runs-on: ubuntu-latest
+    env:
+      HUGO_VERSION: 0.148.0
+    steps:
+      - name: Checkout (with submodules)
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+      - name: Restore generated sources
+        uses: actions/download-artifact@v4
+        with:
+          name: generated-sources
+          path: www/
+          if-no-files-found: error
+
+      - name: Install Hugo CLI
+        run: |
+          wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb \
+          && sudo dpkg -i ${{ runner.temp }}/hugo.deb
+      - name: Install Dart Sass
+        run: sudo snap install dart-sass
+      - name: Install Node.js dependencies
+        working-directory: www
+        run: |
+          if [[ -f package-lock.json || -f npm-shrinkwrap.json ]]; then
+            npm ci
+          fi
+      - name: Build with Hugo
+        working-directory: www
+        env:
+          HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
+          HUGO_ENVIRONMENT: production
+        run: |
+          hugo --minify -b https://romainriv.github.io/product-cybersecurity/  -d ../docs
+      - name: Upload site artifact (for Pages)
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./docs
+
+  deploy:
+    if: ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' }}
+    needs: build-site
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+    steps:
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4

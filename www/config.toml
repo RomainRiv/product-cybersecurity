@@ -1,0 +1,33 @@
+baseURL = "https://romainriv.github.io/product-cybersecurity/"
+theme = "PaperMod"  # or your theme folder name in /themes
+title="Product Cybersecurity"
+canonifyURLs = true
+
+[menu]
+    [[menu.main]]
+        name = "Blog"
+        url = "https://romainriv.github.io/blog/"
+        weight = 2
+    [[menu.main]]
+        name = "Tags"
+    url = "tags/"
+        weight = 4
+        
+    [[menu.main]]
+        name = "Search"
+    url = "search/"
+        weight = 5
+
+    [[menu.main]]
+        name = "LinkedIn"
+        url = "https://www.linkedin.com/in/rriviere"
+        weight = 10
+        pre = "<i class='fab fa-linkedin'></i>"  # optional icon if your theme supports FontAwesome
+
+[outputs]
+    home = ["HTML", "RSS", "JSON"]
+
+[markup]
+    [markup.goldmark]
+        [markup.goldmark.renderer]
+            unsafe = true
