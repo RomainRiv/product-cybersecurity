@@ -23,3 +23,5 @@ jobs:
           export PATH="$HOME/.local/bin:$PATH"
       - name: Run download step
         run: just download
+      - name: Run install step
+        run: just install

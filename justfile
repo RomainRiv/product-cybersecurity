@@ -14,7 +14,7 @@ download:
 
 # Install (convert) CAPEC and CWE data to JSON and decompress CVEs
 install: 
-    cyber-data-installer --capec-xml download/capec/attack_patterns.xml --capec-json data/capec.json --cwe-xml download/cwe/cwec_v4.13.xml --cwe-json data/cwe.json --cve-download-dir download/cve_feed --cve-data-dir data/cve_feed --github-cve-zip download/cve_github/cvelistV5-main.zip --github-cve-output-dir data/cve_github
+    uv run src/product_cybersecurity/cli/installer.py --capec-xml download/capec/attack_patterns.xml --capec-json data/capec.json --cwe-xml download/cwe/cwec_v4.13.xml --cwe-json data/cwe.json --github-cve-zip download/cve_github/cvelistV5-main.zip --github-cve-output-dir data/cve_github
 
 # Generate graphs from JSON data
 generate:
