@@ -32,20 +32,36 @@ jobs:
     env:
       HUGO_VERSION: 0.148.0
     steps:
+      # 1) Checkout WITH submodules (only once)
       - name: Checkout (with submodules)
         uses: actions/checkout@v4
         with:
           submodules: recursive
-          # fetch-depth: 0           # uncomment if you need full history (usually not needed)
+          fetch-depth: 0  # safer for submodules
 
+      # 2) Prove the submodule is there
+      - name: Show submodule status
+        run: |
+          git submodule status --recursive || true
+          ls -la
+          ls -la www || true
+          ls -la www/themes || true
+          ls -la www/themes/PaperMod || true
+          # show .gitmodules content
+          echo "=== .gitmodules ==="
+          cat .gitmodules || true
+
+      # 3) Install Hugo
       - name: Install Hugo CLI
         run: |
           wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb \
           && sudo dpkg -i ${{ runner.temp }}/hugo.deb
 
+      # 4) (Optional) Dart Sass if your theme/pipeline needs it
       - name: Install Dart Sass
         run: sudo snap install dart-sass
 
+      # 5) Node deps if present
       - name: Install Node.js dependencies
         working-directory: www
         run: |
@@ -53,11 +69,7 @@ jobs:
             npm ci
           fi
 
-      - name: Sanity check theme dir
-        run: |
-          ls -la www/themes || true
-          ls -la www/themes/PaperMod || true
-
+      # 6) Build
       - name: Build with Hugo
         working-directory: www
         env:
@@ -65,5 +77,3 @@ jobs:
           HUGO_ENVIRONMENT: production
         run: |
           hugo --minify
-          # If you enable the Pages step, you can add:
-          # --baseURL "${{ steps.pages.outputs.base_url }}/"
