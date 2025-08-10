@@ -210,6 +210,12 @@ download/
 /data/
 web/gen/
 
+# output directory of Hugo builds
 /www/public
+# Static resources that are generated during build process
+/www/static/gen/
+# Markdown pages that are generated during build process
+/www/content/gen/
+
 # /site/themes
 .hugo_build.lock

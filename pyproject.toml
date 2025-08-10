@@ -19,10 +19,3 @@ dependencies = [
 ]
 [tool.uv]
 package = true
-
-
-[project.scripts]
-cyber-data-downloader = "product_cybersecurity.cli.downloader:main"
-cyber-data-installer = "product_cybersecurity.cli.installer:main"
-cyber-data-graph-generator = "product_cybersecurity.cli.graph:main"
-cyber-data-cve-visualizer = "product_cybersecurity.cli.cveviz:main"

@@ -18,7 +18,7 @@ install:
 
 # Generate graphs from JSON data
 generate:
-    cyber-data-graph-generator --capec-json data/capec.json --cwe-json data/cwe.json --graph-dir web/gen/graphs --md-dir web/gen
+    uv run src/product_cybersecurity/cli/graph.py --capec-json data/capec.json --cwe-json data/cwe.json --graph-dir www/static/gen/graphs --md-dir www/content/gen/
 
 # Serve the website
 serve:
