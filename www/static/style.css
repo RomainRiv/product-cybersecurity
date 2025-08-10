@@ -1,0 +1,175 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Ensure no scrollbars appear */
+}
+
+.graph-container {
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+    position: relative;
+}
+
+svg {
+    width: 100%;
+    height: 100%;
+    display: block; /* Prevents scrollbars from appearing */
+}
+
+.button-container {
+    text-align: center; /* Center the button horizontally */
+    padding: 10px; /* Space around the button */
+}
+
+.content-container {
+    display: flex;
+}
+
+.node-label-big, .node-label-medium, .node-label-small {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-anchor: middle; /* Center the text */
+}
+
+.type-group {
+    margin-bottom: 10px;
+}
+
+.checkbox-group {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start; /* Aligns items to the start of the container */
+    margin-bottom: 5px; /* Space between each checkbox */
+}
+
+.node-label-big { font-size: 15px; }
+.node-label-medium { font-size: 10px; }
+.node-label-small { font-size: 7px; }
+
+.tooltip {
+    position: absolute;
+    text-align: justify;
+    max-width: 400px; /* Set a maximum width */
+    white-space: normal; /* Allow text to wrap */
+    padding: 2px;
+    font: 12px sans-serif;
+    background: lightsteelblue;
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
+}
+
+.highlighted {
+    stroke: #00ff6e; /* Green stroke for highlighted nodes */
+    stroke-width: 6px; /* Make the stroke wider to make it more visible */
+}
+
+/* Position the toggle button */
+#drawerToggle {
+    position: absolute; /* Change from fixed to absolute */
+    top: 5%;
+    left: 10px;
+    z-index: 1010;
+    transform: translateY(100%); /* Move it down by the height of the button row */
+}
+
+/* Drawer styles remain the same */
+.drawer {
+    position: absolute;
+    top: 15%;
+    display: none; /* Hide drawer initially */
+    /* width: 200px; */
+    overflow-y: auto;
+    z-index: 1000;
+    background-color: rgb(238, 245, 249);
+    padding-top: 1%;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-bottom: 1%;
+    border-radius: 8px;
+    border: 5px solid #dddddd; /* Light gray border */
+    box-shadow: none;
+}
+
+.drawer-open {
+    display: block; /* Show drawer */
+}
+
+#drawerToggle.drawer-open i {
+    transform: rotate(180deg);
+}
+
+.search-result {
+    border: 1px solid #ccc;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.search-result:hover {
+    background-color: #f0f0f0;
+}
+
+.search-results {
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    background-color: white;
+    position: absolute;
+    z-index: 1000;
+    width: 100%;
+}
+
+.tooltip {
+    position: absolute;
+    background-color: white;
+    border: solid 1px;
+    border-radius: 5px;
+    padding: 10px;
+    opacity: 0.9;
+}
+
+/* Loading Indicator */
+.loading-indicator {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    z-index: 1000;
+}
+
+/* Error Message */
+.error-div {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+}
+
+.error-div span {
+    flex-grow: 1;
+}
+
+.close-error-button {
+    background: none;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    color: #721c24;
+    cursor: pointer;
+    margin-left: 10px;
+}

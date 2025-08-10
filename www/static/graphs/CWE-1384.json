@@ -1,0 +1,84 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CWE-1261: Improper Handling of Single Event Upsets</b><br>The hardware logic does not effectively handle when single-event upsets (SEUs) occur.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Handling of Single Event Upsets",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1261.html",
+      "id": "CWE-1261"
+    },
+    {
+      "Description": "<b>CWE-1351: Improper Handling of Hardware Behavior in Exceptionally Cold Environments</b><br>A hardware device, or the firmware running on it, is\n                missing or has incorrect protection features to maintain\n                goals of security primitives when the device is cooled below\n                standard operating temperatures.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Handling of Hardware Behavior in Exceptionally Cold Environments",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1351.html",
+      "id": "CWE-1351"
+    },
+    {
+      "Description": "<b>CWE-1332: Improper Handling of Faults that Lead to Instruction Skips</b><br>The device is missing or incorrectly implements circuitry or sensors that detect and mitigate the skipping of security-critical CPU instructions when they occur.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Handling of Faults that Lead to Instruction Skips",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1332.html",
+      "id": "CWE-1332"
+    },
+    {
+      "Description": "<b>CWE-1247: Improper Protection Against Voltage and Clock Glitches</b><br>The device does not contain or contains incorrectly implemented circuitry or sensors to detect and mitigate voltage and clock glitches and protect sensitive information or software contained on the device.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Protection Against Voltage and Clock Glitches",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1247.html",
+      "id": "CWE-1247"
+    },
+    {
+      "Description": "<b>CWE-1384: Improper Handling of Physical or Environmental Conditions</b><br>The product does not properly handle unexpected physical or environmental conditions that occur naturally or are artificially induced.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Improper Handling of Physical or Environmental Conditions",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/1384.html",
+      "id": "CWE-1384"
+    }
+  ],
+  "links": [
+    {
+      "width": 1,
+      "source": "CWE-1261",
+      "target": "CWE-1384"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1351",
+      "target": "CWE-1384"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1332",
+      "target": "CWE-1384"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1247",
+      "target": "CWE-1384"
+    }
+  ]
+}

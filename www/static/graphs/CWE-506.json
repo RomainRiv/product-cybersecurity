@@ -1,0 +1,116 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CWE-508: Non-Replicating Malicious Code</b><br>Non-replicating malicious code only resides on the target system or product that is attacked; it does not attempt to spread to other systems.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Non-Replicating Malicious Code",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/508.html",
+      "id": "CWE-508"
+    },
+    {
+      "Description": "<b>CWE-506: Embedded Malicious Code</b><br>The product contains code that appears to be malicious in nature.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Embedded Malicious Code",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/506.html",
+      "id": "CWE-506"
+    },
+    {
+      "Description": "<b>CWE-510: Trapdoor</b><br>A trapdoor is a hidden piece of code that responds to a special input, allowing its user access to resources without passing through the normal security enforcement mechanism.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Trapdoor",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/510.html",
+      "id": "CWE-510"
+    },
+    {
+      "Description": "<b>CWE-511: Logic/Time Bomb</b><br>The product contains code that is designed to disrupt the legitimate operation of the product (or its environment) when a certain time passes, or when a certain logical condition is met.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Logic/Time Bomb",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/511.html",
+      "id": "CWE-511"
+    },
+    {
+      "Description": "<b>CWE-507: Trojan Horse</b><br>The product appears to contain benign or useful functionality, but it also contains code that is hidden from normal operation that violates the intended security policy of the user or the system administrator.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Trojan Horse",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/507.html",
+      "id": "CWE-507"
+    },
+    {
+      "Description": "<b>CWE-512: Spyware</b><br>The product collects personally identifiable information about a human user or the user's activities, but the product accesses this information using other resources besides itself, and it does not require that user's explicit approval or direct input into the product.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Spyware",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/512.html",
+      "id": "CWE-512"
+    },
+    {
+      "Description": "<b>CWE-509: Replicating Malicious Code (Virus or Worm)</b><br>Replicating malicious code, including viruses and worms, will attempt to attack other systems once it has successfully compromised the target system or the product.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Replicating Malicious Code (Virus or Worm)",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/509.html",
+      "id": "CWE-509"
+    }
+  ],
+  "links": [
+    {
+      "width": 1,
+      "source": "CWE-508",
+      "target": "CWE-507"
+    },
+    {
+      "width": 1,
+      "source": "CWE-510",
+      "target": "CWE-506"
+    },
+    {
+      "width": 1,
+      "source": "CWE-511",
+      "target": "CWE-506"
+    },
+    {
+      "width": 1,
+      "source": "CWE-507",
+      "target": "CWE-506"
+    },
+    {
+      "width": 1,
+      "source": "CWE-512",
+      "target": "CWE-506"
+    },
+    {
+      "width": 1,
+      "source": "CWE-509",
+      "target": "CWE-507"
+    }
+  ]
+}

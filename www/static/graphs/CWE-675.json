@@ -1,0 +1,116 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CWE-1341: Multiple Releases of Same Resource or Handle</b><br>The product attempts to close or release a resource or handle more than once, without any successful open between the close operations.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Multiple Releases of Same Resource or Handle",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1341.html",
+      "id": "CWE-1341"
+    },
+    {
+      "Description": "<b>CWE-675: Multiple Operations on Resource in Single-Operation Context</b><br>The product performs the same operation on a resource two or more times, when the operation should only be applied once.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Multiple Operations on Resource in Single-Operation Context",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/675.html",
+      "id": "CWE-675"
+    },
+    {
+      "Description": "<b>CWE-415: Double Free</b><br>The product calls free() twice on the same memory address, potentially leading to modification of unexpected memory locations.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Double Free",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/415.html",
+      "id": "CWE-415"
+    },
+    {
+      "Description": "<b>CWE-174: Double Decoding of the Same Data</b><br>The product decodes the same input twice, which can limit the effectiveness of any protection mechanism that occurs in between the decoding operations.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Double Decoding of the Same Data",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/174.html",
+      "id": "CWE-174"
+    },
+    {
+      "Description": "<b>CWE-764: Multiple Locks of a Critical Resource</b><br>The product locks a critical resource more times than intended, leading to an unexpected state in the system.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Multiple Locks of a Critical Resource",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/764.html",
+      "id": "CWE-764"
+    },
+    {
+      "Description": "<b>CWE-765: Multiple Unlocks of a Critical Resource</b><br>The product unlocks a critical resource more times than intended, leading to an unexpected state in the system.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Multiple Unlocks of a Critical Resource",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/765.html",
+      "id": "CWE-765"
+    },
+    {
+      "Description": "<b>CWE-605: Multiple Binds to the Same Port</b><br>When multiple sockets are allowed to bind to the same port, other services on that port may be stolen or spoofed.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Multiple Binds to the Same Port",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/605.html",
+      "id": "CWE-605"
+    }
+  ],
+  "links": [
+    {
+      "width": 1,
+      "source": "CWE-1341",
+      "target": "CWE-675"
+    },
+    {
+      "width": 1,
+      "source": "CWE-415",
+      "target": "CWE-1341"
+    },
+    {
+      "width": 1,
+      "source": "CWE-174",
+      "target": "CWE-675"
+    },
+    {
+      "width": 1,
+      "source": "CWE-764",
+      "target": "CWE-675"
+    },
+    {
+      "width": 1,
+      "source": "CWE-765",
+      "target": "CWE-675"
+    },
+    {
+      "width": 1,
+      "source": "CWE-605",
+      "target": "CWE-675"
+    }
+  ]
+}

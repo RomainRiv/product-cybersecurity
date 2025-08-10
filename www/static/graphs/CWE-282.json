@@ -1,0 +1,52 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CWE-708: Incorrect Ownership Assignment</b><br>The product assigns an owner to a resource, but the owner is outside of the intended control sphere.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Incorrect Ownership Assignment",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/708.html",
+      "id": "CWE-708"
+    },
+    {
+      "Description": "<b>CWE-283: Unverified Ownership</b><br>The product does not properly verify that a critical resource is owned by the proper entity.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Unverified Ownership",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/283.html",
+      "id": "CWE-283"
+    },
+    {
+      "Description": "<b>CWE-282: Improper Ownership Management</b><br>The product assigns the wrong ownership, or does not properly verify the ownership, of an object or resource.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Improper Ownership Management",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/282.html",
+      "id": "CWE-282"
+    }
+  ],
+  "links": [
+    {
+      "width": 1,
+      "source": "CWE-708",
+      "target": "CWE-282"
+    },
+    {
+      "width": 1,
+      "source": "CWE-283",
+      "target": "CWE-282"
+    }
+  ]
+}

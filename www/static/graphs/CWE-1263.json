@@ -1,0 +1,36 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CWE-1263: Improper Physical Access Control</b><br>The product is designed with access restricted to certain information, but it does not sufficiently protect against an unauthorized actor with physical access to these areas.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Improper Physical Access Control",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/1263.html",
+      "id": "CWE-1263"
+    },
+    {
+      "Description": "<b>CWE-1243: Sensitive Non-Volatile Information Not Protected During Debug</b><br>Access to security-sensitive information stored in fuses is not limited during debug.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Sensitive Non-Volatile Information Not Protected During Debug",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1243.html",
+      "id": "CWE-1243"
+    }
+  ],
+  "links": [
+    {
+      "width": 1,
+      "source": "CWE-1243",
+      "target": "CWE-1263"
+    }
+  ]
+}

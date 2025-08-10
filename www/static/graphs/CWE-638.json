@@ -1,0 +1,52 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CWE-638: Not Using Complete Mediation</b><br>The product does not perform access checks on a resource every time the resource is accessed by an entity, which can create resultant weaknesses if that entity's rights or privileges change over time.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Not Using Complete Mediation",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/638.html",
+      "id": "CWE-638"
+    },
+    {
+      "Description": "<b>CWE-425: Direct Request ('Forced Browsing')</b><br>The web application does not adequately enforce appropriate authorization on all restricted URLs, scripts, or files.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Direct Request ('Forced Browsing')",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/425.html",
+      "id": "CWE-425"
+    },
+    {
+      "Description": "<b>CWE-424: Improper Protection of Alternate Path</b><br>The product does not sufficiently protect all possible paths that a user can take to access restricted functionality or resources.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Improper Protection of Alternate Path",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/424.html",
+      "id": "CWE-424"
+    }
+  ],
+  "links": [
+    {
+      "width": 1,
+      "source": "CWE-425",
+      "target": "CWE-424"
+    },
+    {
+      "width": 1,
+      "source": "CWE-424",
+      "target": "CWE-638"
+    }
+  ]
+}

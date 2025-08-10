@@ -1,0 +1,276 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CAPEC-201: Serialized Data External Linking</b><br>An adversary creates a serialized data file (e.g. XML, YAML, etc...) that contains an external data reference. Because serialized data parsers may not validate documents with external references, there may be no checks on the nature of the reference in the external data. This can allow an adversary to open arbitrary files or connections, which may further lead to the adversary gaining access to information on the system that they would normally be unable to obtain.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Serialized Data External Linking",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/201.html",
+      "id": "CAPEC-201"
+    },
+    {
+      "Description": "<b>CAPEC-180: Exploiting Incorrectly Configured Access Control Security Levels</b><br>An attacker exploits a weakness in the configuration of access controls and is able to bypass the intended protection that these measures guard against and thereby obtain unauthorized access to the system or network. Sensitive functionality should always be protected with access controls. However configuring all but the most trivial access control systems can be very complicated and there are many opportunities for mistakes. If an attacker can learn of incorrectly configured access security settings, they may be able to exploit this in an attack.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Exploiting Incorrectly Configured Access Control Security Levels",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/180.html",
+      "id": "CAPEC-180"
+    },
+    {
+      "Description": "<b>CAPEC-263: Force Use of Corrupted Files</b><br>This describes an attack where an application is forced to use a file that an attacker has corrupted. The result is often a denial of service caused by the application being unable to process the corrupted file, but other results, including the disabling of filters or access controls (if the application fails in an unsafe way rather than failing by locking down) or buffer overflows are possible.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Force Use of Corrupted Files",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/263.html",
+      "id": "CAPEC-263"
+    },
+    {
+      "Description": "<b>CAPEC-177: Create files with the same name as files protected with a higher classification</b><br>An attacker exploits file location algorithms in an operating system or application by creating a file with the same name as a protected or privileged file. The attacker could manipulate the system if the attacker-created file is trusted by the operating system or an application component that attempts to load the original file. Applications often load or include external files, such as libraries or configuration files. These files should be protected against malicious manipulation. However, if the application only uses the name of the file when locating it, an attacker may be able to create a file with the same name and place it in a directory that the application will search before the directory with the legitimate file is searched. Because the attackers' file is discovered first, it would be used by the target application. This attack can be extremely destructive if the referenced file is executable and/or is granted special privileges based solely on having a particular name.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Create files with the same name as files protected with a higher classification",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/177.html",
+      "id": "CAPEC-177"
+    },
+    {
+      "Description": "<b>CAPEC-562: Modify Shared File</b><br>An adversary manipulates the files in a shared location by adding malicious programs, scripts, or exploit code to valid content. Once a user opens the shared content, the tainted content is executed.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Modify Shared File",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/562.html",
+      "id": "CAPEC-562"
+    },
+    {
+      "Description": "<b>CAPEC-650: Upload a Web Shell to a Web Server</b><br>By exploiting insufficient permissions, it is possible to upload a web shell to a web server in such a way that it can be executed remotely. This shell can have various capabilities, thereby acting as a \"gateway\" to the underlying web server. The shell might execute at the higher permission level of the web server, providing the ability the execute malicious code at elevated levels.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Upload a Web Shell to a Web Server",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/650.html",
+      "id": "CAPEC-650"
+    },
+    {
+      "Description": "<b>CAPEC-1: Accessing Functionality Not Properly Constrained by ACLs</b><br>In applications, particularly web applications, access to functionality is mitigated by an authorization framework. This framework maps Access Control Lists (ACLs) to elements of the application's functionality; particularly URL's for web apps. In the case that the administrator failed to specify an ACL for a particular element, an attacker may be able to access it with impunity. An attacker with the ability to access functionality not properly constrained by ACLs can obtain sensitive information and possibly compromise the entire application. Such an attacker can access resources that must be available only to users at a higher privilege level, can access management sections of the application, or can run queries for data that they otherwise not supposed to.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Accessing Functionality Not Properly Constrained by ACLs",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/1.html",
+      "id": "CAPEC-1"
+    },
+    {
+      "Description": "<b>CAPEC-503: WebView Exposure</b><br>An adversary, through a malicious web page, accesses application specific functionality by leveraging interfaces registered through WebView's addJavascriptInterface API. Once an interface is registered to WebView through addJavascriptInterface, it becomes global and all pages loaded in the WebView can call this interface.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "WebView Exposure",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/503.html",
+      "id": "CAPEC-503"
+    },
+    {
+      "Description": "<b>CAPEC-58: Restful Privilege Elevation</b><br>An adversary identifies a Rest HTTP (Get, Put, Delete) style permission method allowing them to perform various malicious actions upon server data due to lack of access control mechanisms implemented within the application service accepting HTTP messages.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Restful Privilege Elevation",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/58.html",
+      "id": "CAPEC-58"
+    },
+    {
+      "Description": "<b>CAPEC-563: Add Malicious File to Shared Webroot</b><br>An adversaries may add malicious content to a website through the open file share and then browse to that content with a web browser to cause the server to execute the content. The malicious content will typically run under the context and permissions of the web server process, often resulting in local system or administrative privileges depending on how the web server is configured.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Add Malicious File to Shared Webroot",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/563.html",
+      "id": "CAPEC-563"
+    },
+    {
+      "Description": "<b>CAPEC-680: Exploitation of Improperly Controlled Registers</b><br>An adversary exploits missing or incorrectly configured access control within registers to read/write data that is not meant to be obtained or modified by a user.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Exploitation of Improperly Controlled Registers",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/680.html",
+      "id": "CAPEC-680"
+    },
+    {
+      "Description": "<b>CAPEC-681: Exploitation of Improperly Controlled Hardware Security Identifiers</b><br>An adversary takes advantage of missing or incorrectly configured security identifiers (e.g., tokens), which are used for access control within a System-on-Chip (SoC), to read/write data or execute a given action.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Exploitation of Improperly Controlled Hardware Security Identifiers",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/681.html",
+      "id": "CAPEC-681"
+    },
+    {
+      "Description": "<b>CAPEC-642: Replace Binaries</b><br>Adversaries know that certain binaries will be regularly executed as part of normal processing. If these binaries are not protected with the appropriate file system permissions, it could be possible to replace them with malware. This malware might be executed at higher system permission levels. A variation of this pattern is to discover self-extracting installation packages that unpack binaries to directories with weak file permissions which it does not clean up appropriately. These binaries can be replaced by malware, which can then be executed.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Replace Binaries",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/642.html",
+      "id": "CAPEC-642"
+    },
+    {
+      "Description": "<b>CAPEC-17: Using Malicious Files</b><br>An attack of this type exploits a system's configuration that allows an adversary to either directly access an executable file, for example through shell access; or in a possible worst case allows an adversary to upload a file and then execute it. Web servers, ftp servers, and message oriented middleware systems which have many integration points are particularly vulnerable, because both the programmers and the administrators must be in synch regarding the interfaces and the correct privileges for each interface.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Using Malicious Files",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/17.html",
+      "id": "CAPEC-17"
+    },
+    {
+      "Description": "<b>CAPEC-679: Exploitation of Improperly Configured or Implemented Memory Protections</b><br>An adversary takes advantage of missing or incorrectly configured access control within memory to read/write data or inject malicious code into said memory.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Exploitation of Improperly Configured or Implemented Memory Protections",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/679.html",
+      "id": "CAPEC-679"
+    },
+    {
+      "Description": "<b>CAPEC-122: Privilege Abuse</b><br>An adversary is able to exploit features of the target that should be reserved for privileged users or administrators but are exposed to use by lower or non-privileged accounts. Access to sensitive information and functionality must be controlled to ensure that only authorized users are able to access these resources.",
+      "color": "#2176ff",
+      "size": 30,
+      "label": "Privilege Abuse",
+      "label_class": "node-label-big",
+      "type": "CAPEC",
+      "abstraction": "Meta",
+      "url": "https://capec.mitre.org/data/definitions/122.html",
+      "id": "CAPEC-122"
+    },
+    {
+      "Description": "<b>CAPEC-702: Exploiting Incorrect Chaining or Granularity of Hardware Debug Components</b><br>An adversary exploits incorrect chaining or granularity of hardware debug components in order to gain unauthorized access to debug functionality on a chip. This happens when authorization is not checked on a per function basis and is assumed for a chain or group of debug functionality.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Exploiting Incorrect Chaining or Granularity of Hardware Debug Components",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/702.html",
+      "id": "CAPEC-702"
+    }
+  ],
+  "links": [
+    {
+      "source": "CAPEC-201",
+      "target": "CAPEC-122"
+    },
+    {
+      "source": "CAPEC-180",
+      "target": "CAPEC-122"
+    },
+    {
+      "source": "CAPEC-263",
+      "target": "CAPEC-17"
+    },
+    {
+      "source": "CAPEC-177",
+      "target": "CAPEC-17"
+    },
+    {
+      "source": "CAPEC-562",
+      "target": "CAPEC-17"
+    },
+    {
+      "source": "CAPEC-650",
+      "target": "CAPEC-17"
+    },
+    {
+      "source": "CAPEC-1",
+      "target": "CAPEC-122"
+    },
+    {
+      "source": "CAPEC-503",
+      "target": "CAPEC-122"
+    },
+    {
+      "source": "CAPEC-58",
+      "target": "CAPEC-1"
+    },
+    {
+      "source": "CAPEC-58",
+      "target": "CAPEC-180"
+    },
+    {
+      "source": "CAPEC-563",
+      "target": "CAPEC-17"
+    },
+    {
+      "source": "CAPEC-680",
+      "target": "CAPEC-1"
+    },
+    {
+      "source": "CAPEC-680",
+      "target": "CAPEC-180"
+    },
+    {
+      "source": "CAPEC-681",
+      "target": "CAPEC-1"
+    },
+    {
+      "source": "CAPEC-681",
+      "target": "CAPEC-180"
+    },
+    {
+      "source": "CAPEC-642",
+      "target": "CAPEC-17"
+    },
+    {
+      "source": "CAPEC-17",
+      "target": "CAPEC-122"
+    },
+    {
+      "source": "CAPEC-679",
+      "target": "CAPEC-1"
+    },
+    {
+      "source": "CAPEC-679",
+      "target": "CAPEC-180"
+    },
+    {
+      "source": "CAPEC-702",
+      "target": "CAPEC-180"
+    }
+  ]
+}

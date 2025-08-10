@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Graph Visualizer</title>
+    <script src="lib/d3.v7.min.js"></script>
+    <meta charset="UTF-8">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col">
+                <button id="toggleArrowsButton" class="btn btn-secondary">Toggle Arrows ➡</button>
+            </div>
+            <div class="col position-relative">
+                <input type="text" id="searchBox" class="form-control" placeholder="Search node...">
+                <div id="searchResults" class="search-results"></div>
+            </div>         
+            <div class="col">
+                <button id="searchButton" class="btn btn-primary">Search 🔎</button>
+            </div>
+            <div class="col">
+                <button id="clearHighlightsButton" class="btn btn-secondary">Clear Highlights ❌</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 p0 graph-container">
+                <!-- Graph will be here... -->
+            </div>
+
+            <!-- Drawer Toggle Button -->
+            <button id="drawerToggle" class="btn btn-primary">
+                <i class="fas fa-eye"></i>
+            </button>
+
+            <!-- Drawer -->
+            <div id="checkboxDrawer" class="drawer">
+                <div class="checkbox-container">
+                    <!-- Checkboxes will be dynamically added here -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

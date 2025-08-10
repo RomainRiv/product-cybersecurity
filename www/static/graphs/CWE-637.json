@@ -1,0 +1,19 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CWE-637: Unnecessary Complexity in Protection Mechanism (Not Using 'Economy of Mechanism')</b><br>The product uses a more complex mechanism than necessary, which could lead to resultant weaknesses when the mechanism is not correctly understood, modeled, configured, implemented, or used.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Unnecessary Complexity in Protection Mechanism (Not Using 'Economy of Mechanism')",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/637.html",
+      "id": "CWE-637"
+    }
+  ],
+  "links": []
+}

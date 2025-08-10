@@ -1,0 +1,308 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CWE-1176: Inefficient CPU Computation</b><br>The product performs CPU computations using\n         algorithms that are not as efficient as they could be for the\n         needs of the developer, i.e., the computations can be\n         optimized further.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Inefficient CPU Computation",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/1176.html",
+      "id": "CWE-1176"
+    },
+    {
+      "Description": "<b>CWE-1063: Creation of Class Instance within a Static Code Block</b><br>A static code block creates an instance of a class.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Creation of Class Instance within a Static Code Block",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1063.html",
+      "id": "CWE-1063"
+    },
+    {
+      "Description": "<b>CWE-1049: Excessive Data Query Operations in a Large Data Table</b><br>The product performs a data query with a large number of joins\n\t\t\t\t\tand sub-queries on a large data table.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Excessive Data Query Operations in a Large Data Table",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1049.html",
+      "id": "CWE-1049"
+    },
+    {
+      "Description": "<b>CWE-409: Improper Handling of Highly Compressed Data (Data Amplification)</b><br>The product does not handle or incorrectly handles a compressed input with a very high compression ratio that produces a large output.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Handling of Highly Compressed Data (Data Amplification)",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/409.html",
+      "id": "CWE-409"
+    },
+    {
+      "Description": "<b>CWE-776: Improper Restriction of Recursive Entity References in DTDs ('XML Entity Expansion')</b><br>The product uses XML documents and allows their structure to be defined with a Document Type Definition (DTD), but it does not properly control the number of recursive definitions of entities.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Restriction of Recursive Entity References in DTDs ('XML Entity Expansion')",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/776.html",
+      "id": "CWE-776"
+    },
+    {
+      "Description": "<b>CWE-407: Inefficient Algorithmic Complexity</b><br>An algorithm in a product has an inefficient worst-case computational complexity that may be detrimental to system performance and can be triggered by an attacker, typically using crafted manipulations that ensure that the worst case is being reached.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Inefficient Algorithmic Complexity",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/407.html",
+      "id": "CWE-407"
+    },
+    {
+      "Description": "<b>CWE-1042: Static Member Data Element outside of a Singleton Class Element</b><br>The code contains a member element that is declared as static (but not final), in which\n\t\t\t\t\tits parent class element \n\t\t\t\t\tis not a singleton class - that is, a class element that can be used only once in\n\t\t\t\t\tthe 'to' association of a Create action.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Static Member Data Element outside of a Singleton Class Element",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/1042.html",
+      "id": "CWE-1042"
+    },
+    {
+      "Description": "<b>CWE-405: Asymmetric Resource Consumption (Amplification)</b><br>The product does not properly control situations in which an adversary can cause the product to consume or produce excessive resources without requiring the adversary to invest equivalent work or otherwise prove authorization, i.e., the adversary's influence is \"asymmetric.\"",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Asymmetric Resource Consumption (Amplification)",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/405.html",
+      "id": "CWE-405"
+    },
+    {
+      "Description": "<b>CWE-1333: Inefficient Regular Expression Complexity</b><br>The product uses a regular expression with an inefficient, possibly exponential worst-case computational complexity that consumes excessive CPU cycles.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Inefficient Regular Expression Complexity",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1333.html",
+      "id": "CWE-1333"
+    },
+    {
+      "Description": "<b>CWE-1067: Excessive Execution of Sequential Searches of Data Resource</b><br>The product contains a data query against an SQL table or view\n\t\t\t\t\tthat is configured in a way that does not utilize an index and may cause\n\t\t\t\t\tsequential searches to be performed.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Excessive Execution of Sequential Searches of Data Resource",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1067.html",
+      "id": "CWE-1067"
+    },
+    {
+      "Description": "<b>CWE-1046: Creation of Immutable Text Using String Concatenation</b><br>The product creates an immutable text string using string concatenation operations.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Creation of Immutable Text Using String Concatenation",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1046.html",
+      "id": "CWE-1046"
+    },
+    {
+      "Description": "<b>CWE-1084: Invokable Control Element with Excessive File or Data Access Operations</b><br>A function or method contains too many\n\t\t\t\t\toperations that utilize a data manager or file resource.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Invokable Control Element with Excessive File or Data Access Operations",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1084.html",
+      "id": "CWE-1084"
+    },
+    {
+      "Description": "<b>CWE-1073: Non-SQL Invokable Control Element with Excessive Number of Data Resource Accesses</b><br>The product contains a client with a function or method that contains a large number of data accesses/queries that are sent through a data manager, i.e., does not use efficient database capabilities.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Non-SQL Invokable Control Element with Excessive Number of Data Resource Accesses",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1073.html",
+      "id": "CWE-1073"
+    },
+    {
+      "Description": "<b>CWE-408: Incorrect Behavior Order: Early Amplification</b><br>The product allows an entity to perform a legitimate but expensive operation before authentication or authorization has taken place.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Incorrect Behavior Order: Early Amplification",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/408.html",
+      "id": "CWE-408"
+    },
+    {
+      "Description": "<b>CWE-1089: Large Data Table with Excessive Number of Indices</b><br>The product uses a large data table that contains an excessively large number of\n\t\t\t\t\tindices.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Large Data Table with Excessive Number of Indices",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1089.html",
+      "id": "CWE-1089"
+    },
+    {
+      "Description": "<b>CWE-406: Insufficient Control of Network Message Volume (Network Amplification)</b><br>The product does not sufficiently monitor or control transmitted network traffic volume, so that an actor can cause the product to transmit more traffic than should be allowed for that actor.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Insufficient Control of Network Message Volume (Network Amplification)",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/406.html",
+      "id": "CWE-406"
+    },
+    {
+      "Description": "<b>CWE-1050: Excessive Platform Resource Consumption within a Loop</b><br>The product has a loop body or loop condition that contains a control element that directly or\n\t\t\t\t\tindirectly consumes platform resources, e.g. messaging, sessions, locks, or file\n\t\t\t\t\tdescriptors.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Excessive Platform Resource Consumption within a Loop",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1050.html",
+      "id": "CWE-1050"
+    },
+    {
+      "Description": "<b>CWE-1072: Data Resource Access without Use of Connection Pooling</b><br>The product accesses a data resource through a database without using a\n\t\t\t\t\tconnection pooling capability.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Data Resource Access without Use of Connection Pooling",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1072.html",
+      "id": "CWE-1072"
+    },
+    {
+      "Description": "<b>CWE-1094: Excessive Index Range Scan for a Data Resource</b><br>The product contains an index range scan for a large data table,\n\t\t\t\t\tbut the scan can cover a large number of rows.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Excessive Index Range Scan for a Data Resource",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1094.html",
+      "id": "CWE-1094"
+    }
+  ],
+  "links": [
+    {
+      "width": 1,
+      "source": "CWE-1176",
+      "target": "CWE-405"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1063",
+      "target": "CWE-1176"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1049",
+      "target": "CWE-1176"
+    },
+    {
+      "width": 1,
+      "source": "CWE-409",
+      "target": "CWE-405"
+    },
+    {
+      "width": 1,
+      "source": "CWE-776",
+      "target": "CWE-405"
+    },
+    {
+      "width": 1,
+      "source": "CWE-407",
+      "target": "CWE-405"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1042",
+      "target": "CWE-1176"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1333",
+      "target": "CWE-407"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1067",
+      "target": "CWE-1176"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1046",
+      "target": "CWE-1176"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1084",
+      "target": "CWE-405"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1073",
+      "target": "CWE-405"
+    },
+    {
+      "width": 1,
+      "source": "CWE-408",
+      "target": "CWE-405"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1089",
+      "target": "CWE-405"
+    },
+    {
+      "width": 1,
+      "source": "CWE-406",
+      "target": "CWE-405"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1050",
+      "target": "CWE-405"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1072",
+      "target": "CWE-405"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1094",
+      "target": "CWE-405"
+    }
+  ]
+}

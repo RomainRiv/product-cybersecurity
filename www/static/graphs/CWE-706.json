@@ -1,0 +1,836 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CWE-54: Path Equivalence: 'filedir\\' (Trailing Backslash)</b><br>The product accepts path input in the form of trailing backslash ('filedir\\') without appropriate validation, which can lead to ambiguous path resolution and allow an attacker to traverse the file system to unintended locations or access arbitrary files.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Path Equivalence: 'filedir\\' (Trailing Backslash)",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/54.html",
+      "id": "CWE-54"
+    },
+    {
+      "Description": "<b>CWE-23: Relative Path Traversal</b><br>The product uses external input to construct a pathname that should be within a restricted directory, but it does not properly neutralize sequences such as \"..\" that can resolve to a location that is outside of that directory.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Relative Path Traversal",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/23.html",
+      "id": "CWE-23"
+    },
+    {
+      "Description": "<b>CWE-27: Path Traversal: 'dir/../../filename'</b><br>The product uses external input to construct a pathname that should be within a restricted directory, but it does not properly neutralize multiple internal \"../\" sequences that can resolve to a location that is outside of that directory.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Path Traversal: 'dir/../../filename'",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/27.html",
+      "id": "CWE-27"
+    },
+    {
+      "Description": "<b>CWE-61: UNIX Symbolic Link (Symlink) Following</b><br>The product, when opening a file or directory, does not sufficiently account for when the file is a symbolic link that resolves to a target outside of the intended control sphere. This could allow an attacker to cause the product to operate on unauthorized files.",
+      "color": "#9ac20c",
+      "size": 10,
+      "label": "UNIX Symbolic Link (Symlink) Following",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Compound",
+      "url": "https://cwe.mitre.org/data/definitions/61.html",
+      "id": "CWE-61"
+    },
+    {
+      "Description": "<b>CWE-178: Improper Handling of Case Sensitivity</b><br>The product does not properly account for differences in case sensitivity when accessing or determining the properties of a resource, leading to inconsistent results.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Handling of Case Sensitivity",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/178.html",
+      "id": "CWE-178"
+    },
+    {
+      "Description": "<b>CWE-30: Path Traversal: '\\dir\\..\\filename'</b><br>The product uses external input to construct a pathname that should be within a restricted directory, but it does not properly neutralize '\\dir\\..\\filename' (leading backslash dot dot) sequences that can resolve to a location that is outside of that directory.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Path Traversal: '\\dir\\..\\filename'",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/30.html",
+      "id": "CWE-30"
+    },
+    {
+      "Description": "<b>CWE-40: Path Traversal: '\\\\UNC\\share\\name\\' (Windows UNC Share)</b><br>The product accepts input that identifies a Windows UNC share ('\\\\UNC\\share\\name') that potentially redirects access to an unintended location or arbitrary file.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Path Traversal: '\\\\UNC\\share\\name\\' (Windows UNC Share)",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/40.html",
+      "id": "CWE-40"
+    },
+    {
+      "Description": "<b>CWE-41: Improper Resolution of Path Equivalence</b><br>The product is vulnerable to file system contents disclosure through path equivalence. Path equivalence involves the use of special characters in file and directory names. The associated manipulations are intended to generate multiple names for the same object.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Resolution of Path Equivalence",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/41.html",
+      "id": "CWE-41"
+    },
+    {
+      "Description": "<b>CWE-47: Path Equivalence: ' filename' (Leading Space)</b><br>The product accepts path input in the form of leading space (' filedir') without appropriate validation, which can lead to ambiguous path resolution and allow an attacker to traverse the file system to unintended locations or access arbitrary files.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Path Equivalence: ' filename' (Leading Space)",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/47.html",
+      "id": "CWE-47"
+    },
+    {
+      "Description": "<b>CWE-1386: Insecure Operation on Windows Junction / Mount Point</b><br>The product opens a file or directory, but it does not properly prevent the name from being associated with a junction or mount point to a destination that is outside of the intended control sphere.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Insecure Operation on Windows Junction / Mount Point",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1386.html",
+      "id": "CWE-1386"
+    },
+    {
+      "Description": "<b>CWE-67: Improper Handling of Windows Device Names</b><br>The product constructs pathnames from user input, but it does not handle or incorrectly handles a pathname containing a Windows device name such as AUX or CON. This typically leads to denial of service or an information exposure when the application attempts to process the pathname as a regular file.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Handling of Windows Device Names",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/67.html",
+      "id": "CWE-67"
+    },
+    {
+      "Description": "<b>CWE-45: Path Equivalence: 'file...name' (Multiple Internal Dot)</b><br>The product accepts path input in the form of multiple internal dot ('file...dir') without appropriate validation, which can lead to ambiguous path resolution and allow an attacker to traverse the file system to unintended locations or access arbitrary files.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Path Equivalence: 'file...name' (Multiple Internal Dot)",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/45.html",
+      "id": "CWE-45"
+    },
+    {
+      "Description": "<b>CWE-59: Improper Link Resolution Before File Access ('Link Following')</b><br>The product attempts to access a file based on the filename, but it does not properly prevent that filename from identifying a link or shortcut that resolves to an unintended resource.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Link Resolution Before File Access ('Link Following')",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/59.html",
+      "id": "CWE-59"
+    },
+    {
+      "Description": "<b>CWE-26: Path Traversal: '/dir/../filename'</b><br>The product uses external input to construct a pathname that should be within a restricted directory, but it does not properly neutralize \"/dir/../filename\" sequences that can resolve to a location that is outside of that directory.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Path Traversal: '/dir/../filename'",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/26.html",
+      "id": "CWE-26"
+    },
+    {
+      "Description": "<b>CWE-51: Path Equivalence: '/multiple//internal/slash'</b><br>The product accepts path input in the form of multiple internal slash ('/multiple//internal/slash/') without appropriate validation, which can lead to ambiguous path resolution and allow an attacker to traverse the file system to unintended locations or access arbitrary files.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Path Equivalence: '/multiple//internal/slash'",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/51.html",
+      "id": "CWE-51"
+    },
+    {
+      "Description": "<b>CWE-22: Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')</b><br>The product uses external input to construct a pathname that is intended to identify a file or directory that is located underneath a restricted parent directory, but the product does not properly neutralize special elements within the pathname that can cause the pathname to resolve to a location that is outside of the restricted directory.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/22.html",
+      "id": "CWE-22"
+    },
+    {
+      "Description": "<b>CWE-827: Improper Control of Document Type Definition</b><br>The product does not restrict a reference to a Document Type Definition (DTD) to the intended control sphere. This might allow attackers to reference arbitrary DTDs, possibly causing the product to expose files, consume excessive system resources, or execute arbitrary http requests on behalf of the attacker.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Control of Document Type Definition",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/827.html",
+      "id": "CWE-827"
+    },
+    {
+      "Description": "<b>CWE-29: Path Traversal: '\\..\\filename'</b><br>The product uses external input to construct a pathname that should be within a restricted directory, but it does not properly neutralize '\\..\\filename' (leading backslash dot dot) sequences that can resolve to a location that is outside of that directory.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Path Traversal: '\\..\\filename'",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/29.html",
+      "id": "CWE-29"
+    },
+    {
+      "Description": "<b>CWE-69: Improper Handling of Windows ::DATA Alternate Data Stream</b><br>The product does not properly prevent access to, or detect usage of, alternate data streams (ADS).",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Handling of Windows ::DATA Alternate Data Stream",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/69.html",
+      "id": "CWE-69"
+    },
+    {
+      "Description": "<b>CWE-65: Windows Hard Link</b><br>The product, when opening a file or directory, does not sufficiently handle when the name is associated with a hard link to a target that is outside of the intended control sphere. This could allow an attacker to cause the product to operate on unauthorized files.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Windows Hard Link",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/65.html",
+      "id": "CWE-65"
+    },
+    {
+      "Description": "<b>CWE-36: Absolute Path Traversal</b><br>The product uses external input to construct a pathname that should be within a restricted directory, but it does not properly neutralize absolute path sequences such as \"/abs/path\" that can resolve to a location that is outside of that directory.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Absolute Path Traversal",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/36.html",
+      "id": "CWE-36"
+    },
+    {
+      "Description": "<b>CWE-49: Path Equivalence: 'filename/' (Trailing Slash)</b><br>The product accepts path input in the form of trailing slash ('filedir/') without appropriate validation, which can lead to ambiguous path resolution and allow an attacker to traverse the file system to unintended locations or access arbitrary files.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Path Equivalence: 'filename/' (Trailing Slash)",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/49.html",
+      "id": "CWE-49"
+    },
+    {
+      "Description": "<b>CWE-62: UNIX Hard Link</b><br>The product, when opening a file or directory, does not sufficiently account for when the name is associated with a hard link to a target that is outside of the intended control sphere. This could allow an attacker to cause the product to operate on unauthorized files.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "UNIX Hard Link",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/62.html",
+      "id": "CWE-62"
+    },
+    {
+      "Description": "<b>CWE-31: Path Traversal: 'dir\\..\\..\\filename'</b><br>The product uses external input to construct a pathname that should be within a restricted directory, but it does not properly neutralize 'dir\\..\\..\\filename' (multiple internal backslash dot dot) sequences that can resolve to a location that is outside of that directory.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Path Traversal: 'dir\\..\\..\\filename'",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/31.html",
+      "id": "CWE-31"
+    },
+    {
+      "Description": "<b>CWE-24: Path Traversal: '../filedir'</b><br>The product uses external input to construct a pathname that should be within a restricted directory, but it does not properly neutralize \"../\" sequences that can resolve to a location that is outside of that directory.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Path Traversal: '../filedir'",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/24.html",
+      "id": "CWE-24"
+    },
+    {
+      "Description": "<b>CWE-53: Path Equivalence: '\\multiple\\\\internal\\backslash'</b><br>The product accepts path input in the form of multiple internal backslash ('\\multiple\\trailing\\\\slash') without appropriate validation, which can lead to ambiguous path resolution and allow an attacker to traverse the file system to unintended locations or access arbitrary files.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Path Equivalence: '\\multiple\\\\internal\\backslash'",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/53.html",
+      "id": "CWE-53"
+    },
+    {
+      "Description": "<b>CWE-32: Path Traversal: '...' (Triple Dot)</b><br>The product uses external input to construct a pathname that should be within a restricted directory, but it does not properly neutralize '...' (triple dot) sequences that can resolve to a location that is outside of that directory.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Path Traversal: '...' (Triple Dot)",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/32.html",
+      "id": "CWE-32"
+    },
+    {
+      "Description": "<b>CWE-25: Path Traversal: '/../filedir'</b><br>The product uses external input to construct a pathname that should be within a restricted directory, but it does not properly neutralize \"/../\" sequences that can resolve to a location that is outside of that directory.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Path Traversal: '/../filedir'",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/25.html",
+      "id": "CWE-25"
+    },
+    {
+      "Description": "<b>CWE-43: Path Equivalence: 'filename....' (Multiple Trailing Dot)</b><br>The product accepts path input in the form of multiple trailing dot ('filedir....') without appropriate validation, which can lead to ambiguous path resolution and allow an attacker to traverse the file system to unintended locations or access arbitrary files.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Path Equivalence: 'filename....' (Multiple Trailing Dot)",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/43.html",
+      "id": "CWE-43"
+    },
+    {
+      "Description": "<b>CWE-50: Path Equivalence: '//multiple/leading/slash'</b><br>The product accepts path input in the form of multiple leading slash ('//multiple/leading/slash') without appropriate validation, which can lead to ambiguous path resolution and allow an attacker to traverse the file system to unintended locations or access arbitrary files.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Path Equivalence: '//multiple/leading/slash'",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/50.html",
+      "id": "CWE-50"
+    },
+    {
+      "Description": "<b>CWE-37: Path Traversal: '/absolute/pathname/here'</b><br>The product accepts input in the form of a slash absolute path ('/absolute/pathname/here') without appropriate validation, which can allow an attacker to traverse the file system to unintended locations or access arbitrary files.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Path Traversal: '/absolute/pathname/here'",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/37.html",
+      "id": "CWE-37"
+    },
+    {
+      "Description": "<b>CWE-64: Windows Shortcut Following (.LNK)</b><br>The product, when opening a file or directory, does not sufficiently handle when the file is a Windows shortcut (.LNK) whose target is outside of the intended control sphere. This could allow an attacker to cause the product to operate on unauthorized files.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Windows Shortcut Following (.LNK)",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/64.html",
+      "id": "CWE-64"
+    },
+    {
+      "Description": "<b>CWE-706: Use of Incorrectly-Resolved Name or Reference</b><br>The product uses a name or reference to access a resource, but the name/reference resolves to a resource that is outside of the intended control sphere.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Use of Incorrectly-Resolved Name or Reference",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/706.html",
+      "id": "CWE-706"
+    },
+    {
+      "Description": "<b>CWE-57: Path Equivalence: 'fakedir/../realdir/filename'</b><br>The product contains protection mechanisms to restrict access to 'realdir/filename', but it constructs pathnames using external input in the form of 'fakedir/../realdir/filename' that are not handled by those mechanisms. This allows attackers to perform unauthorized actions against the targeted file.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Path Equivalence: 'fakedir/../realdir/filename'",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/57.html",
+      "id": "CWE-57"
+    },
+    {
+      "Description": "<b>CWE-56: Path Equivalence: 'filedir*' (Wildcard)</b><br>The product accepts path input in the form of asterisk wildcard ('filedir*') without appropriate validation, which can lead to ambiguous path resolution and allow an attacker to traverse the file system to unintended locations or access arbitrary files.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Path Equivalence: 'filedir*' (Wildcard)",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/56.html",
+      "id": "CWE-56"
+    },
+    {
+      "Description": "<b>CWE-42: Path Equivalence: 'filename.' (Trailing Dot)</b><br>The product accepts path input in the form of trailing dot ('filedir.') without appropriate validation, which can lead to ambiguous path resolution and allow an attacker to traverse the file system to unintended locations or access arbitrary files.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Path Equivalence: 'filename.' (Trailing Dot)",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/42.html",
+      "id": "CWE-42"
+    },
+    {
+      "Description": "<b>CWE-52: Path Equivalence: '/multiple/trailing/slash//'</b><br>The product accepts path input in the form of multiple trailing slash ('/multiple/trailing/slash//') without appropriate validation, which can lead to ambiguous path resolution and allow an attacker to traverse the file system to unintended locations or access arbitrary files.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Path Equivalence: '/multiple/trailing/slash//'",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/52.html",
+      "id": "CWE-52"
+    },
+    {
+      "Description": "<b>CWE-58: Path Equivalence: Windows 8.3 Filename</b><br>The product contains a protection mechanism that restricts access to a long filename on a Windows operating system, but it does not properly restrict access to the equivalent short \"8.3\" filename.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Path Equivalence: Windows 8.3 Filename",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/58.html",
+      "id": "CWE-58"
+    },
+    {
+      "Description": "<b>CWE-35: Path Traversal: '.../...//'</b><br>The product uses external input to construct a pathname that should be within a restricted directory, but it does not properly neutralize '.../...//' (doubled triple dot slash) sequences that can resolve to a location that is outside of that directory.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Path Traversal: '.../...//'",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/35.html",
+      "id": "CWE-35"
+    },
+    {
+      "Description": "<b>CWE-46: Path Equivalence: 'filename ' (Trailing Space)</b><br>The product accepts path input in the form of trailing space ('filedir ') without appropriate validation, which can lead to ambiguous path resolution and allow an attacker to traverse the file system to unintended locations or access arbitrary files.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Path Equivalence: 'filename ' (Trailing Space)",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/46.html",
+      "id": "CWE-46"
+    },
+    {
+      "Description": "<b>CWE-66: Improper Handling of File Names that Identify Virtual Resources</b><br>The product does not handle or incorrectly handles a file name that identifies a \"virtual\" resource that is not directly specified within the directory that is associated with the file name, causing the product to perform file-based operations on a resource that is not a file.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Handling of File Names that Identify Virtual Resources",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/66.html",
+      "id": "CWE-66"
+    },
+    {
+      "Description": "<b>CWE-28: Path Traversal: '..\\filedir'</b><br>The product uses external input to construct a pathname that should be within a restricted directory, but it does not properly neutralize \"..\\\" sequences that can resolve to a location that is outside of that directory.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Path Traversal: '..\\filedir'",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/28.html",
+      "id": "CWE-28"
+    },
+    {
+      "Description": "<b>CWE-55: Path Equivalence: '/./' (Single Dot Directory)</b><br>The product accepts path input in the form of single dot directory exploit ('/./') without appropriate validation, which can lead to ambiguous path resolution and allow an attacker to traverse the file system to unintended locations or access arbitrary files.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Path Equivalence: '/./' (Single Dot Directory)",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/55.html",
+      "id": "CWE-55"
+    },
+    {
+      "Description": "<b>CWE-38: Path Traversal: '\\absolute\\pathname\\here'</b><br>The product accepts input in the form of a backslash absolute path ('\\absolute\\pathname\\here') without appropriate validation, which can allow an attacker to traverse the file system to unintended locations or access arbitrary files.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Path Traversal: '\\absolute\\pathname\\here'",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/38.html",
+      "id": "CWE-38"
+    },
+    {
+      "Description": "<b>CWE-39: Path Traversal: 'C:dirname'</b><br>The product accepts input that contains a drive letter or Windows volume letter ('C:dirname') that potentially redirects access to an unintended location or arbitrary file.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Path Traversal: 'C:dirname'",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/39.html",
+      "id": "CWE-39"
+    },
+    {
+      "Description": "<b>CWE-33: Path Traversal: '....' (Multiple Dot)</b><br>The product uses external input to construct a pathname that should be within a restricted directory, but it does not properly neutralize '....' (multiple dot) sequences that can resolve to a location that is outside of that directory.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Path Traversal: '....' (Multiple Dot)",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/33.html",
+      "id": "CWE-33"
+    },
+    {
+      "Description": "<b>CWE-98: Improper Control of Filename for Include/Require Statement in PHP Program ('PHP Remote File Inclusion')</b><br>The PHP application receives input from an upstream component, but it does not restrict or incorrectly restricts the input before its usage in \"require,\" \"include,\" or similar functions.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Control of Filename for Include/Require Statement in PHP Program ('PHP Remote File Inclusion')",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/98.html",
+      "id": "CWE-98"
+    },
+    {
+      "Description": "<b>CWE-44: Path Equivalence: 'file.name' (Internal Dot)</b><br>The product accepts path input in the form of internal dot ('file.ordir') without appropriate validation, which can lead to ambiguous path resolution and allow an attacker to traverse the file system to unintended locations or access arbitrary files.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Path Equivalence: 'file.name' (Internal Dot)",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/44.html",
+      "id": "CWE-44"
+    },
+    {
+      "Description": "<b>CWE-72: Improper Handling of Apple HFS+ Alternate Data Stream Path</b><br>The product does not properly handle special paths that may identify the data or resource fork of a file on the HFS+ file system.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Handling of Apple HFS+ Alternate Data Stream Path",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/72.html",
+      "id": "CWE-72"
+    },
+    {
+      "Description": "<b>CWE-48: Path Equivalence: 'file name' (Internal Whitespace)</b><br>The product accepts path input in the form of internal space ('file(SPACE)name') without appropriate validation, which can lead to ambiguous path resolution and allow an attacker to traverse the file system to unintended locations or access arbitrary files.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Path Equivalence: 'file name' (Internal Whitespace)",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/48.html",
+      "id": "CWE-48"
+    },
+    {
+      "Description": "<b>CWE-34: Path Traversal: '....//'</b><br>The product uses external input to construct a pathname that should be within a restricted directory, but it does not properly neutralize '....//' (doubled dot dot slash) sequences that can resolve to a location that is outside of that directory.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Path Traversal: '....//'",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/34.html",
+      "id": "CWE-34"
+    },
+    {
+      "Description": "<b>CWE-386: Symbolic Name not Mapping to Correct Object</b><br>A constant symbolic reference to an object is used, even though the reference can resolve to a different object over time.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Symbolic Name not Mapping to Correct Object",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/386.html",
+      "id": "CWE-386"
+    }
+  ],
+  "links": [
+    {
+      "width": 1,
+      "source": "CWE-54",
+      "target": "CWE-41"
+    },
+    {
+      "width": 1,
+      "source": "CWE-23",
+      "target": "CWE-22"
+    },
+    {
+      "width": 1,
+      "source": "CWE-27",
+      "target": "CWE-23"
+    },
+    {
+      "width": 1,
+      "source": "CWE-61",
+      "target": "CWE-59"
+    },
+    {
+      "width": 1,
+      "source": "CWE-178",
+      "target": "CWE-706"
+    },
+    {
+      "width": 1,
+      "source": "CWE-30",
+      "target": "CWE-23"
+    },
+    {
+      "width": 1,
+      "source": "CWE-40",
+      "target": "CWE-36"
+    },
+    {
+      "width": 1,
+      "source": "CWE-41",
+      "target": "CWE-706"
+    },
+    {
+      "width": 1,
+      "source": "CWE-47",
+      "target": "CWE-41"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1386",
+      "target": "CWE-59"
+    },
+    {
+      "width": 1,
+      "source": "CWE-67",
+      "target": "CWE-66"
+    },
+    {
+      "width": 1,
+      "source": "CWE-45",
+      "target": "CWE-44"
+    },
+    {
+      "width": 1,
+      "source": "CWE-59",
+      "target": "CWE-706"
+    },
+    {
+      "width": 1,
+      "source": "CWE-26",
+      "target": "CWE-23"
+    },
+    {
+      "width": 1,
+      "source": "CWE-51",
+      "target": "CWE-41"
+    },
+    {
+      "width": 1,
+      "source": "CWE-22",
+      "target": "CWE-706"
+    },
+    {
+      "width": 1,
+      "source": "CWE-827",
+      "target": "CWE-706"
+    },
+    {
+      "width": 1,
+      "source": "CWE-29",
+      "target": "CWE-23"
+    },
+    {
+      "width": 1,
+      "source": "CWE-69",
+      "target": "CWE-66"
+    },
+    {
+      "width": 1,
+      "source": "CWE-65",
+      "target": "CWE-59"
+    },
+    {
+      "width": 1,
+      "source": "CWE-36",
+      "target": "CWE-22"
+    },
+    {
+      "width": 1,
+      "source": "CWE-49",
+      "target": "CWE-41"
+    },
+    {
+      "width": 1,
+      "source": "CWE-62",
+      "target": "CWE-59"
+    },
+    {
+      "width": 1,
+      "source": "CWE-31",
+      "target": "CWE-23"
+    },
+    {
+      "width": 1,
+      "source": "CWE-24",
+      "target": "CWE-23"
+    },
+    {
+      "width": 1,
+      "source": "CWE-53",
+      "target": "CWE-41"
+    },
+    {
+      "width": 1,
+      "source": "CWE-32",
+      "target": "CWE-23"
+    },
+    {
+      "width": 1,
+      "source": "CWE-25",
+      "target": "CWE-23"
+    },
+    {
+      "width": 1,
+      "source": "CWE-43",
+      "target": "CWE-42"
+    },
+    {
+      "width": 1,
+      "source": "CWE-50",
+      "target": "CWE-41"
+    },
+    {
+      "width": 1,
+      "source": "CWE-37",
+      "target": "CWE-36"
+    },
+    {
+      "width": 1,
+      "source": "CWE-64",
+      "target": "CWE-59"
+    },
+    {
+      "width": 1,
+      "source": "CWE-57",
+      "target": "CWE-41"
+    },
+    {
+      "width": 1,
+      "source": "CWE-56",
+      "target": "CWE-41"
+    },
+    {
+      "width": 1,
+      "source": "CWE-42",
+      "target": "CWE-41"
+    },
+    {
+      "width": 1,
+      "source": "CWE-52",
+      "target": "CWE-41"
+    },
+    {
+      "width": 1,
+      "source": "CWE-58",
+      "target": "CWE-41"
+    },
+    {
+      "width": 1,
+      "source": "CWE-35",
+      "target": "CWE-23"
+    },
+    {
+      "width": 1,
+      "source": "CWE-46",
+      "target": "CWE-41"
+    },
+    {
+      "width": 1,
+      "source": "CWE-66",
+      "target": "CWE-706"
+    },
+    {
+      "width": 1,
+      "source": "CWE-28",
+      "target": "CWE-23"
+    },
+    {
+      "width": 1,
+      "source": "CWE-55",
+      "target": "CWE-41"
+    },
+    {
+      "width": 1,
+      "source": "CWE-38",
+      "target": "CWE-36"
+    },
+    {
+      "width": 1,
+      "source": "CWE-39",
+      "target": "CWE-36"
+    },
+    {
+      "width": 1,
+      "source": "CWE-33",
+      "target": "CWE-23"
+    },
+    {
+      "width": 1,
+      "source": "CWE-98",
+      "target": "CWE-706"
+    },
+    {
+      "width": 1,
+      "source": "CWE-44",
+      "target": "CWE-41"
+    },
+    {
+      "width": 1,
+      "source": "CWE-72",
+      "target": "CWE-66"
+    },
+    {
+      "width": 1,
+      "source": "CWE-48",
+      "target": "CWE-41"
+    },
+    {
+      "width": 1,
+      "source": "CWE-34",
+      "target": "CWE-23"
+    },
+    {
+      "width": 1,
+      "source": "CWE-386",
+      "target": "CWE-706"
+    }
+  ]
+}

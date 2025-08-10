@@ -1,0 +1,676 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CWE-574: EJB Bad Practices: Use of Synchronization Primitives</b><br>The product violates the Enterprise JavaBeans (EJB) specification by using thread synchronization primitives.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "EJB Bad Practices: Use of Synchronization Primitives",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/574.html",
+      "id": "CWE-574"
+    },
+    {
+      "Description": "<b>CWE-578: EJB Bad Practices: Use of Class Loader</b><br>The product violates the Enterprise JavaBeans (EJB) specification by using the class loader.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "EJB Bad Practices: Use of Class Loader",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/578.html",
+      "id": "CWE-578"
+    },
+    {
+      "Description": "<b>CWE-245: J2EE Bad Practices: Direct Management of Connections</b><br>The J2EE application directly manages connections, instead of using the container's connection management facilities.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "J2EE Bad Practices: Direct Management of Connections",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/245.html",
+      "id": "CWE-245"
+    },
+    {
+      "Description": "<b>CWE-325: Missing Cryptographic Step</b><br>The product does not implement a required step in a cryptographic algorithm, resulting in weaker encryption than advertised by the algorithm.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Missing Cryptographic Step",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/325.html",
+      "id": "CWE-325"
+    },
+    {
+      "Description": "<b>CWE-103: Struts: Incomplete validate() Method Definition</b><br>The product has a validator form that either does not define a validate() method, or defines a validate() method but does not call super.validate().",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Struts: Incomplete validate() Method Definition",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/103.html",
+      "id": "CWE-103"
+    },
+    {
+      "Description": "<b>CWE-358: Improperly Implemented Security Check for Standard</b><br>The product does not implement or incorrectly implements one or more security-relevant checks as specified by the design of a standardized algorithm, protocol, or technique.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improperly Implemented Security Check for Standard",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/358.html",
+      "id": "CWE-358"
+    },
+    {
+      "Description": "<b>CWE-104: Struts: Form Bean Does Not Extend Validation Class</b><br>If a form bean does not extend an ActionForm subclass of the Validator framework, it can expose the application to other weaknesses related to insufficient input validation.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Struts: Form Bean Does Not Extend Validation Class",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/104.html",
+      "id": "CWE-104"
+    },
+    {
+      "Description": "<b>CWE-580: clone() Method Without super.clone()</b><br>The product contains a clone() method that does not call super.clone() to obtain the new object.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "clone() Method Without super.clone()",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/580.html",
+      "id": "CWE-580"
+    },
+    {
+      "Description": "<b>CWE-605: Multiple Binds to the Same Port</b><br>When multiple sockets are allowed to bind to the same port, other services on that port may be stolen or spoofed.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Multiple Binds to the Same Port",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/605.html",
+      "id": "CWE-605"
+    },
+    {
+      "Description": "<b>CWE-695: Use of Low-Level Functionality</b><br>The product uses low-level functionality that is explicitly prohibited by the framework or specification under which the product is supposed to operate.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Use of Low-Level Functionality",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/695.html",
+      "id": "CWE-695"
+    },
+    {
+      "Description": "<b>CWE-628: Function Call with Incorrectly Specified Arguments</b><br>The product calls a function, procedure, or routine with arguments that are not correctly specified, leading to always-incorrect behavior and resultant weaknesses.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Function Call with Incorrectly Specified Arguments",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/628.html",
+      "id": "CWE-628"
+    },
+    {
+      "Description": "<b>CWE-253: Incorrect Check of Function Return Value</b><br>The product incorrectly checks a return value from a function, which prevents it from detecting errors or exceptional conditions.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Incorrect Check of Function Return Value",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/253.html",
+      "id": "CWE-253"
+    },
+    {
+      "Description": "<b>CWE-685: Function Call With Incorrect Number of Arguments</b><br>The product calls a function, procedure, or routine, but the caller specifies too many arguments, or too few arguments, which may lead to undefined behavior and resultant weaknesses.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Function Call With Incorrect Number of Arguments",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/685.html",
+      "id": "CWE-685"
+    },
+    {
+      "Description": "<b>CWE-111: Direct Use of Unsafe JNI</b><br>When a Java application uses the Java Native Interface (JNI) to call code written in another programming language, it can expose the application to weaknesses in that code, even if those weaknesses cannot occur in Java.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Direct Use of Unsafe JNI",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/111.html",
+      "id": "CWE-111"
+    },
+    {
+      "Description": "<b>CWE-577: EJB Bad Practices: Use of Sockets</b><br>The product violates the Enterprise JavaBeans (EJB) specification by using sockets.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "EJB Bad Practices: Use of Sockets",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/577.html",
+      "id": "CWE-577"
+    },
+    {
+      "Description": "<b>CWE-560: Use of umask() with chmod-style Argument</b><br>The product calls umask() with an incorrect argument that is specified as if it is an argument to chmod().",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Use of umask() with chmod-style Argument",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/560.html",
+      "id": "CWE-560"
+    },
+    {
+      "Description": "<b>CWE-764: Multiple Locks of a Critical Resource</b><br>The product locks a critical resource more times than intended, leading to an unexpected state in the system.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Multiple Locks of a Critical Resource",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/764.html",
+      "id": "CWE-764"
+    },
+    {
+      "Description": "<b>CWE-573: Improper Following of Specification by Caller</b><br>The product does not follow or incorrectly follows the specifications as required by the implementation language, environment, framework, protocol, or platform.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Improper Following of Specification by Caller",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/573.html",
+      "id": "CWE-573"
+    },
+    {
+      "Description": "<b>CWE-246: J2EE Bad Practices: Direct Use of Sockets</b><br>The J2EE application directly uses sockets instead of using framework method calls.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "J2EE Bad Practices: Direct Use of Sockets",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/246.html",
+      "id": "CWE-246"
+    },
+    {
+      "Description": "<b>CWE-475: Undefined Behavior for Input to API</b><br>The behavior of this function is undefined unless its control parameter is set to a specific value.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Undefined Behavior for Input to API",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/475.html",
+      "id": "CWE-475"
+    },
+    {
+      "Description": "<b>CWE-581: Object Model Violation: Just One of Equals and Hashcode Defined</b><br>The product does not maintain equal hashcodes for equal objects.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Object Model Violation: Just One of Equals and Hashcode Defined",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/581.html",
+      "id": "CWE-581"
+    },
+    {
+      "Description": "<b>CWE-575: EJB Bad Practices: Use of AWT Swing</b><br>The product violates the Enterprise JavaBeans (EJB) specification by using AWT/Swing.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "EJB Bad Practices: Use of AWT Swing",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/575.html",
+      "id": "CWE-575"
+    },
+    {
+      "Description": "<b>CWE-304: Missing Critical Step in Authentication</b><br>The product implements an authentication technique, but it skips a step that weakens the technique.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Missing Critical Step in Authentication",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/304.html",
+      "id": "CWE-304"
+    },
+    {
+      "Description": "<b>CWE-102: Struts: Duplicate Validation Forms</b><br>The product uses multiple validation forms with the same name, which might cause the Struts Validator to validate a form that the programmer does not expect.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Struts: Duplicate Validation Forms",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/102.html",
+      "id": "CWE-102"
+    },
+    {
+      "Description": "<b>CWE-576: EJB Bad Practices: Use of Java I/O</b><br>The product violates the Enterprise JavaBeans (EJB) specification by using the java.io package.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "EJB Bad Practices: Use of Java I/O",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/576.html",
+      "id": "CWE-576"
+    },
+    {
+      "Description": "<b>CWE-296: Improper Following of a Certificate's Chain of Trust</b><br>The product does not follow, or incorrectly follows, the chain of trust for a certificate back to a trusted root certificate, resulting in incorrect trust of any resource that is associated with that certificate.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Following of a Certificate's Chain of Trust",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/296.html",
+      "id": "CWE-296"
+    },
+    {
+      "Description": "<b>CWE-579: J2EE Bad Practices: Non-serializable Object Stored in Session</b><br>The product stores a non-serializable object as an HttpSession attribute, which can hurt reliability.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "J2EE Bad Practices: Non-serializable Object Stored in Session",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/579.html",
+      "id": "CWE-579"
+    },
+    {
+      "Description": "<b>CWE-1341: Multiple Releases of Same Resource or Handle</b><br>The product attempts to close or release a resource or handle more than once, without any successful open between the close operations.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Multiple Releases of Same Resource or Handle",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1341.html",
+      "id": "CWE-1341"
+    },
+    {
+      "Description": "<b>CWE-687: Function Call With Incorrectly Specified Argument Value</b><br>The product calls a function, procedure, or routine, but the caller specifies an argument that contains the wrong value, which may lead to resultant weaknesses.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Function Call With Incorrectly Specified Argument Value",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/687.html",
+      "id": "CWE-687"
+    },
+    {
+      "Description": "<b>CWE-694: Use of Multiple Resources with Duplicate Identifier</b><br>The product uses multiple resources that can have the same identifier, in a context in which unique identifiers are required.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Use of Multiple Resources with Duplicate Identifier",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/694.html",
+      "id": "CWE-694"
+    },
+    {
+      "Description": "<b>CWE-683: Function Call With Incorrect Order of Arguments</b><br>The product calls a function, procedure, or routine, but the caller specifies the arguments in an incorrect order, leading to resultant weaknesses.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Function Call With Incorrect Order of Arguments",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/683.html",
+      "id": "CWE-683"
+    },
+    {
+      "Description": "<b>CWE-686: Function Call With Incorrect Argument Type</b><br>The product calls a function, procedure, or routine, but the caller specifies an argument that is the wrong data type, which may lead to resultant weaknesses.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Function Call With Incorrect Argument Type",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/686.html",
+      "id": "CWE-686"
+    },
+    {
+      "Description": "<b>CWE-243: Creation of chroot Jail Without Changing Working Directory</b><br>The product uses the chroot() system call to create a jail, but does not change the working directory afterward. This does not prevent access to files outside of the jail.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Creation of chroot Jail Without Changing Working Directory",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/243.html",
+      "id": "CWE-243"
+    },
+    {
+      "Description": "<b>CWE-329: Generation of Predictable IV with CBC Mode</b><br>The product generates and uses a predictable initialization Vector (IV) with Cipher Block Chaining (CBC) Mode, which causes algorithms to be susceptible to dictionary attacks when they are encrypted under the same key.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Generation of Predictable IV with CBC Mode",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/329.html",
+      "id": "CWE-329"
+    },
+    {
+      "Description": "<b>CWE-675: Multiple Operations on Resource in Single-Operation Context</b><br>The product performs the same operation on a resource two or more times, when the operation should only be applied once.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Multiple Operations on Resource in Single-Operation Context",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/675.html",
+      "id": "CWE-675"
+    },
+    {
+      "Description": "<b>CWE-174: Double Decoding of the Same Data</b><br>The product decodes the same input twice, which can limit the effectiveness of any protection mechanism that occurs in between the decoding operations.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Double Decoding of the Same Data",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/174.html",
+      "id": "CWE-174"
+    },
+    {
+      "Description": "<b>CWE-415: Double Free</b><br>The product calls free() twice on the same memory address, potentially leading to modification of unexpected memory locations.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Double Free",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/415.html",
+      "id": "CWE-415"
+    },
+    {
+      "Description": "<b>CWE-765: Multiple Unlocks of a Critical Resource</b><br>The product unlocks a critical resource more times than intended, leading to an unexpected state in the system.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Multiple Unlocks of a Critical Resource",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/765.html",
+      "id": "CWE-765"
+    },
+    {
+      "Description": "<b>CWE-688: Function Call With Incorrect Variable or Reference as Argument</b><br>The product calls a function, procedure, or routine, but the caller specifies the wrong variable or reference as one of the arguments, which may lead to undefined behavior and resultant weaknesses.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Function Call With Incorrect Variable or Reference as Argument",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/688.html",
+      "id": "CWE-688"
+    },
+    {
+      "Description": "<b>CWE-568: finalize() Method Without super.finalize()</b><br>The product contains a finalize() method that does not call super.finalize().",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "finalize() Method Without super.finalize()",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/568.html",
+      "id": "CWE-568"
+    },
+    {
+      "Description": "<b>CWE-383: J2EE Bad Practices: Direct Use of Threads</b><br>Thread management in a Web application is forbidden in some circumstances and is always highly error prone.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "J2EE Bad Practices: Direct Use of Threads",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/383.html",
+      "id": "CWE-383"
+    },
+    {
+      "Description": "<b>CWE-462: Duplicate Key in Associative List (Alist)</b><br>Duplicate keys in associative lists can lead to non-unique keys being mistaken for an error.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Duplicate Key in Associative List (Alist)",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/462.html",
+      "id": "CWE-462"
+    }
+  ],
+  "links": [
+    {
+      "width": 1,
+      "source": "CWE-574",
+      "target": "CWE-695"
+    },
+    {
+      "width": 1,
+      "source": "CWE-578",
+      "target": "CWE-573"
+    },
+    {
+      "width": 1,
+      "source": "CWE-245",
+      "target": "CWE-695"
+    },
+    {
+      "width": 1,
+      "source": "CWE-325",
+      "target": "CWE-573"
+    },
+    {
+      "width": 1,
+      "source": "CWE-103",
+      "target": "CWE-573"
+    },
+    {
+      "width": 1,
+      "source": "CWE-358",
+      "target": "CWE-573"
+    },
+    {
+      "width": 1,
+      "source": "CWE-104",
+      "target": "CWE-573"
+    },
+    {
+      "width": 1,
+      "source": "CWE-580",
+      "target": "CWE-573"
+    },
+    {
+      "width": 1,
+      "source": "CWE-605",
+      "target": "CWE-675"
+    },
+    {
+      "width": 1,
+      "source": "CWE-695",
+      "target": "CWE-573"
+    },
+    {
+      "width": 1,
+      "source": "CWE-628",
+      "target": "CWE-573"
+    },
+    {
+      "width": 1,
+      "source": "CWE-253",
+      "target": "CWE-573"
+    },
+    {
+      "width": 1,
+      "source": "CWE-685",
+      "target": "CWE-628"
+    },
+    {
+      "width": 1,
+      "source": "CWE-111",
+      "target": "CWE-695"
+    },
+    {
+      "width": 1,
+      "source": "CWE-577",
+      "target": "CWE-573"
+    },
+    {
+      "width": 1,
+      "source": "CWE-560",
+      "target": "CWE-687"
+    },
+    {
+      "width": 1,
+      "source": "CWE-764",
+      "target": "CWE-675"
+    },
+    {
+      "width": 1,
+      "source": "CWE-246",
+      "target": "CWE-695"
+    },
+    {
+      "width": 1,
+      "source": "CWE-475",
+      "target": "CWE-573"
+    },
+    {
+      "width": 1,
+      "source": "CWE-581",
+      "target": "CWE-573"
+    },
+    {
+      "width": 1,
+      "source": "CWE-575",
+      "target": "CWE-695"
+    },
+    {
+      "width": 1,
+      "source": "CWE-304",
+      "target": "CWE-573"
+    },
+    {
+      "width": 1,
+      "source": "CWE-102",
+      "target": "CWE-694"
+    },
+    {
+      "width": 1,
+      "source": "CWE-576",
+      "target": "CWE-695"
+    },
+    {
+      "width": 1,
+      "source": "CWE-296",
+      "target": "CWE-573"
+    },
+    {
+      "width": 1,
+      "source": "CWE-579",
+      "target": "CWE-573"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1341",
+      "target": "CWE-675"
+    },
+    {
+      "width": 1,
+      "source": "CWE-687",
+      "target": "CWE-628"
+    },
+    {
+      "width": 1,
+      "source": "CWE-694",
+      "target": "CWE-573"
+    },
+    {
+      "width": 1,
+      "source": "CWE-683",
+      "target": "CWE-628"
+    },
+    {
+      "width": 1,
+      "source": "CWE-686",
+      "target": "CWE-628"
+    },
+    {
+      "width": 1,
+      "source": "CWE-243",
+      "target": "CWE-573"
+    },
+    {
+      "width": 1,
+      "source": "CWE-329",
+      "target": "CWE-573"
+    },
+    {
+      "width": 1,
+      "source": "CWE-675",
+      "target": "CWE-573"
+    },
+    {
+      "width": 1,
+      "source": "CWE-174",
+      "target": "CWE-675"
+    },
+    {
+      "width": 1,
+      "source": "CWE-415",
+      "target": "CWE-1341"
+    },
+    {
+      "width": 1,
+      "source": "CWE-765",
+      "target": "CWE-675"
+    },
+    {
+      "width": 1,
+      "source": "CWE-688",
+      "target": "CWE-628"
+    },
+    {
+      "width": 1,
+      "source": "CWE-568",
+      "target": "CWE-573"
+    },
+    {
+      "width": 1,
+      "source": "CWE-383",
+      "target": "CWE-695"
+    },
+    {
+      "width": 1,
+      "source": "CWE-462",
+      "target": "CWE-694"
+    }
+  ]
+}

@@ -1,0 +1,121 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CWE-759: Use of a One-Way Hash without a Salt</b><br>The product uses a one-way cryptographic hash against an input that should not be reversible, such as a password, but the product does not also use a salt as part of the input.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Use of a One-Way Hash without a Salt",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/759.html",
+      "id": "CWE-759"
+    },
+    {
+      "Description": "<b>CWE-328: Use of Weak Hash</b><br>The product uses an algorithm that produces a digest (output value) that does not meet security expectations for a hash function that allows an adversary to reasonably determine the original input (preimage attack), find another input that can produce the same hash (2nd preimage attack), or find multiple inputs that evaluate to the same hash (birthday attack).",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Use of Weak Hash",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/328.html",
+      "id": "CWE-328"
+    },
+    {
+      "Description": "<b>CWE-327: Use of a Broken or Risky Cryptographic Algorithm</b><br>The product uses a broken or risky cryptographic algorithm or protocol.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Use of a Broken or Risky Cryptographic Algorithm",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/327.html",
+      "id": "CWE-327"
+    },
+    {
+      "Description": "<b>CWE-1240: Use of a Cryptographic Primitive with a Risky Implementation</b><br>To fulfill the need for a cryptographic primitive, the product implements a cryptographic algorithm using a non-standard, unproven, or disallowed/non-compliant cryptographic implementation.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Use of a Cryptographic Primitive with a Risky Implementation",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1240.html",
+      "id": "CWE-1240"
+    },
+    {
+      "Description": "<b>CWE-780: Use of RSA Algorithm without OAEP</b><br>The product uses the RSA algorithm but does not incorporate Optimal Asymmetric Encryption Padding (OAEP), which might weaken the encryption.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Use of RSA Algorithm without OAEP",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/780.html",
+      "id": "CWE-780"
+    },
+    {
+      "Description": "<b>CWE-760: Use of a One-Way Hash with a Predictable Salt</b><br>The product uses a one-way cryptographic hash against an input that should not be reversible, such as a password, but the product uses a predictable salt as part of the input.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Use of a One-Way Hash with a Predictable Salt",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/760.html",
+      "id": "CWE-760"
+    },
+    {
+      "Description": "<b>CWE-916: Use of Password Hash With Insufficient Computational Effort</b><br>The product generates a hash for a password, but it uses a scheme that does not provide a sufficient level of computational effort that would make password cracking attacks infeasible or expensive.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Use of Password Hash With Insufficient Computational Effort",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/916.html",
+      "id": "CWE-916"
+    }
+  ],
+  "links": [
+    {
+      "width": 1,
+      "source": "CWE-759",
+      "target": "CWE-916"
+    },
+    {
+      "width": 1,
+      "source": "CWE-328",
+      "target": "CWE-327"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1240",
+      "target": "CWE-327"
+    },
+    {
+      "width": 1,
+      "source": "CWE-780",
+      "target": "CWE-327"
+    },
+    {
+      "width": 1,
+      "source": "CWE-760",
+      "target": "CWE-916"
+    },
+    {
+      "width": 1,
+      "source": "CWE-916",
+      "target": "CWE-328"
+    },
+    {
+      "width": 1,
+      "source": "CWE-916",
+      "target": "CWE-327"
+    }
+  ]
+}

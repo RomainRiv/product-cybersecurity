@@ -1,0 +1,50 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CAPEC-27: Leveraging Race Conditions via Symbolic Links</b><br>This attack leverages the use of symbolic links (Symlinks) in order to write to sensitive files. An attacker can create a Symlink link to a target file not otherwise accessible to them. When the privileged program tries to create a temporary file with the same name as the Symlink link, it will actually write to the target file pointed to by the attackers' Symlink link. If the attacker can insert malicious content in the temporary file they will be writing to the sensitive file by using the Symlink. The race occurs because the system checks if the temporary file exists, then creates the file. The attacker would typically create the Symlink during the interval between the check and the creation of the temporary file.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Leveraging Race Conditions via Symbolic Links",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/27.html",
+      "id": "CAPEC-27"
+    },
+    {
+      "Description": "<b>CAPEC-29: Leveraging Time-of-Check and Time-of-Use (TOCTOU) Race Conditions</b><br>This attack targets a race condition occurring between the time of check (state) for a resource and the time of use of a resource. A typical example is file access. The adversary can leverage a file access race condition by \"running the race\", meaning that they would modify the resource between the first time the target program accesses the file and the time the target program uses the file. During that period of time, the adversary could replace or modify the file, causing the application to behave unexpectedly.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Leveraging Time-of-Check and Time-of-Use (TOCTOU) Race Conditions",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/29.html",
+      "id": "CAPEC-29"
+    },
+    {
+      "Description": "<b>CAPEC-26: Leveraging Race Conditions</b><br>The adversary targets a race condition occurring when multiple processes access and manipulate the same resource concurrently, and the outcome of the execution depends on the particular order in which the access takes place. The adversary can leverage a race condition by \"running the race\", modifying the resource and modifying the normal execution flow. For instance, a race condition can occur while accessing a file: the adversary can trick the system by replacing the original file with their version and cause the system to read the malicious file.",
+      "color": "#2176ff",
+      "size": 30,
+      "label": "Leveraging Race Conditions",
+      "label_class": "node-label-big",
+      "type": "CAPEC",
+      "abstraction": "Meta",
+      "url": "https://capec.mitre.org/data/definitions/26.html",
+      "id": "CAPEC-26"
+    }
+  ],
+  "links": [
+    {
+      "source": "CAPEC-27",
+      "target": "CAPEC-29"
+    },
+    {
+      "source": "CAPEC-29",
+      "target": "CAPEC-26"
+    }
+  ]
+}

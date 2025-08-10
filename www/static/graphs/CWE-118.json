@@ -1,0 +1,418 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CWE-118: Incorrect Access of Indexable Resource ('Range Error')</b><br>The product does not restrict or incorrectly restricts operations within the boundaries of a resource that is accessed using an index or pointer, such as memory or files.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Incorrect Access of Indexable Resource ('Range Error')",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/118.html",
+      "id": "CWE-118"
+    },
+    {
+      "Description": "<b>CWE-119: Improper Restriction of Operations within the Bounds of a Memory Buffer</b><br>The product performs operations on a memory buffer, but it can read from or write to a memory location that is outside of the intended boundary of the buffer.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Improper Restriction of Operations within the Bounds of a Memory Buffer",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/119.html",
+      "id": "CWE-119"
+    },
+    {
+      "Description": "<b>CWE-806: Buffer Access Using Size of Source Buffer</b><br>The product uses the size of a source buffer when reading from or writing to a destination buffer, which may cause it to access memory that is outside of the bounds of the buffer.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Buffer Access Using Size of Source Buffer",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/806.html",
+      "id": "CWE-806"
+    },
+    {
+      "Description": "<b>CWE-805: Buffer Access with Incorrect Length Value</b><br>The product uses a sequential operation to read or write a buffer, but it uses an incorrect length value that causes it to access memory that is outside of the bounds of the buffer.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Buffer Access with Incorrect Length Value",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/805.html",
+      "id": "CWE-805"
+    },
+    {
+      "Description": "<b>CWE-787: Out-of-bounds Write</b><br>The product writes data past the end, or before the beginning, of the intended buffer.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Out-of-bounds Write",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/787.html",
+      "id": "CWE-787"
+    },
+    {
+      "Description": "<b>CWE-786: Access of Memory Location Before Start of Buffer</b><br>The product reads or writes to a buffer using an index or pointer that references a memory location prior to the beginning of the buffer.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Access of Memory Location Before Start of Buffer",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/786.html",
+      "id": "CWE-786"
+    },
+    {
+      "Description": "<b>CWE-127: Buffer Under-read</b><br>The product reads from a buffer using buffer access mechanisms such as indexes or pointers that reference memory locations prior to the targeted buffer.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Buffer Under-read",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/127.html",
+      "id": "CWE-127"
+    },
+    {
+      "Description": "<b>CWE-788: Access of Memory Location After End of Buffer</b><br>The product reads or writes to a buffer using an index or pointer that references a memory location after the end of the buffer.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Access of Memory Location After End of Buffer",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/788.html",
+      "id": "CWE-788"
+    },
+    {
+      "Description": "<b>CWE-822: Untrusted Pointer Dereference</b><br>The product obtains a value from an untrusted source, converts this value to a pointer, and dereferences the resulting pointer.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Untrusted Pointer Dereference",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/822.html",
+      "id": "CWE-822"
+    },
+    {
+      "Description": "<b>CWE-785: Use of Path Manipulation Function without Maximum-sized Buffer</b><br>The product invokes a function for normalizing paths or file names, but it provides an output buffer that is smaller than the maximum possible size, such as PATH_MAX.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Use of Path Manipulation Function without Maximum-sized Buffer",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/785.html",
+      "id": "CWE-785"
+    },
+    {
+      "Description": "<b>CWE-121: Stack-based Buffer Overflow</b><br>A stack-based buffer overflow condition is a condition where the buffer being overwritten is allocated on the stack (i.e., is a local variable or, rarely, a parameter to a function).",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Stack-based Buffer Overflow",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/121.html",
+      "id": "CWE-121"
+    },
+    {
+      "Description": "<b>CWE-126: Buffer Over-read</b><br>The product reads from a buffer using buffer access mechanisms such as indexes or pointers that reference memory locations after the targeted buffer.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Buffer Over-read",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/126.html",
+      "id": "CWE-126"
+    },
+    {
+      "Description": "<b>CWE-120: Buffer Copy without Checking Size of Input ('Classic Buffer Overflow')</b><br>The product copies an input buffer to an output buffer without verifying that the size of the input buffer is less than the size of the output buffer, leading to a buffer overflow.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Buffer Copy without Checking Size of Input ('Classic Buffer Overflow')",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/120.html",
+      "id": "CWE-120"
+    },
+    {
+      "Description": "<b>CWE-125: Out-of-bounds Read</b><br>The product reads data past the end, or before the beginning, of the intended buffer.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Out-of-bounds Read",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/125.html",
+      "id": "CWE-125"
+    },
+    {
+      "Description": "<b>CWE-825: Expired Pointer Dereference</b><br>The product dereferences a pointer that contains a location for memory that was previously valid, but is no longer valid.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Expired Pointer Dereference",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/825.html",
+      "id": "CWE-825"
+    },
+    {
+      "Description": "<b>CWE-823: Use of Out-of-range Pointer Offset</b><br>The product performs pointer arithmetic on a valid pointer, but it uses an offset that can point outside of the intended range of valid memory locations for the resulting pointer.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Use of Out-of-range Pointer Offset",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/823.html",
+      "id": "CWE-823"
+    },
+    {
+      "Description": "<b>CWE-124: Buffer Underwrite ('Buffer Underflow')</b><br>The product writes to a buffer using an index or pointer that references a memory location prior to the beginning of the buffer.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Buffer Underwrite ('Buffer Underflow')",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/124.html",
+      "id": "CWE-124"
+    },
+    {
+      "Description": "<b>CWE-466: Return of Pointer Value Outside of Expected Range</b><br>A function can return a pointer to memory that is outside of the buffer that the pointer is expected to reference.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Return of Pointer Value Outside of Expected Range",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/466.html",
+      "id": "CWE-466"
+    },
+    {
+      "Description": "<b>CWE-416: Use After Free</b><br>Referencing memory after it has been freed can cause a program to crash, use unexpected values, or execute code.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Use After Free",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/416.html",
+      "id": "CWE-416"
+    },
+    {
+      "Description": "<b>CWE-415: Double Free</b><br>The product calls free() twice on the same memory address, potentially leading to modification of unexpected memory locations.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Double Free",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/415.html",
+      "id": "CWE-415"
+    },
+    {
+      "Description": "<b>CWE-123: Write-what-where Condition</b><br>Any condition where the attacker has the ability to write an arbitrary value to an arbitrary location, often as the result of a buffer overflow.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Write-what-where Condition",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/123.html",
+      "id": "CWE-123"
+    },
+    {
+      "Description": "<b>CWE-130: Improper Handling of Length Parameter Inconsistency</b><br>The product parses a formatted message or structure, but it does not handle or incorrectly handles a length field that is inconsistent with the actual length of the associated data.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Handling of Length Parameter Inconsistency",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/130.html",
+      "id": "CWE-130"
+    },
+    {
+      "Description": "<b>CWE-122: Heap-based Buffer Overflow</b><br>A heap overflow condition is a buffer overflow, where the buffer that can be overwritten is allocated in the heap portion of memory, generally meaning that the buffer was allocated using a routine such as malloc().",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Heap-based Buffer Overflow",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/122.html",
+      "id": "CWE-122"
+    },
+    {
+      "Description": "<b>CWE-824: Access of Uninitialized Pointer</b><br>The product accesses or uses a pointer that has not been initialized.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Access of Uninitialized Pointer",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/824.html",
+      "id": "CWE-824"
+    }
+  ],
+  "links": [
+    {
+      "width": 1,
+      "source": "CWE-119",
+      "target": "CWE-118"
+    },
+    {
+      "width": 1,
+      "source": "CWE-806",
+      "target": "CWE-805"
+    },
+    {
+      "width": 1,
+      "source": "CWE-805",
+      "target": "CWE-119"
+    },
+    {
+      "width": 1,
+      "source": "CWE-787",
+      "target": "CWE-119"
+    },
+    {
+      "width": 1,
+      "source": "CWE-786",
+      "target": "CWE-119"
+    },
+    {
+      "width": 1,
+      "source": "CWE-127",
+      "target": "CWE-125"
+    },
+    {
+      "width": 1,
+      "source": "CWE-127",
+      "target": "CWE-786"
+    },
+    {
+      "width": 1,
+      "source": "CWE-788",
+      "target": "CWE-119"
+    },
+    {
+      "width": 1,
+      "source": "CWE-822",
+      "target": "CWE-119"
+    },
+    {
+      "width": 1,
+      "source": "CWE-785",
+      "target": "CWE-120"
+    },
+    {
+      "width": 1,
+      "source": "CWE-121",
+      "target": "CWE-788"
+    },
+    {
+      "width": 1,
+      "source": "CWE-121",
+      "target": "CWE-787"
+    },
+    {
+      "width": 1,
+      "source": "CWE-126",
+      "target": "CWE-125"
+    },
+    {
+      "width": 1,
+      "source": "CWE-126",
+      "target": "CWE-788"
+    },
+    {
+      "width": 1,
+      "source": "CWE-120",
+      "target": "CWE-119"
+    },
+    {
+      "width": 1,
+      "source": "CWE-125",
+      "target": "CWE-119"
+    },
+    {
+      "width": 1,
+      "source": "CWE-825",
+      "target": "CWE-119"
+    },
+    {
+      "width": 1,
+      "source": "CWE-823",
+      "target": "CWE-119"
+    },
+    {
+      "width": 1,
+      "source": "CWE-124",
+      "target": "CWE-786"
+    },
+    {
+      "width": 1,
+      "source": "CWE-124",
+      "target": "CWE-787"
+    },
+    {
+      "width": 1,
+      "source": "CWE-466",
+      "target": "CWE-119"
+    },
+    {
+      "width": 1,
+      "source": "CWE-416",
+      "target": "CWE-825"
+    },
+    {
+      "width": 1,
+      "source": "CWE-415",
+      "target": "CWE-825"
+    },
+    {
+      "width": 1,
+      "source": "CWE-123",
+      "target": "CWE-787"
+    },
+    {
+      "width": 1,
+      "source": "CWE-123",
+      "target": "CWE-119"
+    },
+    {
+      "width": 1,
+      "source": "CWE-130",
+      "target": "CWE-119"
+    },
+    {
+      "width": 1,
+      "source": "CWE-122",
+      "target": "CWE-788"
+    },
+    {
+      "width": 1,
+      "source": "CWE-122",
+      "target": "CWE-787"
+    },
+    {
+      "width": 1,
+      "source": "CWE-824",
+      "target": "CWE-119"
+    }
+  ]
+}

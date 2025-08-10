@@ -1,0 +1,19 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CWE-114: Process Control</b><br>Executing commands or loading libraries from an untrusted source or in an untrusted environment can cause an application to execute malicious commands (and payloads) on behalf of an attacker.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Process Control",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/114.html",
+      "id": "CWE-114"
+    }
+  ],
+  "links": []
+}

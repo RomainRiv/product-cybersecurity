@@ -1,0 +1,323 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CWE-770: Allocation of Resources Without Limits or Throttling</b><br>The product allocates a reusable resource or group of resources on behalf of an actor without imposing any restrictions on the size or number of resources that can be allocated, in violation of the intended security policy for that actor.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Allocation of Resources Without Limits or Throttling",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/770.html",
+      "id": "CWE-770"
+    },
+    {
+      "Description": "<b>CWE-455: Non-exit on Failed Initialization</b><br>The product does not exit or otherwise modify its operation when security-relevant errors occur during initialization, such as when a configuration file has a format error or a hardware security module (HSM) cannot be activated, which can cause the product to execute in a less secure fashion than intended by the administrator.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Non-exit on Failed Initialization",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/455.html",
+      "id": "CWE-455"
+    },
+    {
+      "Description": "<b>CWE-1419: Incorrect Initialization of Resource</b><br>The product attempts to initialize a resource but does not correctly do so, which might leave the resource in an unexpected, incorrect, or insecure state when it is accessed.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Incorrect Initialization of Resource",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/1419.html",
+      "id": "CWE-1419"
+    },
+    {
+      "Description": "<b>CWE-453: Insecure Default Variable Initialization</b><br>The product, by default, initializes an internal variable with an insecure or less secure value than is possible.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Insecure Default Variable Initialization",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/453.html",
+      "id": "CWE-453"
+    },
+    {
+      "Description": "<b>CWE-1221: Incorrect Register Defaults or Module Parameters</b><br>Hardware description language code incorrectly defines register defaults or hardware Intellectual Property (IP) parameters to insecure values.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Incorrect Register Defaults or Module Parameters",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1221.html",
+      "id": "CWE-1221"
+    },
+    {
+      "Description": "<b>CWE-1271: Uninitialized Value on Reset for Registers Holding Security Settings</b><br>Security-critical logic is not set to a known value on reset.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Uninitialized Value on Reset for Registers Holding Security Settings",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1271.html",
+      "id": "CWE-1271"
+    },
+    {
+      "Description": "<b>CWE-774: Allocation of File Descriptors or Handles Without Limits or Throttling</b><br>The product allocates file descriptors or handles on behalf of an actor without imposing any restrictions on how many descriptors can be allocated, in violation of the intended security policy for that actor.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Allocation of File Descriptors or Handles Without Limits or Throttling",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/774.html",
+      "id": "CWE-774"
+    },
+    {
+      "Description": "<b>CWE-454: External Initialization of Trusted Variables or Data Stores</b><br>The product initializes critical internal variables or data stores using inputs that can be modified by untrusted actors.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "External Initialization of Trusted Variables or Data Stores",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/454.html",
+      "id": "CWE-454"
+    },
+    {
+      "Description": "<b>CWE-1279: Cryptographic Operations are run Before Supporting Units are Ready</b><br>Performing cryptographic operations without ensuring that the supporting inputs are ready to supply valid data may compromise the cryptographic result.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Cryptographic Operations are run Before Supporting Units are Ready",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1279.html",
+      "id": "CWE-1279"
+    },
+    {
+      "Description": "<b>CWE-457: Use of Uninitialized Variable</b><br>The code uses a variable that has not been initialized, leading to unpredictable or unintended results.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Use of Uninitialized Variable",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/457.html",
+      "id": "CWE-457"
+    },
+    {
+      "Description": "<b>CWE-789: Memory Allocation with Excessive Size Value</b><br>The product allocates memory based on an untrusted, large size value, but it does not ensure that the size is within expected limits, allowing arbitrary amounts of memory to be allocated.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Memory Allocation with Excessive Size Value",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/789.html",
+      "id": "CWE-789"
+    },
+    {
+      "Description": "<b>CWE-908: Use of Uninitialized Resource</b><br>The product uses or accesses a resource that has not been initialized.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Use of Uninitialized Resource",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/908.html",
+      "id": "CWE-908"
+    },
+    {
+      "Description": "<b>CWE-456: Missing Initialization of a Variable</b><br>The product does not initialize critical variables, which causes the execution environment to use unexpected values.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Missing Initialization of a Variable",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/456.html",
+      "id": "CWE-456"
+    },
+    {
+      "Description": "<b>CWE-665: Improper Initialization</b><br>The product does not initialize or incorrectly initializes a resource, which might leave the resource in an unexpected state when it is accessed or used.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Improper Initialization",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/665.html",
+      "id": "CWE-665"
+    },
+    {
+      "Description": "<b>CWE-1052: Excessive Use of Hard-Coded Literals in Initialization</b><br>The product initializes a data element using a hard-coded\n\t\t\t\t\tliteral that is not a simple integer or static constant element.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Excessive Use of Hard-Coded Literals in Initialization",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1052.html",
+      "id": "CWE-1052"
+    },
+    {
+      "Description": "<b>CWE-1325: Improperly Controlled Sequential Memory Allocation</b><br>The product manages a group of objects or resources and performs a separate memory allocation for each object, but it does not properly limit the total amount of memory that is consumed by all of the combined objects.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improperly Controlled Sequential Memory Allocation",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1325.html",
+      "id": "CWE-1325"
+    },
+    {
+      "Description": "<b>CWE-1051: Initialization with Hard-Coded Network Resource Configuration Data</b><br>The product initializes data using hard-coded values that act as network resource identifiers.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Initialization with Hard-Coded Network Resource Configuration Data",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1051.html",
+      "id": "CWE-1051"
+    },
+    {
+      "Description": "<b>CWE-1188: Initialization of a Resource with an Insecure Default</b><br>The product initializes or sets a resource with a default that is intended to be changed by the administrator, but the default is not secure.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Initialization of a Resource with an Insecure Default",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1188.html",
+      "id": "CWE-1188"
+    },
+    {
+      "Description": "<b>CWE-909: Missing Initialization of Resource</b><br>The product does not initialize a critical resource.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Missing Initialization of Resource",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/909.html",
+      "id": "CWE-909"
+    }
+  ],
+  "links": [
+    {
+      "width": 1,
+      "source": "CWE-770",
+      "target": "CWE-665"
+    },
+    {
+      "width": 1,
+      "source": "CWE-455",
+      "target": "CWE-665"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1419",
+      "target": "CWE-665"
+    },
+    {
+      "width": 1,
+      "source": "CWE-453",
+      "target": "CWE-1188"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1221",
+      "target": "CWE-1419"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1271",
+      "target": "CWE-909"
+    },
+    {
+      "width": 1,
+      "source": "CWE-774",
+      "target": "CWE-770"
+    },
+    {
+      "width": 1,
+      "source": "CWE-454",
+      "target": "CWE-1419"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1279",
+      "target": "CWE-665"
+    },
+    {
+      "width": 1,
+      "source": "CWE-457",
+      "target": "CWE-908"
+    },
+    {
+      "width": 1,
+      "source": "CWE-457",
+      "target": "CWE-665"
+    },
+    {
+      "width": 1,
+      "source": "CWE-789",
+      "target": "CWE-770"
+    },
+    {
+      "width": 1,
+      "source": "CWE-908",
+      "target": "CWE-665"
+    },
+    {
+      "width": 1,
+      "source": "CWE-456",
+      "target": "CWE-909"
+    },
+    {
+      "width": 1,
+      "source": "CWE-456",
+      "target": "CWE-665"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1052",
+      "target": "CWE-1419"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1325",
+      "target": "CWE-770"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1051",
+      "target": "CWE-1419"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1188",
+      "target": "CWE-1419"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1188",
+      "target": "CWE-665"
+    },
+    {
+      "width": 1,
+      "source": "CWE-909",
+      "target": "CWE-665"
+    }
+  ]
+}

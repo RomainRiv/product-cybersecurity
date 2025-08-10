@@ -1,0 +1,68 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CWE-340: Generation of Predictable Numbers or Identifiers</b><br>The product uses a scheme that generates numbers or identifiers that are more predictable than required.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Generation of Predictable Numbers or Identifiers",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/340.html",
+      "id": "CWE-340"
+    },
+    {
+      "Description": "<b>CWE-342: Predictable Exact Value from Previous Values</b><br>An exact value or random number can be precisely predicted by observing previous values.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Predictable Exact Value from Previous Values",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/342.html",
+      "id": "CWE-342"
+    },
+    {
+      "Description": "<b>CWE-343: Predictable Value Range from Previous Values</b><br>The product's random number generator produces a series of values which, when observed, can be used to infer a relatively small range of possibilities for the next value that could be generated.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Predictable Value Range from Previous Values",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/343.html",
+      "id": "CWE-343"
+    },
+    {
+      "Description": "<b>CWE-341: Predictable from Observable State</b><br>A number or object is predictable based on observations that the attacker can make about the state of the system or network, such as time, process ID, etc.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Predictable from Observable State",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/341.html",
+      "id": "CWE-341"
+    }
+  ],
+  "links": [
+    {
+      "width": 1,
+      "source": "CWE-342",
+      "target": "CWE-340"
+    },
+    {
+      "width": 1,
+      "source": "CWE-343",
+      "target": "CWE-340"
+    },
+    {
+      "width": 1,
+      "source": "CWE-341",
+      "target": "CWE-340"
+    }
+  ]
+}

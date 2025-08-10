@@ -1,0 +1,95 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CAPEC-627: Counterfeit GPS Signals</b><br>An adversary attempts to deceive a GPS receiver by broadcasting counterfeit GPS signals, structured to resemble a set of normal GPS signals. These spoofed signals may be structured in such a way as to cause the receiver to estimate its position to be somewhere other than where it actually is, or to be located where it is but at a different time, as determined by the adversary.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Counterfeit GPS Signals",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/627.html",
+      "id": "CAPEC-627"
+    },
+    {
+      "Description": "<b>CAPEC-148: Content Spoofing</b><br>An adversary modifies content to make it contain something other than what the original content producer intended while keeping the apparent source of the content unchanged. The term content spoofing is most often used to describe modification of web pages hosted by a target to display the adversary's content instead of the owner's content. However, any content can be spoofed, including the content of email messages, file transfers, or the content of other network communication protocols. Content can be modified at the source (e.g. modifying the source file for a web page) or in transit (e.g. intercepting and modifying a message between the sender and recipient). Usually, the adversary will attempt to hide the fact that the content has been modified, but in some cases, such as with web site defacement, this is not necessary. Content Spoofing can lead to malware exposure, financial fraud (if the content governs financial transactions), privacy violations, and other unwanted outcomes.",
+      "color": "#2176ff",
+      "size": 30,
+      "label": "Content Spoofing",
+      "label_class": "node-label-big",
+      "type": "CAPEC",
+      "abstraction": "Meta",
+      "url": "https://capec.mitre.org/data/definitions/148.html",
+      "id": "CAPEC-148"
+    },
+    {
+      "Description": "<b>CAPEC-502: Intent Spoof</b><br>An adversary, through a previously installed malicious application, issues an intent directed toward a specific trusted application's component in an attempt to achieve a variety of different objectives including modification of data, information disclosure, and data injection. Components that have been unintentionally exported and made public are subject to this type of an attack. If the component trusts the intent's action without verififcation, then the target application performs the functionality at the adversary's request, helping the adversary achieve the desired negative technical impact.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Intent Spoof",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/502.html",
+      "id": "CAPEC-502"
+    },
+    {
+      "Description": "<b>CAPEC-145: Checksum Spoofing</b><br>An adversary spoofs a checksum message for the purpose of making a payload appear to have a valid corresponding checksum. Checksums are used to verify message integrity. They consist of some value based on the value of the message they are protecting. Hash codes are a common checksum mechanism. Both the sender and recipient are able to compute the checksum based on the contents of the message. If the message contents change between the sender and recipient, the sender and recipient will compute different checksum values. Since the sender's checksum value is transmitted with the message, the recipient would know that a modification occurred. In checksum spoofing an adversary modifies the message body and then modifies the corresponding checksum so that the recipient's checksum calculation will match the checksum (created by the adversary) in the message. This would prevent the recipient from realizing that a change occurred.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Checksum Spoofing",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/145.html",
+      "id": "CAPEC-145"
+    },
+    {
+      "Description": "<b>CAPEC-218: Spoofing of UDDI/ebXML Messages</b><br>An attacker spoofs a UDDI, ebXML, or similar message in order to impersonate a service provider in an e-business transaction. UDDI, ebXML, and similar standards are used to identify businesses in e-business transactions. Among other things, they identify a particular participant, WSDL information for SOAP transactions, and supported communication protocols, including security protocols. By spoofing one of these messages an attacker could impersonate a legitimate business in a transaction or could manipulate the protocols used between a client and business. This could result in disclosure of sensitive information, loss of message integrity, or even financial fraud.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Spoofing of UDDI/ebXML Messages",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/218.html",
+      "id": "CAPEC-218"
+    },
+    {
+      "Description": "<b>CAPEC-628: Carry-Off GPS Attack</b><br>A common form of a GPS spoofing attack, commonly termed a carry-off attack begins with an adversary broadcasting signals synchronized with the genuine signals observed by the target receiver. The power of the counterfeit signals is then gradually increased and drawn away from the genuine signals. Over time, the adversary can carry the target away from their intended destination and toward a location chosen by the adversary.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Carry-Off GPS Attack",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/628.html",
+      "id": "CAPEC-628"
+    }
+  ],
+  "links": [
+    {
+      "source": "CAPEC-627",
+      "target": "CAPEC-148"
+    },
+    {
+      "source": "CAPEC-502",
+      "target": "CAPEC-148"
+    },
+    {
+      "source": "CAPEC-145",
+      "target": "CAPEC-148"
+    },
+    {
+      "source": "CAPEC-218",
+      "target": "CAPEC-148"
+    },
+    {
+      "source": "CAPEC-628",
+      "target": "CAPEC-627"
+    }
+  ]
+}

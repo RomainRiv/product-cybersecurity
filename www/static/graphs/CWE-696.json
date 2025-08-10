@@ -1,0 +1,148 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CWE-1190: DMA Device Enabled Too Early in Boot Phase</b><br>The product enables a Direct Memory Access (DMA) capable device before the security configuration settings are established, which allows an attacker to extract data from or gain privileges on the product.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "DMA Device Enabled Too Early in Boot Phase",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1190.html",
+      "id": "CWE-1190"
+    },
+    {
+      "Description": "<b>CWE-181: Incorrect Behavior Order: Validate Before Filter</b><br>The product validates data before it has been filtered, which prevents the product from detecting data that becomes invalid after the filtering step.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Incorrect Behavior Order: Validate Before Filter",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/181.html",
+      "id": "CWE-181"
+    },
+    {
+      "Description": "<b>CWE-551: Incorrect Behavior Order: Authorization Before Parsing and Canonicalization</b><br>If a web server does not fully parse requested URLs before it examines them for authorization, it may be possible for an attacker to bypass authorization protection.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Incorrect Behavior Order: Authorization Before Parsing and Canonicalization",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/551.html",
+      "id": "CWE-551"
+    },
+    {
+      "Description": "<b>CWE-180: Incorrect Behavior Order: Validate Before Canonicalize</b><br>The product validates input before it is canonicalized, which prevents the product from detecting data that becomes invalid after the canonicalization step.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Incorrect Behavior Order: Validate Before Canonicalize",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/180.html",
+      "id": "CWE-180"
+    },
+    {
+      "Description": "<b>CWE-1280: Access Control Check Implemented After Asset is Accessed</b><br>A product's hardware-based access control check occurs after the asset has been accessed.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Access Control Check Implemented After Asset is Accessed",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1280.html",
+      "id": "CWE-1280"
+    },
+    {
+      "Description": "<b>CWE-179: Incorrect Behavior Order: Early Validation</b><br>The product validates input before applying protection mechanisms that modify the input, which could allow an attacker to bypass the validation via dangerous inputs that only arise after the modification.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Incorrect Behavior Order: Early Validation",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/179.html",
+      "id": "CWE-179"
+    },
+    {
+      "Description": "<b>CWE-1193: Power-On of Untrusted Execution Core Before Enabling Fabric Access Control</b><br>The product enables components that contain untrusted firmware before memory and fabric access controls have been enabled.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Power-On of Untrusted Execution Core Before Enabling Fabric Access Control",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1193.html",
+      "id": "CWE-1193"
+    },
+    {
+      "Description": "<b>CWE-408: Incorrect Behavior Order: Early Amplification</b><br>The product allows an entity to perform a legitimate but expensive operation before authentication or authorization has taken place.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Incorrect Behavior Order: Early Amplification",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/408.html",
+      "id": "CWE-408"
+    },
+    {
+      "Description": "<b>CWE-696: Incorrect Behavior Order</b><br>The product performs multiple related behaviors, but the behaviors are performed in the wrong order in ways which may produce resultant weaknesses.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Incorrect Behavior Order",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/696.html",
+      "id": "CWE-696"
+    }
+  ],
+  "links": [
+    {
+      "width": 1,
+      "source": "CWE-1190",
+      "target": "CWE-696"
+    },
+    {
+      "width": 1,
+      "source": "CWE-181",
+      "target": "CWE-179"
+    },
+    {
+      "width": 1,
+      "source": "CWE-551",
+      "target": "CWE-696"
+    },
+    {
+      "width": 1,
+      "source": "CWE-180",
+      "target": "CWE-179"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1280",
+      "target": "CWE-696"
+    },
+    {
+      "width": 1,
+      "source": "CWE-179",
+      "target": "CWE-696"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1193",
+      "target": "CWE-696"
+    },
+    {
+      "width": 1,
+      "source": "CWE-408",
+      "target": "CWE-696"
+    }
+  ]
+}

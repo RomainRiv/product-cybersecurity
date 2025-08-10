@@ -1,0 +1,140 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CAPEC-101: Server Side Include (SSI) Injection</b><br>An attacker can use Server Side Include (SSI) Injection to send code to a web application that then gets executed by the web server. Doing so enables the attacker to achieve similar results to Cross Site Scripting, viz., arbitrary code execution and information disclosure, albeit on a more limited scale, since the SSI directives are nowhere near as powerful as a full-fledged scripting language. Nonetheless, the attacker can conveniently gain access to sensitive files, such as password files, and execute shell commands.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Server Side Include (SSI) Injection",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/101.html",
+      "id": "CAPEC-101"
+    },
+    {
+      "Description": "<b>CAPEC-193: PHP Remote File Inclusion</b><br>In this pattern the adversary is able to load and execute arbitrary code remotely available from the application. This is usually accomplished through an insecurely configured PHP runtime environment and an improperly sanitized \"include\" or \"require\" call, which the user can then control to point to any web-accessible file. This allows adversaries to hijack the targeted application and force it to execute their own instructions.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "PHP Remote File Inclusion",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/193.html",
+      "id": "CAPEC-193"
+    },
+    {
+      "Description": "<b>CAPEC-253: Remote Code Inclusion</b><br>The attacker forces an application to load arbitrary code files from a remote location. The attacker could use this to try to load old versions of library files that have known vulnerabilities, to load malicious files that the attacker placed on the remote machine, or to otherwise change the functionality of the targeted application in unexpected ways.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Remote Code Inclusion",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/253.html",
+      "id": "CAPEC-253"
+    },
+    {
+      "Description": "<b>CAPEC-251: Local Code Inclusion</b><br>The attacker forces an application to load arbitrary code files from the local machine. The attacker could use this to try to load old versions of library files that have known vulnerabilities, to load files that the attacker placed on the local machine during a prior attack, or to otherwise change the functionality of the targeted application in unexpected ways.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Local Code Inclusion",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/251.html",
+      "id": "CAPEC-251"
+    },
+    {
+      "Description": "<b>CAPEC-252: PHP Local File Inclusion</b><br>The attacker loads and executes an arbitrary local PHP file on a target machine. The attacker could use this to try to load old versions of PHP files that have known vulnerabilities, to load PHP files that the attacker placed on the local machine during a prior attack, or to otherwise change the functionality of the targeted application in unexpected ways.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "PHP Local File Inclusion",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/252.html",
+      "id": "CAPEC-252"
+    },
+    {
+      "Description": "<b>CAPEC-500: WebView Injection</b><br>An adversary, through a previously installed malicious application, injects code into the context of a web page displayed by a WebView component. Through the injected code, an adversary is able to manipulate the DOM tree and cookies of the page, expose sensitive information, and can launch attacks against the web application from within the web page.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "WebView Injection",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/500.html",
+      "id": "CAPEC-500"
+    },
+    {
+      "Description": "<b>CAPEC-660: Root/Jailbreak Detection Evasion via Hooking</b><br>An adversary forces a non-restricted mobile application to load arbitrary code or code files, via Hooking, with the goal of evading Root/Jailbreak detection. Mobile device users often Root/Jailbreak their devices in order to gain administrative control over the mobile operating system and/or to install third-party mobile applications that are not provided by authorized application stores (e.g. Google Play Store and Apple App Store). Adversaries may further leverage these capabilities to escalate privileges or bypass access control on legitimate applications. Although many mobile applications check if a mobile device is Rooted/Jailbroken prior to authorized use of the application, adversaries may be able to \"hook\" code in order to circumvent these checks. Successfully evading Root/Jailbreak detection allows an adversary to execute administrative commands, obtain confidential data, impersonate legitimate users of the application, and more.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Root/Jailbreak Detection Evasion via Hooking",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/660.html",
+      "id": "CAPEC-660"
+    },
+    {
+      "Description": "<b>CAPEC-175: Code Inclusion</b><br>An adversary exploits a weakness on the target to force arbitrary code to be retrieved locally or from a remote location and executed. This differs from code injection in that code injection involves the direct inclusion of code while code inclusion involves the addition or replacement of a reference to a code file, which is subsequently loaded by the target and used as part of the code of some application.",
+      "color": "#2176ff",
+      "size": 30,
+      "label": "Code Inclusion",
+      "label_class": "node-label-big",
+      "type": "CAPEC",
+      "abstraction": "Meta",
+      "url": "https://capec.mitre.org/data/definitions/175.html",
+      "id": "CAPEC-175"
+    },
+    {
+      "Description": "<b>CAPEC-640: Inclusion of Code in Existing Process</b><br>The adversary takes advantage of a bug in an application failing to verify the integrity of the running process to execute arbitrary code in the address space of a separate live process. The adversary could use running code in the context of another process to try to access process's memory, system/network resources, etc. The goal of this attack is to evade detection defenses and escalate privileges by masking the malicious code under an existing legitimate process. Examples of approaches include but not limited to: dynamic-link library (DLL) injection, portable executable injection, thread execution hijacking, ptrace system calls, VDSO hijacking, function hooking, reflective code loading, and more.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Inclusion of Code in Existing Process",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/640.html",
+      "id": "CAPEC-640"
+    }
+  ],
+  "links": [
+    {
+      "source": "CAPEC-101",
+      "target": "CAPEC-253"
+    },
+    {
+      "source": "CAPEC-193",
+      "target": "CAPEC-253"
+    },
+    {
+      "source": "CAPEC-253",
+      "target": "CAPEC-175"
+    },
+    {
+      "source": "CAPEC-251",
+      "target": "CAPEC-175"
+    },
+    {
+      "source": "CAPEC-252",
+      "target": "CAPEC-251"
+    },
+    {
+      "source": "CAPEC-500",
+      "target": "CAPEC-253"
+    },
+    {
+      "source": "CAPEC-660",
+      "target": "CAPEC-251"
+    },
+    {
+      "source": "CAPEC-640",
+      "target": "CAPEC-251"
+    }
+  ]
+}

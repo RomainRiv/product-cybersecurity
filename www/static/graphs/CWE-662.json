@@ -1,0 +1,477 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CWE-1088: Synchronous Access of Remote Resource without Timeout</b><br>The code has a synchronous call to a remote resource, but there is no timeout for the call, or the timeout is set to infinite.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Synchronous Access of Remote Resource without Timeout",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1088.html",
+      "id": "CWE-1088"
+    },
+    {
+      "Description": "<b>CWE-567: Unsynchronized Access to Shared Data in a Multithreaded Context</b><br>The product does not properly synchronize shared data, such as static variables across threads, which can lead to undefined behavior and unpredictable data changes.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Unsynchronized Access to Shared Data in a Multithreaded Context",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/567.html",
+      "id": "CWE-567"
+    },
+    {
+      "Description": "<b>CWE-574: EJB Bad Practices: Use of Synchronization Primitives</b><br>The product violates the Enterprise JavaBeans (EJB) specification by using thread synchronization primitives.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "EJB Bad Practices: Use of Synchronization Primitives",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/574.html",
+      "id": "CWE-574"
+    },
+    {
+      "Description": "<b>CWE-821: Incorrect Synchronization</b><br>The product utilizes a shared resource in a concurrent manner, but it does not correctly synchronize access to the resource.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Incorrect Synchronization",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/821.html",
+      "id": "CWE-821"
+    },
+    {
+      "Description": "<b>CWE-479: Signal Handler Use of a Non-reentrant Function</b><br>The product defines a signal handler that calls a non-reentrant function.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Signal Handler Use of a Non-reentrant Function",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/479.html",
+      "id": "CWE-479"
+    },
+    {
+      "Description": "<b>CWE-662: Improper Synchronization</b><br>The product utilizes multiple threads or processes to allow temporary access to a shared resource that can only be exclusive to one process at a time, but it does not properly synchronize these actions, which might cause simultaneous accesses of this resource by multiple threads or processes.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Improper Synchronization",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/662.html",
+      "id": "CWE-662"
+    },
+    {
+      "Description": "<b>CWE-366: Race Condition within a Thread</b><br>If two threads of execution use a resource simultaneously, there exists the possibility that resources may be used while invalid, in turn making the state of execution undefined.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Race Condition within a Thread",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/366.html",
+      "id": "CWE-366"
+    },
+    {
+      "Description": "<b>CWE-609: Double-Checked Locking</b><br>The product uses double-checked locking to access a resource without the overhead of explicit synchronization, but the locking is insufficient.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Double-Checked Locking",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/609.html",
+      "id": "CWE-609"
+    },
+    {
+      "Description": "<b>CWE-413: Improper Resource Locking</b><br>The product does not lock or does not correctly lock a resource when the product must have exclusive access to the resource.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Resource Locking",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/413.html",
+      "id": "CWE-413"
+    },
+    {
+      "Description": "<b>CWE-591: Sensitive Data Storage in Improperly Locked Memory</b><br>The product stores sensitive data in memory that is not locked, or that has been incorrectly locked, which might cause the memory to be written to swap files on disk by the virtual memory manager. This can make the data more accessible to external actors.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Sensitive Data Storage in Improperly Locked Memory",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/591.html",
+      "id": "CWE-591"
+    },
+    {
+      "Description": "<b>CWE-558: Use of getlogin() in Multithreaded Application</b><br>The product uses the getlogin() function in a multithreaded context, potentially causing it to return incorrect values.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Use of getlogin() in Multithreaded Application",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/558.html",
+      "id": "CWE-558"
+    },
+    {
+      "Description": "<b>CWE-1234: Hardware Internal or Debug Modes Allow Override of Locks</b><br>System configuration protection may be bypassed during debug mode.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Hardware Internal or Debug Modes Allow Override of Locks",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1234.html",
+      "id": "CWE-1234"
+    },
+    {
+      "Description": "<b>CWE-764: Multiple Locks of a Critical Resource</b><br>The product locks a critical resource more times than intended, leading to an unexpected state in the system.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Multiple Locks of a Critical Resource",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/764.html",
+      "id": "CWE-764"
+    },
+    {
+      "Description": "<b>CWE-414: Missing Lock Check</b><br>A product does not check to see if a lock is present before performing sensitive operations on a resource.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Missing Lock Check",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/414.html",
+      "id": "CWE-414"
+    },
+    {
+      "Description": "<b>CWE-663: Use of a Non-reentrant Function in a Concurrent Context</b><br>The product calls a non-reentrant function in a concurrent context in which a competing code sequence (e.g. thread or signal handler) may have an opportunity to call the same function or otherwise influence its state.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Use of a Non-reentrant Function in a Concurrent Context",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/663.html",
+      "id": "CWE-663"
+    },
+    {
+      "Description": "<b>CWE-412: Unrestricted Externally Accessible Lock</b><br>The product properly checks for the existence of a lock, but the lock can be externally controlled or influenced by an actor that is outside of the intended sphere of control.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Unrestricted Externally Accessible Lock",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/412.html",
+      "id": "CWE-412"
+    },
+    {
+      "Description": "<b>CWE-1232: Improper Lock Behavior After Power State Transition</b><br>Register lock bit protection disables changes to system configuration once the bit is set. Some of the protected registers or lock bits become programmable after power state transitions (e.g., Entry and wake from low power sleep modes) causing the system configuration to be changeable.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Lock Behavior After Power State Transition",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1232.html",
+      "id": "CWE-1232"
+    },
+    {
+      "Description": "<b>CWE-572: Call to Thread run() instead of start()</b><br>The product calls a thread's run() method instead of calling start(), which causes the code to run in the thread of the caller instead of the callee.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Call to Thread run() instead of start()",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/572.html",
+      "id": "CWE-572"
+    },
+    {
+      "Description": "<b>CWE-1058: Invokable Control Element in Multi-Thread Context with non-Final Static Storable or Member Element</b><br>The code contains a function or method that\n\t\t operates in a multi-threaded environment but owns an unsafe non-final\n\t\t                     static storable or member data element.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Invokable Control Element in Multi-Thread Context with non-Final Static Storable or Member Element",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1058.html",
+      "id": "CWE-1058"
+    },
+    {
+      "Description": "<b>CWE-1264: Hardware Logic with Insecure De-Synchronization between Control and Data Channels</b><br>The hardware logic for error handling and security checks can incorrectly forward data before the security check is complete.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Hardware Logic with Insecure De-Synchronization between Control and Data Channels",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1264.html",
+      "id": "CWE-1264"
+    },
+    {
+      "Description": "<b>CWE-1233: Security-Sensitive Hardware Controls with Missing Lock Bit Protection</b><br>The product uses a register lock bit protection mechanism, but it does not ensure that the lock bit prevents modification of system registers or controls that perform changes to important hardware system configuration.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Security-Sensitive Hardware Controls with Missing Lock Bit Protection",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1233.html",
+      "id": "CWE-1233"
+    },
+    {
+      "Description": "<b>CWE-832: Unlock of a Resource that is not Locked</b><br>The product attempts to unlock a resource that is not locked.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Unlock of a Resource that is not Locked",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/832.html",
+      "id": "CWE-832"
+    },
+    {
+      "Description": "<b>CWE-667: Improper Locking</b><br>The product does not properly acquire or release a lock on a resource, leading to unexpected resource state changes and behaviors.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Improper Locking",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/667.html",
+      "id": "CWE-667"
+    },
+    {
+      "Description": "<b>CWE-543: Use of Singleton Pattern Without Synchronization in a Multithreaded Context</b><br>The product uses the singleton pattern when creating a resource within a multithreaded environment.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Use of Singleton Pattern Without Synchronization in a Multithreaded Context",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/543.html",
+      "id": "CWE-543"
+    },
+    {
+      "Description": "<b>CWE-833: Deadlock</b><br>The product contains multiple threads or executable segments that are waiting for each other to release a necessary lock, resulting in deadlock.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Deadlock",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/833.html",
+      "id": "CWE-833"
+    },
+    {
+      "Description": "<b>CWE-765: Multiple Unlocks of a Critical Resource</b><br>The product unlocks a critical resource more times than intended, leading to an unexpected state in the system.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Multiple Unlocks of a Critical Resource",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/765.html",
+      "id": "CWE-765"
+    },
+    {
+      "Description": "<b>CWE-820: Missing Synchronization</b><br>The product utilizes a shared resource in a concurrent manner but does not attempt to synchronize access to the resource.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Missing Synchronization",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/820.html",
+      "id": "CWE-820"
+    },
+    {
+      "Description": "<b>CWE-1096: Singleton Class Instance Creation without Proper Locking or Synchronization</b><br>The product implements a Singleton design pattern but does not use appropriate locking or other synchronization mechanism to ensure that the singleton class is only instantiated once.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Singleton Class Instance Creation without Proper Locking or Synchronization",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/1096.html",
+      "id": "CWE-1096"
+    }
+  ],
+  "links": [
+    {
+      "width": 1,
+      "source": "CWE-1088",
+      "target": "CWE-821"
+    },
+    {
+      "width": 1,
+      "source": "CWE-567",
+      "target": "CWE-820"
+    },
+    {
+      "width": 1,
+      "source": "CWE-567",
+      "target": "CWE-662"
+    },
+    {
+      "width": 1,
+      "source": "CWE-574",
+      "target": "CWE-821"
+    },
+    {
+      "width": 1,
+      "source": "CWE-821",
+      "target": "CWE-662"
+    },
+    {
+      "width": 1,
+      "source": "CWE-479",
+      "target": "CWE-663"
+    },
+    {
+      "width": 1,
+      "source": "CWE-366",
+      "target": "CWE-662"
+    },
+    {
+      "width": 1,
+      "source": "CWE-609",
+      "target": "CWE-667"
+    },
+    {
+      "width": 1,
+      "source": "CWE-413",
+      "target": "CWE-667"
+    },
+    {
+      "width": 1,
+      "source": "CWE-591",
+      "target": "CWE-413"
+    },
+    {
+      "width": 1,
+      "source": "CWE-558",
+      "target": "CWE-663"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1234",
+      "target": "CWE-667"
+    },
+    {
+      "width": 1,
+      "source": "CWE-764",
+      "target": "CWE-667"
+    },
+    {
+      "width": 1,
+      "source": "CWE-764",
+      "target": "CWE-662"
+    },
+    {
+      "width": 1,
+      "source": "CWE-414",
+      "target": "CWE-667"
+    },
+    {
+      "width": 1,
+      "source": "CWE-663",
+      "target": "CWE-662"
+    },
+    {
+      "width": 1,
+      "source": "CWE-412",
+      "target": "CWE-667"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1232",
+      "target": "CWE-667"
+    },
+    {
+      "width": 1,
+      "source": "CWE-572",
+      "target": "CWE-821"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1058",
+      "target": "CWE-662"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1264",
+      "target": "CWE-821"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1233",
+      "target": "CWE-667"
+    },
+    {
+      "width": 1,
+      "source": "CWE-832",
+      "target": "CWE-667"
+    },
+    {
+      "width": 1,
+      "source": "CWE-667",
+      "target": "CWE-662"
+    },
+    {
+      "width": 1,
+      "source": "CWE-543",
+      "target": "CWE-820"
+    },
+    {
+      "width": 1,
+      "source": "CWE-543",
+      "target": "CWE-662"
+    },
+    {
+      "width": 1,
+      "source": "CWE-833",
+      "target": "CWE-667"
+    },
+    {
+      "width": 1,
+      "source": "CWE-833",
+      "target": "CWE-662"
+    },
+    {
+      "width": 1,
+      "source": "CWE-765",
+      "target": "CWE-667"
+    },
+    {
+      "width": 1,
+      "source": "CWE-820",
+      "target": "CWE-662"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1096",
+      "target": "CWE-820"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1096",
+      "target": "CWE-662"
+    }
+  ]
+}

@@ -1,0 +1,245 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CAPEC-201: Serialized Data External Linking</b><br>An adversary creates a serialized data file (e.g. XML, YAML, etc...) that contains an external data reference. Because serialized data parsers may not validate documents with external references, there may be no checks on the nature of the reference in the external data. This can allow an adversary to open arbitrary files or connections, which may further lead to the adversary gaining access to information on the system that they would normally be unable to obtain.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Serialized Data External Linking",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/201.html",
+      "id": "CAPEC-201"
+    },
+    {
+      "Description": "<b>CAPEC-273: HTTP Response Smuggling</b><br>An adversary manipulates and injects malicious content in the form of secret unauthorized HTTP responses, into a single HTTP response from a vulnerable or compromised back-end HTTP agent (e.g., server). \n See CanPrecede relationships for possible consequences.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "HTTP Response Smuggling",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/273.html",
+      "id": "CAPEC-273"
+    },
+    {
+      "Description": "<b>CAPEC-5: Blue Boxing</b><br>This type of attack against older telephone switches and trunks has been around for decades. A tone is sent by an adversary to impersonate a supervisor signal which has the effect of rerouting or usurping command of the line. While the US infrastructure proper may not contain widespread vulnerabilities to this type of attack, many companies are connected globally through call centers and business process outsourcing. These international systems may be operated in countries which have not upgraded Telco infrastructure and so are vulnerable to Blue boxing. Blue boxing is a result of failure on the part of the system to enforce strong authorization for administrative functions. While the infrastructure is different than standard current applications like web applications, there are historical lessons to be learned to upgrade the access control for administrative functions. \n \n               This attack pattern is included in CAPEC for historical purposes.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Blue Boxing",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/5.html",
+      "id": "CAPEC-5"
+    },
+    {
+      "Description": "<b>CAPEC-665: Exploitation of Thunderbolt Protection Flaws</b><br>An adversary leverages a firmware weakness within the Thunderbolt protocol, on a computing device to manipulate Thunderbolt controller firmware in order to exploit vulnerabilities in the implementation of authorization and verification schemes within Thunderbolt protection mechanisms. Upon gaining physical access to a target device, the adversary conducts high-level firmware manipulation of the victim Thunderbolt controller SPI (Serial Peripheral Interface) flash, through the use of a SPI Programing device and an external Thunderbolt device, typically as the target device is booting up. If successful, this allows the adversary to modify memory, subvert authentication mechanisms, spoof identities and content, and extract data and memory from the target device. Currently 7 major vulnerabilities exist within Thunderbolt protocol with 9 attack vectors as noted in the Execution Flow.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Exploitation of Thunderbolt Protection Flaws",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/665.html",
+      "id": "CAPEC-665"
+    },
+    {
+      "Description": "<b>CAPEC-274: HTTP Verb Tampering</b><br>An attacker modifies the HTTP Verb (e.g. GET, PUT, TRACE, etc.) in order to bypass access restrictions. Some web environments allow administrators to restrict access based on the HTTP Verb used with requests. However, attackers can often provide a different HTTP Verb, or even provide a random string as a verb in order to bypass these protections. This allows the attacker to access data that should otherwise be protected.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "HTTP Verb Tampering",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/274.html",
+      "id": "CAPEC-274"
+    },
+    {
+      "Description": "<b>CAPEC-33: HTTP Request Smuggling</b><br>An adversary abuses the flexibility and discrepancies in the parsing and interpretation of HTTP Request messages using various HTTP headers, request-line and body parameters as well as message sizes (denoted by the end of message signaled by a given HTTP header) by different intermediary HTTP agents (e.g., load balancer, reverse proxy, web caching proxies, application firewalls, etc.) to secretly send unauthorized and malicious HTTP requests to a back-end HTTP agent (e.g., web server). \n See CanPrecede relationships for possible consequences.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "HTTP Request Smuggling",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/33.html",
+      "id": "CAPEC-33"
+    },
+    {
+      "Description": "<b>CAPEC-220: Client-Server Protocol Manipulation</b><br>An adversary takes advantage of weaknesses in the protocol by which a client and server are communicating to perform unexpected actions. Communication protocols are necessary to transfer messages between client and server applications. Moreover, different protocols may be used for different types of interactions.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Client-Server Protocol Manipulation",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/220.html",
+      "id": "CAPEC-220"
+    },
+    {
+      "Description": "<b>CAPEC-278: Web Services Protocol Manipulation</b><br>An adversary manipulates a web service related protocol to cause a web application or service to react differently than intended. This can either be performed through the manipulation of call parameters to include unexpected values, or by changing the called function to one that should normally be restricted or limited. By leveraging this pattern of attack, the adversary is able to gain access to data or resources normally restricted, or to cause the application or service to crash.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Web Services Protocol Manipulation",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/278.html",
+      "id": "CAPEC-278"
+    },
+    {
+      "Description": "<b>CAPEC-277: Data Interchange Protocol Manipulation</b><br>Data Interchange Protocols are used to transmit structured data between entities. These protocols are often specific to a particular domain (B2B: purchase orders, invoices, transport logistics and waybills, medical records). They are often, but not always, XML-based. Subverting the protocol can allow an adversary to impersonate others, discover sensitive information, control the outcome of a session, or perform other attacks. This type of attack targets invalid assumptions that may be inherent in implementers of the protocol, incorrect implementations of the protocol, or vulnerabilities in the protocol itself.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Data Interchange Protocol Manipulation",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/277.html",
+      "id": "CAPEC-277"
+    },
+    {
+      "Description": "<b>CAPEC-276: Inter-component Protocol Manipulation</b><br>Inter-component protocols are used to communicate between different software and hardware modules within a single computer. Common examples are: interrupt signals and data pipes. Subverting the protocol can allow an adversary to impersonate others, discover sensitive information, control the outcome of a session, or perform other attacks. This type of attack targets invalid assumptions that may be inherent in implementers of the protocol, incorrect implementations of the protocol, or vulnerabilities in the protocol itself.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Inter-component Protocol Manipulation",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/276.html",
+      "id": "CAPEC-276"
+    },
+    {
+      "Description": "<b>CAPEC-90: Reflection Attack in Authentication Protocol</b><br>An adversary can abuse an authentication protocol susceptible to reflection attack in order to defeat it. Doing so allows the adversary illegitimate access to the target system, without possessing the requisite credentials. Reflection attacks are of great concern to authentication protocols that rely on a challenge-handshake or similar mechanism. An adversary can impersonate a legitimate user and can gain illegitimate access to the system by successfully mounting a reflection attack during authentication.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Reflection Attack in Authentication Protocol",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/90.html",
+      "id": "CAPEC-90"
+    },
+    {
+      "Description": "<b>CAPEC-272: Protocol Manipulation</b><br>An adversary subverts a communications protocol to perform an attack. This type of attack can allow an adversary to impersonate others, discover sensitive information, control the outcome of a session, or perform other attacks. This type of attack targets invalid assumptions that may be inherent in implementers of the protocol, incorrect implementations of the protocol, or vulnerabilities in the protocol itself.",
+      "color": "#2176ff",
+      "size": 30,
+      "label": "Protocol Manipulation",
+      "label_class": "node-label-big",
+      "type": "CAPEC",
+      "abstraction": "Meta",
+      "url": "https://capec.mitre.org/data/definitions/272.html",
+      "id": "CAPEC-272"
+    },
+    {
+      "Description": "<b>CAPEC-34: HTTP Response Splitting</b><br>An adversary manipulates and injects malicious content, in the form of secret unauthorized HTTP responses, into a single HTTP response from a vulnerable or compromised back-end HTTP agent (e.g., web server) or into an already spoofed HTTP response from an adversary controlled domain/site. \n See CanPrecede relationships for possible consequences.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "HTTP Response Splitting",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/34.html",
+      "id": "CAPEC-34"
+    },
+    {
+      "Description": "<b>CAPEC-279: SOAP Manipulation</b><br>Simple Object Access Protocol (SOAP) is used as a communication protocol between a client and server to invoke web services on the server. It is an XML-based protocol, and therefore suffers from many of the same shortcomings as other XML-based protocols. Adversaries can make use of these shortcomings and manipulate the content of SOAP paramters, leading to undesirable behavior on the server and allowing the adversary to carry out a number of further attacks.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "SOAP Manipulation",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/279.html",
+      "id": "CAPEC-279"
+    },
+    {
+      "Description": "<b>CAPEC-221: Data Serialization External Entities Blowup</b><br>This attack takes advantage of the entity replacement property of certain data serialization languages (e.g., XML, YAML, etc.) where the value of the replacement is a URI. A well-crafted file could have the entity refer to a URI that consumes a large amount of resources to create a denial of service condition. This can cause the system to either freeze, crash, or execute arbitrary code depending on the URI.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Data Serialization External Entities Blowup",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/221.html",
+      "id": "CAPEC-221"
+    },
+    {
+      "Description": "<b>CAPEC-105: HTTP Request Splitting</b><br>An adversary abuses the flexibility and discrepancies in the parsing and interpretation of HTTP Request messages by different intermediary HTTP agents (e.g., load balancer, reverse proxy, web caching proxies, application firewalls, etc.) to split a single HTTP request into multiple unauthorized and malicious HTTP requests to a back-end HTTP agent (e.g., web server). \n See CanPrecede relationships for possible consequences.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "HTTP Request Splitting",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/105.html",
+      "id": "CAPEC-105"
+    }
+  ],
+  "links": [
+    {
+      "source": "CAPEC-201",
+      "target": "CAPEC-278"
+    },
+    {
+      "source": "CAPEC-273",
+      "target": "CAPEC-220"
+    },
+    {
+      "source": "CAPEC-5",
+      "target": "CAPEC-220"
+    },
+    {
+      "source": "CAPEC-665",
+      "target": "CAPEC-276"
+    },
+    {
+      "source": "CAPEC-274",
+      "target": "CAPEC-220"
+    },
+    {
+      "source": "CAPEC-33",
+      "target": "CAPEC-220"
+    },
+    {
+      "source": "CAPEC-220",
+      "target": "CAPEC-272"
+    },
+    {
+      "source": "CAPEC-278",
+      "target": "CAPEC-272"
+    },
+    {
+      "source": "CAPEC-277",
+      "target": "CAPEC-272"
+    },
+    {
+      "source": "CAPEC-276",
+      "target": "CAPEC-272"
+    },
+    {
+      "source": "CAPEC-90",
+      "target": "CAPEC-272"
+    },
+    {
+      "source": "CAPEC-34",
+      "target": "CAPEC-220"
+    },
+    {
+      "source": "CAPEC-279",
+      "target": "CAPEC-278"
+    },
+    {
+      "source": "CAPEC-221",
+      "target": "CAPEC-278"
+    },
+    {
+      "source": "CAPEC-105",
+      "target": "CAPEC-220"
+    }
+  ]
+}

@@ -1,0 +1,148 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CWE-754: Improper Check for Unusual or Exceptional Conditions</b><br>The product does not check or incorrectly checks for unusual or exceptional conditions that are not expected to occur frequently during day to day operation of the product.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Improper Check for Unusual or Exceptional Conditions",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/754.html",
+      "id": "CWE-754"
+    },
+    {
+      "Description": "<b>CWE-394: Unexpected Status Code or Return Value</b><br>The product does not properly check when a function or operation returns a value that is legitimate for the function, but is not expected by the product.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Unexpected Status Code or Return Value",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/394.html",
+      "id": "CWE-394"
+    },
+    {
+      "Description": "<b>CWE-391: Unchecked Error Condition</b><br>[PLANNED FOR DEPRECATION. SEE MAINTENANCE NOTES AND CONSIDER CWE-252, CWE-248, OR CWE-1069.] Ignoring exceptions and other error conditions may allow an attacker to induce unexpected behavior unnoticed.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Unchecked Error Condition",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/391.html",
+      "id": "CWE-391"
+    },
+    {
+      "Description": "<b>CWE-354: Improper Validation of Integrity Check Value</b><br>The product does not validate or incorrectly validates the integrity check values or \"checksums\" of a message. This may prevent it from detecting if the data has been modified or corrupted in transmission.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Validation of Integrity Check Value",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/354.html",
+      "id": "CWE-354"
+    },
+    {
+      "Description": "<b>CWE-476: NULL Pointer Dereference</b><br>A NULL pointer dereference occurs when the application dereferences a pointer that it expects to be valid, but is NULL, typically causing a crash or exit.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "NULL Pointer Dereference",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/476.html",
+      "id": "CWE-476"
+    },
+    {
+      "Description": "<b>CWE-273: Improper Check for Dropped Privileges</b><br>The product attempts to drop privileges but does not check or incorrectly checks to see if the drop succeeded.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Check for Dropped Privileges",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/273.html",
+      "id": "CWE-273"
+    },
+    {
+      "Description": "<b>CWE-253: Incorrect Check of Function Return Value</b><br>The product incorrectly checks a return value from a function, which prevents it from detecting errors or exceptional conditions.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Incorrect Check of Function Return Value",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/253.html",
+      "id": "CWE-253"
+    },
+    {
+      "Description": "<b>CWE-252: Unchecked Return Value</b><br>The product does not check the return value from a method or function, which can prevent it from detecting unexpected states and conditions.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Unchecked Return Value",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/252.html",
+      "id": "CWE-252"
+    },
+    {
+      "Description": "<b>CWE-690: Unchecked Return Value to NULL Pointer Dereference</b><br>The product does not check for an error after calling a function that can return with a NULL pointer if the function fails, which leads to a resultant NULL pointer dereference.",
+      "color": "#9ac20c",
+      "size": 10,
+      "label": "Unchecked Return Value to NULL Pointer Dereference",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Compound",
+      "url": "https://cwe.mitre.org/data/definitions/690.html",
+      "id": "CWE-690"
+    }
+  ],
+  "links": [
+    {
+      "width": 1,
+      "source": "CWE-394",
+      "target": "CWE-754"
+    },
+    {
+      "width": 1,
+      "source": "CWE-391",
+      "target": "CWE-754"
+    },
+    {
+      "width": 1,
+      "source": "CWE-354",
+      "target": "CWE-754"
+    },
+    {
+      "width": 1,
+      "source": "CWE-476",
+      "target": "CWE-754"
+    },
+    {
+      "width": 1,
+      "source": "CWE-273",
+      "target": "CWE-754"
+    },
+    {
+      "width": 1,
+      "source": "CWE-253",
+      "target": "CWE-754"
+    },
+    {
+      "width": 1,
+      "source": "CWE-252",
+      "target": "CWE-754"
+    },
+    {
+      "width": 1,
+      "source": "CWE-690",
+      "target": "CWE-252"
+    }
+  ]
+}

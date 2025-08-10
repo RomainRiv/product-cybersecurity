@@ -1,0 +1,164 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CWE-315: Cleartext Storage of Sensitive Information in a Cookie</b><br>The product stores sensitive information in cleartext in a cookie.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Cleartext Storage of Sensitive Information in a Cookie",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/315.html",
+      "id": "CWE-315"
+    },
+    {
+      "Description": "<b>CWE-313: Cleartext Storage in a File or on Disk</b><br>The product stores sensitive information in cleartext in a file, or on disk.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Cleartext Storage in a File or on Disk",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/313.html",
+      "id": "CWE-313"
+    },
+    {
+      "Description": "<b>CWE-526: Cleartext Storage of Sensitive Information in an Environment Variable</b><br>The product uses an environment variable to store unencrypted sensitive information.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Cleartext Storage of Sensitive Information in an Environment Variable",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/526.html",
+      "id": "CWE-526"
+    },
+    {
+      "Description": "<b>CWE-314: Cleartext Storage in the Registry</b><br>The product stores sensitive information in cleartext in the registry.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Cleartext Storage in the Registry",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/314.html",
+      "id": "CWE-314"
+    },
+    {
+      "Description": "<b>CWE-922: Insecure Storage of Sensitive Information</b><br>The product stores sensitive information without properly limiting read or write access by unauthorized actors.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Insecure Storage of Sensitive Information",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/922.html",
+      "id": "CWE-922"
+    },
+    {
+      "Description": "<b>CWE-312: Cleartext Storage of Sensitive Information</b><br>The product stores sensitive information in cleartext within a resource that might be accessible to another control sphere.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Cleartext Storage of Sensitive Information",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/312.html",
+      "id": "CWE-312"
+    },
+    {
+      "Description": "<b>CWE-316: Cleartext Storage of Sensitive Information in Memory</b><br>The product stores sensitive information in cleartext in memory.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Cleartext Storage of Sensitive Information in Memory",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/316.html",
+      "id": "CWE-316"
+    },
+    {
+      "Description": "<b>CWE-317: Cleartext Storage of Sensitive Information in GUI</b><br>The product stores sensitive information in cleartext within the GUI.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Cleartext Storage of Sensitive Information in GUI",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/317.html",
+      "id": "CWE-317"
+    },
+    {
+      "Description": "<b>CWE-318: Cleartext Storage of Sensitive Information in Executable</b><br>The product stores sensitive information in cleartext in an executable.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Cleartext Storage of Sensitive Information in Executable",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/318.html",
+      "id": "CWE-318"
+    },
+    {
+      "Description": "<b>CWE-921: Storage of Sensitive Data in a Mechanism without Access Control</b><br>The product stores sensitive information in a file system or device that does not have built-in access control.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Storage of Sensitive Data in a Mechanism without Access Control",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/921.html",
+      "id": "CWE-921"
+    }
+  ],
+  "links": [
+    {
+      "width": 1,
+      "source": "CWE-315",
+      "target": "CWE-312"
+    },
+    {
+      "width": 1,
+      "source": "CWE-313",
+      "target": "CWE-312"
+    },
+    {
+      "width": 1,
+      "source": "CWE-526",
+      "target": "CWE-312"
+    },
+    {
+      "width": 1,
+      "source": "CWE-314",
+      "target": "CWE-312"
+    },
+    {
+      "width": 1,
+      "source": "CWE-312",
+      "target": "CWE-922"
+    },
+    {
+      "width": 1,
+      "source": "CWE-316",
+      "target": "CWE-312"
+    },
+    {
+      "width": 1,
+      "source": "CWE-317",
+      "target": "CWE-312"
+    },
+    {
+      "width": 1,
+      "source": "CWE-318",
+      "target": "CWE-312"
+    },
+    {
+      "width": 1,
+      "source": "CWE-921",
+      "target": "CWE-922"
+    }
+  ]
+}

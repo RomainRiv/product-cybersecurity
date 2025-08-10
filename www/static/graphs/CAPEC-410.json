@@ -1,0 +1,110 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CAPEC-414: Pretexting via Delivery Person</b><br>An adversary engages in pretexting behavior, assuming the role of a delivery person, to solicit information from target persons, or manipulate the target into performing an action that serves the adversary's interests. Impersonating a delivery person is an effective attack and an easy attack since not much acting is involved. Usually the hardest part is looking the part and having all of the proper credentials, papers and \"deliveries\" in order to be able to pull it off.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Pretexting via Delivery Person",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/414.html",
+      "id": "CAPEC-414"
+    },
+    {
+      "Description": "<b>CAPEC-407: Pretexting</b><br>An adversary engages in pretexting behavior to solicit information from target persons, or manipulate the target into performing some action that serves the adversary's interests. During a pretexting attack, the adversary creates an invented scenario, assuming an identity or role to persuade a targeted victim to release information or perform some action. It is more than just creating a lie; in some cases it can be creating a whole new identity and then using that identity to manipulate the receipt of information.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Pretexting",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/407.html",
+      "id": "CAPEC-407"
+    },
+    {
+      "Description": "<b>CAPEC-410: Information Elicitation</b><br>An adversary engages an individual using any combination of social engineering methods for the purpose of extracting information. Accurate contextual and environmental queues, such as knowing important information about the target company or individual can greatly increase the success of the attack and the quality of information gathered. Authentic mimicry combined with detailed knowledge increases the success of elicitation attacks.",
+      "color": "#2176ff",
+      "size": 30,
+      "label": "Information Elicitation",
+      "label_class": "node-label-big",
+      "type": "CAPEC",
+      "abstraction": "Meta",
+      "url": "https://capec.mitre.org/data/definitions/410.html",
+      "id": "CAPEC-410"
+    },
+    {
+      "Description": "<b>CAPEC-412: Pretexting via Customer Service</b><br>An adversary engages in pretexting behavior, assuming the role of someone who works for Customer Service, to solicit information from target persons, or manipulate the target into performing an action that serves the adversary's interests. One example of a scenario such as this would be to call an individual, articulate your false affiliation with a credit card company, and then attempt to get the individual to verify their credit card number.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Pretexting via Customer Service",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/412.html",
+      "id": "CAPEC-412"
+    },
+    {
+      "Description": "<b>CAPEC-383: Harvesting Information via API Event Monitoring</b><br>An adversary hosts an event within an application framework and then monitors the data exchanged during the course of the event for the purpose of harvesting any important data leaked during the transactions. One example could be harvesting lists of usernames or userIDs for the purpose of sending spam messages to those users. One example of this type of attack involves the adversary creating an event within the sub-application. Assume the adversary hosts a \"virtual sale\" of rare items. As other users enter the event, the attacker records via AiTM (CAPEC-94) proxy the user_ids and usernames of everyone who attends. The adversary would then be able to spam those users within the application using an automated script.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Harvesting Information via API Event Monitoring",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/383.html",
+      "id": "CAPEC-383"
+    },
+    {
+      "Description": "<b>CAPEC-413: Pretexting via Tech Support</b><br>An adversary engages in pretexting behavior, assuming the role of a tech support worker, to solicit information from target persons, or manipulate the target into performing an action that serves the adversary's interests. An adversary who uses social engineering to impersonate a tech support worker can have devastating effects on a network. This is an effective attack vector, because it can give an adversary physical access to network computers. It only takes a matter of seconds for someone to compromise a computer with physical access. One of the best technological tools at the disposal of a social engineer, posing as a technical support person, is a USB thumb drive. These are small, easy to conceal, and can be loaded with different payloads depending on what task needs to be done. However, this form of attack does not require physical access as it can also be effectively carried out via phone or email.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Pretexting via Tech Support",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/413.html",
+      "id": "CAPEC-413"
+    },
+    {
+      "Description": "<b>CAPEC-415: Pretexting via Phone</b><br>An adversary engages in pretexting behavior, assuming some sort of trusted role, and contacting the targeted individual or organization via phone to solicit information from target persons, or manipulate the target into performing an action that serves the adversary's interests. This is the most common social engineering attack. Some of the most commonly effective approaches are to impersonate a fellow employee, impersonate a computer technician or to target help desk personnel.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Pretexting via Phone",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/415.html",
+      "id": "CAPEC-415"
+    }
+  ],
+  "links": [
+    {
+      "source": "CAPEC-414",
+      "target": "CAPEC-407"
+    },
+    {
+      "source": "CAPEC-407",
+      "target": "CAPEC-410"
+    },
+    {
+      "source": "CAPEC-412",
+      "target": "CAPEC-407"
+    },
+    {
+      "source": "CAPEC-383",
+      "target": "CAPEC-407"
+    },
+    {
+      "source": "CAPEC-413",
+      "target": "CAPEC-407"
+    },
+    {
+      "source": "CAPEC-415",
+      "target": "CAPEC-407"
+    }
+  ]
+}

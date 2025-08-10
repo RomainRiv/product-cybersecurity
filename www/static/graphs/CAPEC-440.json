@@ -1,0 +1,125 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CAPEC-402: Bypassing ATA Password Security</b><br>An adversary exploits a weakness in ATA security on a drive to gain access to the information the drive contains without supplying the proper credentials. ATA Security is often employed to protect hard disk information from unauthorized access. The mechanism requires the user to type in a password before the BIOS is allowed access to drive contents. Some implementations of ATA security will accept the ATA command to update the password without the user having authenticated with the BIOS. This occurs because the security mechanism assumes the user has first authenticated via the BIOS prior to sending commands to the drive. Various methods exist for exploiting this flaw, the most common being installing the ATA protected drive into a system lacking ATA security features (a.k.a. hot swapping). Once the drive is installed into the new system the BIOS can be used to reset the drive password.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Bypassing ATA Password Security",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/402.html",
+      "id": "CAPEC-402"
+    },
+    {
+      "Description": "<b>CAPEC-530: Provide Counterfeit Component</b><br>An attacker provides a counterfeit component during the procurement process of a lower-tier component supplier to a sub-system developer or integrator, which is then built into the system being upgraded or repaired by the victim, allowing the attacker to cause disruption or additional compromise.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Provide Counterfeit Component",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/530.html",
+      "id": "CAPEC-530"
+    },
+    {
+      "Description": "<b>CAPEC-677: Server Motherboard Compromise</b><br>Malware is inserted in a server motherboard (e.g., in the flash memory) in order to alter server functionality from that intended. The development environment or hardware/software support activity environment is susceptible to an adversary inserting malicious software into hardware components during development or update.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Server Motherboard Compromise",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/677.html",
+      "id": "CAPEC-677"
+    },
+    {
+      "Description": "<b>CAPEC-440: Hardware Integrity Attack</b><br>An adversary exploits a weakness in the system maintenance process and causes a change to be made to a technology, product, component, or sub-component or a new one installed during its deployed use at the victim location for the purpose of carrying out an attack.",
+      "color": "#2176ff",
+      "size": 30,
+      "label": "Hardware Integrity Attack",
+      "label_class": "node-label-big",
+      "type": "CAPEC",
+      "abstraction": "Meta",
+      "url": "https://capec.mitre.org/data/definitions/440.html",
+      "id": "CAPEC-440"
+    },
+    {
+      "Description": "<b>CAPEC-534: Malicious Hardware Update</b><br>An adversary introduces malicious hardware during an update or replacement procedure, allowing for additional compromise or site disruption at the victim location. After deployment, it is not uncommon for upgrades and replacements to occur involving hardware and various replaceable parts. These upgrades and replacements are intended to correct defects, provide additional features, and to replace broken or worn-out parts. However, by forcing or tricking the replacement of a good component with a defective or corrupted component, an adversary can leverage known defects to obtain a desired malicious impact.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Malicious Hardware Update",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/534.html",
+      "id": "CAPEC-534"
+    },
+    {
+      "Description": "<b>CAPEC-401: Physically Hacking Hardware</b><br>An adversary exploits a weakness in access control to gain access to currently installed hardware and precedes to implement changes or secretly replace a hardware component which undermines the system's integrity for the purpose of carrying out an attack.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Physically Hacking Hardware",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/401.html",
+      "id": "CAPEC-401"
+    },
+    {
+      "Description": "<b>CAPEC-531: Hardware Component Substitution</b><br>An attacker substitutes out a tested and approved hardware component for a maliciously-altered hardware component. This type of attack is carried out directly on the system, enabling the attacker to then cause disruption or additional compromise.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Hardware Component Substitution",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/531.html",
+      "id": "CAPEC-531"
+    },
+    {
+      "Description": "<b>CAPEC-535: Malicious Gray Market Hardware</b><br>An attacker maliciously alters hardware components that will be sold on the gray market, allowing for victim disruption and compromise when the victim needs replacement hardware components for systems where the parts are no longer in regular supply from original suppliers, or where the hardware components from the attacker seems to be a great benefit from a cost perspective.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Malicious Gray Market Hardware",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/535.html",
+      "id": "CAPEC-535"
+    }
+  ],
+  "links": [
+    {
+      "source": "CAPEC-402",
+      "target": "CAPEC-401"
+    },
+    {
+      "source": "CAPEC-530",
+      "target": "CAPEC-531"
+    },
+    {
+      "source": "CAPEC-677",
+      "target": "CAPEC-534"
+    },
+    {
+      "source": "CAPEC-534",
+      "target": "CAPEC-440"
+    },
+    {
+      "source": "CAPEC-401",
+      "target": "CAPEC-440"
+    },
+    {
+      "source": "CAPEC-531",
+      "target": "CAPEC-534"
+    },
+    {
+      "source": "CAPEC-535",
+      "target": "CAPEC-531"
+    }
+  ]
+}

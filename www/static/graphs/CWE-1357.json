@@ -1,0 +1,84 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CWE-1104: Use of Unmaintained Third Party Components</b><br>The product relies on third-party components that are not\n\t\t\t\t\tactively supported or maintained by the original developer or a trusted proxy\n\t\t\t\t\tfor the original developer.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Use of Unmaintained Third Party Components",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1104.html",
+      "id": "CWE-1104"
+    },
+    {
+      "Description": "<b>CWE-1310: Missing Ability to Patch ROM Code</b><br>Missing an ability to patch ROM code may leave a System or System-on-Chip (SoC) in a vulnerable state.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Missing Ability to Patch ROM Code",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1310.html",
+      "id": "CWE-1310"
+    },
+    {
+      "Description": "<b>CWE-1357: Reliance on Insufficiently Trustworthy Component</b><br>The product is built from multiple separate components, but it uses a component that is not sufficiently trusted to meet expectations for security, reliability, updateability, and maintainability.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Reliance on Insufficiently Trustworthy Component",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/1357.html",
+      "id": "CWE-1357"
+    },
+    {
+      "Description": "<b>CWE-1329: Reliance on Component That is Not Updateable</b><br>The product contains a component that cannot be updated or patched in order to remove vulnerabilities or significant bugs.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Reliance on Component That is Not Updateable",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1329.html",
+      "id": "CWE-1329"
+    },
+    {
+      "Description": "<b>CWE-1277: Firmware Not Updateable</b><br>The product does not provide its\n\t\t\tusers with the ability to update or patch its\n\t\t\tfirmware to address any vulnerabilities or\n\t\t\tweaknesses that may be present.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Firmware Not Updateable",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1277.html",
+      "id": "CWE-1277"
+    }
+  ],
+  "links": [
+    {
+      "width": 1,
+      "source": "CWE-1104",
+      "target": "CWE-1357"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1310",
+      "target": "CWE-1329"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1329",
+      "target": "CWE-1357"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1277",
+      "target": "CWE-1329"
+    }
+  ]
+}

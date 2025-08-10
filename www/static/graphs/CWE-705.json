@@ -1,0 +1,164 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CWE-455: Non-exit on Failed Initialization</b><br>The product does not exit or otherwise modify its operation when security-relevant errors occur during initialization, such as when a configuration file has a format error or a hardware security module (HSM) cannot be activated, which can cause the product to execute in a less secure fashion than intended by the administrator.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Non-exit on Failed Initialization",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/455.html",
+      "id": "CWE-455"
+    },
+    {
+      "Description": "<b>CWE-396: Declaration of Catch for Generic Exception</b><br>Catching overly broad exceptions promotes complex error handling code that is more likely to contain security vulnerabilities.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Declaration of Catch for Generic Exception",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/396.html",
+      "id": "CWE-396"
+    },
+    {
+      "Description": "<b>CWE-584: Return Inside Finally Block</b><br>The code has a return statement inside a finally block, which will cause any thrown exception in the try block to be discarded.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Return Inside Finally Block",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/584.html",
+      "id": "CWE-584"
+    },
+    {
+      "Description": "<b>CWE-395: Use of NullPointerException Catch to Detect NULL Pointer Dereference</b><br>Catching NullPointerException should not be used as an alternative to programmatic checks to prevent dereferencing a null pointer.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Use of NullPointerException Catch to Detect NULL Pointer Dereference",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/395.html",
+      "id": "CWE-395"
+    },
+    {
+      "Description": "<b>CWE-600: Uncaught Exception in Servlet </b><br>The Servlet does not catch all exceptions, which may reveal sensitive debugging information.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Uncaught Exception in Servlet ",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/600.html",
+      "id": "CWE-600"
+    },
+    {
+      "Description": "<b>CWE-705: Incorrect Control Flow Scoping</b><br>The product does not properly return control flow to the proper location after it has completed a task or detected an unusual condition.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Incorrect Control Flow Scoping",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/705.html",
+      "id": "CWE-705"
+    },
+    {
+      "Description": "<b>CWE-397: Declaration of Throws for Generic Exception</b><br>Throwing overly broad exceptions promotes complex error handling code that is more likely to contain security vulnerabilities.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Declaration of Throws for Generic Exception",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/397.html",
+      "id": "CWE-397"
+    },
+    {
+      "Description": "<b>CWE-698: Execution After Redirect (EAR)</b><br>The web application sends a redirect to another location, but instead of exiting, it executes additional code.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Execution After Redirect (EAR)",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/698.html",
+      "id": "CWE-698"
+    },
+    {
+      "Description": "<b>CWE-382: J2EE Bad Practices: Use of System.exit()</b><br>A J2EE application uses System.exit(), which also shuts down its container.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "J2EE Bad Practices: Use of System.exit()",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/382.html",
+      "id": "CWE-382"
+    },
+    {
+      "Description": "<b>CWE-248: Uncaught Exception</b><br>An exception is thrown from a function, but it is not caught.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Uncaught Exception",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/248.html",
+      "id": "CWE-248"
+    }
+  ],
+  "links": [
+    {
+      "width": 1,
+      "source": "CWE-455",
+      "target": "CWE-705"
+    },
+    {
+      "width": 1,
+      "source": "CWE-396",
+      "target": "CWE-705"
+    },
+    {
+      "width": 1,
+      "source": "CWE-584",
+      "target": "CWE-705"
+    },
+    {
+      "width": 1,
+      "source": "CWE-395",
+      "target": "CWE-705"
+    },
+    {
+      "width": 1,
+      "source": "CWE-600",
+      "target": "CWE-248"
+    },
+    {
+      "width": 1,
+      "source": "CWE-397",
+      "target": "CWE-705"
+    },
+    {
+      "width": 1,
+      "source": "CWE-698",
+      "target": "CWE-705"
+    },
+    {
+      "width": 1,
+      "source": "CWE-382",
+      "target": "CWE-705"
+    },
+    {
+      "width": 1,
+      "source": "CWE-248",
+      "target": "CWE-705"
+    }
+  ]
+}

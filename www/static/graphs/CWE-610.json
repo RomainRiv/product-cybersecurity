@@ -1,0 +1,190 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CWE-611: Improper Restriction of XML External Entity Reference</b><br>The product processes an XML document that can contain XML entities with URIs that resolve to documents outside of the intended sphere of control, causing the product to embed incorrect documents into its output.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Restriction of XML External Entity Reference",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/611.html",
+      "id": "CWE-611"
+    },
+    {
+      "Description": "<b>CWE-601: URL Redirection to Untrusted Site ('Open Redirect')</b><br>A web application accepts a user-controlled input that specifies a link to an external site, and uses that link in a Redirect. This simplifies phishing attacks.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "URL Redirection to Untrusted Site ('Open Redirect')",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/601.html",
+      "id": "CWE-601"
+    },
+    {
+      "Description": "<b>CWE-441: Unintended Proxy or Intermediary ('Confused Deputy')</b><br>The product receives a request, message, or directive from an upstream component, but the product does not sufficiently preserve the original source of the request before forwarding the request to an external actor that is outside of the product's control sphere. This causes the product to appear to be the source of the request, leading it to act as a proxy or other intermediary between the upstream component and the external actor.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Unintended Proxy or Intermediary ('Confused Deputy')",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/441.html",
+      "id": "CWE-441"
+    },
+    {
+      "Description": "<b>CWE-470: Use of Externally-Controlled Input to Select Classes or Code ('Unsafe Reflection')</b><br>The product uses external input with reflection to select which classes or code to use, but it does not sufficiently prevent the input from selecting improper classes or code.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Use of Externally-Controlled Input to Select Classes or Code ('Unsafe Reflection')",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/470.html",
+      "id": "CWE-470"
+    },
+    {
+      "Description": "<b>CWE-73: External Control of File Name or Path</b><br>The product allows user input to control or influence paths or file names that are used in filesystem operations.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "External Control of File Name or Path",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/73.html",
+      "id": "CWE-73"
+    },
+    {
+      "Description": "<b>CWE-610: Externally Controlled Reference to a Resource in Another Sphere</b><br>The product uses an externally controlled name or reference that resolves to a resource that is outside of the intended control sphere.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Externally Controlled Reference to a Resource in Another Sphere",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/610.html",
+      "id": "CWE-610"
+    },
+    {
+      "Description": "<b>CWE-384: Session Fixation</b><br>Authenticating a user, or otherwise establishing a new user session, without invalidating any existing session identifier gives an attacker the opportunity to steal authenticated sessions.",
+      "color": "#9ac20c",
+      "size": 10,
+      "label": "Session Fixation",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Compound",
+      "url": "https://cwe.mitre.org/data/definitions/384.html",
+      "id": "CWE-384"
+    },
+    {
+      "Description": "<b>CWE-15: External Control of System or Configuration Setting</b><br>One or more system settings or configuration elements can be externally controlled by a user.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "External Control of System or Configuration Setting",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/15.html",
+      "id": "CWE-15"
+    },
+    {
+      "Description": "<b>CWE-918: Server-Side Request Forgery (SSRF)</b><br>The web server receives a URL or similar request from an upstream component and retrieves the contents of this URL, but it does not sufficiently ensure that the request is being sent to the expected destination.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Server-Side Request Forgery (SSRF)",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/918.html",
+      "id": "CWE-918"
+    },
+    {
+      "Description": "<b>CWE-114: Process Control</b><br>Executing commands or loading libraries from an untrusted source or in an untrusted environment can cause an application to execute malicious commands (and payloads) on behalf of an attacker.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Process Control",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/114.html",
+      "id": "CWE-114"
+    },
+    {
+      "Description": "<b>CWE-1021: Improper Restriction of Rendered UI Layers or Frames</b><br>The web application does not restrict or incorrectly restricts frame objects or UI layers that belong to another application or domain, which can lead to user confusion about which interface the user is interacting with.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Restriction of Rendered UI Layers or Frames",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1021.html",
+      "id": "CWE-1021"
+    }
+  ],
+  "links": [
+    {
+      "width": 1,
+      "source": "CWE-611",
+      "target": "CWE-610"
+    },
+    {
+      "width": 1,
+      "source": "CWE-601",
+      "target": "CWE-610"
+    },
+    {
+      "width": 1,
+      "source": "CWE-441",
+      "target": "CWE-610"
+    },
+    {
+      "width": 1,
+      "source": "CWE-470",
+      "target": "CWE-610"
+    },
+    {
+      "width": 1,
+      "source": "CWE-73",
+      "target": "CWE-610"
+    },
+    {
+      "width": 1,
+      "source": "CWE-384",
+      "target": "CWE-610"
+    },
+    {
+      "width": 1,
+      "source": "CWE-15",
+      "target": "CWE-610"
+    },
+    {
+      "width": 1,
+      "source": "CWE-918",
+      "target": "CWE-441"
+    },
+    {
+      "width": 1,
+      "source": "CWE-918",
+      "target": "CWE-610"
+    },
+    {
+      "width": 1,
+      "source": "CWE-114",
+      "target": "CWE-73"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1021",
+      "target": "CWE-441"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1021",
+      "target": "CWE-610"
+    }
+  ]
+}

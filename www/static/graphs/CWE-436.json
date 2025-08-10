@@ -1,0 +1,132 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CWE-626: Null Byte Interaction Error (Poison Null Byte)</b><br>The product does not properly handle null bytes or NUL characters when passing data between different representations or components.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Null Byte Interaction Error (Poison Null Byte)",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/626.html",
+      "id": "CWE-626"
+    },
+    {
+      "Description": "<b>CWE-115: Misinterpretation of Input</b><br>The product misinterprets an input, whether from an attacker or another product, in a security-relevant fashion.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Misinterpretation of Input",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/115.html",
+      "id": "CWE-115"
+    },
+    {
+      "Description": "<b>CWE-444: Inconsistent Interpretation of HTTP Requests ('HTTP Request/Response Smuggling')</b><br>The product acts as an intermediary HTTP agent\n         (such as a proxy or firewall) in the data flow between two\n         entities such as a client and server, but it does not\n         interpret malformed HTTP requests or responses in ways that\n         are consistent with how the messages will be processed by\n         those entities that are at the ultimate destination.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Inconsistent Interpretation of HTTP Requests ('HTTP Request/Response Smuggling')",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/444.html",
+      "id": "CWE-444"
+    },
+    {
+      "Description": "<b>CWE-437: Incomplete Model of Endpoint Features</b><br>A product acts as an intermediary or monitor between two or more endpoints, but it does not have a complete model of an endpoint's features, behaviors, or state, potentially causing the product to perform incorrect actions based on this incomplete model.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Incomplete Model of Endpoint Features",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/437.html",
+      "id": "CWE-437"
+    },
+    {
+      "Description": "<b>CWE-650: Trusting HTTP Permission Methods on the Server Side</b><br>The server contains a protection mechanism that assumes that any URI that is accessed using HTTP GET will not cause a state change to the associated resource. This might allow attackers to bypass intended access restrictions and conduct resource modification and deletion attacks, since some applications allow GET to modify state.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Trusting HTTP Permission Methods on the Server Side",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/650.html",
+      "id": "CWE-650"
+    },
+    {
+      "Description": "<b>CWE-436: Interpretation Conflict</b><br>Product A handles inputs or steps differently than Product B, which causes A to perform incorrect actions based on its perception of B's state.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Interpretation Conflict",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/436.html",
+      "id": "CWE-436"
+    },
+    {
+      "Description": "<b>CWE-113: Improper Neutralization of CRLF Sequences in HTTP Headers ('HTTP Request/Response Splitting')</b><br>The product receives data from an HTTP agent/component (e.g., web server, proxy, browser, etc.), but it does not neutralize or incorrectly neutralizes CR and LF characters before the data is included in outgoing HTTP headers.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of CRLF Sequences in HTTP Headers ('HTTP Request/Response Splitting')",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/113.html",
+      "id": "CWE-113"
+    },
+    {
+      "Description": "<b>CWE-86: Improper Neutralization of Invalid Characters in Identifiers in Web Pages</b><br>The product does not neutralize or incorrectly neutralizes invalid characters or byte sequences in the middle of tag names, URI schemes, and other identifiers.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of Invalid Characters in Identifiers in Web Pages",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/86.html",
+      "id": "CWE-86"
+    }
+  ],
+  "links": [
+    {
+      "width": 1,
+      "source": "CWE-626",
+      "target": "CWE-436"
+    },
+    {
+      "width": 1,
+      "source": "CWE-115",
+      "target": "CWE-436"
+    },
+    {
+      "width": 1,
+      "source": "CWE-444",
+      "target": "CWE-436"
+    },
+    {
+      "width": 1,
+      "source": "CWE-437",
+      "target": "CWE-436"
+    },
+    {
+      "width": 1,
+      "source": "CWE-650",
+      "target": "CWE-436"
+    },
+    {
+      "width": 1,
+      "source": "CWE-113",
+      "target": "CWE-436"
+    },
+    {
+      "width": 1,
+      "source": "CWE-86",
+      "target": "CWE-436"
+    }
+  ]
+}

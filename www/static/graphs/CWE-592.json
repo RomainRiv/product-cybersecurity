@@ -1,0 +1,19 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CWE-592: DEPRECATED: Authentication Bypass Issues</b><br>This weakness has been deprecated because it covered redundant concepts already described in CWE-287.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "DEPRECATED: Authentication Bypass Issues",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/592.html",
+      "id": "CWE-592"
+    }
+  ],
+  "links": []
+}

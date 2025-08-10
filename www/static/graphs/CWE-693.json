@@ -1,0 +1,1635 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CWE-311: Missing Encryption of Sensitive Data</b><br>The product does not encrypt sensitive or critical information before storage or transmission.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Missing Encryption of Sensitive Data",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/311.html",
+      "id": "CWE-311"
+    },
+    {
+      "Description": "<b>CWE-315: Cleartext Storage of Sensitive Information in a Cookie</b><br>The product stores sensitive information in cleartext in a cookie.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Cleartext Storage of Sensitive Information in a Cookie",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/315.html",
+      "id": "CWE-315"
+    },
+    {
+      "Description": "<b>CWE-335: Incorrect Usage of Seeds in Pseudo-Random Number Generator (PRNG)</b><br>The product uses a Pseudo-Random Number Generator (PRNG) but does not correctly manage seeds.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Incorrect Usage of Seeds in Pseudo-Random Number Generator (PRNG)",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/335.html",
+      "id": "CWE-335"
+    },
+    {
+      "Description": "<b>CWE-337: Predictable Seed in Pseudo-Random Number Generator (PRNG)</b><br>A Pseudo-Random Number Generator (PRNG) is initialized from a predictable seed, such as the process ID or system time.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Predictable Seed in Pseudo-Random Number Generator (PRNG)",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/337.html",
+      "id": "CWE-337"
+    },
+    {
+      "Description": "<b>CWE-422: Unprotected Windows Messaging Channel ('Shatter')</b><br>The product does not properly verify the source of a message in the Windows Messaging System while running at elevated privileges, creating an alternate channel through which an attacker can directly send a message to the product.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Unprotected Windows Messaging Channel ('Shatter')",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/422.html",
+      "id": "CWE-422"
+    },
+    {
+      "Description": "<b>CWE-614: Sensitive Cookie in HTTPS Session Without 'Secure' Attribute</b><br>The Secure attribute for sensitive cookies in HTTPS sessions is not set, which could cause the user agent to send those cookies in plaintext over an HTTP session.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Sensitive Cookie in HTTPS Session Without 'Secure' Attribute",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/614.html",
+      "id": "CWE-614"
+    },
+    {
+      "Description": "<b>CWE-314: Cleartext Storage in the Registry</b><br>The product stores sensitive information in cleartext in the registry.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Cleartext Storage in the Registry",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/314.html",
+      "id": "CWE-314"
+    },
+    {
+      "Description": "<b>CWE-312: Cleartext Storage of Sensitive Information</b><br>The product stores sensitive information in cleartext within a resource that might be accessible to another control sphere.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Cleartext Storage of Sensitive Information",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/312.html",
+      "id": "CWE-312"
+    },
+    {
+      "Description": "<b>CWE-347: Improper Verification of Cryptographic Signature</b><br>The product does not verify, or incorrectly verifies, the cryptographic signature for data.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Verification of Cryptographic Signature",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/347.html",
+      "id": "CWE-347"
+    },
+    {
+      "Description": "<b>CWE-327: Use of a Broken or Risky Cryptographic Algorithm</b><br>The product uses a broken or risky cryptographic algorithm or protocol.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Use of a Broken or Risky Cryptographic Algorithm",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/327.html",
+      "id": "CWE-327"
+    },
+    {
+      "Description": "<b>CWE-940: Improper Verification of Source of a Communication Channel</b><br>The product establishes a communication channel to handle an incoming request that has been initiated by an actor, but it does not properly verify that the request is coming from the expected origin.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Verification of Source of a Communication Channel",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/940.html",
+      "id": "CWE-940"
+    },
+    {
+      "Description": "<b>CWE-357: Insufficient UI Warning of Dangerous Operations</b><br>The user interface provides a warning to a user regarding dangerous or sensitive operations, but the warning is not noticeable enough to warrant attention.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Insufficient UI Warning of Dangerous Operations",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/357.html",
+      "id": "CWE-357"
+    },
+    {
+      "Description": "<b>CWE-654: Reliance on a Single Factor in a Security Decision</b><br>A protection mechanism relies exclusively, or to a large extent, on the evaluation of a single condition or the integrity of a single object or entity in order to make a decision about granting access to restricted resources or functionality.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Reliance on a Single Factor in a Security Decision",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/654.html",
+      "id": "CWE-654"
+    },
+    {
+      "Description": "<b>CWE-1253: Incorrect Selection of Fuse Values</b><br>The logic level used to set a system to a secure state relies on a fuse being unblown. An attacker can set the system to an insecure state merely by blowing the fuse.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Incorrect Selection of Fuse Values",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1253.html",
+      "id": "CWE-1253"
+    },
+    {
+      "Description": "<b>CWE-333: Improper Handling of Insufficient Entropy in TRNG</b><br>True random number generators (TRNG) generally have a limited source of entropy and therefore can fail or block.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Handling of Insufficient Entropy in TRNG",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/333.html",
+      "id": "CWE-333"
+    },
+    {
+      "Description": "<b>CWE-328: Use of Weak Hash</b><br>The product uses an algorithm that produces a digest (output value) that does not meet security expectations for a hash function that allows an adversary to reasonably determine the original input (preimage attack), find another input that can produce the same hash (2nd preimage attack), or find multiple inputs that evaluate to the same hash (birthday attack).",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Use of Weak Hash",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/328.html",
+      "id": "CWE-328"
+    },
+    {
+      "Description": "<b>CWE-1240: Use of a Cryptographic Primitive with a Risky Implementation</b><br>To fulfill the need for a cryptographic primitive, the product implements a cryptographic algorithm using a non-standard, unproven, or disallowed/non-compliant cryptographic implementation.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Use of a Cryptographic Primitive with a Risky Implementation",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1240.html",
+      "id": "CWE-1240"
+    },
+    {
+      "Description": "<b>CWE-1318: Missing Support for Security Features in On-chip Fabrics or Buses</b><br> On-chip fabrics or buses either do not support or are not configured to support privilege separation or other security features, such as access control. ",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Missing Support for Security Features in On-chip Fabrics or Buses",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1318.html",
+      "id": "CWE-1318"
+    },
+    {
+      "Description": "<b>CWE-350: Reliance on Reverse DNS Resolution for a Security-Critical Action</b><br>The product performs reverse DNS resolution on an IP address to obtain the hostname and make a security decision, but it does not properly ensure that the IP address is truly associated with the hostname.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Reliance on Reverse DNS Resolution for a Security-Critical Action",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/350.html",
+      "id": "CWE-350"
+    },
+    {
+      "Description": "<b>CWE-778: Insufficient Logging</b><br>When a security-critical event occurs, the product either does not record the event or omits important details about the event when logging it.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Insufficient Logging",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/778.html",
+      "id": "CWE-778"
+    },
+    {
+      "Description": "<b>CWE-924: Improper Enforcement of Message Integrity During Transmission in a Communication Channel</b><br>The product establishes a communication channel with an endpoint and receives a message from that endpoint, but it does not sufficiently ensure that the message was not modified during transmission.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Enforcement of Message Integrity During Transmission in a Communication Channel",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/924.html",
+      "id": "CWE-924"
+    },
+    {
+      "Description": "<b>CWE-308: Use of Single-factor Authentication</b><br>The use of single-factor authentication can lead to unnecessary risk of compromise when compared with the benefits of a dual-factor authentication scheme.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Use of Single-factor Authentication",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/308.html",
+      "id": "CWE-308"
+    },
+    {
+      "Description": "<b>CWE-1039: Automated Recognition Mechanism with Inadequate Detection or Handling of Adversarial Input Perturbations</b><br>The product uses an automated mechanism such as machine learning to recognize complex data inputs (e.g. image or audio) as a particular concept or category, but it does not properly detect or handle inputs that have been modified or constructed in a way that causes the mechanism to detect a different, incorrect concept.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Automated Recognition Mechanism with Inadequate Detection or Handling of Adversarial Input Perturbations",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/1039.html",
+      "id": "CWE-1039"
+    },
+    {
+      "Description": "<b>CWE-784: Reliance on Cookies without Validation and Integrity Checking in a Security Decision</b><br>The product uses a protection mechanism that relies on the existence or values of a cookie, but it does not properly ensure that the cookie is valid for the associated user.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Reliance on Cookies without Validation and Integrity Checking in a Security Decision",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/784.html",
+      "id": "CWE-784"
+    },
+    {
+      "Description": "<b>CWE-340: Generation of Predictable Numbers or Identifiers</b><br>The product uses a scheme that generates numbers or identifiers that are more predictable than required.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Generation of Predictable Numbers or Identifiers",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/340.html",
+      "id": "CWE-340"
+    },
+    {
+      "Description": "<b>CWE-338: Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)</b><br>The product uses a Pseudo-Random Number Generator (PRNG) in a security context, but the PRNG's algorithm is not cryptographically strong.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/338.html",
+      "id": "CWE-338"
+    },
+    {
+      "Description": "<b>CWE-1189: Improper Isolation of Shared Resources on System-on-a-Chip (SoC)</b><br>The System-On-a-Chip (SoC) does not properly isolate shared resources between trusted and untrusted agents.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Isolation of Shared Resources on System-on-a-Chip (SoC)",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1189.html",
+      "id": "CWE-1189"
+    },
+    {
+      "Description": "<b>CWE-319: Cleartext Transmission of Sensitive Information</b><br>The product transmits sensitive or security-critical data in cleartext in a communication channel that can be sniffed by unauthorized actors.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Cleartext Transmission of Sensitive Information",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/319.html",
+      "id": "CWE-319"
+    },
+    {
+      "Description": "<b>CWE-450: Multiple Interpretations of UI Input</b><br>The UI has multiple interpretations of user input but does not prompt the user when it selects the less secure interpretation.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Multiple Interpretations of UI Input",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/450.html",
+      "id": "CWE-450"
+    },
+    {
+      "Description": "<b>CWE-358: Improperly Implemented Security Check for Standard</b><br>The product does not implement or incorrectly implements one or more security-relevant checks as specified by the design of a standardized algorithm, protocol, or technique.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improperly Implemented Security Check for Standard",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/358.html",
+      "id": "CWE-358"
+    },
+    {
+      "Description": "<b>CWE-1293: Missing Source Correlation of Multiple Independent Data</b><br>The product relies on one source of data, preventing the ability to detect if an adversary has compromised a data source.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Missing Source Correlation of Multiple Independent Data",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1293.html",
+      "id": "CWE-1293"
+    },
+    {
+      "Description": "<b>CWE-1385: Missing Origin Validation in WebSockets</b><br>The product uses a WebSocket, but it does not properly verify that the source of data or communication is valid.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Missing Origin Validation in WebSockets",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/1385.html",
+      "id": "CWE-1385"
+    },
+    {
+      "Description": "<b>CWE-351: Insufficient Type Distinction</b><br>The product does not properly distinguish between different types of elements in a way that leads to insecure behavior.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Insufficient Type Distinction",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/351.html",
+      "id": "CWE-351"
+    },
+    {
+      "Description": "<b>CWE-330: Use of Insufficiently Random Values</b><br>The product uses insufficiently random numbers or values in a security context that depends on unpredictable numbers.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Use of Insufficiently Random Values",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/330.html",
+      "id": "CWE-330"
+    },
+    {
+      "Description": "<b>CWE-302: Authentication Bypass by Assumed-Immutable Data</b><br>The authentication scheme or implementation uses key data elements that are assumed to be immutable, but can be controlled or modified by the attacker.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Authentication Bypass by Assumed-Immutable Data",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/302.html",
+      "id": "CWE-302"
+    },
+    {
+      "Description": "<b>CWE-760: Use of a One-Way Hash with a Predictable Salt</b><br>The product uses a one-way cryptographic hash against an input that should not be reversible, such as a password, but the product uses a predictable salt as part of the input.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Use of a One-Way Hash with a Predictable Salt",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/760.html",
+      "id": "CWE-760"
+    },
+    {
+      "Description": "<b>CWE-425: Direct Request ('Forced Browsing')</b><br>The web application does not adequately enforce appropriate authorization on all restricted URLs, scripts, or files.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Direct Request ('Forced Browsing')",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/425.html",
+      "id": "CWE-425"
+    },
+    {
+      "Description": "<b>CWE-1278: Missing Protection Against Hardware Reverse Engineering Using Integrated Circuit (IC) Imaging Techniques</b><br>Information stored in hardware may be recovered by an attacker with the capability to capture and analyze images of the integrated circuit using techniques such as scanning electron microscopy.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Missing Protection Against Hardware Reverse Engineering Using Integrated Circuit (IC) Imaging Techniques",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1278.html",
+      "id": "CWE-1278"
+    },
+    {
+      "Description": "<b>CWE-424: Improper Protection of Alternate Path</b><br>The product does not sufficiently protect all possible paths that a user can take to access restricted functionality or resources.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Improper Protection of Alternate Path",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/424.html",
+      "id": "CWE-424"
+    },
+    {
+      "Description": "<b>CWE-346: Origin Validation Error</b><br>The product does not properly verify that the source of data or communication is valid.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Origin Validation Error",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/346.html",
+      "id": "CWE-346"
+    },
+    {
+      "Description": "<b>CWE-334: Small Space of Random Values</b><br>The number of possible random values is smaller than needed by the product, making it more susceptible to brute force attacks.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Small Space of Random Values",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/334.html",
+      "id": "CWE-334"
+    },
+    {
+      "Description": "<b>CWE-494: Download of Code Without Integrity Check</b><br>The product downloads source code or an executable from a remote location and executes the code without sufficiently verifying the origin and integrity of the code.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Download of Code Without Integrity Check",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/494.html",
+      "id": "CWE-494"
+    },
+    {
+      "Description": "<b>CWE-348: Use of Less Trusted Source</b><br>The product has two different sources of the same data or information, but it uses the source that has less support for verification, is less trusted, or is less resistant to attack.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Use of Less Trusted Source",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/348.html",
+      "id": "CWE-348"
+    },
+    {
+      "Description": "<b>CWE-1303: Non-Transparent Sharing of Microarchitectural Resources</b><br>Hardware structures shared across execution contexts (e.g., caches and branch predictors) can violate the expected architecture isolation between contexts.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Non-Transparent Sharing of Microarchitectural Resources",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1303.html",
+      "id": "CWE-1303"
+    },
+    {
+      "Description": "<b>CWE-321: Use of Hard-coded Cryptographic Key</b><br>The use of a hard-coded cryptographic key significantly increases the possibility that encrypted data may be recovered.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Use of Hard-coded Cryptographic Key",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/321.html",
+      "id": "CWE-321"
+    },
+    {
+      "Description": "<b>CWE-259: Use of Hard-coded Password</b><br>The product contains a hard-coded password, which it uses for its own inbound authentication or for outbound communication to external components.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Use of Hard-coded Password",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/259.html",
+      "id": "CWE-259"
+    },
+    {
+      "Description": "<b>CWE-526: Cleartext Storage of Sensitive Information in an Environment Variable</b><br>The product uses an environment variable to store unencrypted sensitive information.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Cleartext Storage of Sensitive Information in an Environment Variable",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/526.html",
+      "id": "CWE-526"
+    },
+    {
+      "Description": "<b>CWE-1338: Improper Protections Against Hardware Overheating</b><br>A hardware device is missing or has inadequate protection features to prevent overheating.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Protections Against Hardware Overheating",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1338.html",
+      "id": "CWE-1338"
+    },
+    {
+      "Description": "<b>CWE-182: Collapse of Data into Unsafe Value</b><br>The product filters data in a way that causes it to be reduced or \"collapsed\" into an unsafe value that violates an expected security property.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Collapse of Data into Unsafe Value",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/182.html",
+      "id": "CWE-182"
+    },
+    {
+      "Description": "<b>CWE-1319: Improper Protection against Electromagnetic Fault Injection (EM-FI)</b><br>The device is susceptible to electromagnetic fault injection attacks, causing device internal information to be compromised or security mechanisms to be bypassed.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Protection against Electromagnetic Fault Injection (EM-FI)",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1319.html",
+      "id": "CWE-1319"
+    },
+    {
+      "Description": "<b>CWE-326: Inadequate Encryption Strength</b><br>The product stores or transmits sensitive data using an encryption scheme that is theoretically sound, but is not strong enough for the level of protection required.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Inadequate Encryption Strength",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/326.html",
+      "id": "CWE-326"
+    },
+    {
+      "Description": "<b>CWE-316: Cleartext Storage of Sensitive Information in Memory</b><br>The product stores sensitive information in cleartext in memory.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Cleartext Storage of Sensitive Information in Memory",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/316.html",
+      "id": "CWE-316"
+    },
+    {
+      "Description": "<b>CWE-807: Reliance on Untrusted Inputs in a Security Decision</b><br>The product uses a protection mechanism that relies on the existence or values of an input, but the input can be modified by an untrusted actor in a way that bypasses the protection mechanism.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Reliance on Untrusted Inputs in a Security Decision",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/807.html",
+      "id": "CWE-807"
+    },
+    {
+      "Description": "<b>CWE-693: Protection Mechanism Failure</b><br>The product does not use or incorrectly uses a protection mechanism that provides sufficient defense against directed attacks against the product.",
+      "color": "#db0054",
+      "size": 30,
+      "label": "Protection Mechanism Failure",
+      "label_class": "node-label-big",
+      "type": "CWE",
+      "abstraction": "Pillar",
+      "url": "https://cwe.mitre.org/data/definitions/693.html",
+      "id": "CWE-693"
+    },
+    {
+      "Description": "<b>CWE-780: Use of RSA Algorithm without OAEP</b><br>The product uses the RSA algorithm but does not incorporate Optimal Asymmetric Encryption Padding (OAEP), which might weaken the encryption.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Use of RSA Algorithm without OAEP",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/780.html",
+      "id": "CWE-780"
+    },
+    {
+      "Description": "<b>CWE-653: Improper Isolation or Compartmentalization</b><br>The product does not properly compartmentalize or isolate functionality, processes, or resources that require different privilege levels, rights, or permissions.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Isolation or Compartmentalization",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/653.html",
+      "id": "CWE-653"
+    },
+    {
+      "Description": "<b>CWE-757: Selection of Less-Secure Algorithm During Negotiation ('Algorithm Downgrade')</b><br>A protocol or its implementation supports interaction between multiple actors and allows those actors to negotiate which algorithm should be used as a protection mechanism such as encryption or authentication, but it does not select the strongest algorithm that is available to both parties.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Selection of Less-Secure Algorithm During Negotiation ('Algorithm Downgrade')",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/757.html",
+      "id": "CWE-757"
+    },
+    {
+      "Description": "<b>CWE-341: Predictable from Observable State</b><br>A number or object is predictable based on observations that the attacker can make about the state of the system or network, such as time, process ID, etc.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Predictable from Observable State",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/341.html",
+      "id": "CWE-341"
+    },
+    {
+      "Description": "<b>CWE-184: Incomplete List of Disallowed Inputs</b><br>The product implements a protection mechanism that relies on a list of inputs (or properties of inputs) that are not allowed by policy or otherwise require other action to neutralize before additional processing takes place, but the list is incomplete, leading to resultant weaknesses.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Incomplete List of Disallowed Inputs",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/184.html",
+      "id": "CWE-184"
+    },
+    {
+      "Description": "<b>CWE-603: Use of Client-Side Authentication</b><br>A client/server product performs authentication within client code but not in server code, allowing server-side authentication to be bypassed via a modified client that omits the authentication check.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Use of Client-Side Authentication",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/603.html",
+      "id": "CWE-603"
+    },
+    {
+      "Description": "<b>CWE-655: Insufficient Psychological Acceptability</b><br>The product has a protection mechanism that is too difficult or inconvenient to use, encouraging non-malicious users to disable or bypass the mechanism, whether by accident or on purpose.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Insufficient Psychological Acceptability",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/655.html",
+      "id": "CWE-655"
+    },
+    {
+      "Description": "<b>CWE-646: Reliance on File Name or Extension of Externally-Supplied File</b><br>The product allows a file to be uploaded, but it relies on the file name or extension of the file to determine the appropriate behaviors. This could be used by attackers to cause the file to be misclassified and processed in a dangerous fashion.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Reliance on File Name or Extension of Externally-Supplied File",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/646.html",
+      "id": "CWE-646"
+    },
+    {
+      "Description": "<b>CWE-317: Cleartext Storage of Sensitive Information in GUI</b><br>The product stores sensitive information in cleartext within the GUI.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Cleartext Storage of Sensitive Information in GUI",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/317.html",
+      "id": "CWE-317"
+    },
+    {
+      "Description": "<b>CWE-342: Predictable Exact Value from Previous Values</b><br>An exact value or random number can be precisely predicted by observing previous values.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Predictable Exact Value from Previous Values",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/342.html",
+      "id": "CWE-342"
+    },
+    {
+      "Description": "<b>CWE-345: Insufficient Verification of Data Authenticity</b><br>The product does not sufficiently verify the origin or authenticity of data, in a way that causes it to accept invalid data.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Insufficient Verification of Data Authenticity",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/345.html",
+      "id": "CWE-345"
+    },
+    {
+      "Description": "<b>CWE-649: Reliance on Obfuscation or Encryption of Security-Relevant Inputs without Integrity Checking</b><br>The product uses obfuscation or encryption of inputs that should not be mutable by an external actor, but the product does not use integrity checks to detect if those inputs have been modified.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Reliance on Obfuscation or Encryption of Security-Relevant Inputs without Integrity Checking",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/649.html",
+      "id": "CWE-649"
+    },
+    {
+      "Description": "<b>CWE-323: Reusing a Nonce, Key Pair in Encryption</b><br>Nonces should be used for the present occasion and only once.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Reusing a Nonce, Key Pair in Encryption",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/323.html",
+      "id": "CWE-323"
+    },
+    {
+      "Description": "<b>CWE-353: Missing Support for Integrity Check</b><br>The product uses a transmission protocol that does not include a mechanism for verifying the integrity of the data during transmission, such as a checksum.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Missing Support for Integrity Check",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/353.html",
+      "id": "CWE-353"
+    },
+    {
+      "Description": "<b>CWE-1269: Product Released in Non-Release Configuration</b><br>The product released to market is released in pre-production or manufacturing configuration.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Product Released in Non-Release Configuration",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1269.html",
+      "id": "CWE-1269"
+    },
+    {
+      "Description": "<b>CWE-5: J2EE Misconfiguration: Data Transmission Without Encryption</b><br>Information sent over a network can be compromised while in transit. An attacker may be able to read or modify the contents if the data are sent in plaintext or are weakly encrypted.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "J2EE Misconfiguration: Data Transmission Without Encryption",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/5.html",
+      "id": "CWE-5"
+    },
+    {
+      "Description": "<b>CWE-336: Same Seed in Pseudo-Random Number Generator (PRNG)</b><br>A Pseudo-Random Number Generator (PRNG) uses the same seed each time the product is initialized.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Same Seed in Pseudo-Random Number Generator (PRNG)",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/336.html",
+      "id": "CWE-336"
+    },
+    {
+      "Description": "<b>CWE-332: Insufficient Entropy in PRNG</b><br>The lack of entropy available for, or used by, a Pseudo-Random Number Generator (PRNG) can be a stability and security threat.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Insufficient Entropy in PRNG",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/332.html",
+      "id": "CWE-332"
+    },
+    {
+      "Description": "<b>CWE-339: Small Seed Space in PRNG</b><br>A Pseudo-Random Number Generator (PRNG) uses a relatively small seed space, which makes it more susceptible to brute force attacks.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Small Seed Space in PRNG",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/339.html",
+      "id": "CWE-339"
+    },
+    {
+      "Description": "<b>CWE-329: Generation of Predictable IV with CBC Mode</b><br>The product generates and uses a predictable initialization Vector (IV) with Cipher Block Chaining (CBC) Mode, which causes algorithms to be susceptible to dictionary attacks when they are encrypted under the same key.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Generation of Predictable IV with CBC Mode",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/329.html",
+      "id": "CWE-329"
+    },
+    {
+      "Description": "<b>CWE-343: Predictable Value Range from Previous Values</b><br>The product's random number generator produces a series of values which, when observed, can be used to infer a relatively small range of possibilities for the next value that could be generated.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Predictable Value Range from Previous Values",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/343.html",
+      "id": "CWE-343"
+    },
+    {
+      "Description": "<b>CWE-1248: Semiconductor Defects in Hardware Logic with Security-Sensitive Implications</b><br>The security-sensitive hardware module contains semiconductor defects.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Semiconductor Defects in Hardware Logic with Security-Sensitive Implications",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1248.html",
+      "id": "CWE-1248"
+    },
+    {
+      "Description": "<b>CWE-1331: Improper Isolation of Shared Resources in Network On Chip (NoC)</b><br>The Network On Chip (NoC) does not isolate or incorrectly isolates its on-chip-fabric and internal resources such that they are shared between trusted and untrusted agents, creating timing channels.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Isolation of Shared Resources in Network On Chip (NoC)",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1331.html",
+      "id": "CWE-1331"
+    },
+    {
+      "Description": "<b>CWE-1204: Generation of Weak Initialization Vector (IV)</b><br>The product uses a cryptographic primitive that uses an Initialization\n\t\t\tVector (IV), but the product does not generate IVs that are\n\t\t\tsufficiently unpredictable or unique according to the expected\n\t\t\tcryptographic requirements for that primitive.\n\t\t\t",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Generation of Weak Initialization Vector (IV)",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1204.html",
+      "id": "CWE-1204"
+    },
+    {
+      "Description": "<b>CWE-318: Cleartext Storage of Sensitive Information in Executable</b><br>The product stores sensitive information in cleartext in an executable.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Cleartext Storage of Sensitive Information in Executable",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/318.html",
+      "id": "CWE-318"
+    },
+    {
+      "Description": "<b>CWE-349: Acceptance of Extraneous Untrusted Data With Trusted Data</b><br>The product, when processing trusted data, accepts any untrusted data that is also included with the trusted data, treating the untrusted data as if it were trusted.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Acceptance of Extraneous Untrusted Data With Trusted Data",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/349.html",
+      "id": "CWE-349"
+    },
+    {
+      "Description": "<b>CWE-616: Incomplete Identification of Uploaded File Variables (PHP)</b><br>The PHP application uses an old method for processing uploaded files by referencing the four global variables that are set for each file (e.g. $varname, $varname_size, $varname_name, $varname_type). These variables could be overwritten by attackers, causing the application to process unauthorized files.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Incomplete Identification of Uploaded File Variables (PHP)",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/616.html",
+      "id": "CWE-616"
+    },
+    {
+      "Description": "<b>CWE-309: Use of Password System for Primary Authentication</b><br>The use of password systems as the primary means of authentication may be subject to several flaws or shortcomings, each reducing the effectiveness of the mechanism.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Use of Password System for Primary Authentication",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/309.html",
+      "id": "CWE-309"
+    },
+    {
+      "Description": "<b>CWE-352: Cross-Site Request Forgery (CSRF)</b><br>The web application does not, or can not, sufficiently verify whether a well-formed, valid, consistent request was intentionally provided by the user who submitted the request.",
+      "color": "#9ac20c",
+      "size": 10,
+      "label": "Cross-Site Request Forgery (CSRF)",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Compound",
+      "url": "https://cwe.mitre.org/data/definitions/352.html",
+      "id": "CWE-352"
+    },
+    {
+      "Description": "<b>CWE-6: J2EE Misconfiguration: Insufficient Session-ID Length</b><br>The J2EE application is configured to use an insufficient session ID length.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "J2EE Misconfiguration: Insufficient Session-ID Length",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/6.html",
+      "id": "CWE-6"
+    },
+    {
+      "Description": "<b>CWE-1291: Public Key Re-Use for Signing both Debug and Production Code</b><br>The same public key is used for signing both debug and production code.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Public Key Re-Use for Signing both Debug and Production Code",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1291.html",
+      "id": "CWE-1291"
+    },
+    {
+      "Description": "<b>CWE-354: Improper Validation of Integrity Check Value</b><br>The product does not validate or incorrectly validates the integrity check values or \"checksums\" of a message. This may prevent it from detecting if the data has been modified or corrupted in transmission.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Validation of Integrity Check Value",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/354.html",
+      "id": "CWE-354"
+    },
+    {
+      "Description": "<b>CWE-587: Assignment of a Fixed Address to a Pointer</b><br>The product sets a pointer to a specific address other than NULL or 0.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Assignment of a Fixed Address to a Pointer",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/587.html",
+      "id": "CWE-587"
+    },
+    {
+      "Description": "<b>CWE-656: Reliance on Security Through Obscurity</b><br>The product uses a protection mechanism whose strength depends heavily on its obscurity, such that knowledge of its algorithms or key data is sufficient to defeat the mechanism.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Reliance on Security Through Obscurity",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/656.html",
+      "id": "CWE-656"
+    },
+    {
+      "Description": "<b>CWE-360: Trust of System Event Data</b><br>Security based on event locations are insecure and can be spoofed.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Trust of System Event Data",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/360.html",
+      "id": "CWE-360"
+    },
+    {
+      "Description": "<b>CWE-331: Insufficient Entropy</b><br>The product uses an algorithm or scheme that produces insufficient entropy, leaving patterns or clusters of values that are more likely to occur than others.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Insufficient Entropy",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/331.html",
+      "id": "CWE-331"
+    },
+    {
+      "Description": "<b>CWE-916: Use of Password Hash With Insufficient Computational Effort</b><br>The product generates a hash for a password, but it uses a scheme that does not provide a sufficient level of computational effort that would make password cracking attacks infeasible or expensive.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Use of Password Hash With Insufficient Computational Effort",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/916.html",
+      "id": "CWE-916"
+    },
+    {
+      "Description": "<b>CWE-1326: Missing Immutable Root of Trust in Hardware</b><br>A missing immutable root of trust in the hardware results in the ability to bypass secure boot or execute untrusted or adversarial boot code.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Missing Immutable Root of Trust in Hardware",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1326.html",
+      "id": "CWE-1326"
+    },
+    {
+      "Description": "<b>CWE-565: Reliance on Cookies without Validation and Integrity Checking</b><br>The product relies on the existence or values of cookies when performing security-critical operations, but it does not properly ensure that the setting is valid for the associated user.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Reliance on Cookies without Validation and Integrity Checking",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/565.html",
+      "id": "CWE-565"
+    },
+    {
+      "Description": "<b>CWE-925: Improper Verification of Intent by Broadcast Receiver</b><br>The Android application uses a Broadcast Receiver that receives an Intent but does not properly verify that the Intent came from an authorized source.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Verification of Intent by Broadcast Receiver",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/925.html",
+      "id": "CWE-925"
+    },
+    {
+      "Description": "<b>CWE-798: Use of Hard-coded Credentials</b><br>The product contains hard-coded credentials, such as a password or cryptographic key, which it uses for its own inbound authentication, outbound communication to external components, or encryption of internal data.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Use of Hard-coded Credentials",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/798.html",
+      "id": "CWE-798"
+    },
+    {
+      "Description": "<b>CWE-692: Incomplete Denylist to Cross-Site Scripting</b><br>The product uses a denylist-based protection mechanism to defend against XSS attacks, but the denylist is incomplete, allowing XSS variants to succeed.",
+      "color": "#9ac20c",
+      "size": 10,
+      "label": "Incomplete Denylist to Cross-Site Scripting",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Compound",
+      "url": "https://cwe.mitre.org/data/definitions/692.html",
+      "id": "CWE-692"
+    },
+    {
+      "Description": "<b>CWE-344: Use of Invariant Value in Dynamically Changing Context</b><br>The product uses a constant value, name, or reference, but this value can (or should) vary across different environments.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Use of Invariant Value in Dynamically Changing Context",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/344.html",
+      "id": "CWE-344"
+    },
+    {
+      "Description": "<b>CWE-313: Cleartext Storage in a File or on Disk</b><br>The product stores sensitive information in cleartext in a file, or on disk.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Cleartext Storage in a File or on Disk",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/313.html",
+      "id": "CWE-313"
+    },
+    {
+      "Description": "<b>CWE-759: Use of a One-Way Hash without a Salt</b><br>The product uses a one-way cryptographic hash against an input that should not be reversible, such as a password, but the product does not also use a salt as part of the input.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Use of a One-Way Hash without a Salt",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/759.html",
+      "id": "CWE-759"
+    },
+    {
+      "Description": "<b>CWE-602: Client-Side Enforcement of Server-Side Security</b><br>The product is composed of a server that relies on the client to implement a mechanism that is intended to protect the server.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Client-Side Enforcement of Server-Side Security",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/602.html",
+      "id": "CWE-602"
+    },
+    {
+      "Description": "<b>CWE-1241: Use of Predictable Algorithm in Random Number Generator</b><br>The device uses an algorithm that is predictable and generates a pseudo-random number.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Use of Predictable Algorithm in Random Number Generator",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1241.html",
+      "id": "CWE-1241"
+    }
+  ],
+  "links": [
+    {
+      "width": 1,
+      "source": "CWE-311",
+      "target": "CWE-693"
+    },
+    {
+      "width": 1,
+      "source": "CWE-315",
+      "target": "CWE-312"
+    },
+    {
+      "width": 1,
+      "source": "CWE-335",
+      "target": "CWE-330"
+    },
+    {
+      "width": 1,
+      "source": "CWE-337",
+      "target": "CWE-335"
+    },
+    {
+      "width": 1,
+      "source": "CWE-422",
+      "target": "CWE-360"
+    },
+    {
+      "width": 1,
+      "source": "CWE-614",
+      "target": "CWE-319"
+    },
+    {
+      "width": 1,
+      "source": "CWE-314",
+      "target": "CWE-312"
+    },
+    {
+      "width": 1,
+      "source": "CWE-312",
+      "target": "CWE-311"
+    },
+    {
+      "width": 1,
+      "source": "CWE-347",
+      "target": "CWE-345"
+    },
+    {
+      "width": 1,
+      "source": "CWE-327",
+      "target": "CWE-693"
+    },
+    {
+      "width": 1,
+      "source": "CWE-940",
+      "target": "CWE-346"
+    },
+    {
+      "width": 1,
+      "source": "CWE-357",
+      "target": "CWE-693"
+    },
+    {
+      "width": 1,
+      "source": "CWE-654",
+      "target": "CWE-693"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1253",
+      "target": "CWE-693"
+    },
+    {
+      "width": 1,
+      "source": "CWE-333",
+      "target": "CWE-331"
+    },
+    {
+      "width": 1,
+      "source": "CWE-328",
+      "target": "CWE-326"
+    },
+    {
+      "width": 1,
+      "source": "CWE-328",
+      "target": "CWE-327"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1240",
+      "target": "CWE-327"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1318",
+      "target": "CWE-693"
+    },
+    {
+      "width": 1,
+      "source": "CWE-350",
+      "target": "CWE-807"
+    },
+    {
+      "width": 1,
+      "source": "CWE-778",
+      "target": "CWE-693"
+    },
+    {
+      "width": 1,
+      "source": "CWE-924",
+      "target": "CWE-345"
+    },
+    {
+      "width": 1,
+      "source": "CWE-308",
+      "target": "CWE-654"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1039",
+      "target": "CWE-693"
+    },
+    {
+      "width": 1,
+      "source": "CWE-784",
+      "target": "CWE-807"
+    },
+    {
+      "width": 1,
+      "source": "CWE-784",
+      "target": "CWE-565"
+    },
+    {
+      "width": 1,
+      "source": "CWE-340",
+      "target": "CWE-330"
+    },
+    {
+      "width": 1,
+      "source": "CWE-338",
+      "target": "CWE-330"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1189",
+      "target": "CWE-653"
+    },
+    {
+      "width": 1,
+      "source": "CWE-319",
+      "target": "CWE-311"
+    },
+    {
+      "width": 1,
+      "source": "CWE-450",
+      "target": "CWE-357"
+    },
+    {
+      "width": 1,
+      "source": "CWE-358",
+      "target": "CWE-693"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1293",
+      "target": "CWE-345"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1385",
+      "target": "CWE-346"
+    },
+    {
+      "width": 1,
+      "source": "CWE-351",
+      "target": "CWE-345"
+    },
+    {
+      "width": 1,
+      "source": "CWE-330",
+      "target": "CWE-693"
+    },
+    {
+      "width": 1,
+      "source": "CWE-302",
+      "target": "CWE-807"
+    },
+    {
+      "width": 1,
+      "source": "CWE-760",
+      "target": "CWE-916"
+    },
+    {
+      "width": 1,
+      "source": "CWE-425",
+      "target": "CWE-424"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1278",
+      "target": "CWE-693"
+    },
+    {
+      "width": 1,
+      "source": "CWE-424",
+      "target": "CWE-693"
+    },
+    {
+      "width": 1,
+      "source": "CWE-346",
+      "target": "CWE-345"
+    },
+    {
+      "width": 1,
+      "source": "CWE-334",
+      "target": "CWE-330"
+    },
+    {
+      "width": 1,
+      "source": "CWE-494",
+      "target": "CWE-345"
+    },
+    {
+      "width": 1,
+      "source": "CWE-348",
+      "target": "CWE-345"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1303",
+      "target": "CWE-1189"
+    },
+    {
+      "width": 1,
+      "source": "CWE-321",
+      "target": "CWE-798"
+    },
+    {
+      "width": 1,
+      "source": "CWE-259",
+      "target": "CWE-798"
+    },
+    {
+      "width": 1,
+      "source": "CWE-526",
+      "target": "CWE-312"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1338",
+      "target": "CWE-693"
+    },
+    {
+      "width": 1,
+      "source": "CWE-182",
+      "target": "CWE-693"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1319",
+      "target": "CWE-693"
+    },
+    {
+      "width": 1,
+      "source": "CWE-326",
+      "target": "CWE-693"
+    },
+    {
+      "width": 1,
+      "source": "CWE-316",
+      "target": "CWE-312"
+    },
+    {
+      "width": 1,
+      "source": "CWE-807",
+      "target": "CWE-693"
+    },
+    {
+      "width": 1,
+      "source": "CWE-780",
+      "target": "CWE-327"
+    },
+    {
+      "width": 1,
+      "source": "CWE-653",
+      "target": "CWE-693"
+    },
+    {
+      "width": 1,
+      "source": "CWE-757",
+      "target": "CWE-693"
+    },
+    {
+      "width": 1,
+      "source": "CWE-341",
+      "target": "CWE-340"
+    },
+    {
+      "width": 1,
+      "source": "CWE-184",
+      "target": "CWE-693"
+    },
+    {
+      "width": 1,
+      "source": "CWE-603",
+      "target": "CWE-602"
+    },
+    {
+      "width": 1,
+      "source": "CWE-655",
+      "target": "CWE-693"
+    },
+    {
+      "width": 1,
+      "source": "CWE-646",
+      "target": "CWE-345"
+    },
+    {
+      "width": 1,
+      "source": "CWE-317",
+      "target": "CWE-312"
+    },
+    {
+      "width": 1,
+      "source": "CWE-342",
+      "target": "CWE-340"
+    },
+    {
+      "width": 1,
+      "source": "CWE-345",
+      "target": "CWE-693"
+    },
+    {
+      "width": 1,
+      "source": "CWE-649",
+      "target": "CWE-345"
+    },
+    {
+      "width": 1,
+      "source": "CWE-323",
+      "target": "CWE-344"
+    },
+    {
+      "width": 1,
+      "source": "CWE-353",
+      "target": "CWE-345"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1269",
+      "target": "CWE-693"
+    },
+    {
+      "width": 1,
+      "source": "CWE-5",
+      "target": "CWE-319"
+    },
+    {
+      "width": 1,
+      "source": "CWE-336",
+      "target": "CWE-335"
+    },
+    {
+      "width": 1,
+      "source": "CWE-332",
+      "target": "CWE-331"
+    },
+    {
+      "width": 1,
+      "source": "CWE-339",
+      "target": "CWE-335"
+    },
+    {
+      "width": 1,
+      "source": "CWE-329",
+      "target": "CWE-1204"
+    },
+    {
+      "width": 1,
+      "source": "CWE-343",
+      "target": "CWE-340"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1248",
+      "target": "CWE-693"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1331",
+      "target": "CWE-653"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1204",
+      "target": "CWE-330"
+    },
+    {
+      "width": 1,
+      "source": "CWE-318",
+      "target": "CWE-312"
+    },
+    {
+      "width": 1,
+      "source": "CWE-349",
+      "target": "CWE-345"
+    },
+    {
+      "width": 1,
+      "source": "CWE-616",
+      "target": "CWE-345"
+    },
+    {
+      "width": 1,
+      "source": "CWE-309",
+      "target": "CWE-654"
+    },
+    {
+      "width": 1,
+      "source": "CWE-352",
+      "target": "CWE-345"
+    },
+    {
+      "width": 1,
+      "source": "CWE-6",
+      "target": "CWE-334"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1291",
+      "target": "CWE-693"
+    },
+    {
+      "width": 1,
+      "source": "CWE-354",
+      "target": "CWE-345"
+    },
+    {
+      "width": 1,
+      "source": "CWE-587",
+      "target": "CWE-344"
+    },
+    {
+      "width": 1,
+      "source": "CWE-656",
+      "target": "CWE-693"
+    },
+    {
+      "width": 1,
+      "source": "CWE-360",
+      "target": "CWE-345"
+    },
+    {
+      "width": 1,
+      "source": "CWE-331",
+      "target": "CWE-330"
+    },
+    {
+      "width": 1,
+      "source": "CWE-916",
+      "target": "CWE-328"
+    },
+    {
+      "width": 1,
+      "source": "CWE-916",
+      "target": "CWE-327"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1326",
+      "target": "CWE-693"
+    },
+    {
+      "width": 1,
+      "source": "CWE-565",
+      "target": "CWE-602"
+    },
+    {
+      "width": 1,
+      "source": "CWE-925",
+      "target": "CWE-940"
+    },
+    {
+      "width": 1,
+      "source": "CWE-798",
+      "target": "CWE-344"
+    },
+    {
+      "width": 1,
+      "source": "CWE-692",
+      "target": "CWE-184"
+    },
+    {
+      "width": 1,
+      "source": "CWE-344",
+      "target": "CWE-330"
+    },
+    {
+      "width": 1,
+      "source": "CWE-313",
+      "target": "CWE-312"
+    },
+    {
+      "width": 1,
+      "source": "CWE-759",
+      "target": "CWE-916"
+    },
+    {
+      "width": 1,
+      "source": "CWE-602",
+      "target": "CWE-693"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1241",
+      "target": "CWE-330"
+    }
+  ]
+}

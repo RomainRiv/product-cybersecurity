@@ -1,0 +1,244 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CWE-588: Attempt to Access Child of a Non-structure Pointer</b><br>Casting a non-structure type to a structure type and accessing a field can lead to memory access errors or data corruption.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Attempt to Access Child of a Non-structure Pointer",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/588.html",
+      "id": "CWE-588"
+    },
+    {
+      "Description": "<b>CWE-589: Call to Non-ubiquitous API</b><br>The product uses an API function that does not exist on all versions of the target platform. This could cause portability problems or inconsistencies that allow denial of service or other consequences.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Call to Non-ubiquitous API",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/589.html",
+      "id": "CWE-589"
+    },
+    {
+      "Description": "<b>CWE-14: Compiler Removal of Code to Clear Buffers</b><br>Sensitive memory is cleared according to the source code, but compiler optimizations leave the memory untouched when it is not read from again, aka \"dead store removal.\"",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Compiler Removal of Code to Clear Buffers",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/14.html",
+      "id": "CWE-14"
+    },
+    {
+      "Description": "<b>CWE-758: Reliance on Undefined, Unspecified, or Implementation-Defined Behavior</b><br>The product uses an API function, data structure, or other entity in a way that relies on properties that are not always guaranteed to hold for that entity.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Reliance on Undefined, Unspecified, or Implementation-Defined Behavior",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/758.html",
+      "id": "CWE-758"
+    },
+    {
+      "Description": "<b>CWE-474: Use of Function with Inconsistent Implementations</b><br>The code uses a function that has inconsistent implementations across operating systems and versions.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Use of Function with Inconsistent Implementations",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/474.html",
+      "id": "CWE-474"
+    },
+    {
+      "Description": "<b>CWE-1037: Processor Optimization Removal or Modification of Security-critical Code</b><br>The developer builds a security-critical protection mechanism into the software, but the processor optimizes the execution of the program such that the mechanism is removed or modified.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Processor Optimization Removal or Modification of Security-critical Code",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1037.html",
+      "id": "CWE-1037"
+    },
+    {
+      "Description": "<b>CWE-1038: Insecure Automated Optimizations</b><br>The product uses a mechanism that automatically optimizes code, e.g. to improve a characteristic such as performance, but the optimizations can have an unintended side effect that might violate an intended security assumption.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Insecure Automated Optimizations",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/1038.html",
+      "id": "CWE-1038"
+    },
+    {
+      "Description": "<b>CWE-188: Reliance on Data/Memory Layout</b><br>The product makes invalid assumptions about how protocol data or memory is organized at a lower level, resulting in unintended program behavior.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Reliance on Data/Memory Layout",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/188.html",
+      "id": "CWE-188"
+    },
+    {
+      "Description": "<b>CWE-198: Use of Incorrect Byte Ordering</b><br>The product receives input from an upstream component, but it does not account for byte ordering (e.g. big-endian and little-endian) when processing the input, causing an incorrect number or value to be used.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Use of Incorrect Byte Ordering",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/198.html",
+      "id": "CWE-198"
+    },
+    {
+      "Description": "<b>CWE-733: Compiler Optimization Removal or Modification of Security-critical Code</b><br>The developer builds a security-critical protection mechanism into the software, but the compiler optimizes the program such that the mechanism is removed or modified.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Compiler Optimization Removal or Modification of Security-critical Code",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/733.html",
+      "id": "CWE-733"
+    },
+    {
+      "Description": "<b>CWE-562: Return of Stack Variable Address</b><br>A function returns the address of a stack variable, which will cause unintended program behavior, typically in the form of a crash.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Return of Stack Variable Address",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/562.html",
+      "id": "CWE-562"
+    },
+    {
+      "Description": "<b>CWE-587: Assignment of a Fixed Address to a Pointer</b><br>The product sets a pointer to a specific address other than NULL or 0.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Assignment of a Fixed Address to a Pointer",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/587.html",
+      "id": "CWE-587"
+    },
+    {
+      "Description": "<b>CWE-1103: Use of Platform-Dependent Third Party Components</b><br>The product relies on third-party components that do\n\t\t\t\t\tnot provide equivalent functionality across all desirable\n\t\t\t\t\tplatforms.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Use of Platform-Dependent Third Party Components",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1103.html",
+      "id": "CWE-1103"
+    },
+    {
+      "Description": "<b>CWE-1105: Insufficient Encapsulation of Machine-Dependent Functionality</b><br>The product or code uses machine-dependent functionality, but\n\t\t\t\t\tit does not sufficiently encapsulate or isolate this functionality from\n\t\t\t\t\tthe rest of the code.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Insufficient Encapsulation of Machine-Dependent Functionality",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1105.html",
+      "id": "CWE-1105"
+    },
+    {
+      "Description": "<b>CWE-1102: Reliance on Machine-Dependent Data Representation</b><br>The code uses a data representation that relies on low-level\n\t\t\t\t\tdata representation or constructs that may vary across different processors,\n\t\t\t\t\tphysical machines, OSes, or other physical components.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Reliance on Machine-Dependent Data Representation",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1102.html",
+      "id": "CWE-1102"
+    }
+  ],
+  "links": [
+    {
+      "width": 1,
+      "source": "CWE-588",
+      "target": "CWE-758"
+    },
+    {
+      "width": 1,
+      "source": "CWE-589",
+      "target": "CWE-474"
+    },
+    {
+      "width": 1,
+      "source": "CWE-14",
+      "target": "CWE-733"
+    },
+    {
+      "width": 1,
+      "source": "CWE-474",
+      "target": "CWE-758"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1037",
+      "target": "CWE-1038"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1038",
+      "target": "CWE-758"
+    },
+    {
+      "width": 1,
+      "source": "CWE-188",
+      "target": "CWE-1105"
+    },
+    {
+      "width": 1,
+      "source": "CWE-198",
+      "target": "CWE-188"
+    },
+    {
+      "width": 1,
+      "source": "CWE-733",
+      "target": "CWE-1038"
+    },
+    {
+      "width": 1,
+      "source": "CWE-562",
+      "target": "CWE-758"
+    },
+    {
+      "width": 1,
+      "source": "CWE-587",
+      "target": "CWE-758"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1103",
+      "target": "CWE-758"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1105",
+      "target": "CWE-758"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1102",
+      "target": "CWE-758"
+    }
+  ]
+}

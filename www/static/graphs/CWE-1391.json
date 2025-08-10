@@ -1,0 +1,148 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CWE-798: Use of Hard-coded Credentials</b><br>The product contains hard-coded credentials, such as a password or cryptographic key, which it uses for its own inbound authentication, outbound communication to external components, or encryption of internal data.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Use of Hard-coded Credentials",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/798.html",
+      "id": "CWE-798"
+    },
+    {
+      "Description": "<b>CWE-521: Weak Password Requirements</b><br>The product does not require that users should have strong passwords, which makes it easier for attackers to compromise user accounts.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Weak Password Requirements",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/521.html",
+      "id": "CWE-521"
+    },
+    {
+      "Description": "<b>CWE-1391: Use of Weak Credentials</b><br>The product uses weak credentials (such as a default key or hard-coded password) that can be calculated, derived, reused, or guessed by an attacker.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Use of Weak Credentials",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/1391.html",
+      "id": "CWE-1391"
+    },
+    {
+      "Description": "<b>CWE-321: Use of Hard-coded Cryptographic Key</b><br>The use of a hard-coded cryptographic key significantly increases the possibility that encrypted data may be recovered.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Use of Hard-coded Cryptographic Key",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/321.html",
+      "id": "CWE-321"
+    },
+    {
+      "Description": "<b>CWE-259: Use of Hard-coded Password</b><br>The product contains a hard-coded password, which it uses for its own inbound authentication or for outbound communication to external components.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Use of Hard-coded Password",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/259.html",
+      "id": "CWE-259"
+    },
+    {
+      "Description": "<b>CWE-1394: Use of Default Cryptographic Key</b><br>The product uses a default cryptographic key for potentially critical functionality.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Use of Default Cryptographic Key",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1394.html",
+      "id": "CWE-1394"
+    },
+    {
+      "Description": "<b>CWE-1392: Use of Default Credentials</b><br>The product uses default credentials (such as passwords or cryptographic keys) for potentially critical functionality.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Use of Default Credentials",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1392.html",
+      "id": "CWE-1392"
+    },
+    {
+      "Description": "<b>CWE-258: Empty Password in Configuration File</b><br>Using an empty string as a password is insecure.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Empty Password in Configuration File",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/258.html",
+      "id": "CWE-258"
+    },
+    {
+      "Description": "<b>CWE-1393: Use of Default Password</b><br>The product uses default passwords for potentially critical functionality.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Use of Default Password",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1393.html",
+      "id": "CWE-1393"
+    }
+  ],
+  "links": [
+    {
+      "width": 1,
+      "source": "CWE-798",
+      "target": "CWE-1391"
+    },
+    {
+      "width": 1,
+      "source": "CWE-521",
+      "target": "CWE-1391"
+    },
+    {
+      "width": 1,
+      "source": "CWE-321",
+      "target": "CWE-798"
+    },
+    {
+      "width": 1,
+      "source": "CWE-259",
+      "target": "CWE-798"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1394",
+      "target": "CWE-1392"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1392",
+      "target": "CWE-1391"
+    },
+    {
+      "width": 1,
+      "source": "CWE-258",
+      "target": "CWE-521"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1393",
+      "target": "CWE-1392"
+    }
+  ]
+}

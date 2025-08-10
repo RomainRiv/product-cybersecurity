@@ -1,0 +1,164 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CWE-783: Operator Precedence Logic Error</b><br>The product uses an expression in which operator precedence causes incorrect logic to be used.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Operator Precedence Logic Error",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/783.html",
+      "id": "CWE-783"
+    },
+    {
+      "Description": "<b>CWE-483: Incorrect Block Delimitation</b><br>The code does not explicitly delimit a block that is intended to contain 2 or more statements, creating a logic error.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Incorrect Block Delimitation",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/483.html",
+      "id": "CWE-483"
+    },
+    {
+      "Description": "<b>CWE-597: Use of Wrong Operator in String Comparison</b><br>The product uses the wrong operator when comparing a string, such as using \"==\" when the .equals() method should be used instead.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Use of Wrong Operator in String Comparison",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/597.html",
+      "id": "CWE-597"
+    },
+    {
+      "Description": "<b>CWE-670: Always-Incorrect Control Flow Implementation</b><br>The code contains a control flow path that does not reflect the algorithm that the path is intended to implement, leading to incorrect behavior any time this path is navigated.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Always-Incorrect Control Flow Implementation",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/670.html",
+      "id": "CWE-670"
+    },
+    {
+      "Description": "<b>CWE-480: Use of Incorrect Operator</b><br>The product accidentally uses the wrong operator, which changes the logic in security-relevant ways.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Use of Incorrect Operator",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/480.html",
+      "id": "CWE-480"
+    },
+    {
+      "Description": "<b>CWE-617: Reachable Assertion</b><br>The product contains an assert() or similar statement that can be triggered by an attacker, which leads to an application exit or other behavior that is more severe than necessary.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Reachable Assertion",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/617.html",
+      "id": "CWE-617"
+    },
+    {
+      "Description": "<b>CWE-482: Comparing instead of Assigning</b><br>The code uses an operator for comparison when the intention was to perform an assignment.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Comparing instead of Assigning",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/482.html",
+      "id": "CWE-482"
+    },
+    {
+      "Description": "<b>CWE-484: Omitted Break Statement in Switch</b><br>The product omits a break statement within a switch or similar construct, causing code associated with multiple conditions to execute. This can cause problems when the programmer only intended to execute code associated with one condition.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Omitted Break Statement in Switch",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/484.html",
+      "id": "CWE-484"
+    },
+    {
+      "Description": "<b>CWE-481: Assigning instead of Comparing</b><br>The code uses an operator for assignment when the intention was to perform a comparison.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Assigning instead of Comparing",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/481.html",
+      "id": "CWE-481"
+    },
+    {
+      "Description": "<b>CWE-698: Execution After Redirect (EAR)</b><br>The web application sends a redirect to another location, but instead of exiting, it executes additional code.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Execution After Redirect (EAR)",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/698.html",
+      "id": "CWE-698"
+    }
+  ],
+  "links": [
+    {
+      "width": 1,
+      "source": "CWE-783",
+      "target": "CWE-670"
+    },
+    {
+      "width": 1,
+      "source": "CWE-483",
+      "target": "CWE-670"
+    },
+    {
+      "width": 1,
+      "source": "CWE-597",
+      "target": "CWE-480"
+    },
+    {
+      "width": 1,
+      "source": "CWE-480",
+      "target": "CWE-670"
+    },
+    {
+      "width": 1,
+      "source": "CWE-617",
+      "target": "CWE-670"
+    },
+    {
+      "width": 1,
+      "source": "CWE-482",
+      "target": "CWE-480"
+    },
+    {
+      "width": 1,
+      "source": "CWE-484",
+      "target": "CWE-670"
+    },
+    {
+      "width": 1,
+      "source": "CWE-481",
+      "target": "CWE-480"
+    },
+    {
+      "width": 1,
+      "source": "CWE-698",
+      "target": "CWE-670"
+    }
+  ]
+}

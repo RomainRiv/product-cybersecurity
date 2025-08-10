@@ -1,0 +1,164 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CWE-588: Attempt to Access Child of a Non-structure Pointer</b><br>Casting a non-structure type to a structure type and accessing a field can lead to memory access errors or data corruption.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Attempt to Access Child of a Non-structure Pointer",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/588.html",
+      "id": "CWE-588"
+    },
+    {
+      "Description": "<b>CWE-192: Integer Coercion Error</b><br>Integer coercion refers to a set of flaws pertaining to the type casting, extension, or truncation of primitive data types.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Integer Coercion Error",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/192.html",
+      "id": "CWE-192"
+    },
+    {
+      "Description": "<b>CWE-843: Access of Resource Using Incompatible Type ('Type Confusion')</b><br>The product allocates or initializes a resource such as a pointer, object, or variable using one type, but it later accesses that resource using a type that is incompatible with the original type.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Access of Resource Using Incompatible Type ('Type Confusion')",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/843.html",
+      "id": "CWE-843"
+    },
+    {
+      "Description": "<b>CWE-196: Unsigned to Signed Conversion Error</b><br>The product uses an unsigned primitive and performs a cast to a signed primitive, which can produce an unexpected value if the value of the unsigned primitive can not be represented using a signed primitive.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Unsigned to Signed Conversion Error",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/196.html",
+      "id": "CWE-196"
+    },
+    {
+      "Description": "<b>CWE-1389: Incorrect Parsing of Numbers with Different Radices</b><br>The product parses numeric input assuming base 10 (decimal) values, but it does not account for inputs that use a different base number (radix).",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Incorrect Parsing of Numbers with Different Radices",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1389.html",
+      "id": "CWE-1389"
+    },
+    {
+      "Description": "<b>CWE-194: Unexpected Sign Extension</b><br>The product performs an operation on a number that causes it to be sign extended when it is transformed into a larger data type. When the original number is negative, this can produce unexpected values that lead to resultant weaknesses.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Unexpected Sign Extension",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/194.html",
+      "id": "CWE-194"
+    },
+    {
+      "Description": "<b>CWE-681: Incorrect Conversion between Numeric Types</b><br>When converting from one data type to another, such as long to integer, data can be omitted or translated in a way that produces unexpected values. If the resulting values are used in a sensitive context, then dangerous behaviors may occur.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Incorrect Conversion between Numeric Types",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/681.html",
+      "id": "CWE-681"
+    },
+    {
+      "Description": "<b>CWE-704: Incorrect Type Conversion or Cast</b><br>The product does not correctly convert an object, resource, or structure from one type to a different type.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Incorrect Type Conversion or Cast",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/704.html",
+      "id": "CWE-704"
+    },
+    {
+      "Description": "<b>CWE-197: Numeric Truncation Error</b><br>Truncation errors occur when a primitive is cast to a primitive of a smaller size and data is lost in the conversion.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Numeric Truncation Error",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/197.html",
+      "id": "CWE-197"
+    },
+    {
+      "Description": "<b>CWE-195: Signed to Unsigned Conversion Error</b><br>The product uses a signed primitive and performs a cast to an unsigned primitive, which can produce an unexpected value if the value of the signed primitive can not be represented using an unsigned primitive.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Signed to Unsigned Conversion Error",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/195.html",
+      "id": "CWE-195"
+    }
+  ],
+  "links": [
+    {
+      "width": 1,
+      "source": "CWE-588",
+      "target": "CWE-704"
+    },
+    {
+      "width": 1,
+      "source": "CWE-192",
+      "target": "CWE-681"
+    },
+    {
+      "width": 1,
+      "source": "CWE-843",
+      "target": "CWE-704"
+    },
+    {
+      "width": 1,
+      "source": "CWE-196",
+      "target": "CWE-681"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1389",
+      "target": "CWE-704"
+    },
+    {
+      "width": 1,
+      "source": "CWE-194",
+      "target": "CWE-681"
+    },
+    {
+      "width": 1,
+      "source": "CWE-681",
+      "target": "CWE-704"
+    },
+    {
+      "width": 1,
+      "source": "CWE-197",
+      "target": "CWE-681"
+    },
+    {
+      "width": 1,
+      "source": "CWE-195",
+      "target": "CWE-681"
+    }
+  ]
+}

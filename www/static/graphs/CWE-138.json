@@ -1,0 +1,825 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CWE-160: Improper Neutralization of Leading Special Elements</b><br>The product receives input from an upstream component, but it does not neutralize or incorrectly neutralizes leading special elements that could be interpreted in unexpected ways when they are sent to a downstream component.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of Leading Special Elements",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/160.html",
+      "id": "CWE-160"
+    },
+    {
+      "Description": "<b>CWE-162: Improper Neutralization of Trailing Special Elements</b><br>The product receives input from an upstream component, but it does not neutralize or incorrectly neutralizes trailing special elements that could be interpreted in unexpected ways when they are sent to a downstream component.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of Trailing Special Elements",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/162.html",
+      "id": "CWE-162"
+    },
+    {
+      "Description": "<b>CWE-141: Improper Neutralization of Parameter/Argument Delimiters</b><br>The product receives input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could be interpreted as parameter or argument delimiters when they are sent to a downstream component.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of Parameter/Argument Delimiters",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/141.html",
+      "id": "CWE-141"
+    },
+    {
+      "Description": "<b>CWE-54: Path Equivalence: 'filedir\\' (Trailing Backslash)</b><br>The product accepts path input in the form of trailing backslash ('filedir\\') without appropriate validation, which can lead to ambiguous path resolution and allow an attacker to traverse the file system to unintended locations or access arbitrary files.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Path Equivalence: 'filedir\\' (Trailing Backslash)",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/54.html",
+      "id": "CWE-54"
+    },
+    {
+      "Description": "<b>CWE-158: Improper Neutralization of Null Byte or NUL Character</b><br>The product receives input from an upstream component, but it does not neutralize or incorrectly neutralizes NUL characters or null bytes when they are sent to a downstream component.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of Null Byte or NUL Character",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/158.html",
+      "id": "CWE-158"
+    },
+    {
+      "Description": "<b>CWE-168: Improper Handling of Inconsistent Special Elements</b><br>The product does not properly handle input in which an inconsistency exists between two or more special characters or reserved words.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Handling of Inconsistent Special Elements",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/168.html",
+      "id": "CWE-168"
+    },
+    {
+      "Description": "<b>CWE-147: Improper Neutralization of Input Terminators</b><br>The product receives input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could be interpreted as input terminators when they are sent to a downstream component.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of Input Terminators",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/147.html",
+      "id": "CWE-147"
+    },
+    {
+      "Description": "<b>CWE-156: Improper Neutralization of Whitespace</b><br>The product receives input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could be interpreted as whitespace when they are sent to a downstream component.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of Whitespace",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/156.html",
+      "id": "CWE-156"
+    },
+    {
+      "Description": "<b>CWE-795: Only Filtering Special Elements at a Specified Location</b><br>The product receives data from an upstream component, but only accounts for special elements at a specified location, thereby missing remaining special elements that may exist before sending it to a downstream component.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Only Filtering Special Elements at a Specified Location",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/795.html",
+      "id": "CWE-795"
+    },
+    {
+      "Description": "<b>CWE-138: Improper Neutralization of Special Elements</b><br>The product receives input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could be interpreted as control elements or syntactic markers when they are sent to a downstream component.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Improper Neutralization of Special Elements",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/138.html",
+      "id": "CWE-138"
+    },
+    {
+      "Description": "<b>CWE-166: Improper Handling of Missing Special Element</b><br>The product receives input from an upstream component, but it does not handle or incorrectly handles when an expected special element is missing.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Handling of Missing Special Element",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/166.html",
+      "id": "CWE-166"
+    },
+    {
+      "Description": "<b>CWE-154: Improper Neutralization of Variable Name Delimiters</b><br>The product receives input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could be interpreted as variable name delimiters when they are sent to a downstream component.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of Variable Name Delimiters",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/154.html",
+      "id": "CWE-154"
+    },
+    {
+      "Description": "<b>CWE-796: Only Filtering Special Elements Relative to a Marker</b><br>The product receives data from an upstream component, but only accounts for special elements positioned relative to a marker (e.g. \"at the beginning/end of a string; the second argument\"), thereby missing remaining special elements that may exist before sending it to a downstream component.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Only Filtering Special Elements Relative to a Marker",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/796.html",
+      "id": "CWE-796"
+    },
+    {
+      "Description": "<b>CWE-797: Only Filtering Special Elements at an Absolute Position</b><br>The product receives data from an upstream component, but only accounts for special elements at an absolute position (e.g. \"byte number 10\"), thereby missing remaining special elements that may exist before sending it to a downstream component.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Only Filtering Special Elements at an Absolute Position",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/797.html",
+      "id": "CWE-797"
+    },
+    {
+      "Description": "<b>CWE-148: Improper Neutralization of Input Leaders</b><br>The product does not properly handle when a leading character or sequence (\"leader\") is missing or malformed, or if multiple leaders are used when only one should be allowed.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of Input Leaders",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/148.html",
+      "id": "CWE-148"
+    },
+    {
+      "Description": "<b>CWE-794: Incomplete Filtering of Multiple Instances of Special Elements</b><br>The product receives data from an upstream component, but does not filter all instances of a special element before sending it to a downstream component.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Incomplete Filtering of Multiple Instances of Special Elements",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/794.html",
+      "id": "CWE-794"
+    },
+    {
+      "Description": "<b>CWE-159: Improper Handling of Invalid Use of Special Elements</b><br>The product does not properly filter, remove, quote, or otherwise manage the invalid use of special elements in user-controlled input, which could cause adverse effect on its behavior and integrity.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Improper Handling of Invalid Use of Special Elements",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/159.html",
+      "id": "CWE-159"
+    },
+    {
+      "Description": "<b>CWE-45: Path Equivalence: 'file...name' (Multiple Internal Dot)</b><br>The product accepts path input in the form of multiple internal dot ('file...dir') without appropriate validation, which can lead to ambiguous path resolution and allow an attacker to traverse the file system to unintended locations or access arbitrary files.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Path Equivalence: 'file...name' (Multiple Internal Dot)",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/45.html",
+      "id": "CWE-45"
+    },
+    {
+      "Description": "<b>CWE-163: Improper Neutralization of Multiple Trailing Special Elements</b><br>The product receives input from an upstream component, but it does not neutralize or incorrectly neutralizes multiple trailing special elements that could be interpreted in unexpected ways when they are sent to a downstream component.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of Multiple Trailing Special Elements",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/163.html",
+      "id": "CWE-163"
+    },
+    {
+      "Description": "<b>CWE-145: Improper Neutralization of Section Delimiters</b><br>The product receives input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could be interpreted as section delimiters when they are sent to a downstream component.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of Section Delimiters",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/145.html",
+      "id": "CWE-145"
+    },
+    {
+      "Description": "<b>CWE-142: Improper Neutralization of Value Delimiters</b><br>The product receives input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could be interpreted as value delimiters when they are sent to a downstream component.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of Value Delimiters",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/142.html",
+      "id": "CWE-142"
+    },
+    {
+      "Description": "<b>CWE-790: Improper Filtering of Special Elements</b><br>The product receives data from an upstream component, but does not filter or incorrectly filters special elements before sending it to a downstream component.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Improper Filtering of Special Elements",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/790.html",
+      "id": "CWE-790"
+    },
+    {
+      "Description": "<b>CWE-165: Improper Neutralization of Multiple Internal Special Elements</b><br>The product receives input from an upstream component, but it does not neutralize or incorrectly neutralizes multiple internal special elements that could be interpreted in unexpected ways when they are sent to a downstream component.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of Multiple Internal Special Elements",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/165.html",
+      "id": "CWE-165"
+    },
+    {
+      "Description": "<b>CWE-164: Improper Neutralization of Internal Special Elements</b><br>The product receives input from an upstream component, but it does not neutralize or incorrectly neutralizes internal special elements that could be interpreted in unexpected ways when they are sent to a downstream component.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of Internal Special Elements",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/164.html",
+      "id": "CWE-164"
+    },
+    {
+      "Description": "<b>CWE-792: Incomplete Filtering of One or More Instances of Special Elements</b><br>The product receives data from an upstream component, but does not completely filter one or more instances of special elements before sending it to a downstream component.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Incomplete Filtering of One or More Instances of Special Elements",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/792.html",
+      "id": "CWE-792"
+    },
+    {
+      "Description": "<b>CWE-155: Improper Neutralization of Wildcards or Matching Symbols</b><br>The product receives input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could be interpreted as wildcards or matching symbols when they are sent to a downstream component.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of Wildcards or Matching Symbols",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/155.html",
+      "id": "CWE-155"
+    },
+    {
+      "Description": "<b>CWE-150: Improper Neutralization of Escape, Meta, or Control Sequences</b><br>The product receives input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could be interpreted as escape, meta, or control character sequences when they are sent to a downstream component.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of Escape, Meta, or Control Sequences",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/150.html",
+      "id": "CWE-150"
+    },
+    {
+      "Description": "<b>CWE-49: Path Equivalence: 'filename/' (Trailing Slash)</b><br>The product accepts path input in the form of trailing slash ('filedir/') without appropriate validation, which can lead to ambiguous path resolution and allow an attacker to traverse the file system to unintended locations or access arbitrary files.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Path Equivalence: 'filename/' (Trailing Slash)",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/49.html",
+      "id": "CWE-49"
+    },
+    {
+      "Description": "<b>CWE-793: Only Filtering One Instance of a Special Element</b><br>The product receives data from an upstream component, but only filters a single instance of a special element before sending it to a downstream component.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Only Filtering One Instance of a Special Element",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/793.html",
+      "id": "CWE-793"
+    },
+    {
+      "Description": "<b>CWE-143: Improper Neutralization of Record Delimiters</b><br>The product receives input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could be interpreted as record delimiters when they are sent to a downstream component.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of Record Delimiters",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/143.html",
+      "id": "CWE-143"
+    },
+    {
+      "Description": "<b>CWE-167: Improper Handling of Additional Special Element</b><br>The product receives input from an upstream component, but it does not handle or incorrectly handles when an additional unexpected special element is provided.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Handling of Additional Special Element",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/167.html",
+      "id": "CWE-167"
+    },
+    {
+      "Description": "<b>CWE-626: Null Byte Interaction Error (Poison Null Byte)</b><br>The product does not properly handle null bytes or NUL characters when passing data between different representations or components.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Null Byte Interaction Error (Poison Null Byte)",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/626.html",
+      "id": "CWE-626"
+    },
+    {
+      "Description": "<b>CWE-140: Improper Neutralization of Delimiters</b><br>The product does not neutralize or incorrectly neutralizes delimiters.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Neutralization of Delimiters",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/140.html",
+      "id": "CWE-140"
+    },
+    {
+      "Description": "<b>CWE-53: Path Equivalence: '\\multiple\\\\internal\\backslash'</b><br>The product accepts path input in the form of multiple internal backslash ('\\multiple\\trailing\\\\slash') without appropriate validation, which can lead to ambiguous path resolution and allow an attacker to traverse the file system to unintended locations or access arbitrary files.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Path Equivalence: '\\multiple\\\\internal\\backslash'",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/53.html",
+      "id": "CWE-53"
+    },
+    {
+      "Description": "<b>CWE-43: Path Equivalence: 'filename....' (Multiple Trailing Dot)</b><br>The product accepts path input in the form of multiple trailing dot ('filedir....') without appropriate validation, which can lead to ambiguous path resolution and allow an attacker to traverse the file system to unintended locations or access arbitrary files.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Path Equivalence: 'filename....' (Multiple Trailing Dot)",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/43.html",
+      "id": "CWE-43"
+    },
+    {
+      "Description": "<b>CWE-151: Improper Neutralization of Comment Delimiters</b><br>The product receives input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could be interpreted as comment delimiters when they are sent to a downstream component.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of Comment Delimiters",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/151.html",
+      "id": "CWE-151"
+    },
+    {
+      "Description": "<b>CWE-50: Path Equivalence: '//multiple/leading/slash'</b><br>The product accepts path input in the form of multiple leading slash ('//multiple/leading/slash') without appropriate validation, which can lead to ambiguous path resolution and allow an attacker to traverse the file system to unintended locations or access arbitrary files.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Path Equivalence: '//multiple/leading/slash'",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/50.html",
+      "id": "CWE-50"
+    },
+    {
+      "Description": "<b>CWE-37: Path Traversal: '/absolute/pathname/here'</b><br>The product accepts input in the form of a slash absolute path ('/absolute/pathname/here') without appropriate validation, which can allow an attacker to traverse the file system to unintended locations or access arbitrary files.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Path Traversal: '/absolute/pathname/here'",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/37.html",
+      "id": "CWE-37"
+    },
+    {
+      "Description": "<b>CWE-56: Path Equivalence: 'filedir*' (Wildcard)</b><br>The product accepts path input in the form of asterisk wildcard ('filedir*') without appropriate validation, which can lead to ambiguous path resolution and allow an attacker to traverse the file system to unintended locations or access arbitrary files.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Path Equivalence: 'filedir*' (Wildcard)",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/56.html",
+      "id": "CWE-56"
+    },
+    {
+      "Description": "<b>CWE-42: Path Equivalence: 'filename.' (Trailing Dot)</b><br>The product accepts path input in the form of trailing dot ('filedir.') without appropriate validation, which can lead to ambiguous path resolution and allow an attacker to traverse the file system to unintended locations or access arbitrary files.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Path Equivalence: 'filename.' (Trailing Dot)",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/42.html",
+      "id": "CWE-42"
+    },
+    {
+      "Description": "<b>CWE-52: Path Equivalence: '/multiple/trailing/slash//'</b><br>The product accepts path input in the form of multiple trailing slash ('/multiple/trailing/slash//') without appropriate validation, which can lead to ambiguous path resolution and allow an attacker to traverse the file system to unintended locations or access arbitrary files.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Path Equivalence: '/multiple/trailing/slash//'",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/52.html",
+      "id": "CWE-52"
+    },
+    {
+      "Description": "<b>CWE-146: Improper Neutralization of Expression/Command Delimiters</b><br>The product receives input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could be interpreted as expression or command delimiters when they are sent to a downstream component.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of Expression/Command Delimiters",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/146.html",
+      "id": "CWE-146"
+    },
+    {
+      "Description": "<b>CWE-157: Failure to Sanitize Paired Delimiters</b><br>The product does not properly handle the characters that are used to mark the beginning and ending of a group of entities, such as parentheses, brackets, and braces.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Failure to Sanitize Paired Delimiters",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/157.html",
+      "id": "CWE-157"
+    },
+    {
+      "Description": "<b>CWE-46: Path Equivalence: 'filename ' (Trailing Space)</b><br>The product accepts path input in the form of trailing space ('filedir ') without appropriate validation, which can lead to ambiguous path resolution and allow an attacker to traverse the file system to unintended locations or access arbitrary files.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Path Equivalence: 'filename ' (Trailing Space)",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/46.html",
+      "id": "CWE-46"
+    },
+    {
+      "Description": "<b>CWE-144: Improper Neutralization of Line Delimiters</b><br>The product receives input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could be interpreted as line delimiters when they are sent to a downstream component.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of Line Delimiters",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/144.html",
+      "id": "CWE-144"
+    },
+    {
+      "Description": "<b>CWE-464: Addition of Data Structure Sentinel</b><br>The accidental addition of a data-structure sentinel can cause serious programming logic problems.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Addition of Data Structure Sentinel",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/464.html",
+      "id": "CWE-464"
+    },
+    {
+      "Description": "<b>CWE-149: Improper Neutralization of Quoting Syntax</b><br>Quotes injected into a product can be used to compromise a system. As data are parsed, an injected/absent/duplicate/malformed use of quotes may cause the process to take unexpected actions.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of Quoting Syntax",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/149.html",
+      "id": "CWE-149"
+    },
+    {
+      "Description": "<b>CWE-161: Improper Neutralization of Multiple Leading Special Elements</b><br>The product receives input from an upstream component, but it does not neutralize or incorrectly neutralizes multiple leading special elements that could be interpreted in unexpected ways when they are sent to a downstream component.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of Multiple Leading Special Elements",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/161.html",
+      "id": "CWE-161"
+    },
+    {
+      "Description": "<b>CWE-791: Incomplete Filtering of Special Elements</b><br>The product receives data from an upstream component, but does not completely filter special elements before sending it to a downstream component.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Incomplete Filtering of Special Elements",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/791.html",
+      "id": "CWE-791"
+    },
+    {
+      "Description": "<b>CWE-153: Improper Neutralization of Substitution Characters</b><br>The product receives input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could be interpreted as substitution characters when they are sent to a downstream component.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of Substitution Characters",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/153.html",
+      "id": "CWE-153"
+    },
+    {
+      "Description": "<b>CWE-152: Improper Neutralization of Macro Symbols</b><br>The product receives input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could be interpreted as macro symbols when they are sent to a downstream component.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of Macro Symbols",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/152.html",
+      "id": "CWE-152"
+    }
+  ],
+  "links": [
+    {
+      "width": 1,
+      "source": "CWE-160",
+      "target": "CWE-138"
+    },
+    {
+      "width": 1,
+      "source": "CWE-162",
+      "target": "CWE-138"
+    },
+    {
+      "width": 1,
+      "source": "CWE-141",
+      "target": "CWE-140"
+    },
+    {
+      "width": 1,
+      "source": "CWE-54",
+      "target": "CWE-162"
+    },
+    {
+      "width": 1,
+      "source": "CWE-158",
+      "target": "CWE-138"
+    },
+    {
+      "width": 1,
+      "source": "CWE-168",
+      "target": "CWE-159"
+    },
+    {
+      "width": 1,
+      "source": "CWE-147",
+      "target": "CWE-138"
+    },
+    {
+      "width": 1,
+      "source": "CWE-156",
+      "target": "CWE-138"
+    },
+    {
+      "width": 1,
+      "source": "CWE-795",
+      "target": "CWE-791"
+    },
+    {
+      "width": 1,
+      "source": "CWE-166",
+      "target": "CWE-159"
+    },
+    {
+      "width": 1,
+      "source": "CWE-154",
+      "target": "CWE-138"
+    },
+    {
+      "width": 1,
+      "source": "CWE-796",
+      "target": "CWE-795"
+    },
+    {
+      "width": 1,
+      "source": "CWE-797",
+      "target": "CWE-795"
+    },
+    {
+      "width": 1,
+      "source": "CWE-148",
+      "target": "CWE-138"
+    },
+    {
+      "width": 1,
+      "source": "CWE-794",
+      "target": "CWE-792"
+    },
+    {
+      "width": 1,
+      "source": "CWE-159",
+      "target": "CWE-138"
+    },
+    {
+      "width": 1,
+      "source": "CWE-45",
+      "target": "CWE-165"
+    },
+    {
+      "width": 1,
+      "source": "CWE-163",
+      "target": "CWE-162"
+    },
+    {
+      "width": 1,
+      "source": "CWE-145",
+      "target": "CWE-140"
+    },
+    {
+      "width": 1,
+      "source": "CWE-142",
+      "target": "CWE-140"
+    },
+    {
+      "width": 1,
+      "source": "CWE-790",
+      "target": "CWE-138"
+    },
+    {
+      "width": 1,
+      "source": "CWE-165",
+      "target": "CWE-164"
+    },
+    {
+      "width": 1,
+      "source": "CWE-164",
+      "target": "CWE-138"
+    },
+    {
+      "width": 1,
+      "source": "CWE-792",
+      "target": "CWE-791"
+    },
+    {
+      "width": 1,
+      "source": "CWE-155",
+      "target": "CWE-138"
+    },
+    {
+      "width": 1,
+      "source": "CWE-150",
+      "target": "CWE-138"
+    },
+    {
+      "width": 1,
+      "source": "CWE-49",
+      "target": "CWE-162"
+    },
+    {
+      "width": 1,
+      "source": "CWE-793",
+      "target": "CWE-792"
+    },
+    {
+      "width": 1,
+      "source": "CWE-143",
+      "target": "CWE-140"
+    },
+    {
+      "width": 1,
+      "source": "CWE-167",
+      "target": "CWE-159"
+    },
+    {
+      "width": 1,
+      "source": "CWE-626",
+      "target": "CWE-147"
+    },
+    {
+      "width": 1,
+      "source": "CWE-140",
+      "target": "CWE-138"
+    },
+    {
+      "width": 1,
+      "source": "CWE-53",
+      "target": "CWE-165"
+    },
+    {
+      "width": 1,
+      "source": "CWE-43",
+      "target": "CWE-42"
+    },
+    {
+      "width": 1,
+      "source": "CWE-43",
+      "target": "CWE-163"
+    },
+    {
+      "width": 1,
+      "source": "CWE-151",
+      "target": "CWE-138"
+    },
+    {
+      "width": 1,
+      "source": "CWE-50",
+      "target": "CWE-161"
+    },
+    {
+      "width": 1,
+      "source": "CWE-37",
+      "target": "CWE-160"
+    },
+    {
+      "width": 1,
+      "source": "CWE-56",
+      "target": "CWE-155"
+    },
+    {
+      "width": 1,
+      "source": "CWE-42",
+      "target": "CWE-162"
+    },
+    {
+      "width": 1,
+      "source": "CWE-52",
+      "target": "CWE-163"
+    },
+    {
+      "width": 1,
+      "source": "CWE-146",
+      "target": "CWE-140"
+    },
+    {
+      "width": 1,
+      "source": "CWE-157",
+      "target": "CWE-138"
+    },
+    {
+      "width": 1,
+      "source": "CWE-46",
+      "target": "CWE-162"
+    },
+    {
+      "width": 1,
+      "source": "CWE-144",
+      "target": "CWE-140"
+    },
+    {
+      "width": 1,
+      "source": "CWE-464",
+      "target": "CWE-138"
+    },
+    {
+      "width": 1,
+      "source": "CWE-149",
+      "target": "CWE-138"
+    },
+    {
+      "width": 1,
+      "source": "CWE-161",
+      "target": "CWE-160"
+    },
+    {
+      "width": 1,
+      "source": "CWE-791",
+      "target": "CWE-790"
+    },
+    {
+      "width": 1,
+      "source": "CWE-153",
+      "target": "CWE-138"
+    },
+    {
+      "width": 1,
+      "source": "CWE-152",
+      "target": "CWE-138"
+    }
+  ]
+}

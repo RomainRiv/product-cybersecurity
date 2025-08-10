@@ -1,0 +1,100 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CWE-1067: Excessive Execution of Sequential Searches of Data Resource</b><br>The product contains a data query against an SQL table or view\n\t\t\t\t\tthat is configured in a way that does not utilize an index and may cause\n\t\t\t\t\tsequential searches to be performed.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Excessive Execution of Sequential Searches of Data Resource",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1067.html",
+      "id": "CWE-1067"
+    },
+    {
+      "Description": "<b>CWE-1176: Inefficient CPU Computation</b><br>The product performs CPU computations using\n         algorithms that are not as efficient as they could be for the\n         needs of the developer, i.e., the computations can be\n         optimized further.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Inefficient CPU Computation",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/1176.html",
+      "id": "CWE-1176"
+    },
+    {
+      "Description": "<b>CWE-1042: Static Member Data Element outside of a Singleton Class Element</b><br>The code contains a member element that is declared as static (but not final), in which\n\t\t\t\t\tits parent class element \n\t\t\t\t\tis not a singleton class - that is, a class element that can be used only once in\n\t\t\t\t\tthe 'to' association of a Create action.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Static Member Data Element outside of a Singleton Class Element",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/1042.html",
+      "id": "CWE-1042"
+    },
+    {
+      "Description": "<b>CWE-1046: Creation of Immutable Text Using String Concatenation</b><br>The product creates an immutable text string using string concatenation operations.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Creation of Immutable Text Using String Concatenation",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1046.html",
+      "id": "CWE-1046"
+    },
+    {
+      "Description": "<b>CWE-1063: Creation of Class Instance within a Static Code Block</b><br>A static code block creates an instance of a class.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Creation of Class Instance within a Static Code Block",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1063.html",
+      "id": "CWE-1063"
+    },
+    {
+      "Description": "<b>CWE-1049: Excessive Data Query Operations in a Large Data Table</b><br>The product performs a data query with a large number of joins\n\t\t\t\t\tand sub-queries on a large data table.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Excessive Data Query Operations in a Large Data Table",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1049.html",
+      "id": "CWE-1049"
+    }
+  ],
+  "links": [
+    {
+      "width": 1,
+      "source": "CWE-1067",
+      "target": "CWE-1176"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1042",
+      "target": "CWE-1176"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1046",
+      "target": "CWE-1176"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1063",
+      "target": "CWE-1176"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1049",
+      "target": "CWE-1176"
+    }
+  ]
+}

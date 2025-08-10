@@ -1,0 +1,100 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CWE-1294: Insecure Security Identifier Mechanism</b><br>The System-on-Chip (SoC) implements a Security Identifier mechanism to differentiate what actions are allowed or disallowed when a transaction originates from an entity. However, the Security Identifiers are not correctly implemented.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Insecure Security Identifier Mechanism",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/1294.html",
+      "id": "CWE-1294"
+    },
+    {
+      "Description": "<b>CWE-1290: Incorrect Decoding of Security Identifiers </b><br>The product implements a decoding mechanism to decode certain bus-transaction signals to security identifiers. If the decoding is implemented incorrectly, then untrusted agents can now gain unauthorized access to the asset.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Incorrect Decoding of Security Identifiers ",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1290.html",
+      "id": "CWE-1290"
+    },
+    {
+      "Description": "<b>CWE-1259: Improper Restriction of Security Token Assignment</b><br>The System-On-A-Chip (SoC) implements a Security Token mechanism to differentiate what actions are allowed or disallowed when a transaction originates from an entity. However, the Security Tokens are improperly protected.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Restriction of Security Token Assignment",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1259.html",
+      "id": "CWE-1259"
+    },
+    {
+      "Description": "<b>CWE-1302: Missing Security Identifier</b><br>The product implements a security identifier mechanism to differentiate what actions are allowed or disallowed when a transaction originates from an entity. A transaction is sent without a security identifier.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Missing Security Identifier",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1302.html",
+      "id": "CWE-1302"
+    },
+    {
+      "Description": "<b>CWE-1292: Incorrect Conversion of Security Identifiers</b><br>The product implements a conversion mechanism to map certain bus-transaction signals to security identifiers. However, if the conversion is incorrectly implemented, untrusted agents can gain unauthorized access to the asset.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Incorrect Conversion of Security Identifiers",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1292.html",
+      "id": "CWE-1292"
+    },
+    {
+      "Description": "<b>CWE-1270: Generation of Incorrect Security Tokens</b><br>The product implements a Security Token mechanism to differentiate what actions are allowed or disallowed when a transaction originates from an entity. However, the Security Tokens generated in the system are incorrect.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Generation of Incorrect Security Tokens",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1270.html",
+      "id": "CWE-1270"
+    }
+  ],
+  "links": [
+    {
+      "width": 1,
+      "source": "CWE-1290",
+      "target": "CWE-1294"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1259",
+      "target": "CWE-1294"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1302",
+      "target": "CWE-1294"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1292",
+      "target": "CWE-1294"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1270",
+      "target": "CWE-1294"
+    }
+  ]
+}

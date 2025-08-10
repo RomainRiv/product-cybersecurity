@@ -1,0 +1,35 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CAPEC-610: Cellular Data Injection</b><br>Adversaries inject data into mobile technology traffic (data flows or signaling data) to disrupt communications or conduct additional surveillance operations.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Cellular Data Injection",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/610.html",
+      "id": "CAPEC-610"
+    },
+    {
+      "Description": "<b>CAPEC-240: Resource Injection</b><br>An adversary exploits weaknesses in input validation by manipulating resource identifiers enabling the unintended modification or specification of a resource.",
+      "color": "#2176ff",
+      "size": 30,
+      "label": "Resource Injection",
+      "label_class": "node-label-big",
+      "type": "CAPEC",
+      "abstraction": "Meta",
+      "url": "https://capec.mitre.org/data/definitions/240.html",
+      "id": "CAPEC-240"
+    }
+  ],
+  "links": [
+    {
+      "source": "CAPEC-610",
+      "target": "CAPEC-240"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CWE-1271: Uninitialized Value on Reset for Registers Holding Security Settings</b><br>Security-critical logic is not set to a known value on reset.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Uninitialized Value on Reset for Registers Holding Security Settings",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1271.html",
+      "id": "CWE-1271"
+    },
+    {
+      "Description": "<b>CWE-909: Missing Initialization of Resource</b><br>The product does not initialize a critical resource.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Missing Initialization of Resource",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/909.html",
+      "id": "CWE-909"
+    },
+    {
+      "Description": "<b>CWE-456: Missing Initialization of a Variable</b><br>The product does not initialize critical variables, which causes the execution environment to use unexpected values.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Missing Initialization of a Variable",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/456.html",
+      "id": "CWE-456"
+    }
+  ],
+  "links": [
+    {
+      "width": 1,
+      "source": "CWE-1271",
+      "target": "CWE-909"
+    },
+    {
+      "width": 1,
+      "source": "CWE-456",
+      "target": "CWE-909"
+    }
+  ]
+}

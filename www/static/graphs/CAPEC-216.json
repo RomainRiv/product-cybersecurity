@@ -1,0 +1,50 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CAPEC-216: Communication Channel Manipulation</b><br>An adversary manipulates a setting or parameter on communications channel in order to compromise its security. This can result in information exposure, insertion/removal of information from the communications stream, and/or potentially system compromise.",
+      "color": "#2176ff",
+      "size": 30,
+      "label": "Communication Channel Manipulation",
+      "label_class": "node-label-big",
+      "type": "CAPEC",
+      "abstraction": "Meta",
+      "url": "https://capec.mitre.org/data/definitions/216.html",
+      "id": "CAPEC-216"
+    },
+    {
+      "Description": "<b>CAPEC-12: Choosing Message Identifier</b><br>This pattern of attack is defined by the selection of messages distributed via multicast or public information channels that are intended for another client by determining the parameter value assigned to that client. This attack allows the adversary to gain access to potentially privileged information, and to possibly perpetrate other attacks through the distribution means by impersonation. If the channel/message being manipulated is an input rather than output mechanism for the system, (such as a command bus), this style of attack could be used to change the adversary's identifier to more a privileged one.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Choosing Message Identifier",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/12.html",
+      "id": "CAPEC-12"
+    },
+    {
+      "Description": "<b>CAPEC-217: Exploiting Incorrectly Configured SSL/TLS</b><br>An adversary takes advantage of incorrectly configured SSL/TLS communications that enables access to data intended to be encrypted. The adversary may also use this type of attack to inject commands or other traffic into the encrypted stream to cause compromise of either the client or server.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Exploiting Incorrectly Configured SSL/TLS",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/217.html",
+      "id": "CAPEC-217"
+    }
+  ],
+  "links": [
+    {
+      "source": "CAPEC-12",
+      "target": "CAPEC-216"
+    },
+    {
+      "source": "CAPEC-217",
+      "target": "CAPEC-216"
+    }
+  ]
+}

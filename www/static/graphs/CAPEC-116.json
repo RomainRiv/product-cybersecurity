@@ -1,0 +1,350 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CAPEC-634: Probe Audio and Video Peripherals</b><br>The adversary exploits the target system's audio and video functionalities through malware or scheduled tasks. The goal is to capture sensitive information about the target for financial, personal, political, or other gains which is accomplished by collecting communication data between two parties via the use of peripheral devices (e.g. microphones and webcams) or applications with audio and video capabilities (e.g. Skype) on a system.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Probe Audio and Video Peripherals",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/634.html",
+      "id": "CAPEC-634"
+    },
+    {
+      "Description": "<b>CAPEC-462: Cross-Domain Search Timing</b><br>An attacker initiates cross domain HTTP / GET requests and times the server responses. The timing of these responses may leak important information on what is happening on the server. Browser's same origin policy prevents the attacker from directly reading the server responses (in the absence of any other weaknesses), but does not prevent the attacker from timing the responses to requests that the attacker issued cross domain.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Cross-Domain Search Timing",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/462.html",
+      "id": "CAPEC-462"
+    },
+    {
+      "Description": "<b>CAPEC-155: Screen Temporary Files for Sensitive Information</b><br>An adversary exploits the temporary, insecure storage of information by monitoring the content of files used to store temp data during an application's routine execution flow. Many applications use temporary files to accelerate processing or to provide records of state across multiple executions of the application. Sometimes, however, these temporary files may end up storing sensitive information. By screening an application's temporary files, an adversary might be able to discover such sensitive information. For example, web browsers often cache content to accelerate subsequent lookups. If the content contains sensitive information then the adversary could recover this from the web cache.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Screen Temporary Files for Sensitive Information",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/155.html",
+      "id": "CAPEC-155"
+    },
+    {
+      "Description": "<b>CAPEC-406: Dumpster Diving</b><br>An adversary cases an establishment and searches through trash bins, dumpsters, or areas where company information may have been accidentally discarded for information items which may be useful to the dumpster diver. The devastating nature of the items and/or information found can be anything from medical records, resumes, personal photos and emails, bank statements, account details or information about software, tech support logs and so much more, including hardware devices. By collecting this information an adversary may be able to learn important facts about the person or organization that play a role in helping the adversary in their attack.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Dumpster Diving",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/406.html",
+      "id": "CAPEC-406"
+    },
+    {
+      "Description": "<b>CAPEC-127: Directory Indexing</b><br>An adversary crafts a request to a target that results in the target listing/indexing the content of a directory as output. One common method of triggering directory contents as output is to construct a request containing a path that terminates in a directory name rather than a file name since many applications are configured to provide a list of the directory's contents when such a request is received. An adversary can use this to explore the directory tree on a target as well as learn the names of files. This can often end up revealing test files, backup files, temporary files, hidden files, configuration files, user accounts, script contents, as well as naming conventions, all of which can be used by an attacker to mount additional attacks.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Directory Indexing",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/127.html",
+      "id": "CAPEC-127"
+    },
+    {
+      "Description": "<b>CAPEC-116: Excavation</b><br>An adversary actively probes the target in a manner that is designed to solicit information that could be leveraged for malicious purposes.",
+      "color": "#2176ff",
+      "size": 30,
+      "label": "Excavation",
+      "label_class": "node-label-big",
+      "type": "CAPEC",
+      "abstraction": "Meta",
+      "url": "https://capec.mitre.org/data/definitions/116.html",
+      "id": "CAPEC-116"
+    },
+    {
+      "Description": "<b>CAPEC-95: WSDL Scanning</b><br>This attack targets the WSDL interface made available by a web service. The attacker may scan the WSDL interface to reveal sensitive information about invocation patterns, underlying technology implementations and associated vulnerabilities. This type of probing is carried out to perform more serious attacks (e.g. parameter tampering, malicious content injection, command injection, etc.). WSDL files provide detailed information about the services ports and bindings available to consumers. For instance, the attacker can submit special characters or malicious content to the Web service and can cause a denial of service condition or illegal access to database records. In addition, the attacker may try to guess other private methods by using the information provided in the WSDL files.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "WSDL Scanning",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/95.html",
+      "id": "CAPEC-95"
+    },
+    {
+      "Description": "<b>CAPEC-568: Capture Credentials via Keylogger</b><br>An adversary deploys a keylogger in an effort to obtain credentials directly from a system's user. After capturing all the keystrokes made by a user, the adversary can analyze the data and determine which string are likely to be passwords or other credential related information.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Capture Credentials via Keylogger",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/568.html",
+      "id": "CAPEC-568"
+    },
+    {
+      "Description": "<b>CAPEC-637: Collect Data from Clipboard</b><br>The adversary exploits an application that allows for the copying of sensitive data or information by collecting information copied to the clipboard. Data copied to the clipboard can be accessed by other applications, such as malware built to exfiltrate or log clipboard contents on a periodic basis. In this way, the adversary aims to garner information to which they are unauthorized.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Collect Data from Clipboard",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/637.html",
+      "id": "CAPEC-637"
+    },
+    {
+      "Description": "<b>CAPEC-648: Collect Data from Screen Capture</b><br>An adversary gathers sensitive information by exploiting the system's screen capture functionality. Through screenshots, the adversary aims to see what happens on the screen over the course of an operation. The adversary can leverage information gathered in order to carry out further attacks.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Collect Data from Screen Capture",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/648.html",
+      "id": "CAPEC-648"
+    },
+    {
+      "Description": "<b>CAPEC-675: Retrieve Data from Decommissioned Devices</b><br>An adversary obtains decommissioned, recycled, or discarded systems and devices that can include an organization\u2019s intellectual property, employee data, and other types of controlled information. Systems and devices that have reached the end of their lifecycles may be subject to recycle or disposal where they can be exposed to adversarial attempts to retrieve information from internal memory chips and storage devices that are part of the system.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Retrieve Data from Decommissioned Devices",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/675.html",
+      "id": "CAPEC-675"
+    },
+    {
+      "Description": "<b>CAPEC-498: Probe iOS Screenshots</b><br>An adversary examines screenshot images created by iOS in an attempt to obtain sensitive information. This attack targets temporary screenshots created by the underlying OS while the application remains open in the background.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Probe iOS Screenshots",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/498.html",
+      "id": "CAPEC-498"
+    },
+    {
+      "Description": "<b>CAPEC-215: Fuzzing for application mapping</b><br>An attacker sends random, malformed, or otherwise unexpected messages to a target application and observes the application's log or error messages returned. The attacker does not initially know how a target will respond to individual messages but by attempting a large number of message variants they may find a variant that trigger's desired behavior. In this attack, the purpose of the fuzzing is to observe the application's log and error messages, although fuzzing a target can also sometimes cause the target to enter an unstable state, causing a crash.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Fuzzing for application mapping",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/215.html",
+      "id": "CAPEC-215"
+    },
+    {
+      "Description": "<b>CAPEC-569: Collect Data as Provided by Users</b><br>An attacker leverages a tool, device, or program to obtain specific information as provided by a user of the target system. This information is often needed by the attacker to launch a follow-on attack. This attack is different than Social Engineering as the adversary is not tricking or deceiving the user. Instead the adversary is putting a mechanism in place that captures the information that a user legitimately enters into a system. Deploying a keylogger, performing a UAC prompt, or wrapping the Windows default credential provider are all examples of such interactions.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Collect Data as Provided by Users",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/569.html",
+      "id": "CAPEC-569"
+    },
+    {
+      "Description": "<b>CAPEC-54: Query System for Information</b><br>An adversary, aware of an application's location (and possibly authorized to use the application), probes an application's structure and evaluates its robustness by submitting requests and examining responses. Often, this is accomplished by sending variants of expected queries in the hope that these modified queries might return information beyond what the expected set of queries would provide.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Query System for Information",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/54.html",
+      "id": "CAPEC-54"
+    },
+    {
+      "Description": "<b>CAPEC-639: Probe System Files</b><br>An adversary obtains unauthorized information due to improperly protected files. If an application stores sensitive information in a file that is not protected by proper access control, then an adversary can access the file and search for sensitive information.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Probe System Files",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/639.html",
+      "id": "CAPEC-639"
+    },
+    {
+      "Description": "<b>CAPEC-545: Pull Data from System Resources</b><br>An adversary who is authorized or has the ability to search known system resources, does so with the intention of gathering useful information. System resources include files, memory, and other aspects of the target system. In this pattern of attack, the adversary does not necessarily know what they are going to find when they start pulling data. This is different than CAPEC-150 where the adversary knows what they are looking for due to the common location.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Pull Data from System Resources",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/545.html",
+      "id": "CAPEC-545"
+    },
+    {
+      "Description": "<b>CAPEC-143: Detect Unpublicized Web Pages</b><br>An adversary searches a targeted web site for web pages that have not been publicized. In doing this, the adversary may be able to gain access to information that the targeted site did not intend to make public.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Detect Unpublicized Web Pages",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/143.html",
+      "id": "CAPEC-143"
+    },
+    {
+      "Description": "<b>CAPEC-261: Fuzzing for garnering other adjacent user/sensitive data</b><br>An adversary who is authorized to send queries to a target sends variants of expected queries in the hope that these modified queries might return information (directly or indirectly through error logs) beyond what the expected set of queries should provide.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Fuzzing for garnering other adjacent user/sensitive data",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/261.html",
+      "id": "CAPEC-261"
+    },
+    {
+      "Description": "<b>CAPEC-546: Incomplete Data Deletion in a Multi-Tenant Environment</b><br>An adversary obtains unauthorized information due to insecure or incomplete data deletion in a multi-tenant environment. If a cloud provider fails to completely delete storage and data from former cloud tenants' systems/resources, once these resources are allocated to new, potentially malicious tenants, the latter can probe the provided resources for sensitive information still there.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Incomplete Data Deletion in a Multi-Tenant Environment",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/546.html",
+      "id": "CAPEC-546"
+    },
+    {
+      "Description": "<b>CAPEC-144: Detect Unpublicized Web Services</b><br>An adversary searches a targeted web site for web services that have not been publicized. This attack can be especially dangerous since unpublished but available services may not have adequate security controls placed upon them given that an administrator may believe they are unreachable.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Detect Unpublicized Web Services",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/144.html",
+      "id": "CAPEC-144"
+    },
+    {
+      "Description": "<b>CAPEC-647: Collect Data from Registries</b><br>An adversary exploits a weakness in authorization to gather system-specific data and sensitive information within a registry (e.g., Windows Registry, Mac plist). These contain information about the system configuration, software, operating system, and security. The adversary can leverage information gathered in order to carry out further attacks.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Collect Data from Registries",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/647.html",
+      "id": "CAPEC-647"
+    },
+    {
+      "Description": "<b>CAPEC-150: Collect Data from Common Resource Locations</b><br>An adversary exploits well-known locations for resources for the purposes of undermining the security of the target. In many, if not most systems, files and resources are organized in a default tree structure. This can be useful for adversaries because they often know where to look for resources or files that are necessary for attacks. Even when the precise location of a targeted resource may not be known, naming conventions may indicate a small area of the target machine's file tree where the resources are typically located. For example, configuration files are normally stored in the /etc director on Unix systems. Adversaries can take advantage of this to commit other types of attacks.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Collect Data from Common Resource Locations",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/150.html",
+      "id": "CAPEC-150"
+    }
+  ],
+  "links": [
+    {
+      "source": "CAPEC-634",
+      "target": "CAPEC-545"
+    },
+    {
+      "source": "CAPEC-462",
+      "target": "CAPEC-54"
+    },
+    {
+      "source": "CAPEC-155",
+      "target": "CAPEC-150"
+    },
+    {
+      "source": "CAPEC-406",
+      "target": "CAPEC-150"
+    },
+    {
+      "source": "CAPEC-127",
+      "target": "CAPEC-54"
+    },
+    {
+      "source": "CAPEC-95",
+      "target": "CAPEC-54"
+    },
+    {
+      "source": "CAPEC-568",
+      "target": "CAPEC-569"
+    },
+    {
+      "source": "CAPEC-637",
+      "target": "CAPEC-150"
+    },
+    {
+      "source": "CAPEC-648",
+      "target": "CAPEC-150"
+    },
+    {
+      "source": "CAPEC-675",
+      "target": "CAPEC-116"
+    },
+    {
+      "source": "CAPEC-498",
+      "target": "CAPEC-545"
+    },
+    {
+      "source": "CAPEC-215",
+      "target": "CAPEC-54"
+    },
+    {
+      "source": "CAPEC-569",
+      "target": "CAPEC-116"
+    },
+    {
+      "source": "CAPEC-54",
+      "target": "CAPEC-116"
+    },
+    {
+      "source": "CAPEC-639",
+      "target": "CAPEC-545"
+    },
+    {
+      "source": "CAPEC-545",
+      "target": "CAPEC-116"
+    },
+    {
+      "source": "CAPEC-143",
+      "target": "CAPEC-150"
+    },
+    {
+      "source": "CAPEC-261",
+      "target": "CAPEC-54"
+    },
+    {
+      "source": "CAPEC-546",
+      "target": "CAPEC-545"
+    },
+    {
+      "source": "CAPEC-144",
+      "target": "CAPEC-150"
+    },
+    {
+      "source": "CAPEC-647",
+      "target": "CAPEC-150"
+    },
+    {
+      "source": "CAPEC-150",
+      "target": "CAPEC-116"
+    }
+  ]
+}

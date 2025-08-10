@@ -1,0 +1,65 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CAPEC-693: StarJacking</b><br>An adversary spoofs software popularity metadata to deceive users into believing that a maliciously provided package is widely used and originates from a trusted source.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "StarJacking",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/693.html",
+      "id": "CAPEC-693"
+    },
+    {
+      "Description": "<b>CAPEC-691: Spoof Open-Source Software Metadata</b><br>An adversary spoofs open-source software metadata in an attempt to masquerade malicious software as popular, maintained, and trusted.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Spoof Open-Source Software Metadata",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/691.html",
+      "id": "CAPEC-691"
+    },
+    {
+      "Description": "<b>CAPEC-692: Spoof Version Control System Commit Metadata</b><br>An adversary spoofs metadata pertaining to a Version Control System (VCS) (e.g., Git) repository's commits to deceive users into believing that the maliciously provided software is frequently maintained and originates from a trusted source.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Spoof Version Control System Commit Metadata",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/692.html",
+      "id": "CAPEC-692"
+    },
+    {
+      "Description": "<b>CAPEC-690: Metadata Spoofing</b><br>An adversary alters the metadata of a resource (e.g., file, directory, repository, etc.) to present a malicious resource as legitimate/credible.",
+      "color": "#2176ff",
+      "size": 30,
+      "label": "Metadata Spoofing",
+      "label_class": "node-label-big",
+      "type": "CAPEC",
+      "abstraction": "Meta",
+      "url": "https://capec.mitre.org/data/definitions/690.html",
+      "id": "CAPEC-690"
+    }
+  ],
+  "links": [
+    {
+      "source": "CAPEC-693",
+      "target": "CAPEC-691"
+    },
+    {
+      "source": "CAPEC-691",
+      "target": "CAPEC-690"
+    },
+    {
+      "source": "CAPEC-692",
+      "target": "CAPEC-691"
+    }
+  ]
+}

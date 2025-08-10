@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Responsive D3 Line Chart</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<script src="https://d3js.org/d3.v7.min.js"></script>
+
+<!-- ───────────  Theme variables  ─────────── -->
+<style>
+  :root{
+    --bg-color:#ffffff;
+    --text-color:#000000;
+    --border-color:#e0e0e0;
+    --grid-line-color:#e0e0e0;
+    --tooltip-bg:#f7f7f7;
+    --line-color:steelblue;
+  }
+  html.dark{
+    --bg-color:#2e2e33;
+    --text-color:#d2d2d3;
+    --border-color:#515151;
+    --grid-line-color:#515151;
+    --tooltip-bg:#3a3a40;
+    --line-color:#4a90e2;
+  }
+
+  /* layout */
+  html,body{
+    margin:0;padding:0;height:100%;
+    display:flex;flex-direction:column;
+    font-family:sans-serif;
+    background:var(--bg-color);color:var(--text-color);
+    transition:background-color .3s,color .3s;
+  }
+  #chartWrapper{
+    flex-grow:1;min-height:0;
+    border:1px solid var(--border-color);
+    background:var(--bg-color);
+    transition:background-color .3s;
+  }
+
+  /* svg and primitives */
+  svg{display:block;width:100%;height:100%;}
+  .plot-bg   { fill:var(--bg-color);}                    /* opaque background */
+  .line      { fill:none; stroke:var(--line-color); stroke-width:2px;}
+  .focus-circle{fill:var(--line-color);}
+  .axis .domain       { stroke:var(--border-color);}
+  .axis .tick line    { stroke:var(--grid-line-color);opacity:.7;}
+  .axis .tick text    { fill:var(--text-color);}
+
+  /* tooltip */
+  .tooltip{
+    position:absolute;pointer-events:none;
+    font:12px sans-serif;
+    padding:8px;border-radius:8px;
+    border:1px solid var(--border-color);
+    background:var(--tooltip-bg);color:var(--text-color);
+    opacity:0;transition:opacity .15s;
+  }
+</style>
+</head>
+<body>
+  <div id="chartWrapper"><svg></svg></div>
+  <div class="tooltip"></div>
+
+<!-- ───────────  SCRIPT  ─────────── -->
+<script>
+/* ================================================================
+   THEME ENGINE – perfectly matches Hugo PaperMod
+   ================================================================ */
+(function() {
+  const LS_KEY = 'pref-theme';                  // PaperMod’s key ("light" | "dark" | "auto")
+
+  function applyTheme(mode){
+    document.documentElement.classList.toggle('dark', mode === 'dark');
+  }
+
+  function parentIsSameOrigin(){
+    try{
+      return window.parent && window.parent !== window &&
+             window.parent.location.origin === location.origin;
+    }catch{ return false; }                      // cross-origin → false
+  }
+
+  /* ----- initial theme (one shot) ----- */
+  (function initial() {
+    let theme = null;
+
+    /* 1. copy parent’s <html class="dark"> if same origin */
+    // if (parentIsSameOrigin()) {
+    //   const pRoot = window.parent.document.documentElement;
+    //   theme = pRoot.classList.contains('dark') ? 'dark' : 'light';
+    // }
+
+    /* 2. look at PaperMod’s saved preference */
+    if (!theme) {
+      const saved = localStorage.getItem(LS_KEY);
+      if (saved === 'dark' || saved === 'light') theme = saved;
+    }
+
+    /* 3. fall back to OS preference */
+    if (!theme) {
+      theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    applyTheme(theme);
+  })();
+
+  /* ----- stay in sync afterwards ----- */
+  /* a. PaperMod writes localStorage.pref-theme */
+  window.addEventListener('storage', e=>{
+    if (e.key === LS_KEY) {
+      applyTheme(e.newValue === 'dark' ? 'dark' : 'light');
+    }
+  });
+
+  /* b. parent adds / removes class="dark" (same origin builds / hugo serve) */
+  if (parentIsSameOrigin()) {
+    const pRoot = window.parent.document.documentElement;
+    new MutationObserver(()=> {
+      applyTheme(pRoot.classList.contains('dark') ? 'dark' : 'light');
+    }).observe(pRoot, {attributes:true, attributeFilter:['class']});
+  }
+})();
+
+/* ================================================================
+   CHART IMPLEMENTATION
+   ================================================================ */
+const wrapper = document.getElementById('chartWrapper');
+const svg     = d3.select('svg');
+const tooltip = d3.select('.tooltip');
+
+const margin  = {top:20,right:30,bottom:40,left:50};
+const g       = svg.append('g');   // translated in updateChart()
+
+/* chart layers */
+const bgRect  = g.append('rect').attr('class','plot-bg'); // opaque bg
+const xAxisG  = g.append('g').attr('class','axis axis--x');
+const yAxisG  = g.append('g').attr('class','axis axis--y');
+const lineG   = g.append('path').attr('class','line');
+
+const xScale  = d3.scaleTime();
+const yScale  = d3.scaleLinear();
+
+let data = null;
+
+/* ---------- CSV LOADING ---------- */
+function showError(msg){
+  svg.append('text')
+     .attr('x','50%').attr('y','50%')
+     .attr('text-anchor','middle')
+     .attr('fill','var(--text-color)')
+     .text(msg);
+}
+
+function loadData(){
+  const params = new URLSearchParams(location.search);
+  const f = params.get('csv');
+  if(!f) return showError('Specify ?csv=/data/yourfile.csv');
+
+  let href;
+  try{
+    const u = new URL(f, location.href);
+    if(u.origin!==location.origin || !u.pathname.startsWith('/data/') || !u.pathname.endsWith('.csv')){
+      throw 0;
+    }
+    href = u.href;
+  }catch{
+    return showError('CSV must be /data/*.csv on same origin.');
+  }
+
+  d3.csv(href, d=>({
+    date : d3.timeParse('%Y-%m-%d')(d.date),
+    value: +d.value
+  })).then(rows=>{
+    if(!rows.length || !rows[0].date) return showError(`Bad data in ${f}`);
+    data = rows.sort((a,b)=>a.date-b.date);
+    updateChart();
+    new ResizeObserver(updateChart).observe(wrapper);
+  });
+}
+
+/* ---------- RENDER ---------- */
+function updateChart(){
+  if(!data) return;
+
+  const W = wrapper.clientWidth;
+  const H = wrapper.clientHeight;
+  svg.attr('viewBox',[0,0,W,H]);
+  g.attr('transform',`translate(${margin.left},${margin.top})`);
+
+  const innerW = Math.max(0, W - margin.left - margin.right);
+  const innerH = Math.max(0, H - margin.top - margin.bottom);
+
+  bgRect.attr('width', innerW).attr('height', innerH);
+
+  xScale.domain(d3.extent(data,d=>d.date)).range([0,innerW]);
+  yScale.domain([0,d3.max(data,d=>d.value)]).nice().range([innerH,0]);
+
+  xAxisG.attr('transform',`translate(0,${innerH})`).call(d3.axisBottom(xScale));
+  yAxisG.call(d3.axisLeft(yScale).ticks(6).tickFormat(d3.format('~s')));
+
+  lineG.datum(data)
+       .attr('d', d3.line().x(d=>xScale(d.date)).y(d=>yScale(d.value)));
+
+  /* focus / tooltip */
+  let focus = g.selectAll('.focus').data([null]);
+  const fEnter = focus.enter().append('g').attr('class','focus').style('display','none');
+  fEnter.append('circle').attr('class','focus-circle').attr('r',5);
+  focus = fEnter.merge(focus);
+
+  let rect = g.selectAll('.evt').data([null]);
+  rect = rect.enter().append('rect').attr('class','evt').merge(rect)
+            .attr('width',innerW).attr('height',innerH)
+            .style('fill','none').style('pointer-events','all')
+            .on('mouseover',()=>focus.style('display',null))
+            .on('mouseout',()=>{focus.style('display','none');tooltip.style('opacity',0);})
+            .on('mousemove',mousemove);
+
+  function mousemove(event){
+    const bis = d3.bisector(d=>d.date).left;
+    const mx  = d3.pointer(event,this)[0];
+    const x0  = xScale.invert(mx);
+    const i   = bis(data,x0,1);
+    const d0  = data[i-1], d1 = data[i];
+    const d   = (!d1 || x0-d0.date < d1.date-x0) ? d0 : d1;
+    if(!d) return;
+
+    focus.attr('transform',`translate(${xScale(d.date)},${yScale(d.value)})`);
+    tooltip.html(`Date: ${d3.timeFormat('%Y-%m-%d')(d.date)}<br>Value: ${d.value}`)
+           .style('opacity',.95);
+
+    const ttW = tooltip.node().getBoundingClientRect().width;
+    const xp  = event.pageX;
+    tooltip.style('left',(xp+ttW+10>window.innerWidth?xp-ttW-10:xp+10)+'px')
+           .style('top',(event.pageY-28)+'px');
+  }
+}
+
+/* ---------- INIT ---------- */
+loadData();
+</script>
+</body>
+</html>

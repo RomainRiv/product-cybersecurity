@@ -1,0 +1,335 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CAPEC-414: Pretexting via Delivery Person</b><br>An adversary engages in pretexting behavior, assuming the role of a delivery person, to solicit information from target persons, or manipulate the target into performing an action that serves the adversary's interests. Impersonating a delivery person is an effective attack and an easy attack since not much acting is involved. Usually the hardest part is looking the part and having all of the proper credentials, papers and \"deliveries\" in order to be able to pull it off.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Pretexting via Delivery Person",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/414.html",
+      "id": "CAPEC-414"
+    },
+    {
+      "Description": "<b>CAPEC-420: Influence Perception of Scarcity</b><br>The adversary leverages a perception of scarcity to persuade the target to perform an action or divulge information that is advantageous to the adversary. By conveying a perception of scarcity, or a situation of limited supply, the adversary aims to create a sense of urgency in the context of a target's decision-making process.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Influence Perception of Scarcity",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/420.html",
+      "id": "CAPEC-420"
+    },
+    {
+      "Description": "<b>CAPEC-427: Influence via Psychological Principles</b><br>The adversary shapes the target's actions or behavior by focusing on the ways human interact and learn, leveraging such elements as cognitive and social psychology. In a variety of ways, a target can be influenced to behave or perform an action through capitalizing on what scholarship and research has learned about how and why humans react to specific scenarios and cues.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Influence via Psychological Principles",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/427.html",
+      "id": "CAPEC-427"
+    },
+    {
+      "Description": "<b>CAPEC-416: Manipulate Human Behavior</b><br>An adversary exploits inherent human psychological predisposition to influence a targeted individual or group to solicit information or manipulate the target into performing an action that serves the adversary's interests. Many interpersonal social engineering techniques do not involve outright deception, although they can; many are subtle ways of manipulating a target to remove barriers, make the target feel comfortable, and produce an exchange in which the target is either more likely to share information directly, or let key information slip out unintentionally. A skilled adversary uses these techniques when appropriate to produce the desired outcome. Manipulation techniques vary from the overt, such as pretending to be a supervisor to a help desk, to the subtle, such as making the target feel comfortable with the adversary's speech and thought patterns.",
+      "color": "#2176ff",
+      "size": 30,
+      "label": "Manipulate Human Behavior",
+      "label_class": "node-label-big",
+      "type": "CAPEC",
+      "abstraction": "Meta",
+      "url": "https://capec.mitre.org/data/definitions/416.html",
+      "id": "CAPEC-416"
+    },
+    {
+      "Description": "<b>CAPEC-428: Influence via Modes of Thinking</b><br>The adversary tailors their communication to the language and thought patterns of the target thereby weakening barriers or reluctance to communication. This method is a way of building rapport with a target by matching their speech patterns and the primary ways or dominant senses with which they make abstractions. This technique can be used to make the target more receptive to sharing information because the adversary has adapted their communication forms to match those of the target. When skillfully employed, the target is likely to be unaware that they are being manipulated.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Influence via Modes of Thinking",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/428.html",
+      "id": "CAPEC-428"
+    },
+    {
+      "Description": "<b>CAPEC-426: Influence via Incentives</b><br>The adversary incites a behavior from the target by manipulating something of influence. This is commonly associated with financial, social, or ideological incentivization. Examples include monetary fraud, peer pressure, and preying on the target's morals or ethics. The most effective incentive against one target might not be as effective against another, therefore the adversary must gather information about the target's vulnerability to particular incentives.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Influence via Incentives",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/426.html",
+      "id": "CAPEC-426"
+    },
+    {
+      "Description": "<b>CAPEC-429: Target Influence via Eye Cues</b><br>The adversary gains information via non-verbal means from the target through eye movements.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Target Influence via Eye Cues",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/429.html",
+      "id": "CAPEC-429"
+    },
+    {
+      "Description": "<b>CAPEC-421: Influence Perception of Authority</b><br>An adversary uses a social engineering technique to convey a sense of authority that motivates the target to reveal specific information or take specific action. There are various techniques for producing a sense of authority during ordinary modes of communication. One common method is impersonation. By impersonating someone with a position of power within an organization, an adversary may motivate the target individual to reveal some piece of sensitive information or perform an action that benefits the adversary.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Influence Perception of Authority",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/421.html",
+      "id": "CAPEC-421"
+    },
+    {
+      "Description": "<b>CAPEC-422: Influence Perception of Commitment and Consistency</b><br>An adversary uses social engineering to convince the target to do minor tasks as opposed to larger actions. After complying with a request, individuals are more likely to agree to subsequent requests that are similar in type and required effort.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Influence Perception of Commitment and Consistency",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/422.html",
+      "id": "CAPEC-422"
+    },
+    {
+      "Description": "<b>CAPEC-417: Influence Perception</b><br>The adversary uses social engineering to exploit the target's perception of the relationship between the adversary and themselves. This goal is to persuade the target to unknowingly perform an action or divulge information that is advantageous to the adversary.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Influence Perception",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/417.html",
+      "id": "CAPEC-417"
+    },
+    {
+      "Description": "<b>CAPEC-412: Pretexting via Customer Service</b><br>An adversary engages in pretexting behavior, assuming the role of someone who works for Customer Service, to solicit information from target persons, or manipulate the target into performing an action that serves the adversary's interests. One example of a scenario such as this would be to call an individual, articulate your false affiliation with a credit card company, and then attempt to get the individual to verify their credit card number.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Pretexting via Customer Service",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/412.html",
+      "id": "CAPEC-412"
+    },
+    {
+      "Description": "<b>CAPEC-383: Harvesting Information via API Event Monitoring</b><br>An adversary hosts an event within an application framework and then monitors the data exchanged during the course of the event for the purpose of harvesting any important data leaked during the transactions. One example could be harvesting lists of usernames or userIDs for the purpose of sending spam messages to those users. One example of this type of attack involves the adversary creating an event within the sub-application. Assume the adversary hosts a \"virtual sale\" of rare items. As other users enter the event, the attacker records via AiTM (CAPEC-94) proxy the user_ids and usernames of everyone who attends. The adversary would then be able to spam those users within the application using an automated script.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Harvesting Information via API Event Monitoring",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/383.html",
+      "id": "CAPEC-383"
+    },
+    {
+      "Description": "<b>CAPEC-423: Influence Perception of Liking</b><br>The adversary influences the target's actions by building a relationship where the target has a liking to the adversary. People are more likely to be influenced by people of whom they are fond, so the adversary attempts to ingratiate themself with the target via actions, appearance, or a combination thereof.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Influence Perception of Liking",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/423.html",
+      "id": "CAPEC-423"
+    },
+    {
+      "Description": "<b>CAPEC-413: Pretexting via Tech Support</b><br>An adversary engages in pretexting behavior, assuming the role of a tech support worker, to solicit information from target persons, or manipulate the target into performing an action that serves the adversary's interests. An adversary who uses social engineering to impersonate a tech support worker can have devastating effects on a network. This is an effective attack vector, because it can give an adversary physical access to network computers. It only takes a matter of seconds for someone to compromise a computer with physical access. One of the best technological tools at the disposal of a social engineer, posing as a technical support person, is a USB thumb drive. These are small, easy to conceal, and can be loaded with different payloads depending on what task needs to be done. However, this form of attack does not require physical access as it can also be effectively carried out via phone or email.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Pretexting via Tech Support",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/413.html",
+      "id": "CAPEC-413"
+    },
+    {
+      "Description": "<b>CAPEC-418: Influence Perception of Reciprocation</b><br>An adversary uses a social engineering techniques to produce a sense of obligation in the target to perform a certain action or concede some sensitive or key piece of information. Obligation has to do with actions one feels they need to take due to some sort of social, legal, or moral requirement, duty, contract, or promise. There are various techniques for fostering a sense of obligation to reciprocate or concede during ordinary modes of communication. One method is to compliment the target, and follow up the compliment with a question. If performed correctly the target may volunteer a key piece of information, sometimes involuntarily.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Influence Perception of Reciprocation",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/418.html",
+      "id": "CAPEC-418"
+    },
+    {
+      "Description": "<b>CAPEC-425: Target Influence via Framing</b><br>An adversary uses framing techniques to contextualize a conversation so that the target is more likely to be influenced by the adversary's point of view. Framing is information and experiences in life that alter the way we react to decisions we must make. This type of persuasive technique exploits the way people are conditioned to perceive data and its significance, while avoiding negative or avoidance responses from the target. Rather than a specific technique framing is a methodology of conversation that slowly encourages the target to adopt to the adversary's perspective. One technique of framing is to avoid the use of the word \"No\" and to contextualize responses in a manner that is positive. When performed skillfully the target is much more likely to volunteer information or perform actions favorable to the adversary.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Target Influence via Framing",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/425.html",
+      "id": "CAPEC-425"
+    },
+    {
+      "Description": "<b>CAPEC-415: Pretexting via Phone</b><br>An adversary engages in pretexting behavior, assuming some sort of trusted role, and contacting the targeted individual or organization via phone to solicit information from target persons, or manipulate the target into performing an action that serves the adversary's interests. This is the most common social engineering attack. Some of the most commonly effective approaches are to impersonate a fellow employee, impersonate a computer technician or to target help desk personnel.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Pretexting via Phone",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/415.html",
+      "id": "CAPEC-415"
+    },
+    {
+      "Description": "<b>CAPEC-407: Pretexting</b><br>An adversary engages in pretexting behavior to solicit information from target persons, or manipulate the target into performing some action that serves the adversary's interests. During a pretexting attack, the adversary creates an invented scenario, assuming an identity or role to persuade a targeted victim to release information or perform some action. It is more than just creating a lie; in some cases it can be creating a whole new identity and then using that identity to manipulate the receipt of information.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Pretexting",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/407.html",
+      "id": "CAPEC-407"
+    },
+    {
+      "Description": "<b>CAPEC-434: Target Influence via Interview and Interrogation</b><br>",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Target Influence via Interview and Interrogation",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/434.html",
+      "id": "CAPEC-434"
+    },
+    {
+      "Description": "<b>CAPEC-433: Target Influence via The Human Buffer Overflow</b><br>An attacker utilizes a technique to insinuate commands to the subconscious mind of the target via communication patterns. The human buffer overflow methodology does not rely on over-stimulating the mind of the target, but rather embedding messages within communication that the mind of the listener assembles at a subconscious level. The human buffer-overflow method is similar to subconscious programming to the extent that messages are embedded within the message.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Target Influence via The Human Buffer Overflow",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/433.html",
+      "id": "CAPEC-433"
+    },
+    {
+      "Description": "<b>CAPEC-424: Influence Perception of Consensus or Social Proof</b><br>The adversary influences the target's actions by leveraging the inherent human nature to assume behavior of others is appropriate. In situations of uncertainty, people tend to behave in ways they see others behaving. The adversary convinces the target of adopting behavior or actions that is advantageous to the adversary.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Influence Perception of Consensus or Social Proof",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/424.html",
+      "id": "CAPEC-424"
+    },
+    {
+      "Description": "<b>CAPEC-435: Target Influence via Instant Rapport</b><br>",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Target Influence via Instant Rapport",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/435.html",
+      "id": "CAPEC-435"
+    }
+  ],
+  "links": [
+    {
+      "source": "CAPEC-414",
+      "target": "CAPEC-407"
+    },
+    {
+      "source": "CAPEC-420",
+      "target": "CAPEC-417"
+    },
+    {
+      "source": "CAPEC-427",
+      "target": "CAPEC-416"
+    },
+    {
+      "source": "CAPEC-428",
+      "target": "CAPEC-427"
+    },
+    {
+      "source": "CAPEC-426",
+      "target": "CAPEC-416"
+    },
+    {
+      "source": "CAPEC-429",
+      "target": "CAPEC-427"
+    },
+    {
+      "source": "CAPEC-421",
+      "target": "CAPEC-417"
+    },
+    {
+      "source": "CAPEC-422",
+      "target": "CAPEC-417"
+    },
+    {
+      "source": "CAPEC-417",
+      "target": "CAPEC-416"
+    },
+    {
+      "source": "CAPEC-412",
+      "target": "CAPEC-407"
+    },
+    {
+      "source": "CAPEC-383",
+      "target": "CAPEC-407"
+    },
+    {
+      "source": "CAPEC-423",
+      "target": "CAPEC-417"
+    },
+    {
+      "source": "CAPEC-413",
+      "target": "CAPEC-407"
+    },
+    {
+      "source": "CAPEC-418",
+      "target": "CAPEC-417"
+    },
+    {
+      "source": "CAPEC-425",
+      "target": "CAPEC-416"
+    },
+    {
+      "source": "CAPEC-415",
+      "target": "CAPEC-407"
+    },
+    {
+      "source": "CAPEC-407",
+      "target": "CAPEC-416"
+    },
+    {
+      "source": "CAPEC-434",
+      "target": "CAPEC-427"
+    },
+    {
+      "source": "CAPEC-433",
+      "target": "CAPEC-427"
+    },
+    {
+      "source": "CAPEC-424",
+      "target": "CAPEC-417"
+    },
+    {
+      "source": "CAPEC-435",
+      "target": "CAPEC-427"
+    }
+  ]
+}

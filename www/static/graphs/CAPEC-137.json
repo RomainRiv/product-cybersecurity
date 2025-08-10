@@ -1,0 +1,185 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CAPEC-135: Format String Injection</b><br>An adversary includes formatting characters in a string input field on the target application. Most applications assume that users will provide static text and may respond unpredictably to the presence of formatting character. For example, in certain functions of the C programming languages such as printf, the formatting character %s will print the contents of a memory location expecting this location to identify a string and the formatting character %n prints the number of DWORD written in the memory. An adversary can use this to read or write to memory locations or files, or simply to manipulate the value of the resulting text in unexpected ways. Reading or writing memory may result in program crashes and writing memory could result in the execution of arbitrary code if the adversary can write to the program stack.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Format String Injection",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/135.html",
+      "id": "CAPEC-135"
+    },
+    {
+      "Description": "<b>CAPEC-138: Reflection Injection</b><br>An adversary supplies a value to the target application which is then used by reflection methods to identify a class, method, or field. For example, in the Java programming language the reflection libraries permit an application to inspect, load, and invoke classes and their components by name. If an adversary can control the input into these methods including the name of the class/method/field or the parameters passed to methods, they can cause the targeted application to invoke incorrect methods, read random fields, or even to load and utilize malicious classes that the adversary created. This can lead to the application revealing sensitive information, returning incorrect results, or even having the adversary take control of the targeted application.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Reflection Injection",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/138.html",
+      "id": "CAPEC-138"
+    },
+    {
+      "Description": "<b>CAPEC-460: HTTP Parameter Pollution (HPP)</b><br>An adversary adds duplicate HTTP GET/POST parameters by injecting query string delimiters. Via HPP it may be possible to override existing hardcoded HTTP parameters, modify the application behaviors, access and, potentially exploit, uncontrollable variables, and bypass input validation checkpoints and WAF rules.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "HTTP Parameter Pollution (HPP)",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/460.html",
+      "id": "CAPEC-460"
+    },
+    {
+      "Description": "<b>CAPEC-174: Flash Parameter Injection</b><br>An adversary takes advantage of improper data validation to inject malicious global parameters into a Flash file embedded within an HTML document. Flash files can leverage user-submitted data to configure the Flash document and access the embedding HTML document.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Flash Parameter Injection",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/174.html",
+      "id": "CAPEC-174"
+    },
+    {
+      "Description": "<b>CAPEC-134: Email Injection</b><br>An adversary manipulates the headers and content of an email message by injecting data via the use of delimiter characters native to the protocol.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Email Injection",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/134.html",
+      "id": "CAPEC-134"
+    },
+    {
+      "Description": "<b>CAPEC-41: Using Meta-characters in E-mail Headers to Inject Malicious Payloads</b><br>This type of attack involves an attacker leveraging meta-characters in email headers to inject improper behavior into email programs. Email software has become increasingly sophisticated and feature-rich. In addition, email applications are ubiquitous and connected directly to the Web making them ideal targets to launch and propagate attacks. As the user demand for new functionality in email applications grows, they become more like browsers with complex rendering and plug in routines. As more email functionality is included and abstracted from the user, this creates opportunities for attackers. Virtually all email applications do not list email header information by default, however the email header contains valuable attacker vectors for the attacker to exploit particularly if the behavior of the email client application is known. Meta-characters are hidden from the user, but can contain scripts, enumerations, probes, and other attacks against the user's system.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Using Meta-characters in E-mail Headers to Inject Malicious Payloads",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/41.html",
+      "id": "CAPEC-41"
+    },
+    {
+      "Description": "<b>CAPEC-182: Flash Injection</b><br>An attacker tricks a victim to execute malicious flash content that executes commands or makes flash calls specified by the attacker. One example of this attack is cross-site flashing, an attacker controlled parameter to a reference call loads from content specified by the attacker.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Flash Injection",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/182.html",
+      "id": "CAPEC-182"
+    },
+    {
+      "Description": "<b>CAPEC-137: Parameter Injection</b><br>An adversary manipulates the content of request parameters for the purpose of undermining the security of the target. Some parameter encodings use text characters as separators. For example, parameters in a HTTP GET message are encoded as name-value pairs separated by an ampersand (&). If an attacker can supply text strings that are used to fill in these parameters, then they can inject special characters used in the encoding scheme to add or modify parameters. For example, if user input is fed directly into an HTTP GET request and the user provides the value \"myInput&new_param=myValue\", then the input parameter is set to myInput, but a new parameter (new_param) is also added with a value of myValue. This can significantly change the meaning of the query that is processed by the server. Any encoding scheme where parameters are identified and separated by text characters is potentially vulnerable to this attack - the HTTP GET encoding used above is just one example.",
+      "color": "#2176ff",
+      "size": 30,
+      "label": "Parameter Injection",
+      "label_class": "node-label-big",
+      "type": "CAPEC",
+      "abstraction": "Meta",
+      "url": "https://capec.mitre.org/data/definitions/137.html",
+      "id": "CAPEC-137"
+    },
+    {
+      "Description": "<b>CAPEC-6: Argument Injection</b><br>An attacker changes the behavior or state of a targeted application through injecting data or command syntax through the targets use of non-validated and non-filtered arguments of exposed services or methods.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Argument Injection",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/6.html",
+      "id": "CAPEC-6"
+    },
+    {
+      "Description": "<b>CAPEC-67: String Format Overflow in syslog()</b><br>This attack targets applications and software that uses the syslog() function insecurely. If an application does not explicitely use a format string parameter in a call to syslog(), user input can be placed in the format string parameter leading to a format string injection attack. Adversaries can then inject malicious format string commands into the function call leading to a buffer overflow. There are many reported software vulnerabilities with the root cause being a misuse of the syslog() function.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "String Format Overflow in syslog()",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/67.html",
+      "id": "CAPEC-67"
+    },
+    {
+      "Description": "<b>CAPEC-15: Command Delimiters</b><br>An attack of this type exploits a programs' vulnerabilities that allows an attacker's commands to be concatenated onto a legitimate command with the intent of targeting other resources such as the file system or database. The system that uses a filter or denylist input validation, as opposed to allowlist validation is vulnerable to an attacker who predicts delimiters (or combinations of delimiters) not present in the filter or denylist. As with other injection attacks, the attacker uses the command delimiter payload as an entry point to tunnel through the application and activate additional attacks through SQL queries, shell commands, network scanning, and so on.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Command Delimiters",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/15.html",
+      "id": "CAPEC-15"
+    },
+    {
+      "Description": "<b>CAPEC-178: Cross-Site Flashing</b><br>An attacker is able to trick the victim into executing a Flash document that passes commands or calls to a Flash player browser plugin, allowing the attacker to exploit native Flash functionality in the client browser. This attack pattern occurs where an attacker can provide a crafted link to a Flash document (SWF file) which, when followed, will cause additional malicious instructions to be executed. The attacker does not need to serve or control the Flash document. The attack takes advantage of the fact that Flash files can reference external URLs. If variables that serve as URLs that the Flash application references can be controlled through parameters, then by creating a link that includes values for those parameters, an attacker can cause arbitrary content to be referenced and possibly executed by the targeted Flash application.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Cross-Site Flashing",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/178.html",
+      "id": "CAPEC-178"
+    }
+  ],
+  "links": [
+    {
+      "source": "CAPEC-135",
+      "target": "CAPEC-137"
+    },
+    {
+      "source": "CAPEC-138",
+      "target": "CAPEC-137"
+    },
+    {
+      "source": "CAPEC-460",
+      "target": "CAPEC-15"
+    },
+    {
+      "source": "CAPEC-174",
+      "target": "CAPEC-182"
+    },
+    {
+      "source": "CAPEC-134",
+      "target": "CAPEC-137"
+    },
+    {
+      "source": "CAPEC-41",
+      "target": "CAPEC-134"
+    },
+    {
+      "source": "CAPEC-182",
+      "target": "CAPEC-137"
+    },
+    {
+      "source": "CAPEC-6",
+      "target": "CAPEC-137"
+    },
+    {
+      "source": "CAPEC-67",
+      "target": "CAPEC-135"
+    },
+    {
+      "source": "CAPEC-15",
+      "target": "CAPEC-137"
+    },
+    {
+      "source": "CAPEC-178",
+      "target": "CAPEC-182"
+    }
+  ]
+}

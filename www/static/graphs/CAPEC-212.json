@@ -1,0 +1,125 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CAPEC-111: JSON Hijacking (aka JavaScript Hijacking)</b><br>An attacker targets a system that uses JavaScript Object Notation (JSON) as a transport mechanism between the client and the server (common in Web 2.0 systems using AJAX) to steal possibly confidential information transmitted from the server back to the client inside the JSON object by taking advantage of the loophole in the browser's Same Origin Policy that does not prohibit JavaScript from one website to be included and executed in the context of another website.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "JSON Hijacking (aka JavaScript Hijacking)",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/111.html",
+      "id": "CAPEC-111"
+    },
+    {
+      "Description": "<b>CAPEC-606: Weakening of Cellular Encryption</b><br>An attacker, with control of a Cellular Rogue Base Station or through cooperation with a Malicious Mobile Network Operator can force the mobile device (e.g., the retransmission device) to use no encryption (A5/0 mode) or to use easily breakable encryption (A5/1 or A5/2 mode).",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Weakening of Cellular Encryption",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/606.html",
+      "id": "CAPEC-606"
+    },
+    {
+      "Description": "<b>CAPEC-50: Password Recovery Exploitation</b><br>An attacker may take advantage of the application feature to help users recover their forgotten passwords in order to gain access into the system with the same privileges as the original user. Generally password recovery schemes tend to be weak and insecure.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Password Recovery Exploitation",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/50.html",
+      "id": "CAPEC-50"
+    },
+    {
+      "Description": "<b>CAPEC-48: Passing Local Filenames to Functions That Expect a URL</b><br>This attack relies on client side code to access local files and resources instead of URLs. When the client browser is expecting a URL string, but instead receives a request for a local file, that execution is likely to occur in the browser process space with the browser's authority to local files. The attacker can send the results of this request to the local files out to a site that they control. This attack may be used to steal sensitive authentication data (either local or remote), or to gain system profile information to launch further attacks.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Passing Local Filenames to Functions That Expect a URL",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/48.html",
+      "id": "CAPEC-48"
+    },
+    {
+      "Description": "<b>CAPEC-212: Functionality Misuse</b><br>An adversary leverages a legitimate capability of an application in such a way as to achieve a negative technical impact. The system functionality is not altered or modified but used in a way that was not intended. This is often accomplished through the overuse of a specific functionality or by leveraging functionality with design flaws that enables the adversary to gain access to unauthorized, sensitive data.",
+      "color": "#2176ff",
+      "size": 30,
+      "label": "Functionality Misuse",
+      "label_class": "node-label-big",
+      "type": "CAPEC",
+      "abstraction": "Meta",
+      "url": "https://capec.mitre.org/data/definitions/212.html",
+      "id": "CAPEC-212"
+    },
+    {
+      "Description": "<b>CAPEC-620: Drop Encryption Level</b><br>An attacker forces the encryption level to be lowered, thus enabling a successful attack against the encrypted data.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Drop Encryption Level",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/620.html",
+      "id": "CAPEC-620"
+    },
+    {
+      "Description": "<b>CAPEC-682: Exploitation of Firmware or ROM Code with Unpatchable Vulnerabilities</b><br>An adversary may exploit vulnerable code (i.e., firmware or ROM) that is unpatchable. Unpatchable devices exist due to manufacturers intentionally or inadvertently designing devices incapable of updating their software. Additionally, with updatable devices, the manufacturer may decide not to support the device and stop making updates to their software.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Exploitation of Firmware or ROM Code with Unpatchable Vulnerabilities",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/682.html",
+      "id": "CAPEC-682"
+    },
+    {
+      "Description": "<b>CAPEC-2: Inducing Account Lockout</b><br>An attacker leverages the security functionality of the system aimed at thwarting potential attacks to launch a denial of service attack against a legitimate system user. Many systems, for instance, implement a password throttling mechanism that locks an account after a certain number of incorrect log in attempts. An attacker can leverage this throttling mechanism to lock a legitimate user out of their own account. The weakness that is being leveraged by an attacker is the very security feature that has been put in place to counteract attacks.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Inducing Account Lockout",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/2.html",
+      "id": "CAPEC-2"
+    }
+  ],
+  "links": [
+    {
+      "source": "CAPEC-111",
+      "target": "CAPEC-212"
+    },
+    {
+      "source": "CAPEC-606",
+      "target": "CAPEC-620"
+    },
+    {
+      "source": "CAPEC-50",
+      "target": "CAPEC-212"
+    },
+    {
+      "source": "CAPEC-48",
+      "target": "CAPEC-212"
+    },
+    {
+      "source": "CAPEC-620",
+      "target": "CAPEC-212"
+    },
+    {
+      "source": "CAPEC-682",
+      "target": "CAPEC-212"
+    },
+    {
+      "source": "CAPEC-2",
+      "target": "CAPEC-212"
+    }
+  ]
+}

@@ -1,0 +1,365 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CAPEC-444: Development Alteration</b><br>An adversary modifies a technology, product, or component during its development to acheive a negative impact once the system is deployed. The goal of the adversary is to modify the system in such a way that the negative impact can be leveraged when the system is later deployed. Development alteration attacks may include attacks that insert malicious logic into the system's software, modify or replace hardware components, and other attacks which negatively impact the system during development. These attacks generally require insider access to modify source code or to tamper with hardware components. The product is then delivered to the user where the negative impact can be leveraged at a later time.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Development Alteration",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/444.html",
+      "id": "CAPEC-444"
+    },
+    {
+      "Description": "<b>CAPEC-519: Documentation Alteration to Cause Errors in System Design</b><br>An attacker with access to a manufacturer's documentation containing requirements allocation and software design processes maliciously alters the documentation in order to cause errors in system design. This allows the attacker to take advantage of a weakness in a deployed system of the manufacturer for malicious purposes.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Documentation Alteration to Cause Errors in System Design",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/519.html",
+      "id": "CAPEC-519"
+    },
+    {
+      "Description": "<b>CAPEC-445: Malicious Logic Insertion into Product Software via Configuration Management Manipulation</b><br>An adversary exploits a configuration management system so that malicious logic is inserted into a software products build, update or deployed environment. If an adversary can control the elements included in a product's configuration management for build they can potentially replace, modify or insert code files containing malicious logic. If an adversary can control elements of a product's ongoing operational configuration management baseline they can potentially force clients receiving updates from the system to install insecure software when receiving updates from the server.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Malicious Logic Insertion into Product Software via Configuration Management Manipulation",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/445.html",
+      "id": "CAPEC-445"
+    },
+    {
+      "Description": "<b>CAPEC-670: Software Development Tools Maliciously Altered</b><br>An adversary with the ability to alter tools used in a development environment causes software to be developed with maliciously modified tools. Such tools include requirements management and database tools, software design tools, configuration management tools, compilers, system build tools, and software performance testing and load testing tools. The adversary then carries out malicious acts once the software is deployed including malware infection of other systems to support further compromises.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Software Development Tools Maliciously Altered",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/670.html",
+      "id": "CAPEC-670"
+    },
+    {
+      "Description": "<b>CAPEC-678: System Build Data Maliciously Altered</b><br>During the system build process, the system is deliberately misconfigured by the alteration of the build data. Access to system configuration data files and build processes is susceptible to deliberate misconfiguration of the system.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "System Build Data Maliciously Altered",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/678.html",
+      "id": "CAPEC-678"
+    },
+    {
+      "Description": "<b>CAPEC-516: Hardware Component Substitution During Baselining</b><br>An adversary with access to system components during allocated baseline development can substitute a maliciously altered hardware component for a baseline component during the product development and research phases. This can lead to adjustments and calibrations being made in the product so that when the final product, now containing the modified component, is deployed it will not perform as designed and be advantageous to the adversary.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Hardware Component Substitution During Baselining",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/516.html",
+      "id": "CAPEC-516"
+    },
+    {
+      "Description": "<b>CAPEC-511: Infiltration of Software Development Environment</b><br>An attacker uses common delivery mechanisms such as email attachments or removable media to infiltrate the IDE (Integrated Development Environment) of a victim manufacturer with the intent of implanting malware allowing for attack control of the victim IDE environment. The attack then uses this access to exfiltrate sensitive data or information, manipulate said data or information, and conceal these actions. This will allow and aid the attack to meet the goal of future compromise of a recipient of the victim's manufactured product further down in the supply chain.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Infiltration of Software Development Environment",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/511.html",
+      "id": "CAPEC-511"
+    },
+    {
+      "Description": "<b>CAPEC-447: Design Alteration</b><br>An adversary modifies the design of a technology, product, or component to acheive a negative impact once the system is deployed. In this type of attack, the goal of the adversary is to modify the design of the system, prior to development starting, in such a way that the negative impact can be leveraged when the system is later deployed. Design alteration attacks differ from development alteration attacks in that design alteration attacks take place prior to development and which then may or may not be developed by the adverary. Design alteration attacks include modifying system designs to degrade system performance, cause unexpected states or errors, and general design changes that may lead to additional vulnerabilities. These attacks generally require insider access to modify design documents, but they may also be spoofed via web communications. The product is then developed and delivered to the user where the negative impact can be leveraged at a later time.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Design Alteration",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/447.html",
+      "id": "CAPEC-447"
+    },
+    {
+      "Description": "<b>CAPEC-532: Altered Installed BIOS</b><br>An attacker with access to download and update system software sends a maliciously altered BIOS to the victim or victim supplier/integrator, which when installed allows for future exploitation.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Altered Installed BIOS",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/532.html",
+      "id": "CAPEC-532"
+    },
+    {
+      "Description": "<b>CAPEC-537: Infiltration of Hardware Development Environment</b><br>An adversary, leveraging the ability to manipulate components of primary support systems and tools within the development and production environments, inserts malicious software within the hardware and/or firmware development environment. The infiltration purpose is to alter developed hardware components in a system destined for deployment at the victim's organization, for the purpose of disruption or further compromise.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Infiltration of Hardware Development Environment",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/537.html",
+      "id": "CAPEC-537"
+    },
+    {
+      "Description": "<b>CAPEC-672: Malicious Code Implanted During Chip Programming</b><br>During the programming step of chip manufacture, an adversary with access and necessary technical skills maliciously alters a chip\u2019s intended program logic to produce an effect intended by the adversary when the fully manufactured chip is deployed and in operational use. Intended effects can include the ability of the adversary to remotely control a host system to carry out malicious acts.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Malicious Code Implanted During Chip Programming",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/672.html",
+      "id": "CAPEC-672"
+    },
+    {
+      "Description": "<b>CAPEC-674: Design for FPGA Maliciously Altered</b><br>An adversary alters the functionality of a field-programmable gate array (FPGA) by causing an FPGA configuration memory chip reload in order to introduce a malicious function that could result in the FPGA performing or enabling malicious functions on a host system. Prior to the memory chip reload, the adversary alters the program for the FPGA by adding a function to impact system operation.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Design for FPGA Maliciously Altered",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/674.html",
+      "id": "CAPEC-674"
+    },
+    {
+      "Description": "<b>CAPEC-438: Modification During Manufacture</b><br>An attacker modifies a technology, product, or component during a stage in its manufacture for the purpose of carrying out an attack against some entity involved in the supply chain lifecycle. There are an almost limitless number of ways an attacker can modify a technology when they are involved in its manufacture, as the attacker has potential inroads to the software composition, hardware design and assembly, firmware, or basic design mechanics. Additionally, manufacturing of key components is often outsourced with the final product assembled by the primary manufacturer. The greatest risk, however, is deliberate manipulation of design specifications to produce malicious hardware or devices. There are billions of transistors in a single integrated circuit and studies have shown that fewer than 10 transistors are required to create malicious functionality.",
+      "color": "#2176ff",
+      "size": 30,
+      "label": "Modification During Manufacture",
+      "label_class": "node-label-big",
+      "type": "CAPEC",
+      "abstraction": "Meta",
+      "url": "https://capec.mitre.org/data/definitions/438.html",
+      "id": "CAPEC-438"
+    },
+    {
+      "Description": "<b>CAPEC-443: Malicious Logic Inserted Into Product by Authorized Developer</b><br>An adversary uses their privileged position within an authorized development organization to inject malicious logic into a codebase or product.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Malicious Logic Inserted Into Product by Authorized Developer",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/443.html",
+      "id": "CAPEC-443"
+    },
+    {
+      "Description": "<b>CAPEC-671: Requirements for ASIC Functionality Maliciously Altered</b><br>An adversary with access to functional requirements for an application specific integrated circuit (ASIC), a chip designed/customized for a singular particular use, maliciously alters requirements derived from originating capability needs. In the chip manufacturing process, requirements drive the chip design which, when the chip is fully manufactured, could result in an ASIC which may not meet the user\u2019s needs, contain malicious functionality, or exhibit other anomalous behaviors thereby affecting the intended use of the ASIC.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Requirements for ASIC Functionality Maliciously Altered",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/671.html",
+      "id": "CAPEC-671"
+    },
+    {
+      "Description": "<b>CAPEC-539: ASIC With Malicious Functionality</b><br>An attacker with access to the development environment process of an application-specific integrated circuit (ASIC) for a victim system being developed or maintained after initial deployment can insert malicious functionality into the system for the purpose of disruption or further compromise.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "ASIC With Malicious Functionality",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/539.html",
+      "id": "CAPEC-539"
+    },
+    {
+      "Description": "<b>CAPEC-518: Documentation Alteration to Produce Under-performing Systems</b><br>An attacker with access to a manufacturer's documentation alters the descriptions of system capabilities with the intent of causing errors in derived system requirements, impacting the overall effectiveness and capability of the system, allowing an attacker to take advantage of the introduced system capability flaw once the system is deployed.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Documentation Alteration to Produce Under-performing Systems",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/518.html",
+      "id": "CAPEC-518"
+    },
+    {
+      "Description": "<b>CAPEC-446: Malicious Logic Insertion into Product via Inclusion of Third-Party Component</b><br>An adversary conducts supply chain attacks by the inclusion of insecure third-party components into a technology, product, or code-base, possibly packaging a malicious driver or component along with the product before shipping it to the consumer or acquirer.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Malicious Logic Insertion into Product via Inclusion of Third-Party Component",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/446.html",
+      "id": "CAPEC-446"
+    },
+    {
+      "Description": "<b>CAPEC-520: Counterfeit Hardware Component Inserted During Product Assembly</b><br>An adversary with either direct access to the product assembly process or to the supply of subcomponents used in the product assembly process introduces counterfeit hardware components into product assembly. The assembly containing the counterfeit components results in a system specifically designed for malicious purposes.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Counterfeit Hardware Component Inserted During Product Assembly",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/520.html",
+      "id": "CAPEC-520"
+    },
+    {
+      "Description": "<b>CAPEC-538: Open-Source Library Manipulation</b><br>Adversaries implant malicious code in open source software (OSS) libraries to have it widely distributed, as OSS is commonly downloaded by developers and other users to incorporate into software development projects. The adversary can have a particular system in mind to target, or the implantation can be the first stage of follow-on attacks on many systems.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Open-Source Library Manipulation",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/538.html",
+      "id": "CAPEC-538"
+    },
+    {
+      "Description": "<b>CAPEC-673: Developer Signing Maliciously Altered Software</b><br>Software produced by a reputable developer is clandestinely infected with malicious code and then digitally signed by the unsuspecting developer, where the software has been altered via a compromised software development or build process prior to being signed. The receiver or user of the software has no reason to believe that it is anything but legitimate and proceeds to deploy it to organizational systems. \n This attack differs from CAPEC-206, since the developer is inadvertently signing malicious code they believe to be legitimate and which they are unware of any malicious modifications.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Developer Signing Maliciously Altered Software",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/673.html",
+      "id": "CAPEC-673"
+    },
+    {
+      "Description": "<b>CAPEC-206: Signing Malicious Code</b><br>The adversary extracts credentials used for code signing from a production environment and then uses these credentials to sign malicious content with the developer's key. Many developers use signing keys to sign code or hashes of code. When users or applications verify the signatures are accurate they are led to believe that the code came from the owner of the signing key and that the code has not been modified since the signature was applied. If the adversary has extracted the signing credentials then they can use those credentials to sign their own code bundles. Users or tools that verify the signatures attached to the code will likely assume the code came from the legitimate developer and install or run the code, effectively allowing the adversary to execute arbitrary code on the victim's computer. This differs from CAPEC-673, because the adversary is performing the code signing.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Signing Malicious Code",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/206.html",
+      "id": "CAPEC-206"
+    },
+    {
+      "Description": "<b>CAPEC-521: Hardware Design Specifications Are Altered</b><br>An attacker with access to a manufacturer's hardware manufacturing process documentation alters the design specifications, which introduces flaws advantageous to the attacker once the system is deployed.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Hardware Design Specifications Are Altered",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/521.html",
+      "id": "CAPEC-521"
+    },
+    {
+      "Description": "<b>CAPEC-517: Documentation Alteration to Circumvent Dial-down</b><br>An attacker with access to a manufacturer's documentation, which include descriptions of advanced technology and/or specific components' criticality, alters the documents to circumvent dial-down functionality requirements. This alteration would change the interpretation of implementation and manufacturing techniques, allowing for advanced technologies to remain in place even though these technologies might be restricted to certain customers, such as nations on the terrorist watch list, giving the attacker on the receiving end of a shipped product access to an advanced technology that might otherwise be restricted.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Documentation Alteration to Circumvent Dial-down",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/517.html",
+      "id": "CAPEC-517"
+    }
+  ],
+  "links": [
+    {
+      "source": "CAPEC-444",
+      "target": "CAPEC-438"
+    },
+    {
+      "source": "CAPEC-519",
+      "target": "CAPEC-447"
+    },
+    {
+      "source": "CAPEC-445",
+      "target": "CAPEC-444"
+    },
+    {
+      "source": "CAPEC-670",
+      "target": "CAPEC-444"
+    },
+    {
+      "source": "CAPEC-678",
+      "target": "CAPEC-444"
+    },
+    {
+      "source": "CAPEC-516",
+      "target": "CAPEC-444"
+    },
+    {
+      "source": "CAPEC-511",
+      "target": "CAPEC-444"
+    },
+    {
+      "source": "CAPEC-447",
+      "target": "CAPEC-438"
+    },
+    {
+      "source": "CAPEC-532",
+      "target": "CAPEC-444"
+    },
+    {
+      "source": "CAPEC-537",
+      "target": "CAPEC-444"
+    },
+    {
+      "source": "CAPEC-672",
+      "target": "CAPEC-444"
+    },
+    {
+      "source": "CAPEC-674",
+      "target": "CAPEC-447"
+    },
+    {
+      "source": "CAPEC-443",
+      "target": "CAPEC-444"
+    },
+    {
+      "source": "CAPEC-671",
+      "target": "CAPEC-447"
+    },
+    {
+      "source": "CAPEC-539",
+      "target": "CAPEC-444"
+    },
+    {
+      "source": "CAPEC-518",
+      "target": "CAPEC-447"
+    },
+    {
+      "source": "CAPEC-446",
+      "target": "CAPEC-444"
+    },
+    {
+      "source": "CAPEC-520",
+      "target": "CAPEC-444"
+    },
+    {
+      "source": "CAPEC-538",
+      "target": "CAPEC-444"
+    },
+    {
+      "source": "CAPEC-673",
+      "target": "CAPEC-444"
+    },
+    {
+      "source": "CAPEC-206",
+      "target": "CAPEC-444"
+    },
+    {
+      "source": "CAPEC-521",
+      "target": "CAPEC-447"
+    },
+    {
+      "source": "CAPEC-517",
+      "target": "CAPEC-447"
+    }
+  ]
+}

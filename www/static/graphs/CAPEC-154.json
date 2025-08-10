@@ -1,0 +1,245 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CAPEC-616: Establish Rogue Location</b><br>An adversary provides a malicious version of a resource at a location that is similar to the expected location of a legitimate resource. After establishing the rogue location, the adversary waits for a victim to visit the location and access the malicious resource.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Establish Rogue Location",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/616.html",
+      "id": "CAPEC-616"
+    },
+    {
+      "Description": "<b>CAPEC-631: SoundSquatting</b><br>An adversary registers a domain name that sounds the same as a trusted domain, but has a different spelling. A SoundSquatting attack takes advantage of a user's confusion of the two words to direct Internet traffic to adversary-controlled destinations. SoundSquatting does not require an attack against the trusted domain or complicated reverse engineering.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "SoundSquatting",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/631.html",
+      "id": "CAPEC-631"
+    },
+    {
+      "Description": "<b>CAPEC-695: Repo Jacking</b><br>An adversary takes advantage of the redirect property of directly linked Version Control System (VCS) repositories to trick users into incorporating malicious code into their applications.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Repo Jacking",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/695.html",
+      "id": "CAPEC-695"
+    },
+    {
+      "Description": "<b>CAPEC-630: TypoSquatting</b><br>An adversary registers a domain name with at least one character different than a trusted domain. A TypoSquatting attack takes advantage of instances where a user mistypes a URL (e.g. www.goggle.com) or not does visually verify a URL before clicking on it (e.g. phishing attack). As a result, the user is directed to an adversary-controlled destination. TypoSquatting does not require an attack against the trusted domain or complicated reverse engineering.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "TypoSquatting",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/630.html",
+      "id": "CAPEC-630"
+    },
+    {
+      "Description": "<b>CAPEC-617: Cellular Rogue Base Station</b><br>In this attack scenario, the attacker imitates a cellular base station with their own \"rogue\" base station equipment. Since cellular devices connect to whatever station has the strongest signal, the attacker can easily convince a targeted cellular device (e.g. the retransmission device) to talk to the rogue base station.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Cellular Rogue Base Station",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/617.html",
+      "id": "CAPEC-617"
+    },
+    {
+      "Description": "<b>CAPEC-505: Scheme Squatting</b><br>An adversary, through a previously installed malicious application, registers for a URL scheme intended for a target application that has not been installed. Thereafter, messages intended for the target application are handled by the malicious application. Upon receiving a message, the malicious application displays a screen that mimics the target application, thereby convincing the user to enter sensitive information. This type of attack is most often used to obtain sensitive information (e.g., credentials) from the user as they think that they are interacting with the intended target application.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Scheme Squatting",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/505.html",
+      "id": "CAPEC-505"
+    },
+    {
+      "Description": "<b>CAPEC-611: BitSquatting</b><br>An adversary registers a domain name one bit different than a trusted domain. A BitSquatting attack leverages random errors in memory to direct Internet traffic to adversary-controlled destinations. BitSquatting requires no exploitation or complicated reverse engineering, and is operating system and architecture agnostic. Experimental observations show that BitSquatting popular websites could redirect non-trivial amounts of Internet traffic to a malicious entity.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "BitSquatting",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/611.html",
+      "id": "CAPEC-611"
+    },
+    {
+      "Description": "<b>CAPEC-632: Homograph Attack via Homoglyphs</b><br>An adversary registers a domain name containing a homoglyph, leading the registered domain to appear the same as a trusted domain. A homograph attack leverages the fact that different characters among various character sets look the same to the user. Homograph attacks must generally be combined with other attacks, such as phishing attacks, in order to direct Internet traffic to the adversary-controlled destinations.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Homograph Attack via Homoglyphs",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/632.html",
+      "id": "CAPEC-632"
+    },
+    {
+      "Description": "<b>CAPEC-641: DLL Side-Loading</b><br>An adversary places a malicious version of a Dynamic-Link Library (DLL) in the Windows Side-by-Side (WinSxS) directory to trick the operating system into loading this malicious DLL instead of a legitimate DLL. Programs specify the location of the DLLs to load via the use of WinSxS manifests or DLL redirection and if they aren't used then Windows searches in a predefined set of directories to locate the file. If the applications improperly specify a required DLL or WinSxS manifests aren't explicit about the characteristics of the DLL to be loaded, they can be vulnerable to side-loading.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "DLL Side-Loading",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/641.html",
+      "id": "CAPEC-641"
+    },
+    {
+      "Description": "<b>CAPEC-471: Search Order Hijacking</b><br>An adversary exploits a weakness in an application's specification of external libraries to exploit the functionality of the loader where the process loading the library searches first in the same directory in which the process binary resides and then in other directories. Exploitation of this preferential search order can allow an attacker to make the loading process load the adversary's rogue library rather than the legitimate library. This attack can be leveraged with many different libraries and with many different loading processes. No forensic trails are left in the system's registry or file system that an incorrect library had been loaded.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Search Order Hijacking",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/471.html",
+      "id": "CAPEC-471"
+    },
+    {
+      "Description": "<b>CAPEC-38: Leveraging/Manipulating Configuration File Search Paths</b><br>This pattern of attack sees an adversary load a malicious resource into a program's standard path so that when a known command is executed then the system instead executes the malicious component. The adversary can either modify the search path a program uses, like a PATH variable or classpath, or they can manipulate resources on the path to point to their malicious components. J2EE applications and other component based applications that are built from multiple binaries can have very long list of dependencies to execute. If one of these libraries and/or references is controllable by the attacker then application controls can be circumvented by the attacker.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Leveraging/Manipulating Configuration File Search Paths",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/38.html",
+      "id": "CAPEC-38"
+    },
+    {
+      "Description": "<b>CAPEC-615: Evil Twin Wi-Fi Attack</b><br>Adversaries install Wi-Fi equipment that acts as a legitimate Wi-Fi network access point. When a device connects to this access point, Wi-Fi data traffic is intercepted, captured, and analyzed. This also allows the adversary to use \"adversary-in-the-middle\" (CAPEC-94) for all communications.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Evil Twin Wi-Fi Attack",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/615.html",
+      "id": "CAPEC-615"
+    },
+    {
+      "Description": "<b>CAPEC-159: Redirect Access to Libraries</b><br>An adversary exploits a weakness in the way an application searches for external libraries to manipulate the execution flow to point to an adversary supplied library or code base. This pattern of attack allows the adversary to compromise the application or server via the execution of unauthorized code. An application typically makes calls to functions that are a part of libraries external to the application. These libraries may be part of the operating system or they may be third party libraries. If an adversary can redirect an application's attempts to access these libraries to other libraries that the adversary supplies, the adversary will be able to force the targeted application to execute arbitrary code. This is especially dangerous if the targeted application has enhanced privileges. Access can be redirected through a number of techniques, including the use of symbolic links, search path modification, and relative path manipulation.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Redirect Access to Libraries",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/159.html",
+      "id": "CAPEC-159"
+    },
+    {
+      "Description": "<b>CAPEC-154: Resource Location Spoofing</b><br>An adversary deceives an application or user and convinces them to request a resource from an unintended location. By spoofing the location, the adversary can cause an alternate resource to be used, often one that the adversary controls and can be used to help them achieve their malicious goals.",
+      "color": "#2176ff",
+      "size": 30,
+      "label": "Resource Location Spoofing",
+      "label_class": "node-label-big",
+      "type": "CAPEC",
+      "abstraction": "Meta",
+      "url": "https://capec.mitre.org/data/definitions/154.html",
+      "id": "CAPEC-154"
+    },
+    {
+      "Description": "<b>CAPEC-132: Symlink Attack</b><br>An adversary positions a symbolic link in such a manner that the targeted user or application accesses the link's endpoint, assuming that it is accessing a file with the link's name.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Symlink Attack",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/132.html",
+      "id": "CAPEC-132"
+    },
+    {
+      "Description": "<b>CAPEC-667: Bluetooth Impersonation AttackS (BIAS)</b><br>An adversary disguises the MAC address of their Bluetooth enabled device to one for which there exists an active and trusted connection and authenticates successfully. The adversary can then perform malicious actions on the target Bluetooth device depending on the target\u2019s capabilities.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Bluetooth Impersonation AttackS (BIAS)",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/667.html",
+      "id": "CAPEC-667"
+    }
+  ],
+  "links": [
+    {
+      "source": "CAPEC-616",
+      "target": "CAPEC-154"
+    },
+    {
+      "source": "CAPEC-631",
+      "target": "CAPEC-616"
+    },
+    {
+      "source": "CAPEC-695",
+      "target": "CAPEC-616"
+    },
+    {
+      "source": "CAPEC-630",
+      "target": "CAPEC-616"
+    },
+    {
+      "source": "CAPEC-617",
+      "target": "CAPEC-616"
+    },
+    {
+      "source": "CAPEC-505",
+      "target": "CAPEC-616"
+    },
+    {
+      "source": "CAPEC-611",
+      "target": "CAPEC-616"
+    },
+    {
+      "source": "CAPEC-632",
+      "target": "CAPEC-616"
+    },
+    {
+      "source": "CAPEC-641",
+      "target": "CAPEC-159"
+    },
+    {
+      "source": "CAPEC-471",
+      "target": "CAPEC-159"
+    },
+    {
+      "source": "CAPEC-38",
+      "target": "CAPEC-159"
+    },
+    {
+      "source": "CAPEC-615",
+      "target": "CAPEC-616"
+    },
+    {
+      "source": "CAPEC-159",
+      "target": "CAPEC-154"
+    },
+    {
+      "source": "CAPEC-132",
+      "target": "CAPEC-159"
+    },
+    {
+      "source": "CAPEC-667",
+      "target": "CAPEC-616"
+    }
+  ]
+}

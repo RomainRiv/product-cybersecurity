@@ -1,0 +1,155 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CAPEC-270: Modification of Registry Run Keys</b><br>An adversary adds a new entry to the \"run keys\" in the Windows registry so that an application of their choosing is executed when a user logs in. In this way, the adversary can get their executable to operate and run on the target system with the authorized user's level of permissions. This attack is a good way for an adversary to run persistent spyware on a user's machine, such as a keylogger.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Modification of Registry Run Keys",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/270.html",
+      "id": "CAPEC-270"
+    },
+    {
+      "Description": "<b>CAPEC-203: Manipulate Registry Information</b><br>An adversary exploits a weakness in authorization in order to modify content within a registry (e.g., Windows Registry, Mac plist, application registry). Editing registry information can permit the adversary to hide configuration information or remove indicators of compromise to cover up activity. Many applications utilize registries to store configuration and service information. As such, modification of registry information can affect individual services (affecting billing, authorization, or even allowing for identity spoofing) or the overall configuration of a targeted application. For example, both Java RMI and SOAP use registries to track available services. Changing registry values is sometimes a preliminary step towards completing another attack pattern, but given the long term usage of many registry values, manipulation of registry information could be its own end.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Manipulate Registry Information",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/203.html",
+      "id": "CAPEC-203"
+    },
+    {
+      "Description": "<b>CAPEC-536: Data Injected During Configuration</b><br>An attacker with access to data files and processes on a victim's system injects malicious data into critical operational data during configuration or recalibration, causing the victim's system to perform in a suboptimal manner that benefits the adversary.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Data Injected During Configuration",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/536.html",
+      "id": "CAPEC-536"
+    },
+    {
+      "Description": "<b>CAPEC-271: Schema Poisoning</b><br>An adversary corrupts or modifies the content of a schema for the purpose of undermining the security of the target. Schemas provide the structure and content definitions for resources used by an application. By replacing or modifying a schema, the adversary can affect how the application handles or interprets a resource, often leading to possible denial of service, entering into an unexpected state, or recording incomplete data.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Schema Poisoning",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/271.html",
+      "id": "CAPEC-271"
+    },
+    {
+      "Description": "<b>CAPEC-75: Manipulating Writeable Configuration Files</b><br>Generally these are manually edited files that are not in the preview of the system administrators, any ability on the attackers' behalf to modify these files, for example in a CVS repository, gives unauthorized access directly to the application, the same as authorized users.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Manipulating Writeable Configuration Files",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/75.html",
+      "id": "CAPEC-75"
+    },
+    {
+      "Description": "<b>CAPEC-51: Poison Web Service Registry</b><br>SOA and Web Services often use a registry to perform look up, get schema information, and metadata about services. A poisoned registry can redirect (think phishing for servers) the service requester to a malicious service provider, provide incorrect information in schema or metadata, and delete information about service provider interfaces.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Poison Web Service Registry",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/51.html",
+      "id": "CAPEC-51"
+    },
+    {
+      "Description": "<b>CAPEC-478: Modification of Windows Service Configuration</b><br>An adversary exploits a weakness in access control to modify the execution parameters of a Windows service. The goal of this attack is to execute a malicious binary in place of an existing service.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Modification of Windows Service Configuration",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/478.html",
+      "id": "CAPEC-478"
+    },
+    {
+      "Description": "<b>CAPEC-146: XML Schema Poisoning</b><br>An adversary corrupts or modifies the content of XML schema information passed between a client and server for the purpose of undermining the security of the target. XML Schemas provide the structure and content definitions for XML documents. Schema poisoning is the ability to manipulate a schema either by replacing or modifying it to compromise the programs that process documents that use this schema.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "XML Schema Poisoning",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/146.html",
+      "id": "CAPEC-146"
+    },
+    {
+      "Description": "<b>CAPEC-578: Disable Security Software</b><br>An adversary exploits a weakness in access control to disable security tools so that detection does not occur. This can take the form of killing processes, deleting registry keys so that tools do not start at run time, deleting log files, or other methods.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Disable Security Software",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/578.html",
+      "id": "CAPEC-578"
+    },
+    {
+      "Description": "<b>CAPEC-176: Configuration/Environment Manipulation</b><br>An attacker manipulates files or settings external to a target application which affect the behavior of that application. For example, many applications use external configuration files and libraries - modification of these entities or otherwise affecting the application's ability to use them would constitute a configuration/environment manipulation attack.",
+      "color": "#2176ff",
+      "size": 30,
+      "label": "Configuration/Environment Manipulation",
+      "label_class": "node-label-big",
+      "type": "CAPEC",
+      "abstraction": "Meta",
+      "url": "https://capec.mitre.org/data/definitions/176.html",
+      "id": "CAPEC-176"
+    }
+  ],
+  "links": [
+    {
+      "source": "CAPEC-270",
+      "target": "CAPEC-203"
+    },
+    {
+      "source": "CAPEC-203",
+      "target": "CAPEC-176"
+    },
+    {
+      "source": "CAPEC-536",
+      "target": "CAPEC-176"
+    },
+    {
+      "source": "CAPEC-271",
+      "target": "CAPEC-176"
+    },
+    {
+      "source": "CAPEC-75",
+      "target": "CAPEC-176"
+    },
+    {
+      "source": "CAPEC-51",
+      "target": "CAPEC-203"
+    },
+    {
+      "source": "CAPEC-478",
+      "target": "CAPEC-203"
+    },
+    {
+      "source": "CAPEC-146",
+      "target": "CAPEC-271"
+    },
+    {
+      "source": "CAPEC-578",
+      "target": "CAPEC-176"
+    }
+  ]
+}

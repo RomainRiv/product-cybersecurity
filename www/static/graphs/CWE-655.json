@@ -1,0 +1,19 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CWE-655: Insufficient Psychological Acceptability</b><br>The product has a protection mechanism that is too difficult or inconvenient to use, encouraging non-malicious users to disable or bypass the mechanism, whether by accident or on purpose.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Insufficient Psychological Acceptability",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/655.html",
+      "id": "CWE-655"
+    }
+  ],
+  "links": []
+}

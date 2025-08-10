@@ -1,0 +1,215 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CAPEC-605: Cellular Jamming</b><br>In this attack scenario, the attacker actively transmits signals to overpower and disrupt the communication between a cellular user device and a cell tower. Several existing techniques are known in the open literature for this attack for 2G, 3G, and 4G LTE cellular technology. For example, some attacks target cell towers by overwhelming them with false status messages, while others introduce high levels of noise on signaling channels.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Cellular Jamming",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/605.html",
+      "id": "CAPEC-605"
+    },
+    {
+      "Description": "<b>CAPEC-96: Block Access to Libraries</b><br>An application typically makes calls to functions that are a part of libraries external to the application. These libraries may be part of the operating system or they may be third party libraries. It is possible that the application does not handle situations properly where access to these libraries has been blocked. Depending on the error handling within the application, blocked access to libraries may leave the system in an insecure state that could be leveraged by an attacker.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Block Access to Libraries",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/96.html",
+      "id": "CAPEC-96"
+    },
+    {
+      "Description": "<b>CAPEC-584: BGP Route Disabling</b><br>An adversary suppresses the Border Gateway Protocol (BGP) advertisement for a route so as to render the underlying network inaccessible. The BGP protocol helps traffic move throughout the Internet by selecting the most efficient route between Autonomous Systems (AS), or routing domains. BGP is the basis for interdomain routing infrastructure, providing connections between these ASs. By suppressing the intended AS routing advertisements and/or forcing less effective routes for traffic to ASs, the adversary can deny availability for the target network.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "BGP Route Disabling",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/584.html",
+      "id": "CAPEC-584"
+    },
+    {
+      "Description": "<b>CAPEC-583: Disabling Network Hardware</b><br>In this attack pattern, an adversary physically disables networking hardware by powering it down or disconnecting critical equipment. Disabling or shutting off critical system resources prevents them from performing their service as intended, which can have direct and indirect consequences on other systems. This attack pattern is considerably less technical than the selective blocking used in most obstruction attacks.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Disabling Network Hardware",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/583.html",
+      "id": "CAPEC-583"
+    },
+    {
+      "Description": "<b>CAPEC-559: Orbital Jamming</b><br>In this attack pattern, the adversary sends disruptive signals at a target satellite using a rogue uplink station to disrupt the intended transmission. Those within the satellite's footprint are prevented from reaching the satellite's targeted or neighboring channels. The satellite's footprint size depends upon its position in the sky; higher orbital satellites cover multiple continents.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Orbital Jamming",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/559.html",
+      "id": "CAPEC-559"
+    },
+    {
+      "Description": "<b>CAPEC-604: Wi-Fi Jamming</b><br>In this attack scenario, the attacker actively transmits on the Wi-Fi channel to prevent users from transmitting or receiving data from the targeted Wi-Fi network. There are several known techniques to perform this attack \u2013 for example: the attacker may flood the Wi-Fi access point (e.g. the retransmission device) with deauthentication frames. Another method is to transmit high levels of noise on the RF band used by the Wi-Fi network.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Wi-Fi Jamming",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/604.html",
+      "id": "CAPEC-604"
+    },
+    {
+      "Description": "<b>CAPEC-582: Route Disabling</b><br>An adversary disables the network route between two targets. The goal is to completely sever the communications channel between two entities. This is often the result of a major error or the use of an \"Internet kill switch\" by those in control of critical infrastructure. This attack pattern differs from most other obstruction patterns by targeting the route itself, as opposed to the data passed over the route.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Route Disabling",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/582.html",
+      "id": "CAPEC-582"
+    },
+    {
+      "Description": "<b>CAPEC-547: Physical Destruction of Device or Component</b><br>An adversary conducts a physical attack a device or component, destroying it such that it no longer functions as intended.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Physical Destruction of Device or Component",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/547.html",
+      "id": "CAPEC-547"
+    },
+    {
+      "Description": "<b>CAPEC-607: Obstruction</b><br>An attacker obstructs the interactions between system components. By interrupting or disabling these interactions, an adversary can often force the system into a degraded state or cause the system to stop working as intended. This can cause the system components to be unavailable until the obstruction mitigated.",
+      "color": "#2176ff",
+      "size": 30,
+      "label": "Obstruction",
+      "label_class": "node-label-big",
+      "type": "CAPEC",
+      "abstraction": "Meta",
+      "url": "https://capec.mitre.org/data/definitions/607.html",
+      "id": "CAPEC-607"
+    },
+    {
+      "Description": "<b>CAPEC-601: Jamming</b><br>An adversary uses radio noise or signals in an attempt to disrupt communications. By intentionally overwhelming system resources with illegitimate traffic, service is denied to the legitimate traffic of authorized users.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Jamming",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/601.html",
+      "id": "CAPEC-601"
+    },
+    {
+      "Description": "<b>CAPEC-589: DNS Blocking</b><br>An adversary intercepts traffic and intentionally drops DNS requests based on content in the request. In this way, the adversary can deny the availability of specific services or content to the user even if the IP address is changed.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "DNS Blocking",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/589.html",
+      "id": "CAPEC-589"
+    },
+    {
+      "Description": "<b>CAPEC-603: Blockage</b><br>An adversary blocks the delivery of an important system resource causing the system to fail or stop working.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Blockage",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/603.html",
+      "id": "CAPEC-603"
+    },
+    {
+      "Description": "<b>CAPEC-585: DNS Domain Seizure</b><br>In this attack pattern, an adversary influences a target's web-hosting company to disable a target domain. The goal is to prevent access to the targeted service provided by that domain. It usually occurs as the result of civil or criminal legal interventions.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "DNS Domain Seizure",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/585.html",
+      "id": "CAPEC-585"
+    },
+    {
+      "Description": "<b>CAPEC-590: IP Address Blocking</b><br>An adversary performing this type of attack drops packets destined for a target IP address. The aim is to prevent access to the service hosted at the target IP address.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "IP Address Blocking",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/590.html",
+      "id": "CAPEC-590"
+    }
+  ],
+  "links": [
+    {
+      "source": "CAPEC-605",
+      "target": "CAPEC-601"
+    },
+    {
+      "source": "CAPEC-96",
+      "target": "CAPEC-603"
+    },
+    {
+      "source": "CAPEC-584",
+      "target": "CAPEC-582"
+    },
+    {
+      "source": "CAPEC-583",
+      "target": "CAPEC-582"
+    },
+    {
+      "source": "CAPEC-559",
+      "target": "CAPEC-601"
+    },
+    {
+      "source": "CAPEC-604",
+      "target": "CAPEC-601"
+    },
+    {
+      "source": "CAPEC-582",
+      "target": "CAPEC-607"
+    },
+    {
+      "source": "CAPEC-547",
+      "target": "CAPEC-607"
+    },
+    {
+      "source": "CAPEC-601",
+      "target": "CAPEC-607"
+    },
+    {
+      "source": "CAPEC-589",
+      "target": "CAPEC-603"
+    },
+    {
+      "source": "CAPEC-603",
+      "target": "CAPEC-607"
+    },
+    {
+      "source": "CAPEC-585",
+      "target": "CAPEC-582"
+    },
+    {
+      "source": "CAPEC-590",
+      "target": "CAPEC-603"
+    }
+  ]
+}

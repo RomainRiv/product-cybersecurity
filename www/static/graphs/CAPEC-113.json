@@ -1,0 +1,95 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CAPEC-661: Root/Jailbreak Detection Evasion via Debugging</b><br>An adversary inserts a debugger into the program entry point of a mobile application to modify the application binary, with the goal of evading Root/Jailbreak detection. Mobile device users often Root/Jailbreak their devices in order to gain administrative control over the mobile operating system and/or to install third-party mobile applications that are not provided by authorized application stores (e.g. Google Play Store and Apple App Store). Rooting/Jailbreaking a mobile device also provides users with access to system debuggers and disassemblers, which can be leveraged to exploit applications by dumping the application's memory at runtime in order to remove or bypass signature verification methods. This further allows the adversary to evade Root/Jailbreak detection mechanisms, which can result in execution of administrative commands, obtaining confidential data, impersonating legitimate users of the application, and more.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Root/Jailbreak Detection Evasion via Debugging",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/661.html",
+      "id": "CAPEC-661"
+    },
+    {
+      "Description": "<b>CAPEC-133: Try All Common Switches</b><br>An attacker attempts to invoke all common switches and options in the target application for the purpose of discovering weaknesses in the target. For example, in some applications, adding a --debug switch causes debugging information to be displayed, which can sometimes reveal sensitive processing or configuration information to an attacker. This attack differs from other forms of API abuse in that the attacker is indiscriminately attempting to invoke options in the hope that one of them will work rather than specifically targeting a known option. Nonetheless, even if the attacker is familiar with the published options of a targeted application this attack method may still be fruitful as it might discover unpublicized functionality.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Try All Common Switches",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/133.html",
+      "id": "CAPEC-133"
+    },
+    {
+      "Description": "<b>CAPEC-121: Exploit Non-Production Interfaces</b><br>An adversary exploits a sample, demonstration, test, or debug interface that is unintentionally enabled on a production system, with the goal of gleaning information or leveraging functionality that would otherwise be unavailable.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Exploit Non-Production Interfaces",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/121.html",
+      "id": "CAPEC-121"
+    },
+    {
+      "Description": "<b>CAPEC-113: Interface Manipulation</b><br>An adversary manipulates the use or processing of an interface (e.g. Application Programming Interface (API) or System-on-Chip (SoC)) resulting in an adverse impact upon the security of the system implementing the interface. This can allow the adversary to bypass access control and/or execute functionality not intended by the interface implementation, possibly compromising the system which integrates the interface. Interface manipulation can take on a number of forms including forcing the unexpected use of an interface or the use of an interface in an unintended way.",
+      "color": "#2176ff",
+      "size": 30,
+      "label": "Interface Manipulation",
+      "label_class": "node-label-big",
+      "type": "CAPEC",
+      "abstraction": "Meta",
+      "url": "https://capec.mitre.org/data/definitions/113.html",
+      "id": "CAPEC-113"
+    },
+    {
+      "Description": "<b>CAPEC-160: Exploit Script-Based APIs</b><br>Some APIs support scripting instructions as arguments. Methods that take scripted instructions (or references to scripted instructions) can be very flexible and powerful. However, if an attacker can specify the script that serves as input to these methods they can gain access to a great deal of functionality. For example, HTML pages support <script> tags that allow scripting languages to be embedded in the page and then interpreted by the receiving web browser. If the content provider is malicious, these scripts can compromise the client application. Some applications may even execute the scripts under their own identity (rather than the identity of the user providing the script) which can allow attackers to perform activities that would otherwise be denied to them.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Exploit Script-Based APIs",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/160.html",
+      "id": "CAPEC-160"
+    },
+    {
+      "Description": "<b>CAPEC-36: Using Unpublished Interfaces or Functionality</b><br>An adversary searches for and invokes interfaces or functionality that the target system designers did not intend to be publicly available. If interfaces fail to authenticate requests, the attacker may be able to invoke functionality they are not authorized for.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Using Unpublished Interfaces or Functionality",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/36.html",
+      "id": "CAPEC-36"
+    }
+  ],
+  "links": [
+    {
+      "source": "CAPEC-661",
+      "target": "CAPEC-121"
+    },
+    {
+      "source": "CAPEC-133",
+      "target": "CAPEC-113"
+    },
+    {
+      "source": "CAPEC-121",
+      "target": "CAPEC-113"
+    },
+    {
+      "source": "CAPEC-160",
+      "target": "CAPEC-113"
+    },
+    {
+      "source": "CAPEC-36",
+      "target": "CAPEC-113"
+    }
+  ]
+}

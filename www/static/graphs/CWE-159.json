@@ -1,0 +1,68 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CWE-159: Improper Handling of Invalid Use of Special Elements</b><br>The product does not properly filter, remove, quote, or otherwise manage the invalid use of special elements in user-controlled input, which could cause adverse effect on its behavior and integrity.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Improper Handling of Invalid Use of Special Elements",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/159.html",
+      "id": "CWE-159"
+    },
+    {
+      "Description": "<b>CWE-168: Improper Handling of Inconsistent Special Elements</b><br>The product does not properly handle input in which an inconsistency exists between two or more special characters or reserved words.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Handling of Inconsistent Special Elements",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/168.html",
+      "id": "CWE-168"
+    },
+    {
+      "Description": "<b>CWE-166: Improper Handling of Missing Special Element</b><br>The product receives input from an upstream component, but it does not handle or incorrectly handles when an expected special element is missing.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Handling of Missing Special Element",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/166.html",
+      "id": "CWE-166"
+    },
+    {
+      "Description": "<b>CWE-167: Improper Handling of Additional Special Element</b><br>The product receives input from an upstream component, but it does not handle or incorrectly handles when an additional unexpected special element is provided.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Handling of Additional Special Element",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/167.html",
+      "id": "CWE-167"
+    }
+  ],
+  "links": [
+    {
+      "width": 1,
+      "source": "CWE-168",
+      "target": "CWE-159"
+    },
+    {
+      "width": 1,
+      "source": "CWE-166",
+      "target": "CWE-159"
+    },
+    {
+      "width": 1,
+      "source": "CWE-167",
+      "target": "CWE-159"
+    }
+  ]
+}

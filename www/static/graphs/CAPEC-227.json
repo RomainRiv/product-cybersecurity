@@ -1,0 +1,35 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CAPEC-469: HTTP DoS</b><br>An attacker performs flooding at the HTTP level to bring down only a particular web application rather than anything listening on a TCP/IP connection. This denial of service attack requires substantially fewer packets to be sent which makes DoS harder to detect. This is an equivalent of SYN flood in HTTP. The idea is to keep the HTTP session alive indefinitely and then repeat that hundreds of times. This attack targets resource depletion weaknesses in web server software. The web server will wait to attacker's responses on the initiated HTTP sessions while the connection threads are being exhausted.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "HTTP DoS",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/469.html",
+      "id": "CAPEC-469"
+    },
+    {
+      "Description": "<b>CAPEC-227: Sustained Client Engagement</b><br>An adversary attempts to deny legitimate users access to a resource by continually engaging a specific resource in an attempt to keep the resource tied up as long as possible. The adversary's primary goal is not to crash or flood the target, which would alert defenders; rather it is to repeatedly perform actions or abuse algorithmic flaws such that a given resource is tied up and not available to a legitimate user. By carefully crafting a requests that keep the resource engaged through what is seemingly benign requests, legitimate users are limited or completely denied access to the resource.",
+      "color": "#2176ff",
+      "size": 30,
+      "label": "Sustained Client Engagement",
+      "label_class": "node-label-big",
+      "type": "CAPEC",
+      "abstraction": "Meta",
+      "url": "https://capec.mitre.org/data/definitions/227.html",
+      "id": "CAPEC-227"
+    }
+  ],
+  "links": [
+    {
+      "source": "CAPEC-469",
+      "target": "CAPEC-227"
+    }
+  ]
+}

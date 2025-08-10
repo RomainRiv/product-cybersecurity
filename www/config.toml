@@ -1,0 +1,43 @@
+baseURL = "https://yourdomain.com/"
+theme = "papermod"  # or your theme folder name in /themes
+title="Cybersecurity Dataviz 🕵🏻‍♂️"
+
+[menu]
+    [[menu.main]]
+        name = "Home"
+        url = "/"
+        weight = 1
+    
+    [[menu.main]]
+        name = "Blog"
+        url = "https://romainriv.github.io/blog/"
+        weight = 2
+
+    [[menu.main]]
+        name = "Archive"
+        url = "/archive/"
+        weight = 3
+
+    [[menu.main]]
+        name = "Tags"
+        url = "/tags/"
+        weight = 4
+        
+    [[menu.main]]
+        name = "Search"
+        url = "/search/"
+        weight = 5
+
+    [[menu.main]]
+        name = "LinkedIn"
+        url = "https://www.linkedin.com/in/rriviere"
+        weight = 10
+        pre = "<i class='fab fa-linkedin'></i>"  # optional icon if your theme supports FontAwesome
+
+[outputs]
+    home = ["HTML", "RSS", "JSON"]
+
+[markup]
+    [markup.goldmark]
+        [markup.goldmark.renderer]
+            unsafe = true

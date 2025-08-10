@@ -1,0 +1,36 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CWE-407: Inefficient Algorithmic Complexity</b><br>An algorithm in a product has an inefficient worst-case computational complexity that may be detrimental to system performance and can be triggered by an attacker, typically using crafted manipulations that ensure that the worst case is being reached.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Inefficient Algorithmic Complexity",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/407.html",
+      "id": "CWE-407"
+    },
+    {
+      "Description": "<b>CWE-1333: Inefficient Regular Expression Complexity</b><br>The product uses a regular expression with an inefficient, possibly exponential worst-case computational complexity that consumes excessive CPU cycles.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Inefficient Regular Expression Complexity",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1333.html",
+      "id": "CWE-1333"
+    }
+  ],
+  "links": [
+    {
+      "width": 1,
+      "source": "CWE-1333",
+      "target": "CWE-407"
+    }
+  ]
+}

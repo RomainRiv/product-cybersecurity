@@ -1,0 +1,95 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CAPEC-68: Subvert Code-signing Facilities</b><br>Many languages use code signing facilities to vouch for code's identity and to thus tie code to its assigned privileges within an environment. Subverting this mechanism can be instrumental in an attacker escalating privilege. Any means of subverting the way that a virtual machine enforces code signing classifies for this style of attack.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Subvert Code-signing Facilities",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/68.html",
+      "id": "CAPEC-68"
+    },
+    {
+      "Description": "<b>CAPEC-233: Privilege Escalation</b><br>An adversary exploits a weakness enabling them to elevate their privilege and perform an action that they are not supposed to be authorized to perform.",
+      "color": "#2176ff",
+      "size": 30,
+      "label": "Privilege Escalation",
+      "label_class": "node-label-big",
+      "type": "CAPEC",
+      "abstraction": "Meta",
+      "url": "https://capec.mitre.org/data/definitions/233.html",
+      "id": "CAPEC-233"
+    },
+    {
+      "Description": "<b>CAPEC-30: Hijacking a Privileged Thread of Execution</b><br>An adversary hijacks a privileged thread of execution by injecting malicious code into a running process. By using a privleged thread to do their bidding, adversaries can evade process-based detection that would stop an attack that creates a new process. This can lead to an adversary gaining access to the process's memory and can also enable elevated privileges. The most common way to perform this attack is by suspending an existing thread and manipulating its memory.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Hijacking a Privileged Thread of Execution",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/30.html",
+      "id": "CAPEC-30"
+    },
+    {
+      "Description": "<b>CAPEC-104: Cross Zone Scripting</b><br>An attacker is able to cause a victim to load content into their web-browser that bypasses security zone controls and gain access to increased privileges to execute scripting code or other web objects such as unsigned ActiveX controls or applets. This is a privilege elevation attack targeted at zone-based web-browser security.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Cross Zone Scripting",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/104.html",
+      "id": "CAPEC-104"
+    },
+    {
+      "Description": "<b>CAPEC-234: Hijacking a privileged process</b><br>An adversary gains control of a process that is assigned elevated privileges in order to execute arbitrary code with those privileges. Some processes are assigned elevated privileges on an operating system, usually through association with a particular user, group, or role. If an attacker can hijack this process, they will be able to assume its level of privilege in order to execute their own code.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Hijacking a privileged process",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/234.html",
+      "id": "CAPEC-234"
+    },
+    {
+      "Description": "<b>CAPEC-69: Target Programs with Elevated Privileges</b><br>This attack targets programs running with elevated privileges. The adversary tries to leverage a vulnerability in the running program and get arbitrary code to execute with elevated privileges.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Target Programs with Elevated Privileges",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/69.html",
+      "id": "CAPEC-69"
+    }
+  ],
+  "links": [
+    {
+      "source": "CAPEC-68",
+      "target": "CAPEC-233"
+    },
+    {
+      "source": "CAPEC-30",
+      "target": "CAPEC-233"
+    },
+    {
+      "source": "CAPEC-104",
+      "target": "CAPEC-233"
+    },
+    {
+      "source": "CAPEC-234",
+      "target": "CAPEC-233"
+    },
+    {
+      "source": "CAPEC-69",
+      "target": "CAPEC-233"
+    }
+  ]
+}

@@ -1,0 +1,170 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CAPEC-395: Bypassing Electronic Locks and Access Controls</b><br>An attacker exploits security assumptions to bypass electronic locks or other forms of access controls. Most attacks against electronic access controls follow similar methods but utilize different tools. Some electronic locks utilize magnetic strip cards, others employ RFID tags embedded within a card or badge, or may involve more sophisticated protections such as voice-print, thumb-print, or retinal biometrics. Magnetic Strip and RFID technologies are the most widespread because they are cost effective to deploy and more easily integrated with other electronic security measures. These technologies share common weaknesses that an attacker can exploit to gain access to a facility protected by the mechanisms via copying legitimate cards or badges, or generating new cards using reverse-engineered algorithms.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Bypassing Electronic Locks and Access Controls",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/395.html",
+      "id": "CAPEC-395"
+    },
+    {
+      "Description": "<b>CAPEC-399: Cloning RFID Cards or Chips</b><br>An attacker analyzes data returned by an RFID chip and uses this information to duplicate a RFID signal that responds identically to the target chip. In some cases RFID chips are used for building access control, employee identification, or as markers on products being delivered along a supply chain. Some organizations also embed RFID tags inside computer assets to trigger alarms if they are removed from particular rooms, zones, or buildings. Similar to Magnetic strip cards, RFID cards are susceptible to duplication (cloning) and reuse.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Cloning RFID Cards or Chips",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/399.html",
+      "id": "CAPEC-399"
+    },
+    {
+      "Description": "<b>CAPEC-393: Lock Picking</b><br>An attacker uses lock picking tools and techniques to bypass the locks on a building or facility. Lock picking is the use of a special set of tools to manipulate the pins within a lock. Different sets of tools are required for each type of lock. Lock picking attacks have the advantage of being non-invasive in that if performed correctly the lock will not be damaged. A standard lock pin-and-tumbler lock is secured by a set of internal pins that prevent the tumbler device from turning. Spring loaded driver pins push down on the key pins preventing rotation so that the bolt remains in a locked position.. When the correct key is inserted, the ridges on the key push the key pins up and against the driver pins, causing correct alignment which allows the lock cylinder to rotate. Most common locks, such as domestic locks in the US, can be picked using a standard 2 tools (i.e. a torsion wrench and a hook pick).",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Lock Picking",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/393.html",
+      "id": "CAPEC-393"
+    },
+    {
+      "Description": "<b>CAPEC-398: Magnetic Strip Card Brute Force Attacks</b><br>An adversary analyzes the data on two or more magnetic strip cards and is able to generate new cards containing valid sequences that allow unauthorized access and/or impersonation of individuals.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Magnetic Strip Card Brute Force Attacks",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/398.html",
+      "id": "CAPEC-398"
+    },
+    {
+      "Description": "<b>CAPEC-400: RFID Chip Deactivation or Destruction</b><br>An attacker uses methods to deactivate a passive RFID tag for the purpose of rendering the tag, badge, card, or object containing the tag unresponsive. RFID tags are used primarily for access control, inventory, or anti-theft devices. The purpose of attacking the RFID chip is to disable or damage the chip without causing damage to the object housing it.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "RFID Chip Deactivation or Destruction",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/400.html",
+      "id": "CAPEC-400"
+    },
+    {
+      "Description": "<b>CAPEC-394: Using a Snap Gun Lock to Force a Lock</b><br>An attacker uses a Snap Gun, also known as a Pick Gun, to force the lock on a building or facility. A Pick Gun is a special type of lock picking instrument that works on similar principles as lock bumping. A snap gun is a hand-held device with an attached metal pick. The metal pick strikes the pins within the lock, transferring motion from the key pins to the driver pins and forcing the lock into momentary alignment. A standard lock is secured by a set of internal pins that prevent the device from turning. Spring loaded driver pins push down on the key pins. When the correct key is inserted, the ridges on the key push the key pins up and against the driver pins, causing correct alignment which allows the lock cylinder to rotate. A Snap Gun exploits this design by using a metal pin to strike all of the key pins at once, forcing the driver pins to shift into an unlocked position. Unlike bump keys or lock picks, a Snap Gun may damage the lock more easily, leaving evidence that the lock has been tampered with.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Using a Snap Gun Lock to Force a Lock",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/394.html",
+      "id": "CAPEC-394"
+    },
+    {
+      "Description": "<b>CAPEC-390: Bypassing Physical Security</b><br>Facilities often used layered models for physical security such as traditional locks, Electronic-based card entry systems, coupled with physical alarms. Hardware security mechanisms range from the use of computer case and cable locks as well as RFID tags for tracking computer assets. This layered approach makes it difficult for random physical security breaches to go unnoticed, but is less effective at stopping deliberate and carefully planned break-ins. Avoiding detection begins with evading building security and surveillance and methods for bypassing the electronic or physical locks which secure entry points.",
+      "color": "#2176ff",
+      "size": 30,
+      "label": "Bypassing Physical Security",
+      "label_class": "node-label-big",
+      "type": "CAPEC",
+      "abstraction": "Meta",
+      "url": "https://capec.mitre.org/data/definitions/390.html",
+      "id": "CAPEC-390"
+    },
+    {
+      "Description": "<b>CAPEC-626: Smudge Attack</b><br>Attacks that reveal the password/passcode pattern on a touchscreen device by detecting oil smudges left behind by the user\u2019s fingers.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Smudge Attack",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/626.html",
+      "id": "CAPEC-626"
+    },
+    {
+      "Description": "<b>CAPEC-392: Lock Bumping</b><br>An attacker uses a bump key to force a lock on a building or facility and gain entry. Lock Bumping is the use of a special type of key that can be tapped or bumped to cause the pins within the lock to fall into temporary alignment, allowing the lock to be opened. Lock bumping allows an attacker to open a lock without having the correct key. A standard lock is secured by a set of internal pins that prevent the device from turning. Spring loaded driver pins push down on the key pins. When the correct key is inserted, the ridges on the key push the key pins up and against the driver pins, causing correct alignment which allows the lock cylinder to rotate. A bump key is a specially constructed key that exploits this design. When the bump key is struck or firmly tapped, its teeth transfer the force of the tap into the key pins, causing the lock to momentarily shift into proper alignment for the mechanism to be opened.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Lock Bumping",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/392.html",
+      "id": "CAPEC-392"
+    },
+    {
+      "Description": "<b>CAPEC-397: Cloning Magnetic Strip Cards</b><br>An attacker duplicates the data on a Magnetic strip card (i.e. 'swipe card' or 'magstripe') to gain unauthorized access to a physical location or a person's private information. Magstripe cards encode data on a band of iron-based magnetic particles arrayed in a stripe along a rectangular card. Most magstripe card data formats conform to ISO standards 7810, 7811, 7813, 8583, and 4909. The primary advantage of magstripe technology is ease of encoding and portability, but this also renders magnetic strip cards susceptible to unauthorized duplication. If magstripe cards are used for access control, all an attacker need do is obtain a valid card long enough to make a copy of the card and then return the card to its location (i.e. a co-worker's desk). Magstripe reader/writers are widely available as well as software for analyzing data encoded on the cards. By swiping a valid card, it becomes trivial to make any number of duplicates that function as the original.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Cloning Magnetic Strip Cards",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/397.html",
+      "id": "CAPEC-397"
+    },
+    {
+      "Description": "<b>CAPEC-391: Bypassing Physical Locks</b><br>An attacker uses techniques and methods to bypass physical security measures of a building or facility. Physical locks may range from traditional lock and key mechanisms, cable locks used to secure laptops or servers, locks on server cases, or other such devices. Techniques such as lock bumping, lock forcing via snap guns, or lock picking can be employed to bypass those locks and gain access to the facilities or devices they protect, although stealth, evidence of tampering, and the integrity of the lock following an attack, are considerations that may determine the method employed. Physical locks are limited by the complexity of the locking mechanism. While some locks may offer protections such as shock resistant foam to prevent bumping or lock forcing methods, many commonly employed locks offer no such countermeasures.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Bypassing Physical Locks",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/391.html",
+      "id": "CAPEC-391"
+    }
+  ],
+  "links": [
+    {
+      "source": "CAPEC-395",
+      "target": "CAPEC-390"
+    },
+    {
+      "source": "CAPEC-399",
+      "target": "CAPEC-395"
+    },
+    {
+      "source": "CAPEC-393",
+      "target": "CAPEC-391"
+    },
+    {
+      "source": "CAPEC-398",
+      "target": "CAPEC-395"
+    },
+    {
+      "source": "CAPEC-400",
+      "target": "CAPEC-395"
+    },
+    {
+      "source": "CAPEC-394",
+      "target": "CAPEC-391"
+    },
+    {
+      "source": "CAPEC-626",
+      "target": "CAPEC-395"
+    },
+    {
+      "source": "CAPEC-392",
+      "target": "CAPEC-391"
+    },
+    {
+      "source": "CAPEC-397",
+      "target": "CAPEC-395"
+    },
+    {
+      "source": "CAPEC-391",
+      "target": "CAPEC-390"
+    }
+  ]
+}

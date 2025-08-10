@@ -1,0 +1,228 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CWE-479: Signal Handler Use of a Non-reentrant Function</b><br>The product defines a signal handler that calls a non-reentrant function.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Signal Handler Use of a Non-reentrant Function",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/479.html",
+      "id": "CWE-479"
+    },
+    {
+      "Description": "<b>CWE-363: Race Condition Enabling Link Following</b><br>The product checks the status of a file or directory before accessing it, which produces a race condition in which the file can be replaced with a link before the access is performed, causing the product to access the wrong file.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Race Condition Enabling Link Following",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/363.html",
+      "id": "CWE-363"
+    },
+    {
+      "Description": "<b>CWE-367: Time-of-check Time-of-use (TOCTOU) Race Condition</b><br>The product checks the state of a resource before using that resource, but the resource's state can change between the check and the use in a way that invalidates the results of the check. This can cause the product to perform invalid actions when the resource is in an unexpected state.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Time-of-check Time-of-use (TOCTOU) Race Condition",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/367.html",
+      "id": "CWE-367"
+    },
+    {
+      "Description": "<b>CWE-831: Signal Handler Function Associated with Multiple Signals</b><br>The product defines a function that is used as a handler for more than one signal.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Signal Handler Function Associated with Multiple Signals",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/831.html",
+      "id": "CWE-831"
+    },
+    {
+      "Description": "<b>CWE-1298: Hardware Logic Contains Race Conditions</b><br>A race condition in the hardware logic results in undermining security guarantees of the system.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Hardware Logic Contains Race Conditions",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1298.html",
+      "id": "CWE-1298"
+    },
+    {
+      "Description": "<b>CWE-368: Context Switching Race Condition</b><br>A product performs a series of non-atomic actions to switch between contexts that cross privilege or other security boundaries, but a race condition allows an attacker to modify or misrepresent the product's behavior during the switch.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Context Switching Race Condition",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/368.html",
+      "id": "CWE-368"
+    },
+    {
+      "Description": "<b>CWE-364: Signal Handler Race Condition</b><br>The product uses a signal handler that introduces a race condition.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Signal Handler Race Condition",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/364.html",
+      "id": "CWE-364"
+    },
+    {
+      "Description": "<b>CWE-432: Dangerous Signal Handler not Disabled During Sensitive Operations</b><br>The product uses a signal handler that shares state with other signal handlers, but it does not properly mask or prevent those signal handlers from being invoked while the original signal handler is still running.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Dangerous Signal Handler not Disabled During Sensitive Operations",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/432.html",
+      "id": "CWE-432"
+    },
+    {
+      "Description": "<b>CWE-366: Race Condition within a Thread</b><br>If two threads of execution use a resource simultaneously, there exists the possibility that resources may be used while invalid, in turn making the state of execution undefined.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Race Condition within a Thread",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/366.html",
+      "id": "CWE-366"
+    },
+    {
+      "Description": "<b>CWE-828: Signal Handler with Functionality that is not Asynchronous-Safe</b><br>The product defines a signal handler that contains code sequences that are not asynchronous-safe, i.e., the functionality is not reentrant, or it can be interrupted.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Signal Handler with Functionality that is not Asynchronous-Safe",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/828.html",
+      "id": "CWE-828"
+    },
+    {
+      "Description": "<b>CWE-1223: Race Condition for Write-Once Attributes</b><br>A write-once register in hardware design is programmable by an untrusted software component earlier than the trusted software component, resulting in a race condition issue.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Race Condition for Write-Once Attributes",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1223.html",
+      "id": "CWE-1223"
+    },
+    {
+      "Description": "<b>CWE-421: Race Condition During Access to Alternate Channel</b><br>The product opens an alternate channel to communicate with an authorized user, but the channel is accessible to other actors.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Race Condition During Access to Alternate Channel",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/421.html",
+      "id": "CWE-421"
+    },
+    {
+      "Description": "<b>CWE-362: Concurrent Execution using Shared Resource with Improper Synchronization ('Race Condition')</b><br>The product contains a code sequence that can run concurrently with other code, and the code sequence requires temporary, exclusive access to a shared resource, but a timing window exists in which the shared resource can be modified by another code sequence that is operating concurrently.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Concurrent Execution using Shared Resource with Improper Synchronization ('Race Condition')",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/362.html",
+      "id": "CWE-362"
+    },
+    {
+      "Description": "<b>CWE-689: Permission Race Condition During Resource Copy</b><br>The product, while copying or cloning a resource, does not set the resource's permissions or access control until the copy is complete, leaving the resource exposed to other spheres while the copy is taking place.",
+      "color": "#9ac20c",
+      "size": 10,
+      "label": "Permission Race Condition During Resource Copy",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Compound",
+      "url": "https://cwe.mitre.org/data/definitions/689.html",
+      "id": "CWE-689"
+    }
+  ],
+  "links": [
+    {
+      "width": 1,
+      "source": "CWE-479",
+      "target": "CWE-828"
+    },
+    {
+      "width": 1,
+      "source": "CWE-363",
+      "target": "CWE-367"
+    },
+    {
+      "width": 1,
+      "source": "CWE-367",
+      "target": "CWE-362"
+    },
+    {
+      "width": 1,
+      "source": "CWE-831",
+      "target": "CWE-364"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1298",
+      "target": "CWE-362"
+    },
+    {
+      "width": 1,
+      "source": "CWE-368",
+      "target": "CWE-362"
+    },
+    {
+      "width": 1,
+      "source": "CWE-364",
+      "target": "CWE-362"
+    },
+    {
+      "width": 1,
+      "source": "CWE-432",
+      "target": "CWE-364"
+    },
+    {
+      "width": 1,
+      "source": "CWE-366",
+      "target": "CWE-362"
+    },
+    {
+      "width": 1,
+      "source": "CWE-828",
+      "target": "CWE-364"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1223",
+      "target": "CWE-362"
+    },
+    {
+      "width": 1,
+      "source": "CWE-421",
+      "target": "CWE-362"
+    },
+    {
+      "width": 1,
+      "source": "CWE-689",
+      "target": "CWE-362"
+    }
+  ]
+}

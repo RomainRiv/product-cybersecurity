@@ -1,0 +1,132 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CWE-426: Untrusted Search Path</b><br>The product searches for critical resources using an externally-supplied search path that can point to resources that are not under the product's direct control.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Untrusted Search Path",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/426.html",
+      "id": "CWE-426"
+    },
+    {
+      "Description": "<b>CWE-565: Reliance on Cookies without Validation and Integrity Checking</b><br>The product relies on the existence or values of cookies when performing security-critical operations, but it does not properly ensure that the setting is valid for the associated user.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Reliance on Cookies without Validation and Integrity Checking",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/565.html",
+      "id": "CWE-565"
+    },
+    {
+      "Description": "<b>CWE-472: External Control of Assumed-Immutable Web Parameter</b><br>The web application does not sufficiently verify inputs that are assumed to be immutable but are actually externally controllable, such as hidden form fields.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "External Control of Assumed-Immutable Web Parameter",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/472.html",
+      "id": "CWE-472"
+    },
+    {
+      "Description": "<b>CWE-73: External Control of File Name or Path</b><br>The product allows user input to control or influence paths or file names that are used in filesystem operations.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "External Control of File Name or Path",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/73.html",
+      "id": "CWE-73"
+    },
+    {
+      "Description": "<b>CWE-784: Reliance on Cookies without Validation and Integrity Checking in a Security Decision</b><br>The product uses a protection mechanism that relies on the existence or values of a cookie, but it does not properly ensure that the cookie is valid for the associated user.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Reliance on Cookies without Validation and Integrity Checking in a Security Decision",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/784.html",
+      "id": "CWE-784"
+    },
+    {
+      "Description": "<b>CWE-642: External Control of Critical State Data</b><br>The product stores security-critical state information about its users, or the product itself, in a location that is accessible to unauthorized actors.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "External Control of Critical State Data",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/642.html",
+      "id": "CWE-642"
+    },
+    {
+      "Description": "<b>CWE-15: External Control of System or Configuration Setting</b><br>One or more system settings or configuration elements can be externally controlled by a user.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "External Control of System or Configuration Setting",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/15.html",
+      "id": "CWE-15"
+    },
+    {
+      "Description": "<b>CWE-114: Process Control</b><br>Executing commands or loading libraries from an untrusted source or in an untrusted environment can cause an application to execute malicious commands (and payloads) on behalf of an attacker.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Process Control",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/114.html",
+      "id": "CWE-114"
+    }
+  ],
+  "links": [
+    {
+      "width": 1,
+      "source": "CWE-426",
+      "target": "CWE-642"
+    },
+    {
+      "width": 1,
+      "source": "CWE-565",
+      "target": "CWE-642"
+    },
+    {
+      "width": 1,
+      "source": "CWE-472",
+      "target": "CWE-642"
+    },
+    {
+      "width": 1,
+      "source": "CWE-73",
+      "target": "CWE-642"
+    },
+    {
+      "width": 1,
+      "source": "CWE-784",
+      "target": "CWE-565"
+    },
+    {
+      "width": 1,
+      "source": "CWE-15",
+      "target": "CWE-642"
+    },
+    {
+      "width": 1,
+      "source": "CWE-114",
+      "target": "CWE-73"
+    }
+  ]
+}

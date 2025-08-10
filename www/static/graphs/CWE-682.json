@@ -1,0 +1,228 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CWE-467: Use of sizeof() on a Pointer Type</b><br>The code calls sizeof() on a malloced pointer type, which always returns the wordsize/8. This can produce an unexpected result if the programmer intended to determine how much memory has been allocated.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Use of sizeof() on a Pointer Type",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/467.html",
+      "id": "CWE-467"
+    },
+    {
+      "Description": "<b>CWE-193: Off-by-one Error</b><br>A product calculates or uses an incorrect maximum or minimum value that is 1 more, or 1 less, than the correct value.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Off-by-one Error",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/193.html",
+      "id": "CWE-193"
+    },
+    {
+      "Description": "<b>CWE-135: Incorrect Calculation of Multi-Byte String Length</b><br>The product does not correctly calculate the length of strings that can contain wide or multi-byte characters.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Incorrect Calculation of Multi-Byte String Length",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/135.html",
+      "id": "CWE-135"
+    },
+    {
+      "Description": "<b>CWE-469: Use of Pointer Subtraction to Determine Size</b><br>The product subtracts one pointer from another in order to determine size, but this calculation can be incorrect if the pointers do not exist in the same memory chunk.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Use of Pointer Subtraction to Determine Size",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/469.html",
+      "id": "CWE-469"
+    },
+    {
+      "Description": "<b>CWE-1339: Insufficient Precision or Accuracy of a Real Number</b><br>The product processes a real number with an implementation in which the number's representation does not preserve required accuracy and precision in its fractional part, causing an incorrect result.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Insufficient Precision or Accuracy of a Real Number",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1339.html",
+      "id": "CWE-1339"
+    },
+    {
+      "Description": "<b>CWE-1335: Incorrect Bitwise Shift of Integer</b><br>An integer value is specified to be shifted by a negative amount or an amount greater than or equal to the number of bits contained in the value causing an unexpected or indeterminate result.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Incorrect Bitwise Shift of Integer",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1335.html",
+      "id": "CWE-1335"
+    },
+    {
+      "Description": "<b>CWE-128: Wrap-around Error</b><br>Wrap around errors occur whenever a value is incremented past the maximum value for its type and therefore \"wraps around\" to a very small, negative, or undefined value.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Wrap-around Error",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/128.html",
+      "id": "CWE-128"
+    },
+    {
+      "Description": "<b>CWE-468: Incorrect Pointer Scaling</b><br>In C and C++, one may often accidentally refer to the wrong memory due to the semantics of when math operations are implicitly scaled.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Incorrect Pointer Scaling",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/468.html",
+      "id": "CWE-468"
+    },
+    {
+      "Description": "<b>CWE-369: Divide By Zero</b><br>The product divides a value by zero.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Divide By Zero",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/369.html",
+      "id": "CWE-369"
+    },
+    {
+      "Description": "<b>CWE-190: Integer Overflow or Wraparound</b><br>The product performs a calculation that can produce an integer overflow or wraparound, when the logic assumes that the resulting value will always be larger than the original value. This can introduce other weaknesses when the calculation is used for resource management or execution control.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Integer Overflow or Wraparound",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/190.html",
+      "id": "CWE-190"
+    },
+    {
+      "Description": "<b>CWE-682: Incorrect Calculation</b><br>The product performs a calculation that generates incorrect or unintended results that are later used in security-critical decisions or resource management.",
+      "color": "#db0054",
+      "size": 30,
+      "label": "Incorrect Calculation",
+      "label_class": "node-label-big",
+      "type": "CWE",
+      "abstraction": "Pillar",
+      "url": "https://cwe.mitre.org/data/definitions/682.html",
+      "id": "CWE-682"
+    },
+    {
+      "Description": "<b>CWE-680: Integer Overflow to Buffer Overflow</b><br>The product performs a calculation to determine how much memory to allocate, but an integer overflow can occur that causes less memory to be allocated than expected, leading to a buffer overflow.",
+      "color": "#9ac20c",
+      "size": 10,
+      "label": "Integer Overflow to Buffer Overflow",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Compound",
+      "url": "https://cwe.mitre.org/data/definitions/680.html",
+      "id": "CWE-680"
+    },
+    {
+      "Description": "<b>CWE-191: Integer Underflow (Wrap or Wraparound)</b><br>The product subtracts one value from another, such that the result is less than the minimum allowable integer value, which produces a value that is not equal to the correct result.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Integer Underflow (Wrap or Wraparound)",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/191.html",
+      "id": "CWE-191"
+    },
+    {
+      "Description": "<b>CWE-131: Incorrect Calculation of Buffer Size</b><br>The product does not correctly calculate the size to be used when allocating a buffer, which could lead to a buffer overflow.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Incorrect Calculation of Buffer Size",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/131.html",
+      "id": "CWE-131"
+    }
+  ],
+  "links": [
+    {
+      "width": 1,
+      "source": "CWE-467",
+      "target": "CWE-131"
+    },
+    {
+      "width": 1,
+      "source": "CWE-193",
+      "target": "CWE-682"
+    },
+    {
+      "width": 1,
+      "source": "CWE-135",
+      "target": "CWE-682"
+    },
+    {
+      "width": 1,
+      "source": "CWE-469",
+      "target": "CWE-682"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1339",
+      "target": "CWE-682"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1335",
+      "target": "CWE-682"
+    },
+    {
+      "width": 1,
+      "source": "CWE-128",
+      "target": "CWE-682"
+    },
+    {
+      "width": 1,
+      "source": "CWE-468",
+      "target": "CWE-682"
+    },
+    {
+      "width": 1,
+      "source": "CWE-369",
+      "target": "CWE-682"
+    },
+    {
+      "width": 1,
+      "source": "CWE-190",
+      "target": "CWE-682"
+    },
+    {
+      "width": 1,
+      "source": "CWE-680",
+      "target": "CWE-190"
+    },
+    {
+      "width": 1,
+      "source": "CWE-191",
+      "target": "CWE-682"
+    },
+    {
+      "width": 1,
+      "source": "CWE-131",
+      "target": "CWE-682"
+    }
+  ]
+}

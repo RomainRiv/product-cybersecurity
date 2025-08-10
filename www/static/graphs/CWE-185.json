@@ -1,0 +1,68 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CWE-185: Incorrect Regular Expression</b><br>The product specifies a regular expression in a way that causes data to be improperly matched or compared.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Incorrect Regular Expression",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/185.html",
+      "id": "CWE-185"
+    },
+    {
+      "Description": "<b>CWE-186: Overly Restrictive Regular Expression</b><br>A regular expression is overly restrictive, which prevents dangerous values from being detected.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Overly Restrictive Regular Expression",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/186.html",
+      "id": "CWE-186"
+    },
+    {
+      "Description": "<b>CWE-777: Regular Expression without Anchors</b><br>The product uses a regular expression to perform neutralization, but the regular expression is not anchored and may allow malicious or malformed data to slip through.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Regular Expression without Anchors",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/777.html",
+      "id": "CWE-777"
+    },
+    {
+      "Description": "<b>CWE-625: Permissive Regular Expression</b><br>The product uses a regular expression that does not sufficiently restrict the set of allowed values.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Permissive Regular Expression",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/625.html",
+      "id": "CWE-625"
+    }
+  ],
+  "links": [
+    {
+      "width": 1,
+      "source": "CWE-186",
+      "target": "CWE-185"
+    },
+    {
+      "width": 1,
+      "source": "CWE-777",
+      "target": "CWE-625"
+    },
+    {
+      "width": 1,
+      "source": "CWE-625",
+      "target": "CWE-185"
+    }
+  ]
+}

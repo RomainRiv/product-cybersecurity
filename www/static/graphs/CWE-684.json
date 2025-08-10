@@ -1,0 +1,324 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CWE-508: Non-Replicating Malicious Code</b><br>Non-replicating malicious code only resides on the target system or product that is attacked; it does not attempt to spread to other systems.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Non-Replicating Malicious Code",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/508.html",
+      "id": "CWE-508"
+    },
+    {
+      "Description": "<b>CWE-393: Return of Wrong Status Code</b><br>A function or operation returns an incorrect return value or status code that does not indicate an error, but causes the product to modify its behavior based on the incorrect result.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Return of Wrong Status Code",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/393.html",
+      "id": "CWE-393"
+    },
+    {
+      "Description": "<b>CWE-449: The UI Performs the Wrong Action</b><br>The UI performs the wrong action with respect to the user's request.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "The UI Performs the Wrong Action",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/449.html",
+      "id": "CWE-449"
+    },
+    {
+      "Description": "<b>CWE-1245: Improper Finite State Machines (FSMs) in Hardware Logic</b><br>Faulty finite state machines (FSMs) in the hardware logic allow an attacker to put the system in an undefined state, to cause a denial of service (DoS) or gain privileges on the victim's system.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Finite State Machines (FSMs) in Hardware Logic",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1245.html",
+      "id": "CWE-1245"
+    },
+    {
+      "Description": "<b>CWE-440: Expected Behavior Violation</b><br>A feature, API, or function does not perform according to its specification.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Expected Behavior Violation",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/440.html",
+      "id": "CWE-440"
+    },
+    {
+      "Description": "<b>CWE-451: User Interface (UI) Misrepresentation of Critical Information</b><br>The user interface (UI) does not properly represent critical information to the user, allowing the information - or its source - to be obscured or spoofed. This is often a component in phishing attacks.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "User Interface (UI) Misrepresentation of Critical Information",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/451.html",
+      "id": "CWE-451"
+    },
+    {
+      "Description": "<b>CWE-506: Embedded Malicious Code</b><br>The product contains code that appears to be malicious in nature.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Embedded Malicious Code",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/506.html",
+      "id": "CWE-506"
+    },
+    {
+      "Description": "<b>CWE-511: Logic/Time Bomb</b><br>The product contains code that is designed to disrupt the legitimate operation of the product (or its environment) when a certain time passes, or when a certain logical condition is met.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Logic/Time Bomb",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/511.html",
+      "id": "CWE-511"
+    },
+    {
+      "Description": "<b>CWE-446: UI Discrepancy for Security Feature</b><br>The user interface does not correctly enable or configure a security feature, but the interface provides feedback that causes the user to believe that the feature is in a secure state.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "UI Discrepancy for Security Feature",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/446.html",
+      "id": "CWE-446"
+    },
+    {
+      "Description": "<b>CWE-1021: Improper Restriction of Rendered UI Layers or Frames</b><br>The web application does not restrict or incorrectly restricts frame objects or UI layers that belong to another application or domain, which can lead to user confusion about which interface the user is interacting with.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Restriction of Rendered UI Layers or Frames",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1021.html",
+      "id": "CWE-1021"
+    },
+    {
+      "Description": "<b>CWE-392: Missing Report of Error Condition</b><br>The product encounters an error but does not provide a status code or return value to indicate that an error has occurred.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Missing Report of Error Condition",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/392.html",
+      "id": "CWE-392"
+    },
+    {
+      "Description": "<b>CWE-447: Unimplemented or Unsupported Feature in UI</b><br>A UI function for a security feature appears to be supported and gives feedback to the user that suggests that it is supported, but the underlying functionality is not implemented.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Unimplemented or Unsupported Feature in UI",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/447.html",
+      "id": "CWE-447"
+    },
+    {
+      "Description": "<b>CWE-509: Replicating Malicious Code (Virus or Worm)</b><br>Replicating malicious code, including viruses and worms, will attempt to attack other systems once it has successfully compromised the target system or the product.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Replicating Malicious Code (Virus or Worm)",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/509.html",
+      "id": "CWE-509"
+    },
+    {
+      "Description": "<b>CWE-448: Obsolete Feature in UI</b><br>A UI function is obsolete and the product does not warn the user.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Obsolete Feature in UI",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/448.html",
+      "id": "CWE-448"
+    },
+    {
+      "Description": "<b>CWE-1007: Insufficient Visual Distinction of Homoglyphs Presented to User</b><br>The product displays information or identifiers to a user, but the display mechanism does not make it easy for the user to distinguish between visually similar or identical glyphs (homoglyphs), which may cause the user to misinterpret a glyph and perform an unintended, insecure action.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Insufficient Visual Distinction of Homoglyphs Presented to User",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1007.html",
+      "id": "CWE-1007"
+    },
+    {
+      "Description": "<b>CWE-684: Incorrect Provision of Specified Functionality</b><br>The code does not function according to its published specifications, potentially leading to incorrect usage.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Incorrect Provision of Specified Functionality",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/684.html",
+      "id": "CWE-684"
+    },
+    {
+      "Description": "<b>CWE-510: Trapdoor</b><br>A trapdoor is a hidden piece of code that responds to a special input, allowing its user access to resources without passing through the normal security enforcement mechanism.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Trapdoor",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/510.html",
+      "id": "CWE-510"
+    },
+    {
+      "Description": "<b>CWE-912: Hidden Functionality</b><br>The product contains functionality that is not documented, not part of the specification, and not accessible through an interface or command sequence that is obvious to the product's users or administrators.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Hidden Functionality",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/912.html",
+      "id": "CWE-912"
+    },
+    {
+      "Description": "<b>CWE-507: Trojan Horse</b><br>The product appears to contain benign or useful functionality, but it also contains code that is hidden from normal operation that violates the intended security policy of the user or the system administrator.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Trojan Horse",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/507.html",
+      "id": "CWE-507"
+    },
+    {
+      "Description": "<b>CWE-512: Spyware</b><br>The product collects personally identifiable information about a human user or the user's activities, but the product accesses this information using other resources besides itself, and it does not require that user's explicit approval or direct input into the product.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Spyware",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/512.html",
+      "id": "CWE-512"
+    }
+  ],
+  "links": [
+    {
+      "width": 1,
+      "source": "CWE-508",
+      "target": "CWE-507"
+    },
+    {
+      "width": 1,
+      "source": "CWE-393",
+      "target": "CWE-684"
+    },
+    {
+      "width": 1,
+      "source": "CWE-449",
+      "target": "CWE-446"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1245",
+      "target": "CWE-684"
+    },
+    {
+      "width": 1,
+      "source": "CWE-440",
+      "target": "CWE-684"
+    },
+    {
+      "width": 1,
+      "source": "CWE-451",
+      "target": "CWE-684"
+    },
+    {
+      "width": 1,
+      "source": "CWE-506",
+      "target": "CWE-912"
+    },
+    {
+      "width": 1,
+      "source": "CWE-511",
+      "target": "CWE-506"
+    },
+    {
+      "width": 1,
+      "source": "CWE-446",
+      "target": "CWE-684"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1021",
+      "target": "CWE-451"
+    },
+    {
+      "width": 1,
+      "source": "CWE-392",
+      "target": "CWE-684"
+    },
+    {
+      "width": 1,
+      "source": "CWE-447",
+      "target": "CWE-446"
+    },
+    {
+      "width": 1,
+      "source": "CWE-509",
+      "target": "CWE-507"
+    },
+    {
+      "width": 1,
+      "source": "CWE-448",
+      "target": "CWE-446"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1007",
+      "target": "CWE-451"
+    },
+    {
+      "width": 1,
+      "source": "CWE-510",
+      "target": "CWE-506"
+    },
+    {
+      "width": 1,
+      "source": "CWE-912",
+      "target": "CWE-684"
+    },
+    {
+      "width": 1,
+      "source": "CWE-507",
+      "target": "CWE-506"
+    },
+    {
+      "width": 1,
+      "source": "CWE-512",
+      "target": "CWE-506"
+    }
+  ]
+}

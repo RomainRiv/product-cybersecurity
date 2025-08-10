@@ -1,0 +1,2954 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CWE-141: Improper Neutralization of Parameter/Argument Delimiters</b><br>The product receives input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could be interpreted as parameter or argument delimiters when they are sent to a downstream component.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of Parameter/Argument Delimiters",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/141.html",
+      "id": "CWE-141"
+    },
+    {
+      "Description": "<b>CWE-85: Doubled Character XSS Manipulations</b><br>The web application does not filter user-controlled input for executable script disguised using doubling of the involved characters.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Doubled Character XSS Manipulations",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/85.html",
+      "id": "CWE-85"
+    },
+    {
+      "Description": "<b>CWE-168: Improper Handling of Inconsistent Special Elements</b><br>The product does not properly handle input in which an inconsistency exists between two or more special characters or reserved words.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Handling of Inconsistent Special Elements",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/168.html",
+      "id": "CWE-168"
+    },
+    {
+      "Description": "<b>CWE-156: Improper Neutralization of Whitespace</b><br>The product receives input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could be interpreted as whitespace when they are sent to a downstream component.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of Whitespace",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/156.html",
+      "id": "CWE-156"
+    },
+    {
+      "Description": "<b>CWE-80: Improper Neutralization of Script-Related HTML Tags in a Web Page (Basic XSS)</b><br>The product receives input from an upstream component, but it does not neutralize or incorrectly neutralizes special characters such as \"<\", \">\", and \"&\" that could be interpreted as web-scripting elements when they are sent to a downstream component that processes web pages.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of Script-Related HTML Tags in a Web Page (Basic XSS)",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/80.html",
+      "id": "CWE-80"
+    },
+    {
+      "Description": "<b>CWE-166: Improper Handling of Missing Special Element</b><br>The product receives input from an upstream component, but it does not handle or incorrectly handles when an expected special element is missing.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Handling of Missing Special Element",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/166.html",
+      "id": "CWE-166"
+    },
+    {
+      "Description": "<b>CWE-104: Struts: Form Bean Does Not Extend Validation Class</b><br>If a form bean does not extend an ActionForm subclass of the Validator framework, it can expose the application to other weaknesses related to insufficient input validation.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Struts: Form Bean Does Not Extend Validation Class",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/104.html",
+      "id": "CWE-104"
+    },
+    {
+      "Description": "<b>CWE-154: Improper Neutralization of Variable Name Delimiters</b><br>The product receives input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could be interpreted as variable name delimiters when they are sent to a downstream component.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of Variable Name Delimiters",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/154.html",
+      "id": "CWE-154"
+    },
+    {
+      "Description": "<b>CWE-1286: Improper Validation of Syntactic Correctness of Input</b><br>The product receives input that is expected to be well-formed - i.e., to comply with a certain syntax - but it does not validate or incorrectly validates that the input complies with the syntax.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Validation of Syntactic Correctness of Input",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1286.html",
+      "id": "CWE-1286"
+    },
+    {
+      "Description": "<b>CWE-75: Failure to Sanitize Special Elements into a Different Plane (Special Element Injection)</b><br>The product does not adequately filter user-controlled input for special elements with control implications.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Failure to Sanitize Special Elements into a Different Plane (Special Element Injection)",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/75.html",
+      "id": "CWE-75"
+    },
+    {
+      "Description": "<b>CWE-652: Improper Neutralization of Data within XQuery Expressions ('XQuery Injection')</b><br>The product uses external input to dynamically construct an XQuery expression used to retrieve data from an XML database, but it does not neutralize or incorrectly neutralizes that input. This allows an attacker to control the structure of the query.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Neutralization of Data within XQuery Expressions ('XQuery Injection')",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/652.html",
+      "id": "CWE-652"
+    },
+    {
+      "Description": "<b>CWE-624: Executable Regular Expression Error</b><br>The product uses a regular expression that either (1) contains an executable component with user-controlled inputs, or (2) allows a user to enable execution by inserting pattern modifiers.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Executable Regular Expression Error",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/624.html",
+      "id": "CWE-624"
+    },
+    {
+      "Description": "<b>CWE-45: Path Equivalence: 'file...name' (Multiple Internal Dot)</b><br>The product accepts path input in the form of multiple internal dot ('file...dir') without appropriate validation, which can lead to ambiguous path resolution and allow an attacker to traverse the file system to unintended locations or access arbitrary files.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Path Equivalence: 'file...name' (Multiple Internal Dot)",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/45.html",
+      "id": "CWE-45"
+    },
+    {
+      "Description": "<b>CWE-1289: Improper Validation of Unsafe Equivalence in Input</b><br>The product receives an input value that is used as a resource identifier or other type of reference, but it does not validate or incorrectly validates that the input is equivalent to a potentially-unsafe value.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Validation of Unsafe Equivalence in Input",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1289.html",
+      "id": "CWE-1289"
+    },
+    {
+      "Description": "<b>CWE-781: Improper Address Validation in IOCTL with METHOD_NEITHER I/O Control Code</b><br>The product defines an IOCTL that uses METHOD_NEITHER for I/O, but it does not validate or incorrectly validates the addresses that are provided.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Address Validation in IOCTL with METHOD_NEITHER I/O Control Code",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/781.html",
+      "id": "CWE-781"
+    },
+    {
+      "Description": "<b>CWE-707: Improper Neutralization</b><br>The product does not ensure or incorrectly ensures that structured messages or data are well-formed and that certain security properties are met before being read from an upstream component or sent to a downstream component.",
+      "color": "#db0054",
+      "size": 30,
+      "label": "Improper Neutralization",
+      "label_class": "node-label-big",
+      "type": "CWE",
+      "abstraction": "Pillar",
+      "url": "https://cwe.mitre.org/data/definitions/707.html",
+      "id": "CWE-707"
+    },
+    {
+      "Description": "<b>CWE-74: Improper Neutralization of Special Elements in Output Used by a Downstream Component ('Injection')</b><br>The product constructs all or part of a command, data structure, or record using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify how it is parsed or interpreted when it is sent to a downstream component.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Improper Neutralization of Special Elements in Output Used by a Downstream Component ('Injection')",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/74.html",
+      "id": "CWE-74"
+    },
+    {
+      "Description": "<b>CWE-792: Incomplete Filtering of One or More Instances of Special Elements</b><br>The product receives data from an upstream component, but does not completely filter one or more instances of special elements before sending it to a downstream component.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Incomplete Filtering of One or More Instances of Special Elements",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/792.html",
+      "id": "CWE-792"
+    },
+    {
+      "Description": "<b>CWE-621: Variable Extraction Error</b><br>The product uses external input to determine the names of variables into which information is extracted, without verifying that the names of the specified variables are valid. This could cause the program to overwrite unintended variables.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Variable Extraction Error",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/621.html",
+      "id": "CWE-621"
+    },
+    {
+      "Description": "<b>CWE-234: Failure to Handle Missing Parameter</b><br>If too few arguments are sent to a function, the function will still pop the expected number of arguments from the stack. Potentially, a variable number of arguments could be exhausted in a function as well.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Failure to Handle Missing Parameter",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/234.html",
+      "id": "CWE-234"
+    },
+    {
+      "Description": "<b>CWE-94: Improper Control of Generation of Code ('Code Injection')</b><br>The product constructs all or part of a code segment using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the syntax or behavior of the intended code segment.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Control of Generation of Code ('Code Injection')",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/94.html",
+      "id": "CWE-94"
+    },
+    {
+      "Description": "<b>CWE-143: Improper Neutralization of Record Delimiters</b><br>The product receives input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could be interpreted as record delimiters when they are sent to a downstream component.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of Record Delimiters",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/143.html",
+      "id": "CWE-143"
+    },
+    {
+      "Description": "<b>CWE-112: Missing XML Validation</b><br>The product accepts XML from an untrusted source but does not validate the XML against the proper schema.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Missing XML Validation",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/112.html",
+      "id": "CWE-112"
+    },
+    {
+      "Description": "<b>CWE-167: Improper Handling of Additional Special Element</b><br>The product receives input from an upstream component, but it does not handle or incorrectly handles when an additional unexpected special element is provided.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Handling of Additional Special Element",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/167.html",
+      "id": "CWE-167"
+    },
+    {
+      "Description": "<b>CWE-121: Stack-based Buffer Overflow</b><br>A stack-based buffer overflow condition is a condition where the buffer being overwritten is allocated on the stack (i.e., is a local variable or, rarely, a parameter to a function).",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Stack-based Buffer Overflow",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/121.html",
+      "id": "CWE-121"
+    },
+    {
+      "Description": "<b>CWE-914: Improper Control of Dynamically-Identified Variables</b><br>The product does not properly restrict reading from or writing to dynamically-identified variables.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Control of Dynamically-Identified Variables",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/914.html",
+      "id": "CWE-914"
+    },
+    {
+      "Description": "<b>CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')</b><br>The product does not neutralize or incorrectly neutralizes user-controllable input before it is placed in output that is used as a web page that is served to other users.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/79.html",
+      "id": "CWE-79"
+    },
+    {
+      "Description": "<b>CWE-116: Improper Encoding or Escaping of Output</b><br>The product prepares a structured message for communication with another component, but encoding or escaping of the data is either missing or done incorrectly. As a result, the intended structure of the message is not preserved.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Improper Encoding or Escaping of Output",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/116.html",
+      "id": "CWE-116"
+    },
+    {
+      "Description": "<b>CWE-466: Return of Pointer Value Outside of Expected Range</b><br>A function can return a pointer to memory that is outside of the buffer that the pointer is expected to reference.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Return of Pointer Value Outside of Expected Range",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/466.html",
+      "id": "CWE-466"
+    },
+    {
+      "Description": "<b>CWE-157: Failure to Sanitize Paired Delimiters</b><br>The product does not properly handle the characters that are used to mark the beginning and ending of a group of entities, such as parentheses, brackets, and braces.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Failure to Sanitize Paired Delimiters",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/157.html",
+      "id": "CWE-157"
+    },
+    {
+      "Description": "<b>CWE-108: Struts: Unvalidated Action Form</b><br>Every Action Form must have a corresponding validation form.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Struts: Unvalidated Action Form",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/108.html",
+      "id": "CWE-108"
+    },
+    {
+      "Description": "<b>CWE-174: Double Decoding of the Same Data</b><br>The product decodes the same input twice, which can limit the effectiveness of any protection mechanism that occurs in between the decoding operations.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Double Decoding of the Same Data",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/174.html",
+      "id": "CWE-174"
+    },
+    {
+      "Description": "<b>CWE-464: Addition of Data Structure Sentinel</b><br>The accidental addition of a data-structure sentinel can cause serious programming logic problems.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Addition of Data Structure Sentinel",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/464.html",
+      "id": "CWE-464"
+    },
+    {
+      "Description": "<b>CWE-1288: Improper Validation of Consistency within Input</b><br>The product receives a complex input with multiple elements or fields that must be consistent with each other, but it does not validate or incorrectly validates that the input is actually consistent.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Validation of Consistency within Input",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1288.html",
+      "id": "CWE-1288"
+    },
+    {
+      "Description": "<b>CWE-232: Improper Handling of Undefined Values</b><br>The product does not handle or incorrectly handles when a value is not defined or supported for the associated parameter, field, or argument name.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Handling of Undefined Values",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/232.html",
+      "id": "CWE-232"
+    },
+    {
+      "Description": "<b>CWE-231: Improper Handling of Extra Values</b><br>The product does not handle or incorrectly handles when more values are provided than expected.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Handling of Extra Values",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/231.html",
+      "id": "CWE-231"
+    },
+    {
+      "Description": "<b>CWE-91: XML Injection (aka Blind XPath Injection)</b><br>The product does not properly neutralize special elements that are used in XML, allowing attackers to modify the syntax, content, or commands of the XML before it is processed by an end system.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "XML Injection (aka Blind XPath Injection)",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/91.html",
+      "id": "CWE-91"
+    },
+    {
+      "Description": "<b>CWE-122: Heap-based Buffer Overflow</b><br>A heap overflow condition is a buffer overflow, where the buffer that can be overwritten is allocated in the heap portion of memory, generally meaning that the buffer was allocated using a routine such as malloc().",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Heap-based Buffer Overflow",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/122.html",
+      "id": "CWE-122"
+    },
+    {
+      "Description": "<b>CWE-153: Improper Neutralization of Substitution Characters</b><br>The product receives input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could be interpreted as substitution characters when they are sent to a downstream component.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of Substitution Characters",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/153.html",
+      "id": "CWE-153"
+    },
+    {
+      "Description": "<b>CWE-1336: Improper Neutralization of Special Elements Used in a Template Engine</b><br>The product uses a template engine to insert or process externally-influenced input, but it does not neutralize or incorrectly neutralizes special elements or syntax that can be interpreted as template expressions or other code directives when processed by the engine.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Neutralization of Special Elements Used in a Template Engine",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1336.html",
+      "id": "CWE-1336"
+    },
+    {
+      "Description": "<b>CWE-158: Improper Neutralization of Null Byte or NUL Character</b><br>The product receives input from an upstream component, but it does not neutralize or incorrectly neutralizes NUL characters or null bytes when they are sent to a downstream component.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of Null Byte or NUL Character",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/158.html",
+      "id": "CWE-158"
+    },
+    {
+      "Description": "<b>CWE-229: Improper Handling of Values</b><br>The product does not properly handle when the expected number of values for parameters, fields, or arguments is not provided in input, or if those values are undefined.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Handling of Values",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/229.html",
+      "id": "CWE-229"
+    },
+    {
+      "Description": "<b>CWE-241: Improper Handling of Unexpected Data Type</b><br>The product does not handle or incorrectly handles when a particular element is not the expected type, e.g. it expects a digit (0-9) but is provided with a letter (A-Z).",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Handling of Unexpected Data Type",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/241.html",
+      "id": "CWE-241"
+    },
+    {
+      "Description": "<b>CWE-170: Improper Null Termination</b><br>The product does not terminate or incorrectly terminates a string or array with a null character or equivalent terminator.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Null Termination",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/170.html",
+      "id": "CWE-170"
+    },
+    {
+      "Description": "<b>CWE-233: Improper Handling of Parameters</b><br>The product does not properly handle when the expected number of parameters, fields, or arguments is not provided in input, or if those parameters are undefined.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Handling of Parameters",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/233.html",
+      "id": "CWE-233"
+    },
+    {
+      "Description": "<b>CWE-107: Struts: Unused Validation Form</b><br>An unused validation form indicates that validation logic is not up-to-date.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Struts: Unused Validation Form",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/107.html",
+      "id": "CWE-107"
+    },
+    {
+      "Description": "<b>CWE-105: Struts: Form Field Without Validator</b><br>The product has a form field that is not validated by a corresponding validation form, which can introduce other weaknesses related to insufficient input validation.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Struts: Form Field Without Validator",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/105.html",
+      "id": "CWE-105"
+    },
+    {
+      "Description": "<b>CWE-917: Improper Neutralization of Special Elements used in an Expression Language Statement ('Expression Language Injection')</b><br>The product constructs all or part of an expression language (EL) statement in a framework such as a Java Server Page (JSP) using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the intended EL statement before it is executed.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Neutralization of Special Elements used in an Expression Language Statement ('Expression Language Injection')",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/917.html",
+      "id": "CWE-917"
+    },
+    {
+      "Description": "<b>CWE-796: Only Filtering Special Elements Relative to a Marker</b><br>The product receives data from an upstream component, but only accounts for special elements positioned relative to a marker (e.g. \"at the beginning/end of a string; the second argument\"), thereby missing remaining special elements that may exist before sending it to a downstream component.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Only Filtering Special Elements Relative to a Marker",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/796.html",
+      "id": "CWE-796"
+    },
+    {
+      "Description": "<b>CWE-95: Improper Neutralization of Directives in Dynamically Evaluated Code ('Eval Injection')</b><br>The product receives input from an upstream component, but it does not neutralize or incorrectly neutralizes code syntax before using the input in a dynamic evaluation call (e.g. \"eval\").",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of Directives in Dynamically Evaluated Code ('Eval Injection')",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/95.html",
+      "id": "CWE-95"
+    },
+    {
+      "Description": "<b>CWE-96: Improper Neutralization of Directives in Statically Saved Code ('Static Code Injection')</b><br>The product receives input from an upstream component, but it does not neutralize or incorrectly neutralizes code syntax before inserting the input into an executable resource, such as a library, configuration file, or template.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Neutralization of Directives in Statically Saved Code ('Static Code Injection')",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/96.html",
+      "id": "CWE-96"
+    },
+    {
+      "Description": "<b>CWE-240: Improper Handling of Inconsistent Structural Elements</b><br>The product does not handle or incorrectly handles when two or more structural elements should be consistent, but are not.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Handling of Inconsistent Structural Elements",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/240.html",
+      "id": "CWE-240"
+    },
+    {
+      "Description": "<b>CWE-1285: Improper Validation of Specified Index, Position, or Offset in Input</b><br>The product receives input that is expected to specify an index, position, or offset into an indexable resource such as a buffer or file, but it does not validate or incorrectly validates that the specified index/position/offset has the required properties.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Validation of Specified Index, Position, or Offset in Input",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1285.html",
+      "id": "CWE-1285"
+    },
+    {
+      "Description": "<b>CWE-142: Improper Neutralization of Value Delimiters</b><br>The product receives input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could be interpreted as value delimiters when they are sent to a downstream component.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of Value Delimiters",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/142.html",
+      "id": "CWE-142"
+    },
+    {
+      "Description": "<b>CWE-805: Buffer Access with Incorrect Length Value</b><br>The product uses a sequential operation to read or write a buffer, but it uses an incorrect length value that causes it to access memory that is outside of the bounds of the buffer.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Buffer Access with Incorrect Length Value",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/805.html",
+      "id": "CWE-805"
+    },
+    {
+      "Description": "<b>CWE-165: Improper Neutralization of Multiple Internal Special Elements</b><br>The product receives input from an upstream component, but it does not neutralize or incorrectly neutralizes multiple internal special elements that could be interpreted in unexpected ways when they are sent to a downstream component.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of Multiple Internal Special Elements",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/165.html",
+      "id": "CWE-165"
+    },
+    {
+      "Description": "<b>CWE-99: Improper Control of Resource Identifiers ('Resource Injection')</b><br>The product receives input from an upstream component, but it does not restrict or incorrectly restricts the input before it is used as an identifier for a resource that may be outside the intended sphere of control.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Improper Control of Resource Identifiers ('Resource Injection')",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/99.html",
+      "id": "CWE-99"
+    },
+    {
+      "Description": "<b>CWE-164: Improper Neutralization of Internal Special Elements</b><br>The product receives input from an upstream component, but it does not neutralize or incorrectly neutralizes internal special elements that could be interpreted in unexpected ways when they are sent to a downstream component.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of Internal Special Elements",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/164.html",
+      "id": "CWE-164"
+    },
+    {
+      "Description": "<b>CWE-1236: Improper Neutralization of Formula Elements in a CSV File</b><br>The product saves user-provided information into a Comma-Separated Value (CSV) file, but it does not neutralize or incorrectly neutralizes special elements that could be interpreted as a command when the file is opened by a spreadsheet product.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Neutralization of Formula Elements in a CSV File",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1236.html",
+      "id": "CWE-1236"
+    },
+    {
+      "Description": "<b>CWE-787: Out-of-bounds Write</b><br>The product writes data past the end, or before the beginning, of the intended buffer.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Out-of-bounds Write",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/787.html",
+      "id": "CWE-787"
+    },
+    {
+      "Description": "<b>CWE-1287: Improper Validation of Specified Type of Input</b><br>The product receives input that is expected to be of a certain type, but it does not validate or incorrectly validates that the input is actually of the expected type.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Validation of Specified Type of Input",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1287.html",
+      "id": "CWE-1287"
+    },
+    {
+      "Description": "<b>CWE-49: Path Equivalence: 'filename/' (Trailing Slash)</b><br>The product accepts path input in the form of trailing slash ('filedir/') without appropriate validation, which can lead to ambiguous path resolution and allow an attacker to traverse the file system to unintended locations or access arbitrary files.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Path Equivalence: 'filename/' (Trailing Slash)",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/49.html",
+      "id": "CWE-49"
+    },
+    {
+      "Description": "<b>CWE-127: Buffer Under-read</b><br>The product reads from a buffer using buffer access mechanisms such as indexes or pointers that reference memory locations prior to the targeted buffer.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Buffer Under-read",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/127.html",
+      "id": "CWE-127"
+    },
+    {
+      "Description": "<b>CWE-237: Improper Handling of Structural Elements</b><br>The product does not handle or incorrectly handles inputs that are related to complex structures.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Handling of Structural Elements",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/237.html",
+      "id": "CWE-237"
+    },
+    {
+      "Description": "<b>CWE-236: Improper Handling of Undefined Parameters</b><br>The product does not handle or incorrectly handles when a particular parameter, field, or argument name is not defined or supported by the product.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Handling of Undefined Parameters",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/236.html",
+      "id": "CWE-236"
+    },
+    {
+      "Description": "<b>CWE-53: Path Equivalence: '\\multiple\\\\internal\\backslash'</b><br>The product accepts path input in the form of multiple internal backslash ('\\multiple\\trailing\\\\slash') without appropriate validation, which can lead to ambiguous path resolution and allow an attacker to traverse the file system to unintended locations or access arbitrary files.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Path Equivalence: '\\multiple\\\\internal\\backslash'",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/53.html",
+      "id": "CWE-53"
+    },
+    {
+      "Description": "<b>CWE-43: Path Equivalence: 'filename....' (Multiple Trailing Dot)</b><br>The product accepts path input in the form of multiple trailing dot ('filedir....') without appropriate validation, which can lead to ambiguous path resolution and allow an attacker to traverse the file system to unintended locations or access arbitrary files.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Path Equivalence: 'filename....' (Multiple Trailing Dot)",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/43.html",
+      "id": "CWE-43"
+    },
+    {
+      "Description": "<b>CWE-151: Improper Neutralization of Comment Delimiters</b><br>The product receives input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could be interpreted as comment delimiters when they are sent to a downstream component.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of Comment Delimiters",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/151.html",
+      "id": "CWE-151"
+    },
+    {
+      "Description": "<b>CWE-643: Improper Neutralization of Data within XPath Expressions ('XPath Injection')</b><br>The product uses external input to dynamically construct an XPath expression used to retrieve data from an XML database, but it does not neutralize or incorrectly neutralizes that input. This allows an attacker to control the structure of the query.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Neutralization of Data within XPath Expressions ('XPath Injection')",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/643.html",
+      "id": "CWE-643"
+    },
+    {
+      "Description": "<b>CWE-37: Path Traversal: '/absolute/pathname/here'</b><br>The product accepts input in the form of a slash absolute path ('/absolute/pathname/here') without appropriate validation, which can allow an attacker to traverse the file system to unintended locations or access arbitrary files.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Path Traversal: '/absolute/pathname/here'",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/37.html",
+      "id": "CWE-37"
+    },
+    {
+      "Description": "<b>CWE-56: Path Equivalence: 'filedir*' (Wildcard)</b><br>The product accepts path input in the form of asterisk wildcard ('filedir*') without appropriate validation, which can lead to ambiguous path resolution and allow an attacker to traverse the file system to unintended locations or access arbitrary files.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Path Equivalence: 'filedir*' (Wildcard)",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/56.html",
+      "id": "CWE-56"
+    },
+    {
+      "Description": "<b>CWE-1174: ASP.NET Misconfiguration: Improper Model Validation</b><br>The ASP.NET application does not use, or incorrectly uses, the model validation framework.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "ASP.NET Misconfiguration: Improper Model Validation",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/1174.html",
+      "id": "CWE-1174"
+    },
+    {
+      "Description": "<b>CWE-838: Inappropriate Encoding for Output Context</b><br>The product uses or specifies an encoding when generating output to a downstream component, but the specified encoding is not the same as the encoding that is expected by the downstream component.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Inappropriate Encoding for Output Context",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/838.html",
+      "id": "CWE-838"
+    },
+    {
+      "Description": "<b>CWE-606: Unchecked Input for Loop Condition</b><br>The product does not properly check inputs that are used for loop conditions, potentially leading to a denial of service or other consequences because of excessive looping.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Unchecked Input for Loop Condition",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/606.html",
+      "id": "CWE-606"
+    },
+    {
+      "Description": "<b>CWE-124: Buffer Underwrite ('Buffer Underflow')</b><br>The product writes to a buffer using an index or pointer that references a memory location prior to the beginning of the buffer.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Buffer Underwrite ('Buffer Underflow')",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/124.html",
+      "id": "CWE-124"
+    },
+    {
+      "Description": "<b>CWE-416: Use After Free</b><br>Referencing memory after it has been freed can cause a program to crash, use unexpected values, or execute code.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Use After Free",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/416.html",
+      "id": "CWE-416"
+    },
+    {
+      "Description": "<b>CWE-415: Double Free</b><br>The product calls free() twice on the same memory address, potentially leading to modification of unexpected memory locations.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Double Free",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/415.html",
+      "id": "CWE-415"
+    },
+    {
+      "Description": "<b>CWE-149: Improper Neutralization of Quoting Syntax</b><br>Quotes injected into a product can be used to compromise a system. As data are parsed, an injected/absent/duplicate/malformed use of quotes may cause the process to take unexpected actions.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of Quoting Syntax",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/149.html",
+      "id": "CWE-149"
+    },
+    {
+      "Description": "<b>CWE-1173: Improper Use of Validation Framework</b><br>The product does not use, or incorrectly uses, an input validation framework that is provided by the source language or an independent library.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Use of Validation Framework",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1173.html",
+      "id": "CWE-1173"
+    },
+    {
+      "Description": "<b>CWE-463: Deletion of Data Structure Sentinel</b><br>The accidental deletion of a data-structure sentinel can cause serious programming logic problems.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Deletion of Data Structure Sentinel",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/463.html",
+      "id": "CWE-463"
+    },
+    {
+      "Description": "<b>CWE-238: Improper Handling of Incomplete Structural Elements</b><br>The product does not handle or incorrectly handles when a particular structural element is not completely specified.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Handling of Incomplete Structural Elements",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/238.html",
+      "id": "CWE-238"
+    },
+    {
+      "Description": "<b>CWE-462: Duplicate Key in Associative List (Alist)</b><br>Duplicate keys in associative lists can lead to non-unique keys being mistaken for an error.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Duplicate Key in Associative List (Alist)",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/462.html",
+      "id": "CWE-462"
+    },
+    {
+      "Description": "<b>CWE-152: Improper Neutralization of Macro Symbols</b><br>The product receives input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could be interpreted as macro symbols when they are sent to a downstream component.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of Macro Symbols",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/152.html",
+      "id": "CWE-152"
+    },
+    {
+      "Description": "<b>CWE-162: Improper Neutralization of Trailing Special Elements</b><br>The product receives input from an upstream component, but it does not neutralize or incorrectly neutralizes trailing special elements that could be interpreted in unexpected ways when they are sent to a downstream component.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of Trailing Special Elements",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/162.html",
+      "id": "CWE-162"
+    },
+    {
+      "Description": "<b>CWE-54: Path Equivalence: 'filedir\\' (Trailing Backslash)</b><br>The product accepts path input in the form of trailing backslash ('filedir\\') without appropriate validation, which can lead to ambiguous path resolution and allow an attacker to traverse the file system to unintended locations or access arbitrary files.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Path Equivalence: 'filedir\\' (Trailing Backslash)",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/54.html",
+      "id": "CWE-54"
+    },
+    {
+      "Description": "<b>CWE-81: Improper Neutralization of Script in an Error Message Web Page</b><br>The product receives input from an upstream component, but it does not neutralize or incorrectly neutralizes special characters that could be interpreted as web-scripting elements when they are sent to an error page.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of Script in an Error Message Web Page",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/81.html",
+      "id": "CWE-81"
+    },
+    {
+      "Description": "<b>CWE-103: Struts: Incomplete validate() Method Definition</b><br>The product has a validator form that either does not define a validate() method, or defines a validate() method but does not call super.validate().",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Struts: Incomplete validate() Method Definition",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/103.html",
+      "id": "CWE-103"
+    },
+    {
+      "Description": "<b>CWE-134: Use of Externally-Controlled Format String</b><br>The product uses a function that accepts a format string as an argument, but the format string originates from an external source.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Use of Externally-Controlled Format String",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/134.html",
+      "id": "CWE-134"
+    },
+    {
+      "Description": "<b>CWE-943: Improper Neutralization of Special Elements in Data Query Logic</b><br>The product generates a query intended to access or manipulate data in a data store such as a database, but it does not neutralize or incorrectly neutralizes special elements that can modify the intended logic of the query.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Improper Neutralization of Special Elements in Data Query Logic",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/943.html",
+      "id": "CWE-943"
+    },
+    {
+      "Description": "<b>CWE-1284: Improper Validation of Specified Quantity in Input</b><br>The product receives input that is expected to specify a quantity (such as size or length), but it does not validate or incorrectly validates that the quantity has the required properties.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Validation of Specified Quantity in Input",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1284.html",
+      "id": "CWE-1284"
+    },
+    {
+      "Description": "<b>CWE-15: External Control of System or Configuration Setting</b><br>One or more system settings or configuration elements can be externally controlled by a user.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "External Control of System or Configuration Setting",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/15.html",
+      "id": "CWE-15"
+    },
+    {
+      "Description": "<b>CWE-109: Struts: Validator Turned Off</b><br>Automatic filtering via a Struts bean has been turned off, which disables the Struts Validator and custom validation logic. This exposes the application to other weaknesses related to insufficient input validation.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Struts: Validator Turned Off",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/109.html",
+      "id": "CWE-109"
+    },
+    {
+      "Description": "<b>CWE-794: Incomplete Filtering of Multiple Instances of Special Elements</b><br>The product receives data from an upstream component, but does not filter all instances of a special element before sending it to a downstream component.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Incomplete Filtering of Multiple Instances of Special Elements",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/794.html",
+      "id": "CWE-794"
+    },
+    {
+      "Description": "<b>CWE-554: ASP.NET Misconfiguration: Not Using Input Validation Framework</b><br>The ASP.NET application does not use an input validation framework.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "ASP.NET Misconfiguration: Not Using Input Validation Framework",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/554.html",
+      "id": "CWE-554"
+    },
+    {
+      "Description": "<b>CWE-86: Improper Neutralization of Invalid Characters in Identifiers in Web Pages</b><br>The product does not neutralize or incorrectly neutralizes invalid characters or byte sequences in the middle of tag names, URI schemes, and other identifiers.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of Invalid Characters in Identifiers in Web Pages",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/86.html",
+      "id": "CWE-86"
+    },
+    {
+      "Description": "<b>CWE-111: Direct Use of Unsafe JNI</b><br>When a Java application uses the Java Native Interface (JNI) to call code written in another programming language, it can expose the application to weaknesses in that code, even if those weaknesses cannot occur in Java.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Direct Use of Unsafe JNI",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/111.html",
+      "id": "CWE-111"
+    },
+    {
+      "Description": "<b>CWE-177: Improper Handling of URL Encoding (Hex Encoding)</b><br>The product does not properly handle when all or part of an input has been URL encoded.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Handling of URL Encoding (Hex Encoding)",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/177.html",
+      "id": "CWE-177"
+    },
+    {
+      "Description": "<b>CWE-163: Improper Neutralization of Multiple Trailing Special Elements</b><br>The product receives input from an upstream component, but it does not neutralize or incorrectly neutralizes multiple trailing special elements that could be interpreted in unexpected ways when they are sent to a downstream component.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of Multiple Trailing Special Elements",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/163.html",
+      "id": "CWE-163"
+    },
+    {
+      "Description": "<b>CWE-806: Buffer Access Using Size of Source Buffer</b><br>The product uses the size of a source buffer when reading from or writing to a destination buffer, which may cause it to access memory that is outside of the bounds of the buffer.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Buffer Access Using Size of Source Buffer",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/806.html",
+      "id": "CWE-806"
+    },
+    {
+      "Description": "<b>CWE-470: Use of Externally-Controlled Input to Select Classes or Code ('Unsafe Reflection')</b><br>The product uses external input with reflection to select which classes or code to use, but it does not sufficiently prevent the input from selecting improper classes or code.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Use of Externally-Controlled Input to Select Classes or Code ('Unsafe Reflection')",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/470.html",
+      "id": "CWE-470"
+    },
+    {
+      "Description": "<b>CWE-239: Failure to Handle Incomplete Element</b><br>The product does not properly handle when a particular element is not completely specified.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Failure to Handle Incomplete Element",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/239.html",
+      "id": "CWE-239"
+    },
+    {
+      "Description": "<b>CWE-230: Improper Handling of Missing Values</b><br>The product does not handle or incorrectly handles when a parameter, field, or argument name is specified, but the associated value is missing, i.e. it is empty, blank, or null.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Handling of Missing Values",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/230.html",
+      "id": "CWE-230"
+    },
+    {
+      "Description": "<b>CWE-78: Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')</b><br>The product constructs all or part of an OS command using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the intended OS command when it is sent to a downstream component.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/78.html",
+      "id": "CWE-78"
+    },
+    {
+      "Description": "<b>CWE-786: Access of Memory Location Before Start of Buffer</b><br>The product reads or writes to a buffer using an index or pointer that references a memory location prior to the beginning of the buffer.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Access of Memory Location Before Start of Buffer",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/786.html",
+      "id": "CWE-786"
+    },
+    {
+      "Description": "<b>CWE-641: Improper Restriction of Names for Files and Other Resources</b><br>The product constructs the name of a file or other resource using input from an upstream component, but it does not restrict or incorrectly restricts the resulting name.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Restriction of Names for Files and Other Resources",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/641.html",
+      "id": "CWE-641"
+    },
+    {
+      "Description": "<b>CWE-793: Only Filtering One Instance of a Special Element</b><br>The product receives data from an upstream component, but only filters a single instance of a special element before sending it to a downstream component.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Only Filtering One Instance of a Special Element",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/793.html",
+      "id": "CWE-793"
+    },
+    {
+      "Description": "<b>CWE-788: Access of Memory Location After End of Buffer</b><br>The product reads or writes to a buffer using an index or pointer that references a memory location after the end of the buffer.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Access of Memory Location After End of Buffer",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/788.html",
+      "id": "CWE-788"
+    },
+    {
+      "Description": "<b>CWE-622: Improper Validation of Function Hook Arguments</b><br>The product adds hooks to user-accessible API functions, but it does not properly validate the arguments. This could lead to resultant vulnerabilities.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Validation of Function Hook Arguments",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/622.html",
+      "id": "CWE-622"
+    },
+    {
+      "Description": "<b>CWE-176: Improper Handling of Unicode Encoding</b><br>The product does not properly handle when an input contains Unicode encoding.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Handling of Unicode Encoding",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/176.html",
+      "id": "CWE-176"
+    },
+    {
+      "Description": "<b>CWE-822: Untrusted Pointer Dereference</b><br>The product obtains a value from an untrusted source, converts this value to a pointer, and dereferences the resulting pointer.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Untrusted Pointer Dereference",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/822.html",
+      "id": "CWE-822"
+    },
+    {
+      "Description": "<b>CWE-20: Improper Input Validation</b><br>The product receives input or data, but it does\n        not validate or incorrectly validates that the input has the\n        properties that are required to process the data safely and\n        correctly.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Improper Input Validation",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/20.html",
+      "id": "CWE-20"
+    },
+    {
+      "Description": "<b>CWE-181: Incorrect Behavior Order: Validate Before Filter</b><br>The product validates data before it has been filtered, which prevents the product from detecting data that becomes invalid after the filtering step.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Incorrect Behavior Order: Validate Before Filter",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/181.html",
+      "id": "CWE-181"
+    },
+    {
+      "Description": "<b>CWE-97: Improper Neutralization of Server-Side Includes (SSI) Within a Web Page</b><br>The product generates a web page, but does not neutralize or incorrectly neutralizes user-controllable input that could be interpreted as a server-side include (SSI) directive.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of Server-Side Includes (SSI) Within a Web Page",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/97.html",
+      "id": "CWE-97"
+    },
+    {
+      "Description": "<b>CWE-626: Null Byte Interaction Error (Poison Null Byte)</b><br>The product does not properly handle null bytes or NUL characters when passing data between different representations or components.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Null Byte Interaction Error (Poison Null Byte)",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/626.html",
+      "id": "CWE-626"
+    },
+    {
+      "Description": "<b>CWE-172: Encoding Error</b><br>The product does not properly encode or decode the data, resulting in unexpected values.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Encoding Error",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/172.html",
+      "id": "CWE-172"
+    },
+    {
+      "Description": "<b>CWE-120: Buffer Copy without Checking Size of Input ('Classic Buffer Overflow')</b><br>The product copies an input buffer to an output buffer without verifying that the size of the input buffer is less than the size of the output buffer, leading to a buffer overflow.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Buffer Copy without Checking Size of Input ('Classic Buffer Overflow')",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/120.html",
+      "id": "CWE-120"
+    },
+    {
+      "Description": "<b>CWE-50: Path Equivalence: '//multiple/leading/slash'</b><br>The product accepts path input in the form of multiple leading slash ('//multiple/leading/slash') without appropriate validation, which can lead to ambiguous path resolution and allow an attacker to traverse the file system to unintended locations or access arbitrary files.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Path Equivalence: '//multiple/leading/slash'",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/50.html",
+      "id": "CWE-50"
+    },
+    {
+      "Description": "<b>CWE-694: Use of Multiple Resources with Duplicate Identifier</b><br>The product uses multiple resources that can have the same identifier, in a context in which unique identifiers are required.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Use of Multiple Resources with Duplicate Identifier",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/694.html",
+      "id": "CWE-694"
+    },
+    {
+      "Description": "<b>CWE-117: Improper Output Neutralization for Logs</b><br>The product does not neutralize or incorrectly neutralizes output that is written to logs.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Output Neutralization for Logs",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/117.html",
+      "id": "CWE-117"
+    },
+    {
+      "Description": "<b>CWE-93: Improper Neutralization of CRLF Sequences ('CRLF Injection')</b><br>The product uses CRLF (carriage return line feeds) as a special element, e.g. to separate lines or records, but it does not neutralize or incorrectly neutralizes CRLF sequences from inputs.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Neutralization of CRLF Sequences ('CRLF Injection')",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/93.html",
+      "id": "CWE-93"
+    },
+    {
+      "Description": "<b>CWE-113: Improper Neutralization of CRLF Sequences in HTTP Headers ('HTTP Request/Response Splitting')</b><br>The product receives data from an HTTP agent/component (e.g., web server, proxy, browser, etc.), but it does not neutralize or incorrectly neutralizes CR and LF characters before the data is included in outgoing HTTP headers.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of CRLF Sequences in HTTP Headers ('HTTP Request/Response Splitting')",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/113.html",
+      "id": "CWE-113"
+    },
+    {
+      "Description": "<b>CWE-825: Expired Pointer Dereference</b><br>The product dereferences a pointer that contains a location for memory that was previously valid, but is no longer valid.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Expired Pointer Dereference",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/825.html",
+      "id": "CWE-825"
+    },
+    {
+      "Description": "<b>CWE-42: Path Equivalence: 'filename.' (Trailing Dot)</b><br>The product accepts path input in the form of trailing dot ('filedir.') without appropriate validation, which can lead to ambiguous path resolution and allow an attacker to traverse the file system to unintended locations or access arbitrary files.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Path Equivalence: 'filename.' (Trailing Dot)",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/42.html",
+      "id": "CWE-42"
+    },
+    {
+      "Description": "<b>CWE-110: Struts: Validator Without Form Field</b><br>Validation fields that do not appear in forms they are associated with indicate that the validation logic is out of date.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Struts: Validator Without Form Field",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/110.html",
+      "id": "CWE-110"
+    },
+    {
+      "Description": "<b>CWE-46: Path Equivalence: 'filename ' (Trailing Space)</b><br>The product accepts path input in the form of trailing space ('filedir ') without appropriate validation, which can lead to ambiguous path resolution and allow an attacker to traverse the file system to unintended locations or access arbitrary files.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Path Equivalence: 'filename ' (Trailing Space)",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/46.html",
+      "id": "CWE-46"
+    },
+    {
+      "Description": "<b>CWE-144: Improper Neutralization of Line Delimiters</b><br>The product receives input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could be interpreted as line delimiters when they are sent to a downstream component.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of Line Delimiters",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/144.html",
+      "id": "CWE-144"
+    },
+    {
+      "Description": "<b>CWE-77: Improper Neutralization of Special Elements used in a Command ('Command Injection')</b><br>The product constructs all or part of a command using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the intended command when it is sent to a downstream component.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Improper Neutralization of Special Elements used in a Command ('Command Injection')",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/77.html",
+      "id": "CWE-77"
+    },
+    {
+      "Description": "<b>CWE-130: Improper Handling of Length Parameter Inconsistency</b><br>The product parses a formatted message or structure, but it does not handle or incorrectly handles a length field that is inconsistent with the actual length of the associated data.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Handling of Length Parameter Inconsistency",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/130.html",
+      "id": "CWE-130"
+    },
+    {
+      "Description": "<b>CWE-114: Process Control</b><br>Executing commands or loading libraries from an untrusted source or in an untrusted environment can cause an application to execute malicious commands (and payloads) on behalf of an attacker.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Process Control",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/114.html",
+      "id": "CWE-114"
+    },
+    {
+      "Description": "<b>CWE-160: Improper Neutralization of Leading Special Elements</b><br>The product receives input from an upstream component, but it does not neutralize or incorrectly neutralizes leading special elements that could be interpreted in unexpected ways when they are sent to a downstream component.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of Leading Special Elements",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/160.html",
+      "id": "CWE-160"
+    },
+    {
+      "Description": "<b>CWE-88: Improper Neutralization of Argument Delimiters in a Command ('Argument Injection')</b><br>The product constructs a string for a command to be executed by a separate component\nin another control sphere, but it does not properly delimit the\nintended arguments, options, or switches within that command string.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Neutralization of Argument Delimiters in a Command ('Argument Injection')",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/88.html",
+      "id": "CWE-88"
+    },
+    {
+      "Description": "<b>CWE-147: Improper Neutralization of Input Terminators</b><br>The product receives input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could be interpreted as input terminators when they are sent to a downstream component.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of Input Terminators",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/147.html",
+      "id": "CWE-147"
+    },
+    {
+      "Description": "<b>CWE-106: Struts: Plug-in Framework not in Use</b><br>When an application does not use an input validation framework such as the Struts Validator, there is a greater risk of introducing weaknesses related to insufficient input validation.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Struts: Plug-in Framework not in Use",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/106.html",
+      "id": "CWE-106"
+    },
+    {
+      "Description": "<b>CWE-795: Only Filtering Special Elements at a Specified Location</b><br>The product receives data from an upstream component, but only accounts for special elements at a specified location, thereby missing remaining special elements that may exist before sending it to a downstream component.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Only Filtering Special Elements at a Specified Location",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/795.html",
+      "id": "CWE-795"
+    },
+    {
+      "Description": "<b>CWE-138: Improper Neutralization of Special Elements</b><br>The product receives input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could be interpreted as control elements or syntactic markers when they are sent to a downstream component.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Improper Neutralization of Special Elements",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/138.html",
+      "id": "CWE-138"
+    },
+    {
+      "Description": "<b>CWE-73: External Control of File Name or Path</b><br>The product allows user input to control or influence paths or file names that are used in filesystem operations.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "External Control of File Name or Path",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/73.html",
+      "id": "CWE-73"
+    },
+    {
+      "Description": "<b>CWE-797: Only Filtering Special Elements at an Absolute Position</b><br>The product receives data from an upstream component, but only accounts for special elements at an absolute position (e.g. \"byte number 10\"), thereby missing remaining special elements that may exist before sending it to a downstream component.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Only Filtering Special Elements at an Absolute Position",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/797.html",
+      "id": "CWE-797"
+    },
+    {
+      "Description": "<b>CWE-90: Improper Neutralization of Special Elements used in an LDAP Query ('LDAP Injection')</b><br>The product constructs all or part of an LDAP query using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the intended LDAP query when it is sent to a downstream component.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Neutralization of Special Elements used in an LDAP Query ('LDAP Injection')",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/90.html",
+      "id": "CWE-90"
+    },
+    {
+      "Description": "<b>CWE-148: Improper Neutralization of Input Leaders</b><br>The product does not properly handle when a leading character or sequence (\"leader\") is missing or malformed, or if multiple leaders are used when only one should be allowed.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of Input Leaders",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/148.html",
+      "id": "CWE-148"
+    },
+    {
+      "Description": "<b>CWE-228: Improper Handling of Syntactically Invalid Structure</b><br>The product does not handle or incorrectly handles input that is not syntactically well-formed with respect to the associated specification.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Improper Handling of Syntactically Invalid Structure",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/228.html",
+      "id": "CWE-228"
+    },
+    {
+      "Description": "<b>CWE-119: Improper Restriction of Operations within the Bounds of a Memory Buffer</b><br>The product performs operations on a memory buffer, but it can read from or write to a memory location that is outside of the intended boundary of the buffer.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Improper Restriction of Operations within the Bounds of a Memory Buffer",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/119.html",
+      "id": "CWE-119"
+    },
+    {
+      "Description": "<b>CWE-159: Improper Handling of Invalid Use of Special Elements</b><br>The product does not properly filter, remove, quote, or otherwise manage the invalid use of special elements in user-controlled input, which could cause adverse effect on its behavior and integrity.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Improper Handling of Invalid Use of Special Elements",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/159.html",
+      "id": "CWE-159"
+    },
+    {
+      "Description": "<b>CWE-145: Improper Neutralization of Section Delimiters</b><br>The product receives input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could be interpreted as section delimiters when they are sent to a downstream component.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of Section Delimiters",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/145.html",
+      "id": "CWE-145"
+    },
+    {
+      "Description": "<b>CWE-180: Incorrect Behavior Order: Validate Before Canonicalize</b><br>The product validates input before it is canonicalized, which prevents the product from detecting data that becomes invalid after the canonicalization step.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Incorrect Behavior Order: Validate Before Canonicalize",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/180.html",
+      "id": "CWE-180"
+    },
+    {
+      "Description": "<b>CWE-627: Dynamic Variable Evaluation</b><br>In a language where the user can influence the name of a variable at runtime, if the variable names are not controlled, an attacker can read or write to arbitrary variables, or access arbitrary functions.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Dynamic Variable Evaluation",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/627.html",
+      "id": "CWE-627"
+    },
+    {
+      "Description": "<b>CWE-790: Improper Filtering of Special Elements</b><br>The product receives data from an upstream component, but does not filter or incorrectly filters special elements before sending it to a downstream component.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Improper Filtering of Special Elements",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/790.html",
+      "id": "CWE-790"
+    },
+    {
+      "Description": "<b>CWE-235: Improper Handling of Extra Parameters</b><br>The product does not handle or incorrectly handles when the number of parameters, fields, or arguments with the same name exceeds the expected amount.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Handling of Extra Parameters",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/235.html",
+      "id": "CWE-235"
+    },
+    {
+      "Description": "<b>CWE-84: Improper Neutralization of Encoded URI Schemes in a Web Page</b><br>The web application improperly neutralizes user-controlled input for executable script disguised with URI encodings.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of Encoded URI Schemes in a Web Page",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/84.html",
+      "id": "CWE-84"
+    },
+    {
+      "Description": "<b>CWE-173: Improper Handling of Alternate Encoding</b><br>The product does not properly handle when an input uses an alternate encoding that is valid for the control sphere to which the input is being sent.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Handling of Alternate Encoding",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/173.html",
+      "id": "CWE-173"
+    },
+    {
+      "Description": "<b>CWE-150: Improper Neutralization of Escape, Meta, or Control Sequences</b><br>The product receives input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could be interpreted as escape, meta, or control character sequences when they are sent to a downstream component.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of Escape, Meta, or Control Sequences",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/150.html",
+      "id": "CWE-150"
+    },
+    {
+      "Description": "<b>CWE-155: Improper Neutralization of Wildcards or Matching Symbols</b><br>The product receives input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could be interpreted as wildcards or matching symbols when they are sent to a downstream component.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of Wildcards or Matching Symbols",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/155.html",
+      "id": "CWE-155"
+    },
+    {
+      "Description": "<b>CWE-680: Integer Overflow to Buffer Overflow</b><br>The product performs a calculation to determine how much memory to allocate, but an integer overflow can occur that causes less memory to be allocated than expected, leading to a buffer overflow.",
+      "color": "#9ac20c",
+      "size": 10,
+      "label": "Integer Overflow to Buffer Overflow",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Compound",
+      "url": "https://cwe.mitre.org/data/definitions/680.html",
+      "id": "CWE-680"
+    },
+    {
+      "Description": "<b>CWE-102: Struts: Duplicate Validation Forms</b><br>The product uses multiple validation forms with the same name, which might cause the Struts Validator to validate a form that the programmer does not expect.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Struts: Duplicate Validation Forms",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/102.html",
+      "id": "CWE-102"
+    },
+    {
+      "Description": "<b>CWE-89: Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')</b><br>The product constructs all or part of an SQL command using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the intended SQL command when it is sent to a downstream component.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/89.html",
+      "id": "CWE-89"
+    },
+    {
+      "Description": "<b>CWE-785: Use of Path Manipulation Function without Maximum-sized Buffer</b><br>The product invokes a function for normalizing paths or file names, but it provides an output buffer that is smaller than the maximum possible size, such as PATH_MAX.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Use of Path Manipulation Function without Maximum-sized Buffer",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/785.html",
+      "id": "CWE-785"
+    },
+    {
+      "Description": "<b>CWE-126: Buffer Over-read</b><br>The product reads from a buffer using buffer access mechanisms such as indexes or pointers that reference memory locations after the targeted buffer.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Buffer Over-read",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/126.html",
+      "id": "CWE-126"
+    },
+    {
+      "Description": "<b>CWE-140: Improper Neutralization of Delimiters</b><br>The product does not neutralize or incorrectly neutralizes delimiters.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Neutralization of Delimiters",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/140.html",
+      "id": "CWE-140"
+    },
+    {
+      "Description": "<b>CWE-82: Improper Neutralization of Script in Attributes of IMG Tags in a Web Page</b><br>The web application does not neutralize or incorrectly neutralizes scripting elements within attributes of HTML IMG tags, such as the src attribute.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of Script in Attributes of IMG Tags in a Web Page",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/82.html",
+      "id": "CWE-82"
+    },
+    {
+      "Description": "<b>CWE-190: Integer Overflow or Wraparound</b><br>The product performs a calculation that can produce an integer overflow or wraparound, when the logic assumes that the resulting value will always be larger than the original value. This can introduce other weaknesses when the calculation is used for resource management or execution control.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Integer Overflow or Wraparound",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/190.html",
+      "id": "CWE-190"
+    },
+    {
+      "Description": "<b>CWE-83: Improper Neutralization of Script in Attributes in a Web Page</b><br>The product does not neutralize or incorrectly neutralizes \"javascript:\" or other URIs from dangerous attributes within tags, such as onmouseover, onload, onerror, or style.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of Script in Attributes in a Web Page",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/83.html",
+      "id": "CWE-83"
+    },
+    {
+      "Description": "<b>CWE-125: Out-of-bounds Read</b><br>The product reads data past the end, or before the beginning, of the intended buffer.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Out-of-bounds Read",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/125.html",
+      "id": "CWE-125"
+    },
+    {
+      "Description": "<b>CWE-129: Improper Validation of Array Index</b><br>The product uses untrusted input when calculating or using an array index, but the product does not validate or incorrectly validates the index to ensure the index references a valid position within the array.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Validation of Array Index",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/129.html",
+      "id": "CWE-129"
+    },
+    {
+      "Description": "<b>CWE-564: SQL Injection: Hibernate</b><br>Using Hibernate to execute a dynamic SQL statement built with user-controlled input can allow an attacker to modify the statement's meaning or to execute arbitrary SQL commands.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "SQL Injection: Hibernate",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/564.html",
+      "id": "CWE-564"
+    },
+    {
+      "Description": "<b>CWE-76: Improper Neutralization of Equivalent Special Elements</b><br>The product correctly neutralizes certain special elements, but it improperly neutralizes equivalent special elements.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Improper Neutralization of Equivalent Special Elements",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/76.html",
+      "id": "CWE-76"
+    },
+    {
+      "Description": "<b>CWE-175: Improper Handling of Mixed Encoding</b><br>The product does not properly handle when the same input uses several different (mixed) encodings.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Handling of Mixed Encoding",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/175.html",
+      "id": "CWE-175"
+    },
+    {
+      "Description": "<b>CWE-52: Path Equivalence: '/multiple/trailing/slash//'</b><br>The product accepts path input in the form of multiple trailing slash ('/multiple/trailing/slash//') without appropriate validation, which can lead to ambiguous path resolution and allow an attacker to traverse the file system to unintended locations or access arbitrary files.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Path Equivalence: '/multiple/trailing/slash//'",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/52.html",
+      "id": "CWE-52"
+    },
+    {
+      "Description": "<b>CWE-146: Improper Neutralization of Expression/Command Delimiters</b><br>The product receives input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could be interpreted as expression or command delimiters when they are sent to a downstream component.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of Expression/Command Delimiters",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/146.html",
+      "id": "CWE-146"
+    },
+    {
+      "Description": "<b>CWE-823: Use of Out-of-range Pointer Offset</b><br>The product performs pointer arithmetic on a valid pointer, but it uses an offset that can point outside of the intended range of valid memory locations for the resulting pointer.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Use of Out-of-range Pointer Offset",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/823.html",
+      "id": "CWE-823"
+    },
+    {
+      "Description": "<b>CWE-179: Incorrect Behavior Order: Early Validation</b><br>The product validates input before applying protection mechanisms that modify the input, which could allow an attacker to bypass the validation via dangerous inputs that only arise after the modification.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Incorrect Behavior Order: Early Validation",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/179.html",
+      "id": "CWE-179"
+    },
+    {
+      "Description": "<b>CWE-123: Write-what-where Condition</b><br>Any condition where the attacker has the ability to write an arbitrary value to an arbitrary location, often as the result of a buffer overflow.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Write-what-where Condition",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/123.html",
+      "id": "CWE-123"
+    },
+    {
+      "Description": "<b>CWE-644: Improper Neutralization of HTTP Headers for Scripting Syntax</b><br>The product does not neutralize or incorrectly neutralizes web scripting syntax in HTTP headers that can be used by web browser components that can process raw headers, such as Flash.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of HTTP Headers for Scripting Syntax",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/644.html",
+      "id": "CWE-644"
+    },
+    {
+      "Description": "<b>CWE-161: Improper Neutralization of Multiple Leading Special Elements</b><br>The product receives input from an upstream component, but it does not neutralize or incorrectly neutralizes multiple leading special elements that could be interpreted in unexpected ways when they are sent to a downstream component.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of Multiple Leading Special Elements",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/161.html",
+      "id": "CWE-161"
+    },
+    {
+      "Description": "<b>CWE-791: Incomplete Filtering of Special Elements</b><br>The product receives data from an upstream component, but does not completely filter special elements before sending it to a downstream component.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Incomplete Filtering of Special Elements",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/791.html",
+      "id": "CWE-791"
+    },
+    {
+      "Description": "<b>CWE-824: Access of Uninitialized Pointer</b><br>The product accesses or uses a pointer that has not been initialized.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Access of Uninitialized Pointer",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/824.html",
+      "id": "CWE-824"
+    },
+    {
+      "Description": "<b>CWE-87: Improper Neutralization of Alternate XSS Syntax</b><br>The product does not neutralize or incorrectly neutralizes user-controlled input for alternate script syntax.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Improper Neutralization of Alternate XSS Syntax",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/87.html",
+      "id": "CWE-87"
+    }
+  ],
+  "links": [
+    {
+      "width": 1,
+      "source": "CWE-141",
+      "target": "CWE-140"
+    },
+    {
+      "width": 1,
+      "source": "CWE-85",
+      "target": "CWE-79"
+    },
+    {
+      "width": 1,
+      "source": "CWE-168",
+      "target": "CWE-159"
+    },
+    {
+      "width": 1,
+      "source": "CWE-156",
+      "target": "CWE-138"
+    },
+    {
+      "width": 1,
+      "source": "CWE-80",
+      "target": "CWE-79"
+    },
+    {
+      "width": 1,
+      "source": "CWE-166",
+      "target": "CWE-159"
+    },
+    {
+      "width": 1,
+      "source": "CWE-104",
+      "target": "CWE-20"
+    },
+    {
+      "width": 1,
+      "source": "CWE-154",
+      "target": "CWE-138"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1286",
+      "target": "CWE-20"
+    },
+    {
+      "width": 1,
+      "source": "CWE-75",
+      "target": "CWE-74"
+    },
+    {
+      "width": 1,
+      "source": "CWE-652",
+      "target": "CWE-943"
+    },
+    {
+      "width": 1,
+      "source": "CWE-652",
+      "target": "CWE-91"
+    },
+    {
+      "width": 1,
+      "source": "CWE-624",
+      "target": "CWE-77"
+    },
+    {
+      "width": 1,
+      "source": "CWE-45",
+      "target": "CWE-165"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1289",
+      "target": "CWE-20"
+    },
+    {
+      "width": 1,
+      "source": "CWE-781",
+      "target": "CWE-1285"
+    },
+    {
+      "width": 1,
+      "source": "CWE-74",
+      "target": "CWE-707"
+    },
+    {
+      "width": 1,
+      "source": "CWE-792",
+      "target": "CWE-791"
+    },
+    {
+      "width": 1,
+      "source": "CWE-621",
+      "target": "CWE-914"
+    },
+    {
+      "width": 1,
+      "source": "CWE-234",
+      "target": "CWE-233"
+    },
+    {
+      "width": 1,
+      "source": "CWE-94",
+      "target": "CWE-74"
+    },
+    {
+      "width": 1,
+      "source": "CWE-143",
+      "target": "CWE-140"
+    },
+    {
+      "width": 1,
+      "source": "CWE-112",
+      "target": "CWE-1286"
+    },
+    {
+      "width": 1,
+      "source": "CWE-112",
+      "target": "CWE-20"
+    },
+    {
+      "width": 1,
+      "source": "CWE-167",
+      "target": "CWE-159"
+    },
+    {
+      "width": 1,
+      "source": "CWE-121",
+      "target": "CWE-788"
+    },
+    {
+      "width": 1,
+      "source": "CWE-121",
+      "target": "CWE-787"
+    },
+    {
+      "width": 1,
+      "source": "CWE-914",
+      "target": "CWE-99"
+    },
+    {
+      "width": 1,
+      "source": "CWE-79",
+      "target": "CWE-74"
+    },
+    {
+      "width": 1,
+      "source": "CWE-116",
+      "target": "CWE-707"
+    },
+    {
+      "width": 1,
+      "source": "CWE-466",
+      "target": "CWE-119"
+    },
+    {
+      "width": 1,
+      "source": "CWE-466",
+      "target": "CWE-20"
+    },
+    {
+      "width": 1,
+      "source": "CWE-157",
+      "target": "CWE-138"
+    },
+    {
+      "width": 1,
+      "source": "CWE-108",
+      "target": "CWE-1173"
+    },
+    {
+      "width": 1,
+      "source": "CWE-108",
+      "target": "CWE-20"
+    },
+    {
+      "width": 1,
+      "source": "CWE-174",
+      "target": "CWE-172"
+    },
+    {
+      "width": 1,
+      "source": "CWE-464",
+      "target": "CWE-138"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1288",
+      "target": "CWE-20"
+    },
+    {
+      "width": 1,
+      "source": "CWE-232",
+      "target": "CWE-229"
+    },
+    {
+      "width": 1,
+      "source": "CWE-231",
+      "target": "CWE-229"
+    },
+    {
+      "width": 1,
+      "source": "CWE-91",
+      "target": "CWE-74"
+    },
+    {
+      "width": 1,
+      "source": "CWE-122",
+      "target": "CWE-788"
+    },
+    {
+      "width": 1,
+      "source": "CWE-122",
+      "target": "CWE-787"
+    },
+    {
+      "width": 1,
+      "source": "CWE-153",
+      "target": "CWE-138"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1336",
+      "target": "CWE-94"
+    },
+    {
+      "width": 1,
+      "source": "CWE-158",
+      "target": "CWE-138"
+    },
+    {
+      "width": 1,
+      "source": "CWE-229",
+      "target": "CWE-228"
+    },
+    {
+      "width": 1,
+      "source": "CWE-241",
+      "target": "CWE-228"
+    },
+    {
+      "width": 1,
+      "source": "CWE-170",
+      "target": "CWE-707"
+    },
+    {
+      "width": 1,
+      "source": "CWE-170",
+      "target": "CWE-20"
+    },
+    {
+      "width": 1,
+      "source": "CWE-233",
+      "target": "CWE-228"
+    },
+    {
+      "width": 1,
+      "source": "CWE-107",
+      "target": "CWE-20"
+    },
+    {
+      "width": 1,
+      "source": "CWE-105",
+      "target": "CWE-1173"
+    },
+    {
+      "width": 1,
+      "source": "CWE-105",
+      "target": "CWE-20"
+    },
+    {
+      "width": 1,
+      "source": "CWE-917",
+      "target": "CWE-77"
+    },
+    {
+      "width": 1,
+      "source": "CWE-917",
+      "target": "CWE-74"
+    },
+    {
+      "width": 1,
+      "source": "CWE-796",
+      "target": "CWE-795"
+    },
+    {
+      "width": 1,
+      "source": "CWE-95",
+      "target": "CWE-94"
+    },
+    {
+      "width": 1,
+      "source": "CWE-96",
+      "target": "CWE-94"
+    },
+    {
+      "width": 1,
+      "source": "CWE-240",
+      "target": "CWE-237"
+    },
+    {
+      "width": 1,
+      "source": "CWE-240",
+      "target": "CWE-707"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1285",
+      "target": "CWE-20"
+    },
+    {
+      "width": 1,
+      "source": "CWE-142",
+      "target": "CWE-140"
+    },
+    {
+      "width": 1,
+      "source": "CWE-805",
+      "target": "CWE-119"
+    },
+    {
+      "width": 1,
+      "source": "CWE-165",
+      "target": "CWE-164"
+    },
+    {
+      "width": 1,
+      "source": "CWE-99",
+      "target": "CWE-74"
+    },
+    {
+      "width": 1,
+      "source": "CWE-164",
+      "target": "CWE-138"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1236",
+      "target": "CWE-74"
+    },
+    {
+      "width": 1,
+      "source": "CWE-787",
+      "target": "CWE-119"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1287",
+      "target": "CWE-20"
+    },
+    {
+      "width": 1,
+      "source": "CWE-49",
+      "target": "CWE-162"
+    },
+    {
+      "width": 1,
+      "source": "CWE-127",
+      "target": "CWE-125"
+    },
+    {
+      "width": 1,
+      "source": "CWE-127",
+      "target": "CWE-786"
+    },
+    {
+      "width": 1,
+      "source": "CWE-237",
+      "target": "CWE-228"
+    },
+    {
+      "width": 1,
+      "source": "CWE-236",
+      "target": "CWE-233"
+    },
+    {
+      "width": 1,
+      "source": "CWE-53",
+      "target": "CWE-165"
+    },
+    {
+      "width": 1,
+      "source": "CWE-43",
+      "target": "CWE-42"
+    },
+    {
+      "width": 1,
+      "source": "CWE-43",
+      "target": "CWE-163"
+    },
+    {
+      "width": 1,
+      "source": "CWE-151",
+      "target": "CWE-138"
+    },
+    {
+      "width": 1,
+      "source": "CWE-643",
+      "target": "CWE-943"
+    },
+    {
+      "width": 1,
+      "source": "CWE-643",
+      "target": "CWE-91"
+    },
+    {
+      "width": 1,
+      "source": "CWE-37",
+      "target": "CWE-160"
+    },
+    {
+      "width": 1,
+      "source": "CWE-56",
+      "target": "CWE-155"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1174",
+      "target": "CWE-1173"
+    },
+    {
+      "width": 1,
+      "source": "CWE-838",
+      "target": "CWE-116"
+    },
+    {
+      "width": 1,
+      "source": "CWE-606",
+      "target": "CWE-1284"
+    },
+    {
+      "width": 1,
+      "source": "CWE-124",
+      "target": "CWE-786"
+    },
+    {
+      "width": 1,
+      "source": "CWE-124",
+      "target": "CWE-787"
+    },
+    {
+      "width": 1,
+      "source": "CWE-416",
+      "target": "CWE-825"
+    },
+    {
+      "width": 1,
+      "source": "CWE-415",
+      "target": "CWE-825"
+    },
+    {
+      "width": 1,
+      "source": "CWE-149",
+      "target": "CWE-138"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1173",
+      "target": "CWE-20"
+    },
+    {
+      "width": 1,
+      "source": "CWE-463",
+      "target": "CWE-707"
+    },
+    {
+      "width": 1,
+      "source": "CWE-238",
+      "target": "CWE-237"
+    },
+    {
+      "width": 1,
+      "source": "CWE-462",
+      "target": "CWE-694"
+    },
+    {
+      "width": 1,
+      "source": "CWE-152",
+      "target": "CWE-138"
+    },
+    {
+      "width": 1,
+      "source": "CWE-162",
+      "target": "CWE-138"
+    },
+    {
+      "width": 1,
+      "source": "CWE-54",
+      "target": "CWE-162"
+    },
+    {
+      "width": 1,
+      "source": "CWE-81",
+      "target": "CWE-79"
+    },
+    {
+      "width": 1,
+      "source": "CWE-103",
+      "target": "CWE-20"
+    },
+    {
+      "width": 1,
+      "source": "CWE-134",
+      "target": "CWE-20"
+    },
+    {
+      "width": 1,
+      "source": "CWE-943",
+      "target": "CWE-74"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1284",
+      "target": "CWE-20"
+    },
+    {
+      "width": 1,
+      "source": "CWE-15",
+      "target": "CWE-20"
+    },
+    {
+      "width": 1,
+      "source": "CWE-109",
+      "target": "CWE-1173"
+    },
+    {
+      "width": 1,
+      "source": "CWE-109",
+      "target": "CWE-20"
+    },
+    {
+      "width": 1,
+      "source": "CWE-794",
+      "target": "CWE-792"
+    },
+    {
+      "width": 1,
+      "source": "CWE-554",
+      "target": "CWE-1173"
+    },
+    {
+      "width": 1,
+      "source": "CWE-86",
+      "target": "CWE-79"
+    },
+    {
+      "width": 1,
+      "source": "CWE-111",
+      "target": "CWE-20"
+    },
+    {
+      "width": 1,
+      "source": "CWE-177",
+      "target": "CWE-172"
+    },
+    {
+      "width": 1,
+      "source": "CWE-163",
+      "target": "CWE-162"
+    },
+    {
+      "width": 1,
+      "source": "CWE-806",
+      "target": "CWE-805"
+    },
+    {
+      "width": 1,
+      "source": "CWE-470",
+      "target": "CWE-20"
+    },
+    {
+      "width": 1,
+      "source": "CWE-239",
+      "target": "CWE-237"
+    },
+    {
+      "width": 1,
+      "source": "CWE-230",
+      "target": "CWE-229"
+    },
+    {
+      "width": 1,
+      "source": "CWE-78",
+      "target": "CWE-77"
+    },
+    {
+      "width": 1,
+      "source": "CWE-78",
+      "target": "CWE-74"
+    },
+    {
+      "width": 1,
+      "source": "CWE-786",
+      "target": "CWE-119"
+    },
+    {
+      "width": 1,
+      "source": "CWE-641",
+      "target": "CWE-99"
+    },
+    {
+      "width": 1,
+      "source": "CWE-793",
+      "target": "CWE-792"
+    },
+    {
+      "width": 1,
+      "source": "CWE-788",
+      "target": "CWE-119"
+    },
+    {
+      "width": 1,
+      "source": "CWE-622",
+      "target": "CWE-20"
+    },
+    {
+      "width": 1,
+      "source": "CWE-176",
+      "target": "CWE-172"
+    },
+    {
+      "width": 1,
+      "source": "CWE-822",
+      "target": "CWE-119"
+    },
+    {
+      "width": 1,
+      "source": "CWE-20",
+      "target": "CWE-707"
+    },
+    {
+      "width": 1,
+      "source": "CWE-181",
+      "target": "CWE-179"
+    },
+    {
+      "width": 1,
+      "source": "CWE-97",
+      "target": "CWE-96"
+    },
+    {
+      "width": 1,
+      "source": "CWE-626",
+      "target": "CWE-147"
+    },
+    {
+      "width": 1,
+      "source": "CWE-172",
+      "target": "CWE-707"
+    },
+    {
+      "width": 1,
+      "source": "CWE-120",
+      "target": "CWE-119"
+    },
+    {
+      "width": 1,
+      "source": "CWE-120",
+      "target": "CWE-20"
+    },
+    {
+      "width": 1,
+      "source": "CWE-50",
+      "target": "CWE-161"
+    },
+    {
+      "width": 1,
+      "source": "CWE-694",
+      "target": "CWE-99"
+    },
+    {
+      "width": 1,
+      "source": "CWE-117",
+      "target": "CWE-116"
+    },
+    {
+      "width": 1,
+      "source": "CWE-117",
+      "target": "CWE-20"
+    },
+    {
+      "width": 1,
+      "source": "CWE-93",
+      "target": "CWE-74"
+    },
+    {
+      "width": 1,
+      "source": "CWE-113",
+      "target": "CWE-93"
+    },
+    {
+      "width": 1,
+      "source": "CWE-113",
+      "target": "CWE-20"
+    },
+    {
+      "width": 1,
+      "source": "CWE-825",
+      "target": "CWE-119"
+    },
+    {
+      "width": 1,
+      "source": "CWE-42",
+      "target": "CWE-162"
+    },
+    {
+      "width": 1,
+      "source": "CWE-110",
+      "target": "CWE-20"
+    },
+    {
+      "width": 1,
+      "source": "CWE-46",
+      "target": "CWE-162"
+    },
+    {
+      "width": 1,
+      "source": "CWE-144",
+      "target": "CWE-140"
+    },
+    {
+      "width": 1,
+      "source": "CWE-77",
+      "target": "CWE-74"
+    },
+    {
+      "width": 1,
+      "source": "CWE-130",
+      "target": "CWE-240"
+    },
+    {
+      "width": 1,
+      "source": "CWE-130",
+      "target": "CWE-119"
+    },
+    {
+      "width": 1,
+      "source": "CWE-114",
+      "target": "CWE-73"
+    },
+    {
+      "width": 1,
+      "source": "CWE-114",
+      "target": "CWE-20"
+    },
+    {
+      "width": 1,
+      "source": "CWE-160",
+      "target": "CWE-138"
+    },
+    {
+      "width": 1,
+      "source": "CWE-88",
+      "target": "CWE-77"
+    },
+    {
+      "width": 1,
+      "source": "CWE-88",
+      "target": "CWE-74"
+    },
+    {
+      "width": 1,
+      "source": "CWE-147",
+      "target": "CWE-138"
+    },
+    {
+      "width": 1,
+      "source": "CWE-106",
+      "target": "CWE-1173"
+    },
+    {
+      "width": 1,
+      "source": "CWE-106",
+      "target": "CWE-20"
+    },
+    {
+      "width": 1,
+      "source": "CWE-795",
+      "target": "CWE-791"
+    },
+    {
+      "width": 1,
+      "source": "CWE-138",
+      "target": "CWE-707"
+    },
+    {
+      "width": 1,
+      "source": "CWE-73",
+      "target": "CWE-20"
+    },
+    {
+      "width": 1,
+      "source": "CWE-797",
+      "target": "CWE-795"
+    },
+    {
+      "width": 1,
+      "source": "CWE-90",
+      "target": "CWE-943"
+    },
+    {
+      "width": 1,
+      "source": "CWE-148",
+      "target": "CWE-138"
+    },
+    {
+      "width": 1,
+      "source": "CWE-228",
+      "target": "CWE-707"
+    },
+    {
+      "width": 1,
+      "source": "CWE-119",
+      "target": "CWE-20"
+    },
+    {
+      "width": 1,
+      "source": "CWE-159",
+      "target": "CWE-138"
+    },
+    {
+      "width": 1,
+      "source": "CWE-145",
+      "target": "CWE-140"
+    },
+    {
+      "width": 1,
+      "source": "CWE-180",
+      "target": "CWE-179"
+    },
+    {
+      "width": 1,
+      "source": "CWE-627",
+      "target": "CWE-914"
+    },
+    {
+      "width": 1,
+      "source": "CWE-790",
+      "target": "CWE-138"
+    },
+    {
+      "width": 1,
+      "source": "CWE-235",
+      "target": "CWE-233"
+    },
+    {
+      "width": 1,
+      "source": "CWE-84",
+      "target": "CWE-79"
+    },
+    {
+      "width": 1,
+      "source": "CWE-173",
+      "target": "CWE-172"
+    },
+    {
+      "width": 1,
+      "source": "CWE-150",
+      "target": "CWE-138"
+    },
+    {
+      "width": 1,
+      "source": "CWE-155",
+      "target": "CWE-138"
+    },
+    {
+      "width": 1,
+      "source": "CWE-680",
+      "target": "CWE-190"
+    },
+    {
+      "width": 1,
+      "source": "CWE-102",
+      "target": "CWE-694"
+    },
+    {
+      "width": 1,
+      "source": "CWE-102",
+      "target": "CWE-1173"
+    },
+    {
+      "width": 1,
+      "source": "CWE-102",
+      "target": "CWE-20"
+    },
+    {
+      "width": 1,
+      "source": "CWE-89",
+      "target": "CWE-943"
+    },
+    {
+      "width": 1,
+      "source": "CWE-89",
+      "target": "CWE-74"
+    },
+    {
+      "width": 1,
+      "source": "CWE-785",
+      "target": "CWE-120"
+    },
+    {
+      "width": 1,
+      "source": "CWE-785",
+      "target": "CWE-20"
+    },
+    {
+      "width": 1,
+      "source": "CWE-126",
+      "target": "CWE-125"
+    },
+    {
+      "width": 1,
+      "source": "CWE-126",
+      "target": "CWE-788"
+    },
+    {
+      "width": 1,
+      "source": "CWE-140",
+      "target": "CWE-138"
+    },
+    {
+      "width": 1,
+      "source": "CWE-82",
+      "target": "CWE-83"
+    },
+    {
+      "width": 1,
+      "source": "CWE-190",
+      "target": "CWE-20"
+    },
+    {
+      "width": 1,
+      "source": "CWE-83",
+      "target": "CWE-79"
+    },
+    {
+      "width": 1,
+      "source": "CWE-125",
+      "target": "CWE-119"
+    },
+    {
+      "width": 1,
+      "source": "CWE-129",
+      "target": "CWE-1285"
+    },
+    {
+      "width": 1,
+      "source": "CWE-129",
+      "target": "CWE-20"
+    },
+    {
+      "width": 1,
+      "source": "CWE-564",
+      "target": "CWE-89"
+    },
+    {
+      "width": 1,
+      "source": "CWE-76",
+      "target": "CWE-75"
+    },
+    {
+      "width": 1,
+      "source": "CWE-175",
+      "target": "CWE-172"
+    },
+    {
+      "width": 1,
+      "source": "CWE-52",
+      "target": "CWE-163"
+    },
+    {
+      "width": 1,
+      "source": "CWE-146",
+      "target": "CWE-140"
+    },
+    {
+      "width": 1,
+      "source": "CWE-823",
+      "target": "CWE-119"
+    },
+    {
+      "width": 1,
+      "source": "CWE-179",
+      "target": "CWE-20"
+    },
+    {
+      "width": 1,
+      "source": "CWE-123",
+      "target": "CWE-787"
+    },
+    {
+      "width": 1,
+      "source": "CWE-123",
+      "target": "CWE-119"
+    },
+    {
+      "width": 1,
+      "source": "CWE-644",
+      "target": "CWE-116"
+    },
+    {
+      "width": 1,
+      "source": "CWE-161",
+      "target": "CWE-160"
+    },
+    {
+      "width": 1,
+      "source": "CWE-791",
+      "target": "CWE-790"
+    },
+    {
+      "width": 1,
+      "source": "CWE-824",
+      "target": "CWE-119"
+    },
+    {
+      "width": 1,
+      "source": "CWE-87",
+      "target": "CWE-79"
+    }
+  ]
+}

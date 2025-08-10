@@ -1,0 +1,245 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CAPEC-136: LDAP Injection</b><br>An attacker manipulates or crafts an LDAP query for the purpose of undermining the security of the target. Some applications use user input to create LDAP queries that are processed by an LDAP server. For example, a user might provide their username during authentication and the username might be inserted in an LDAP query during the authentication process. An attacker could use this input to inject additional commands into an LDAP query that could disclose sensitive information. For example, entering a * in the aforementioned query might return information about all users on the system. This attack is very similar to an SQL injection attack in that it manipulates a query to gather additional information or coerce a particular return value.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "LDAP Injection",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/136.html",
+      "id": "CAPEC-136"
+    },
+    {
+      "Description": "<b>CAPEC-88: OS Command Injection</b><br>In this type of an attack, an adversary injects operating system commands into existing application functions. An application that uses untrusted input to build command strings is vulnerable. An adversary can leverage OS command injection in an application to elevate privileges, execute arbitrary commands and compromise the underlying operating system.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "OS Command Injection",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/88.html",
+      "id": "CAPEC-88"
+    },
+    {
+      "Description": "<b>CAPEC-110: SQL Injection through SOAP Parameter Tampering</b><br>An attacker modifies the parameters of the SOAP message that is sent from the service consumer to the service provider to initiate a SQL injection attack. On the service provider side, the SOAP message is parsed and parameters are not properly validated before being used to access a database in a way that does not use parameter binding, thus enabling the attacker to control the structure of the executed SQL query. This pattern describes a SQL injection attack with the delivery mechanism being a SOAP message.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "SQL Injection through SOAP Parameter Tampering",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/110.html",
+      "id": "CAPEC-110"
+    },
+    {
+      "Description": "<b>CAPEC-250: XML Injection</b><br>An attacker utilizes crafted XML user-controllable input to probe, attack, and inject data into the XML database, using techniques similar to SQL injection. The user-controllable input can allow for unauthorized viewing of data, bypassing authentication or the front-end application for direct XML database access, and possibly altering database information.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "XML Injection",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/250.html",
+      "id": "CAPEC-250"
+    },
+    {
+      "Description": "<b>CAPEC-83: XPath Injection</b><br>An attacker can craft special user-controllable input consisting of XPath expressions to inject the XML database and bypass authentication or glean information that they normally would not be able to. XPath Injection enables an attacker to talk directly to the XML database, thus bypassing the application completely. XPath Injection results from the failure of an application to properly sanitize input used as part of dynamic XPath expressions used to query an XML database.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "XPath Injection",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/83.html",
+      "id": "CAPEC-83"
+    },
+    {
+      "Description": "<b>CAPEC-40: Manipulating Writeable Terminal Devices</b><br>This attack exploits terminal devices that allow themselves to be written to by other users. The attacker sends command strings to the target terminal device hoping that the target user will hit enter and thereby execute the malicious command with their privileges. The attacker can send the results (such as copying /etc/passwd) to a known directory and collect once the attack has succeeded.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Manipulating Writeable Terminal Devices",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/40.html",
+      "id": "CAPEC-40"
+    },
+    {
+      "Description": "<b>CAPEC-248: Command Injection</b><br>An adversary looking to execute a command of their choosing, injects new items into an existing command thus modifying interpretation away from what was intended. Commands in this context are often standalone strings that are interpreted by a downstream component and cause specific responses. This type of attack is possible when untrusted values are used to build these command strings. Weaknesses in input validation or command construction can enable the attack and lead to successful exploitation.",
+      "color": "#2176ff",
+      "size": 30,
+      "label": "Command Injection",
+      "label_class": "node-label-big",
+      "type": "CAPEC",
+      "abstraction": "Meta",
+      "url": "https://capec.mitre.org/data/definitions/248.html",
+      "id": "CAPEC-248"
+    },
+    {
+      "Description": "<b>CAPEC-108: Command Line Execution through SQL Injection</b><br>An attacker uses standard SQL injection methods to inject data into the command line for execution. This could be done directly through misuse of directives such as MSSQL_xp_cmdshell or indirectly through injection of data into the database that would be interpreted as shell commands. Sometime later, an unscrupulous backend application (or could be part of the functionality of the same application) fetches the injected data stored in the database and uses this data as command line arguments without performing proper validation. The malicious data escapes that data plane by spawning new commands to be executed on the host.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Command Line Execution through SQL Injection",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/108.html",
+      "id": "CAPEC-108"
+    },
+    {
+      "Description": "<b>CAPEC-109: Object Relational Mapping Injection</b><br>An attacker leverages a weakness present in the database access layer code generated with an Object Relational Mapping (ORM) tool or a weakness in the way that a developer used a persistence framework to inject their own SQL commands to be executed against the underlying database. The attack here is similar to plain SQL injection, except that the application does not use JDBC to directly talk to the database, but instead it uses a data access layer generated by an ORM tool or framework (e.g. Hibernate). While most of the time code generated by an ORM tool contains safe access methods that are immune to SQL injection, sometimes either due to some weakness in the generated code or due to the fact that the developer failed to use the generated access methods properly, SQL injection is still possible.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Object Relational Mapping Injection",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/109.html",
+      "id": "CAPEC-109"
+    },
+    {
+      "Description": "<b>CAPEC-84: XQuery Injection</b><br>This attack utilizes XQuery to probe and attack server systems; in a similar manner that SQL Injection allows an attacker to exploit SQL calls to RDBMS, XQuery Injection uses improperly validated data that is passed to XQuery commands to traverse and execute commands that the XQuery routines have access to. XQuery injection can be used to enumerate elements on the victim's environment, inject commands to the local host, or execute queries to remote files and data sources.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "XQuery Injection",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/84.html",
+      "id": "CAPEC-84"
+    },
+    {
+      "Description": "<b>CAPEC-66: SQL Injection</b><br>This attack exploits target software that constructs SQL statements based on user input. An attacker crafts input strings so that when the target software constructs SQL statements based on the input, the resulting SQL statement performs actions other than those the application intended. SQL Injection results from failure of the application to appropriately validate input.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "SQL Injection",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/66.html",
+      "id": "CAPEC-66"
+    },
+    {
+      "Description": "<b>CAPEC-470: Expanding Control over the Operating System from the Database</b><br>An attacker is able to leverage access gained to the database to read / write data to the file system, compromise the operating system, create a tunnel for accessing the host machine, and use this access to potentially attack other machines on the same network as the database machine. Traditionally SQL injections attacks are viewed as a way to gain unauthorized read access to the data stored in the database, modify the data in the database, delete the data, etc. However, almost every data base management system (DBMS) system includes facilities that if compromised allow an attacker complete access to the file system, operating system, and full access to the host running the database. The attacker can then use this privileged access to launch subsequent attacks. These facilities include dropping into a command shell, creating user defined functions that can call system level libraries present on the host machine, stored procedures, etc.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Expanding Control over the Operating System from the Database",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/470.html",
+      "id": "CAPEC-470"
+    },
+    {
+      "Description": "<b>CAPEC-183: IMAP/SMTP Command Injection</b><br>An adversary exploits weaknesses in input validation on web-mail servers to execute commands on the IMAP/SMTP server. Web-mail servers often sit between the Internet and the IMAP or SMTP mail server. User requests are received by the web-mail servers which then query the back-end mail server for the requested information and return this response to the user. In an IMAP/SMTP command injection attack, mail-server commands are embedded in parts of the request sent to the web-mail server. If the web-mail server fails to adequately sanitize these requests, these commands are then sent to the back-end mail server when it is queried by the web-mail server, where the commands are then executed. This attack can be especially dangerous since administrators may assume that the back-end server is protected against direct Internet access and therefore may not secure it adequately against the execution of malicious commands.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "IMAP/SMTP Command Injection",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/183.html",
+      "id": "CAPEC-183"
+    },
+    {
+      "Description": "<b>CAPEC-228: DTD Injection</b><br>An attacker injects malicious content into an application's DTD in an attempt to produce a negative technical impact. DTDs are used to describe how XML documents are processed. Certain malformed DTDs (for example, those with excessive entity expansion as described in CAPEC 197) can cause the XML parsers that process the DTDs to consume excessive resources resulting in resource depletion.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "DTD Injection",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/228.html",
+      "id": "CAPEC-228"
+    },
+    {
+      "Description": "<b>CAPEC-676: NoSQL Injection</b><br>An adversary targets software that constructs NoSQL statements based on user input or with parameters vulnerable to operator replacement in order to achieve a variety of technical impacts such as escalating privileges, bypassing authentication, and/or executing code.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "NoSQL Injection",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/676.html",
+      "id": "CAPEC-676"
+    },
+    {
+      "Description": "<b>CAPEC-7: Blind SQL Injection</b><br>Blind SQL Injection results from an insufficient mitigation for SQL Injection. Although suppressing database error messages are considered best practice, the suppression alone is not sufficient to prevent SQL Injection. Blind SQL Injection is a form of SQL Injection that overcomes the lack of error messages. Without the error messages that facilitate SQL Injection, the adversary constructs input strings that probe the target through simple Boolean SQL expressions. The adversary can determine if the syntax and structure of the injection was successful based on whether the query was executed or not. Applied iteratively, the adversary determines how and where the target is vulnerable to SQL Injection.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Blind SQL Injection",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/7.html",
+      "id": "CAPEC-7"
+    }
+  ],
+  "links": [
+    {
+      "source": "CAPEC-136",
+      "target": "CAPEC-248"
+    },
+    {
+      "source": "CAPEC-88",
+      "target": "CAPEC-248"
+    },
+    {
+      "source": "CAPEC-110",
+      "target": "CAPEC-66"
+    },
+    {
+      "source": "CAPEC-250",
+      "target": "CAPEC-248"
+    },
+    {
+      "source": "CAPEC-83",
+      "target": "CAPEC-250"
+    },
+    {
+      "source": "CAPEC-40",
+      "target": "CAPEC-248"
+    },
+    {
+      "source": "CAPEC-108",
+      "target": "CAPEC-66"
+    },
+    {
+      "source": "CAPEC-109",
+      "target": "CAPEC-66"
+    },
+    {
+      "source": "CAPEC-84",
+      "target": "CAPEC-250"
+    },
+    {
+      "source": "CAPEC-66",
+      "target": "CAPEC-248"
+    },
+    {
+      "source": "CAPEC-470",
+      "target": "CAPEC-66"
+    },
+    {
+      "source": "CAPEC-183",
+      "target": "CAPEC-248"
+    },
+    {
+      "source": "CAPEC-228",
+      "target": "CAPEC-250"
+    },
+    {
+      "source": "CAPEC-676",
+      "target": "CAPEC-248"
+    },
+    {
+      "source": "CAPEC-7",
+      "target": "CAPEC-66"
+    }
+  ]
+}

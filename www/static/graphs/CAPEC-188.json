@@ -1,0 +1,155 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CAPEC-37: Retrieve Embedded Sensitive Data</b><br>An attacker examines a target system to find sensitive data that has been embedded within it. This information can reveal confidential contents, such as account numbers or individual keys/credentials that can be used as an intermediate step in a larger attack.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Retrieve Embedded Sensitive Data",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/37.html",
+      "id": "CAPEC-37"
+    },
+    {
+      "Description": "<b>CAPEC-621: Analysis of Packet Timing and Sizes</b><br>An attacker may intercept and log encrypted transmissions for the purpose of analyzing metadata such as packet timing and sizes. Although the actual data may be encrypted, this metadata may reveal valuable information to an attacker. Note that this attack is applicable to VOIP data as well as application data, especially for interactive apps that require precise timing and low-latency (e.g. thin-clients).",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Analysis of Packet Timing and Sizes",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/621.html",
+      "id": "CAPEC-621"
+    },
+    {
+      "Description": "<b>CAPEC-188: Reverse Engineering</b><br>An adversary discovers the structure, function, and composition of an object, resource, or system by using a variety of analysis techniques to effectively determine how the analyzed entity was constructed or operates. The goal of reverse engineering is often to duplicate the function, or a part of the function, of an object in order to duplicate or \"back engineer\" some aspect of its functioning. Reverse engineering techniques can be applied to mechanical objects, electronic devices, or software, although the methodology and techniques involved in each type of analysis differ widely.",
+      "color": "#2176ff",
+      "size": 30,
+      "label": "Reverse Engineering",
+      "label_class": "node-label-big",
+      "type": "CAPEC",
+      "abstraction": "Meta",
+      "url": "https://capec.mitre.org/data/definitions/188.html",
+      "id": "CAPEC-188"
+    },
+    {
+      "Description": "<b>CAPEC-622: Electromagnetic Side-Channel Attack</b><br>In this attack scenario, the attacker passively monitors electromagnetic emanations that are produced by the targeted electronic device as an unintentional side-effect of its processing. From these emanations, the attacker derives information about the data that is being processed (e.g. the attacker can recover cryptographic keys by monitoring emanations associated with cryptographic processing). This style of attack requires proximal access to the device, however attacks have been demonstrated at public conferences that work at distances of up to 10-15 feet. There have not been any significant studies to determine the maximum practical distance for such attacks. Since the attack is passive, it is nearly impossible to detect and the targeted device will continue to operate as normal after a successful attack.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Electromagnetic Side-Channel Attack",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/622.html",
+      "id": "CAPEC-622"
+    },
+    {
+      "Description": "<b>CAPEC-204: Lifting Sensitive Data Embedded in Cache</b><br>An adversary examines a target application's cache, or a browser cache, for sensitive information. Many applications that communicate with remote entities or which perform intensive calculations utilize caches to improve efficiency. However, if the application computes or receives sensitive information and the cache is not appropriately protected, an attacker can browse the cache and retrieve this information. This can result in the disclosure of sensitive information.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Lifting Sensitive Data Embedded in Cache",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/204.html",
+      "id": "CAPEC-204"
+    },
+    {
+      "Description": "<b>CAPEC-190: Reverse Engineer an Executable to Expose Assumed Hidden Functionality</b><br>An attacker analyzes a binary file or executable for the purpose of discovering the structure, function, and possibly source-code of the file by using a variety of analysis techniques to effectively determine how the software functions and operates. This type of analysis is also referred to as Reverse Code Engineering, as techniques exist for extracting source code from an executable. Several techniques are often employed for this purpose, both black box and white box. The use of computer bus analyzers and packet sniffers allows the binary to be studied at a level of interactions with its computing environment, such as a host OS, inter-process communication, and/or network communication. This type of analysis falls into the 'black box' category because it involves behavioral analysis of the software without reference to source code, object code, or protocol specifications.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Reverse Engineer an Executable to Expose Assumed Hidden Functionality",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/190.html",
+      "id": "CAPEC-190"
+    },
+    {
+      "Description": "<b>CAPEC-167: White Box Reverse Engineering</b><br>An attacker discovers the structure, function, and composition of a type of computer software through white box analysis techniques. White box techniques involve methods which can be applied to a piece of software when an executable or some other compiled object can be directly subjected to analysis, revealing at least a portion of its machine instructions that can be observed upon execution.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "White Box Reverse Engineering",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/167.html",
+      "id": "CAPEC-167"
+    },
+    {
+      "Description": "<b>CAPEC-189: Black Box Reverse Engineering</b><br>An adversary discovers the structure, function, and composition of a type of computer software through black box analysis techniques. 'Black Box' methods involve interacting with the software indirectly, in the absence of direct access to the executable object. Such analysis typically involves interacting with the software at the boundaries of where the software interfaces with a larger execution environment, such as input-output vectors, libraries, or APIs. Black Box Reverse Engineering also refers to gathering physical side effects of a hardware device, such as electromagnetic radiation or sounds.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Black Box Reverse Engineering",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/189.html",
+      "id": "CAPEC-189"
+    },
+    {
+      "Description": "<b>CAPEC-191: Read Sensitive Constants Within an Executable</b><br>An adversary engages in activities to discover any sensitive constants present within the compiled code of an executable. These constants may include literal ASCII strings within the file itself, or possibly strings hard-coded into particular routines that can be revealed by code refactoring methods including static and dynamic analysis.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Read Sensitive Constants Within an Executable",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/191.html",
+      "id": "CAPEC-191"
+    },
+    {
+      "Description": "<b>CAPEC-623: Compromising Emanations Attack</b><br>Compromising Emanations (CE) are defined as unintentional signals which an attacker may intercept and analyze to disclose the information processed by the targeted equipment. Commercial mobile devices and retransmission devices have displays, buttons, microchips, and radios that emit mechanical emissions in the form of sound or vibrations. Capturing these emissions can help an adversary understand what the device is doing.",
+      "color": "#94ebff",
+      "size": 10,
+      "label": "Compromising Emanations Attack",
+      "label_class": "node-label-small",
+      "type": "CAPEC",
+      "abstraction": "Detailed",
+      "url": "https://capec.mitre.org/data/definitions/623.html",
+      "id": "CAPEC-623"
+    }
+  ],
+  "links": [
+    {
+      "source": "CAPEC-37",
+      "target": "CAPEC-167"
+    },
+    {
+      "source": "CAPEC-621",
+      "target": "CAPEC-189"
+    },
+    {
+      "source": "CAPEC-622",
+      "target": "CAPEC-189"
+    },
+    {
+      "source": "CAPEC-204",
+      "target": "CAPEC-167"
+    },
+    {
+      "source": "CAPEC-190",
+      "target": "CAPEC-167"
+    },
+    {
+      "source": "CAPEC-167",
+      "target": "CAPEC-188"
+    },
+    {
+      "source": "CAPEC-189",
+      "target": "CAPEC-188"
+    },
+    {
+      "source": "CAPEC-191",
+      "target": "CAPEC-167"
+    },
+    {
+      "source": "CAPEC-623",
+      "target": "CAPEC-189"
+    }
+  ]
+}

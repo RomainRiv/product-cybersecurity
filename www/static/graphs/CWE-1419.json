@@ -1,0 +1,116 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CWE-1052: Excessive Use of Hard-Coded Literals in Initialization</b><br>The product initializes a data element using a hard-coded\n\t\t\t\t\tliteral that is not a simple integer or static constant element.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Excessive Use of Hard-Coded Literals in Initialization",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1052.html",
+      "id": "CWE-1052"
+    },
+    {
+      "Description": "<b>CWE-1051: Initialization with Hard-Coded Network Resource Configuration Data</b><br>The product initializes data using hard-coded values that act as network resource identifiers.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Initialization with Hard-Coded Network Resource Configuration Data",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1051.html",
+      "id": "CWE-1051"
+    },
+    {
+      "Description": "<b>CWE-1188: Initialization of a Resource with an Insecure Default</b><br>The product initializes or sets a resource with a default that is intended to be changed by the administrator, but the default is not secure.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Initialization of a Resource with an Insecure Default",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1188.html",
+      "id": "CWE-1188"
+    },
+    {
+      "Description": "<b>CWE-1419: Incorrect Initialization of Resource</b><br>The product attempts to initialize a resource but does not correctly do so, which might leave the resource in an unexpected, incorrect, or insecure state when it is accessed.",
+      "color": "#ff6200",
+      "size": 18,
+      "label": "Incorrect Initialization of Resource",
+      "label_class": "node-label-medium",
+      "type": "CWE",
+      "abstraction": "Class",
+      "url": "https://cwe.mitre.org/data/definitions/1419.html",
+      "id": "CWE-1419"
+    },
+    {
+      "Description": "<b>CWE-453: Insecure Default Variable Initialization</b><br>The product, by default, initializes an internal variable with an insecure or less secure value than is possible.",
+      "color": "#e8e66b",
+      "size": 10,
+      "label": "Insecure Default Variable Initialization",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Variant",
+      "url": "https://cwe.mitre.org/data/definitions/453.html",
+      "id": "CWE-453"
+    },
+    {
+      "Description": "<b>CWE-1221: Incorrect Register Defaults or Module Parameters</b><br>Hardware description language code incorrectly defines register defaults or hardware Intellectual Property (IP) parameters to insecure values.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "Incorrect Register Defaults or Module Parameters",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/1221.html",
+      "id": "CWE-1221"
+    },
+    {
+      "Description": "<b>CWE-454: External Initialization of Trusted Variables or Data Stores</b><br>The product initializes critical internal variables or data stores using inputs that can be modified by untrusted actors.",
+      "color": "#ffbb00",
+      "size": 10,
+      "label": "External Initialization of Trusted Variables or Data Stores",
+      "label_class": "node-label-small",
+      "type": "CWE",
+      "abstraction": "Base",
+      "url": "https://cwe.mitre.org/data/definitions/454.html",
+      "id": "CWE-454"
+    }
+  ],
+  "links": [
+    {
+      "width": 1,
+      "source": "CWE-1052",
+      "target": "CWE-1419"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1051",
+      "target": "CWE-1419"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1188",
+      "target": "CWE-1419"
+    },
+    {
+      "width": 1,
+      "source": "CWE-453",
+      "target": "CWE-1188"
+    },
+    {
+      "width": 1,
+      "source": "CWE-1221",
+      "target": "CWE-1419"
+    },
+    {
+      "width": 1,
+      "source": "CWE-454",
+      "target": "CWE-1419"
+    }
+  ]
+}

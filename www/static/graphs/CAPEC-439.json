@@ -1,0 +1,65 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "Description": "<b>CAPEC-523: Malicious Software Implanted</b><br>An attacker implants malicious software into the system in the supply chain distribution channel, with purpose of causing malicious disruption or allowing for additional compromise when the system is deployed.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Malicious Software Implanted",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/523.html",
+      "id": "CAPEC-523"
+    },
+    {
+      "Description": "<b>CAPEC-524: Rogue Integration Procedures</b><br>An attacker alters or establishes rogue processes in an integration facility in order to insert maliciously altered components into the system. The attacker would then supply the malicious components. This would allow for malicious disruption or additional compromise when the system is deployed.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Rogue Integration Procedures",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/524.html",
+      "id": "CAPEC-524"
+    },
+    {
+      "Description": "<b>CAPEC-522: Malicious Hardware Component Replacement</b><br>An adversary replaces legitimate hardware in the system with faulty counterfeit or tampered hardware in the supply chain distribution channel, with purpose of causing malicious disruption or allowing for additional compromise when the system is deployed.",
+      "color": "#75aaff",
+      "size": 18,
+      "label": "Malicious Hardware Component Replacement",
+      "label_class": "node-label-medium",
+      "type": "CAPEC",
+      "abstraction": "Standard",
+      "url": "https://capec.mitre.org/data/definitions/522.html",
+      "id": "CAPEC-522"
+    },
+    {
+      "Description": "<b>CAPEC-439: Manipulation During Distribution</b><br>An attacker undermines the integrity of a product, software, or technology at some stage of the distribution channel. The core threat of modification or manipulation during distribution arise from the many stages of distribution, as a product may traverse multiple suppliers and integrators as the final asset is delivered. Components and services provided from a manufacturer to a supplier may be tampered with during integration or packaging.",
+      "color": "#2176ff",
+      "size": 30,
+      "label": "Manipulation During Distribution",
+      "label_class": "node-label-big",
+      "type": "CAPEC",
+      "abstraction": "Meta",
+      "url": "https://capec.mitre.org/data/definitions/439.html",
+      "id": "CAPEC-439"
+    }
+  ],
+  "links": [
+    {
+      "source": "CAPEC-523",
+      "target": "CAPEC-439"
+    },
+    {
+      "source": "CAPEC-524",
+      "target": "CAPEC-439"
+    },
+    {
+      "source": "CAPEC-522",
+      "target": "CAPEC-439"
+    }
+  ]
+}
