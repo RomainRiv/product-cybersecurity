@@ -20,6 +20,9 @@ install:
 generate:
     uv run src/product_cybersecurity/cli/graph.py --capec-json data/capec.json --cwe-json data/cwe.json --graph-dir www/static/gen/graphs --md-dir www/content/gen/
 
+extract:
+    uv run src/product_cybersecurity/cli/extractor.py --cve-dir data/cve_github/individual/ --output-dir www/static/gen/data/
+
 build-local:
     hugo server -D --disableFastRender -b http://localhost:1313/
 
