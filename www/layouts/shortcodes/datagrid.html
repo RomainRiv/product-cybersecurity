@@ -1,0 +1,174 @@
+<!-- Hugo Shortcode: datagrid (with CDN fallbacks + self-host option) -->
+<div class="cve-datagrid"
+     data-src='{{ .Get "src" }}'
+     data-pagesize='{{ .Get "pageSize" | default "25" }}'
+     data-height='{{ .Get "height" | default "70vh" }}'
+     data-delimiter='{{ .Get "delimiter" | default "," }}'
+     data-download='{{ .Get "download" | default "true" }}'
+     data-initialsortcol='{{ .Get "initialSortCol" | default "" }}'
+     data-initialsortdir='{{ .Get "initialSortDir" | default "" }}'
+     data-columns-inner='{{ .Inner | default "" | htmlUnescape | safeHTML }}'
+     data-uselocal='{{ .Get "useLocal" | default "false" }}'
+     style="min-height: 200px;">
+</div>
+
+<script>
+(function(){
+  const targets = Array.from(document.querySelectorAll(".cve-datagrid"));
+  if (!targets.length) return;
+
+  const CDN = {
+    tabulatorCSS: [
+      "/lib/tabulator/tabulator.min.css",
+      "https://cdn.jsdelivr.net/npm/tabulator-tables@5.6.2/dist/css/tabulator.min.css",
+      "https://unpkg.com/tabulator-tables@5.6.2/dist/css/tabulator.min.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/tabulator/5.6.2/css/tabulator.min.css"
+    ],
+    tabulatorJS: [
+      "/lib/tabulator/tabulator.min.js",
+      "https://cdn.jsdelivr.net/npm/tabulator-tables@5.6.2/dist/js/tabulator.min.js",
+      "https://unpkg.com/tabulator-tables@5.6.2/dist/js/tabulator.min.js",
+      "https://cdnjs.cloudflare.com/ajax/libs/tabulator/5.6.2/js/tabulator.min.js"
+    ],
+    d3JS: [
+      "/lib/d3/d3.v7.min.js",
+      "https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js",
+      "https://unpkg.com/d3@7/dist/d3.min.js",
+      "https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"
+    ]
+  };
+
+  const useLocalAttr = (el) => (el.dataset.uselocal || "false").toLowerCase() === "true";
+  const needLocal = targets.some(useLocalAttr);
+
+  // If any grid asks for local, force local paths first in the list
+  if (needLocal) {
+    // leave arrays as-is (local paths are already first)
+  } else {
+    // strip local paths so we only try CDNs
+    for (const k of Object.keys(CDN)) CDN[k] = CDN[k].filter(u => !u.startsWith("/lib/"));
+  }
+
+  const loadCSS = (urls) => chainLoad(urls, (url) => {
+    const id = "css-" + url;
+    if (document.getElementById(id)) return Promise.resolve();
+    return new Promise((res, rej) => {
+      const el = document.createElement("link");
+      el.id = id; el.rel = "stylesheet"; el.href = url; el.crossOrigin = "anonymous";
+      el.onload = res; el.onerror = () => rej(new Error("CSS failed: "+url));
+      document.head.appendChild(el);
+    });
+  });
+
+  const loadJS = (urls) => chainLoad(urls, (url) => {
+    const id = "js-" + url;
+    if (document.getElementById(id)) return Promise.resolve();
+    return new Promise((res, rej) => {
+      const el = document.createElement("script");
+      el.id = id; el.src = url; el.defer = true; el.crossOrigin = "anonymous";
+      el.onload = res; el.onerror = () => rej(new Error("JS failed: "+url));
+      document.head.appendChild(el);
+    });
+  });
+
+  function chainLoad(urls, loader){
+    return urls.reduce((p, url) => p.catch(()=>loader(url)), Promise.reject());
+  }
+
+  function waitFor(fn, timeout=12000, int=50){
+    return new Promise((res, rej)=>{
+      const t0 = Date.now();
+      (function poll(){
+        if (fn()) return res();
+        if (Date.now()-t0>timeout) return rej(new Error("Timeout waiting for libs"));
+        setTimeout(poll,int);
+      })();
+    });
+  }
+
+  Promise.resolve()
+    .then(() => loadCSS(CDN.tabulatorCSS))
+    .then(() => loadJS(CDN.tabulatorJS))
+    .then(() => loadJS(CDN.d3JS))
+    .then(() => waitFor(() => window.Tabulator && window.d3))
+    .then(() => targets.forEach(initGrid))
+    .catch(err => {
+      console.error(err);
+      targets.forEach(el => el.textContent =
+        "Failed to load grid libs. If you have a Content Security Policy or are offline, set useLocal=\"true\" and self-host the files.");
+    });
+
+  function parseJSON(s){ if (!s) return null; try { return JSON.parse(s); } catch { return null; } }
+
+  async function initGrid(el){
+    if (el.__initialized) return; el.__initialized = true;
+
+    const src = el.dataset.src;
+    const pageSize = +el.dataset.pagesize || 25;
+    const height = el.dataset.height || "70vh";
+    const delimiter = el.dataset.delimiter || ",";
+    const allowDl = (el.dataset.download || "true").toLowerCase()==="true";
+    const sortCol = el.dataset.initialsortcol || "";
+    const sortDir = (el.dataset.initialsortdir || "").toLowerCase();
+    const columns = parseJSON(el.dataset.columnsInner) || null;
+
+    if (!src){ el.textContent = "datagrid: missing src"; return; }
+
+    // Fetch data
+    let data = [];
+    try {
+      if (src.toLowerCase().endsWith(".csv")) data = await d3.dsv(delimiter, src);
+      else data = await d3.json(src);
+    } catch (e) {
+      console.error(e); el.textContent = "Failed to load data: " + e.message; return;
+    }
+
+    // Coerce numeric-looking fields
+    if (data.length){
+      const keys = Object.keys(data[0]);
+      for (const r of data){
+        for (const k of keys){
+          if (typeof r[k]==="string" && r[k].trim()!=="" && !isNaN(r[k])) {
+            const n = +r[k]; if (Number.isFinite(n)) r[k]=n;
+          }
+        }
+      }
+    }
+
+    // Infer columns if not provided
+    let cols = columns;
+    if (!cols && data.length){
+      cols = Object.keys(data[0]).map(k => ({
+        title: k, field: k, hozAlign: (typeof data[0][k]==="number") ? "right" : "left"
+      }));
+    }
+
+    // Optional download button
+    let btn;
+    if (allowDl){
+      btn = document.createElement("button");
+      btn.textContent = "Download CSV";
+      btn.style.margin = "0 0 8px 0";
+      el.parentNode.insertBefore(btn, el);
+    }
+
+    const initialSort = (sortCol && (sortDir==="asc"||sortDir==="desc")) ? [{column:sortCol, dir:sortDir}] : [];
+
+    const grid = new Tabulator(el, {
+      data,
+      columns: cols || [],
+      layout: "fitDataStretch",
+      height,
+      pagination: true,
+      paginationSize: pageSize,
+      paginationSizeSelector: [25,50,100,500],
+      movableColumns: true,
+      columnDefaults: { headerSort: true },
+      placeholder: "No data",
+      initialSort
+    });
+
+    if (btn) btn.addEventListener("click", () => grid.download("csv", "table.csv"));
+  }
+})();
+</script>
