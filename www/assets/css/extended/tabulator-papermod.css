@@ -1,0 +1,88 @@
+/* Tabulator × PaperMod skin (scoped) */
+/* Uses PaperMod CSS variables from theme-vars.css; .dark switches variables automatically. */
+.cve-pm .tabulator {
+  background: var(--entry);
+  color: var(--content);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 1px 2px rgba(0,0,0,.04);
+}
+
+/* Header */
+.cve-pm .tabulator-header {
+  background: var(--theme);
+  border-bottom: 1px solid var(--border);
+}
+.cve-pm .tabulator-col .tabulator-col-title {
+  color: var(--content);
+  font-weight: 600;
+}
+.cve-pm .tabulator-col {
+  border-right: 1px solid var(--border);
+}
+.cve-pm .tabulator-col[tabulator-field]:hover .tabulator-col-title {
+  text-decoration: none;
+}
+
+/* Body rows */
+.cve-pm .tabulator-row {
+  background: var(--entry);
+  border-bottom: 1px solid var(--border);
+}
+.cve-pm .tabulator-row:hover {
+  background: var(--theme);
+}
+.cve-pm .tabulator-row.tabulator-selected {
+  background: color-mix(in srgb, var(--primary) 16%, var(--entry));
+}
+
+/* Cells */
+.cve-pm .tabulator-cell {
+  color: var(--content);
+}
+
+/* Footer (pagination) */
+.cve-pm .tabulator-footer {
+  background: var(--theme);
+  color: var(--content);
+  border-top: 1px solid var(--border);
+}
+.cve-pm .tabulator-paginator {
+  gap: .25rem;
+}
+.cve-pm .tabulator-page {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--content);
+  padding: .25rem .5rem;
+  border-radius: 8px;
+}
+.cve-pm .tabulator-page.active,
+.cve-pm .tabulator-page:hover {
+  background: color-mix(in srgb, var(--primary) 12%, var(--theme));
+  border-color: color-mix(in srgb, var(--primary) 35%, var(--border));
+}
+
+/* Filters */
+.cve-pm .tabulator-header-filter input {
+  background: var(--theme);
+  color: var(--content);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: .25rem .5rem;
+}
+.cve-pm .tabulator-header-filter input::placeholder {
+  color: color-mix(in srgb, var(--content) 55%, transparent);
+}
+
+/* Scrollbars (nice on desktop) */
+.cve-pm .tabulator ::-webkit-scrollbar {
+  height: 10px;
+  width: 10px;
+}
+.cve-pm .tabulator ::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--content) 20%, transparent);
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}

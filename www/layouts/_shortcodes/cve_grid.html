@@ -1,0 +1,150 @@
+{{/* cve_grid — Grid.js table with PaperMod-friendly defaults
+Params:
+  src       : /path/to.csv or .json (required)
+  type      : "csv" | "json" | "json-paged"  (default: csv)
+  height    : table body height in px (default: 600)
+  pagesize  : rows per page (default: 50)
+  search    : "true" | "false" (default: true)
+  sort      : "true" | "false" (default: true)
+  columns   : JSON array of { "id": "field", "name": "Header" } (optional)
+              If omitted, columns are inferred from the first row.
+  note (json-paged):
+    Expect each page file to look like:
+    { "rows": [ {..}, {..} ], "total": 12345 }
+    and name them with a {page} token, e.g. /data/cves_page_{page}.json
+*/}}
+
+{{ $src      := .Get "src" }}
+{{ $type     := or (.Get "type") "csv" }}
+{{ $height   := or (.Get "height") "600" }}
+{{ $pageSize := or (.Get "pagesize") "50" }}
+{{ $search   := or (.Get "search") "true" }}
+{{ $sort     := or (.Get "sort") "true" }}
+{{ $columns  := .Get "columns" }}
+{{ $density := or (.Get "density") "compact" }}  {{/* compact | comfy */}}
+
+
+{{ if not $src }}
+  <div style="color:#b00020">cve_grid: missing required param <code>src</code></div>
+{{ else }}
+  {{ $id := printf "cve-grid-%d" (now.UnixNano) }}
+
+<div
+  id="{{ $id }}"
+  class="cve-pm cve-{{ $density }}"
+  style="height:{{ $height }}px"
+  data-src="{{ $src }}"
+  data-type="{{ $type }}"
+  data-pagesize="{{ $pageSize }}"
+  data-search="{{ $search }}"
+  data-sort="{{ $sort }}"
+></div>
+
+  {{ if $columns }}
+    <script type="application/json" id="{{ $id }}-columns">
+      {{- $columns -}}
+    </script>
+  {{ end }}
+
+  <script>
+  (function(){
+    function ensureGrid(cb){
+      if (window.gridjs){ cb(); return; }
+      var l=document.createElement('link'); l.rel='stylesheet';
+      l.href='https://unpkg.com/gridjs/dist/theme/mermaid.min.css';
+      document.head.appendChild(l);
+      var s=document.createElement('script'); s.src='https://unpkg.com/gridjs/dist/gridjs.umd.js';
+      s.onload=cb; document.head.appendChild(s);
+    }
+    if(!window.d3){
+      var d3s=document.createElement('script');
+      d3s.src='https://unpkg.com/d3@7/dist/d3.min.js';
+      document.head.appendChild(d3s);
+    }
+    ensureGrid(init);
+
+    function readColumns(id){
+      var el=document.getElementById(id+'-columns');
+      if(!el) return null;
+      try { return JSON.parse(el.textContent); } catch(e){ console.warn('columns JSON parse failed', e); return null; }
+    }
+
+    function inferColumns(rows){
+      var sample = rows && rows[0] ? rows[0] : {};
+      return Object.keys(sample).map(function(k){
+        return { id: k, name: k.replace(/_/g,' ').replace(/\b\w/g, c=>c.toUpperCase()) };
+      });
+    }
+
+    function csvParse(text){
+      if (window.d3 && d3.csvParse) return d3.csvParse(text);
+      var lines=text.trim().split(/\r?\n/); if(!lines.length) return [];
+      var headers=lines.shift().split(',');
+      return lines.map(function(line){
+        var cells=line.split(','), o={};
+        headers.forEach(function(h,i){ o[h]=cells[i]; }); return o;
+      });
+    }
+
+    function init(){
+      var mount = document.getElementById('{{ $id }}');
+      var src   = mount.dataset.src;
+      var type  = mount.dataset.type || 'csv';
+      var pageSize = parseInt(mount.dataset.pagesize||'50',10);
+      var enableSearch = (mount.dataset.search !== 'false');
+      var enableSort   = (mount.dataset.sort   !== 'false');
+      var userCols = readColumns('{{ $id }}');
+
+      if (type === 'json-paged'){
+        // requires files like ..._page_1.json, each -> { rows: [...], total: N }
+        var grid = new gridjs.Grid({
+          className: { table: 'gridjs-table cve-grid' },
+          height: '{{ $height }}px',
+          search: enableSearch,
+          sort: enableSort,
+          pagination: { enabled: true, limit: pageSize },
+          columns: userCols || [],
+          server: {
+            url: src, // must contain {page}
+            then: function(data){ return data.rows; },
+            total: function(data){ return data.total; },
+            handle: function(res){ return res.json(); },
+            body: null,
+          },
+          // map Grid.js page -> our static page files
+          fetch: function(url, opts){
+            // Grid.js appends ?page=n&limit=m — keep that but also replace {page}
+            var u = new URL(url, location.origin);
+            var p = u.searchParams.get('page') || '1';
+            var real = url.replace('{page}', p);
+            return fetch(real, opts);
+          }
+        }).render(mount);
+        return;
+      }
+
+      // client-side CSV/JSON
+      var getData = (type==='json')
+        ? () => fetch(src).then(r=>r.json())
+        : () => fetch(src).then(r=>r.text()).then(csvParse);
+
+      getData().then(function(rows){
+        var cols = userCols || inferColumns(rows);
+        // Convert to array-of-arrays in column order for speed
+        var colIds = cols.map(c=>c.id);
+        var data = rows.map(r => colIds.map(id => r[id]));
+        new gridjs.Grid({
+          className: { table: 'gridjs-table cve-grid' },
+          height: '{{ $height }}px',
+          columns: cols,
+          data: data,
+          search: enableSearch,
+          sort: enableSort,
+          pagination: { enabled: true, limit: pageSize, summary: true },
+          fixedHeader: true
+        }).render(mount);
+      });
+    }
+  })();
+  </script>
+{{ end }}

@@ -16,6 +16,7 @@ dependencies = [
     "pyarrow>=20.0.0",
     "tdqm>=0.0.1",
     "types-tqdm>=4.67.0.20250516",
+    "xlsxwriter>=3.2.5",
 ]
 [tool.uv]
 package = true

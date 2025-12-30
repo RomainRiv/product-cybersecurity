@@ -1,0 +1,135 @@
+/* Grid.js × PaperMod — clean, compact, readable (no mermaid.css required) */
+
+/* Container */
+.cve-pm .gridjs-container {
+  font-size: 0.95rem;
+  color: var(--content);
+}
+.cve-pm .gridjs-wrapper {
+  background: var(--entry);
+  color: var(--content);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 1px 2px rgba(0,0,0,.06);
+  overflow: hidden;
+}
+
+/* Header (search) */
+.cve-pm .gridjs-head {
+  padding: .5rem .75rem .25rem;
+}
+.cve-pm .gridjs-search {
+  display: flex;
+  justify-content: flex-start;
+}
+.cve-pm .gridjs-search input {
+  width: 100%;
+  max-width: 420px;
+  background: var(--entry);
+  color: var(--content);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: .4rem .55rem;
+  outline: none;
+}
+.cve-pm .gridjs-search input:focus {
+  border-color: color-mix(in srgb, var(--primary) 40%, var(--border));
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--primary) 18%, transparent);
+}
+
+/* Table */
+.cve-pm .gridjs-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--entry);
+  color: var(--content);
+}
+
+/* Sticky header + clear separators */
+.cve-pm .gridjs-th {
+  position: sticky; top: 0; z-index: 1;
+  background: var(--entry);
+  color: var(--content);
+  font-weight: 600;
+  border-bottom: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+}
+.cve-pm .gridjs-th:last-child { border-right: none; }
+
+/* Cells */
+.cve-pm .gridjs-td, .cve-pm .gridjs-th {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+/* Density control */
+.cve-compact .gridjs-td, .cve-compact .gridjs-th { padding: .45rem .6rem; }
+.cve-comfy   .gridjs-td, .cve-comfy   .gridjs-th { padding: .7rem .8rem; }
+
+/* Rows: subtle zebra + hover */
+.cve-pm .gridjs-tr .gridjs-td {
+  border-bottom: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  background: var(--entry);
+}
+.cve-pm .gridjs-tr:nth-child(even) .gridjs-td {
+  background: color-mix(in srgb, var(--theme) 7%, var(--entry));
+}
+.cve-pm .gridjs-tr:hover .gridjs-td {
+  background: color-mix(in srgb, var(--primary) 12%, var(--entry));
+}
+.cve-pm .gridjs-tr .gridjs-td:last-child { border-right: none; }
+
+/* Numeric alignment for a "count" column or second column */
+.cve-pm .gridjs-td[data-column-id="count"],
+.cve-pm .gridjs-tr .gridjs-td:nth-child(2) { text-align: right; }
+
+/* Pagination footer */
+.cve-pm .gridjs-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+  padding: .5rem .75rem;
+  border-top: 1px solid var(--border);
+  background: var(--entry);
+  color: var(--content);
+}
+.cve-pm .gridjs-pagination {
+  margin-left: auto;
+}
+.cve-pm .gridjs-pagination .gridjs-summary {
+  opacity: .8;
+  margin-right: .5rem;
+}
+.cve-pm .gridjs-pagination .gridjs-pages {
+  display: inline-flex;
+  gap: .35rem;
+}
+.cve-pm .gridjs-pagination button {
+  background: transparent;
+  color: var(--content);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: .3rem .55rem;
+  line-height: 1;
+}
+.cve-pm .gridjs-pagination button.gridjs-currentPage,
+.cve-pm .gridjs-pagination button:hover {
+  background: color-mix(in srgb, var(--primary) 14%, var(--entry));
+  border-color: color-mix(in srgb, var(--primary) 35%, var(--border));
+}
+
+/* Scrollbars (desktop) */
+.cve-pm .gridjs-wrapper ::-webkit-scrollbar { height: 10px; width: 10px; }
+.cve-pm .gridjs-wrapper ::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--content) 22%, transparent);
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+/* Fix weird inherited styles from themes (kill large margins/line-heights) */
+.cve-pm .gridjs-td > * { margin: 0; line-height: 1.3; }

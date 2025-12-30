@@ -221,3 +221,5 @@ web/gen/
 .hugo_build.lock
 
 docs/
+
+.DS_Store

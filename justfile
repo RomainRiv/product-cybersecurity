@@ -24,7 +24,7 @@ extract:
     uv run src/product_cybersecurity/cli/extractor.py --cve-dir data/cve_github/individual/ --output-dir www/static/gen/data/
 
 build-local:
-    hugo server -D --disableFastRender -b http://localhost:1313/
+    hugo server -s www -D --disableFastRender -b http://localhost:1313/
 
 # Clean all generated artifacts
 clean:

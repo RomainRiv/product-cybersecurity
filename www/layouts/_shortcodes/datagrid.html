@@ -1,0 +1,170 @@
+<div class="cve-grid-wrap" style="margin:0 0 1rem 0;">
+  <div class="cve-grid-toolbar">
+    <input type="search" placeholder="Search…" class="cve-grid-search">
+    <div style="flex:1"></div>
+    <button class="cve-grid-dl">Download CSV</button>
+  </div>
+
+  <div class="cve-datagrid"
+       data-src='{{ .Get "src" }}'
+       data-pagesize='{{ .Get "pageSize" | default "25" }}'
+       data-height='{{ .Get "height" | default "70vh" }}'
+       data-delimiter='{{ .Get "delimiter" | default "," }}'
+       data-initialsortcol='{{ .Get "initialSortCol" | default "" }}'
+       data-initialsortdir='{{ .Get "initialSortDir" | default "" }}'
+       data-numfields='{{ .Get "numericFields" | default "count" }}'
+       data-columns-inner='{{ .Inner | default "" | htmlUnescape | safeHTML }}'
+       style="min-height:200px;">
+  </div>
+</div>
+
+<style>
+/* Use PaperMod's variables (works for both light :root and .dark) */
+.cve-grid-toolbar { display:flex; align-items:center; gap:.5rem; margin:.25rem 0 .5rem 0; }
+.cve-grid-search, .cve-grid-dl {
+  background: var(--entry) !important; color: var(--primary) !important;
+  border: 1px solid var(--border) !important; border-radius: .5rem; padding:.55rem .75rem;
+}
+.cve-grid-dl { cursor:pointer; }
+
+.tabulator {
+  background: var(--theme) !important; color: var(--primary) !important;
+  border:1px solid var(--border) !important; border-radius:.75rem;
+}
+.tabulator .tabulator-header {
+  background: var(--entry) !important; color: var(--primary) !important;
+  border-bottom:1px solid var(--border) !important; position: sticky; top: 0; z-index: 1;
+}
+.tabulator .tabulator-col, .tabulator .tabulator-cell { font-size:14px; color: var(--primary) !important; }
+.tabulator-row { background: var(--theme) !important; }
+.tabulator-row:nth-child(even) { background: var(--entry) !important; }
+.tabulator-row:hover { filter: brightness(1.02); }
+.tabulator .tabulator-footer {
+  background: var(--theme) !important; color: var(--secondary) !important;
+  border-top:1px solid var(--border) !important; border-radius:0 0 .75rem .75rem;
+}
+
+/* Tighter density */
+.tabulator .tabulator-cell{ padding:.35rem .5rem; }
+.tabulator .tabulator-col{  padding:.4rem .5rem; font-weight:600; }
+
+.tabulator .tabulator-header{ 
+  background: var(--entry) !important; 
+  color: var(--primary) !important; 
+  border-bottom:1px solid var(--border) !important;
+}
+.tabulator .tabulator-col,
+.tabulator .tabulator-col .tabulator-col-content,
+.tabulator .tabulator-col .tabulator-col-title{
+  color: var(--primary) !important;
+  background: transparent !important;   /* avoid “white on white” */
+}
+.tabulator .tabulator-col .tabulator-col-sorter{
+  color: var(--secondary) !important;   /* sort arrow */
+}
+</style>
+
+<script>
+(function(){
+  const targets = Array.from(document.querySelectorAll(".cve-datagrid"));
+  if (!targets.length) return;
+
+  // self-hosted (you already downloaded these)
+  const CSSS = ["/lib/tabulator/tabulator.min.css"];
+  const JSTS = ["/lib/tabulator/tabulator.min.js"];
+  const D3S  = ["/lib/d3/d3.v7.min.js"];
+
+  const loadCSS = (urls)=>chain(urls, u=>inject('link',{rel:'stylesheet',href:u}));
+  const loadJS  = (urls)=>chain(urls, u=>inject('script',{src:u,defer:true}));
+  function inject(tag, attrs){ return new Promise((res,rej)=>{const el=document.createElement(tag); Object.assign(el,attrs); el.onload=res; el.onerror=rej; document.head.appendChild(el);}); }
+  function chain(urls, loader){ return urls.reduce((p,u)=>p.catch(()=>loader(u)), Promise.reject()); }
+  function waitFor(fn, t=10000, i=50){ return new Promise((res,rej)=>{const s=Date.now();(function p(){ if(fn())return res(); if(Date.now()-s>t)return rej(); setTimeout(p,i); })()}); }
+
+  Promise.resolve()
+    .then(()=>loadCSS(CSSS)).then(()=>loadJS(JSTS)).then(()=>loadJS(D3S))
+    .then(()=>waitFor(()=>window.Tabulator && window.d3))
+    .then(()=>targets.forEach(initGrid))
+    .catch(()=>targets.forEach(el=>el.textContent="Failed to load assets."));
+
+  function parseJSON(s){ if(!s) return null; try { return JSON.parse(s); } catch { return null; } }
+
+  async function initGrid(el){
+    if (el.__initialized) return; el.__initialized = true;
+    const wrap = el.closest('.cve-grid-wrap');
+    const search = wrap.querySelector('.cve-grid-search');
+    const dlBtn  = wrap.querySelector('.cve-grid-dl');
+
+    const src      = el.dataset.src;
+    const pageSize = +el.dataset.pagesize || 25;
+    const height   = el.dataset.height || "70vh";
+    const delimiter= el.dataset.delimiter || ",";
+    const sortCol  = el.dataset.initialsortcol || "";
+    const sortDir  = (el.dataset.initialsortdir||"").toLowerCase();
+    const numFields= (el.dataset.numfields || "count").split(",").map(s=>s.trim()).filter(Boolean);
+    const columnsInner = el.dataset.columnsInner && el.dataset.columnsInner.trim();
+    let columns  = parseJSON(columnsInner);
+
+    if (!src){ el.textContent="datagrid: missing src"; return; }
+
+    // load data
+    let data=[];
+    try{
+      data = src.toLowerCase().endsWith(".csv") ? await d3.dsv(delimiter, src) : await d3.json(src);
+    }catch(e){ el.textContent="Failed to load data"; return; }
+
+    // coerce numeric fields explicitly
+    if (data.length){
+      for (const r of data){
+        for (const f of numFields){
+          if (r[f] !== undefined && r[f] !== null && r[f] !== "") r[f] = +r[f];
+        }
+      }
+    }
+
+    // column helpers
+    const addFormat = (c, sample) => {
+      const isNum = numFields.includes(c.field) || typeof sample === "number";
+      return isNum
+        ? Object.assign({}, c, {
+            hozAlign:"right", sorter:"number",
+            formatter:(cell)=> Number(cell.getValue()).toLocaleString()
+          })
+        : c;
+    };
+
+    if (!columns && data.length){
+      const keys = Object.keys(data[0]);
+      columns = keys.map(k => addFormat({ title:k, field:k }, data[0][k]));
+    } else if (columns && data.length){
+      columns = columns.map(c => addFormat(c, data[0][c.field]));
+    }
+
+    const initialSort = (sortCol && (sortDir==="asc"||sortDir==="desc")) ? [{column:sortCol, dir:sortDir}] : [];
+
+    const grid = new Tabulator(el, {
+      data, columns, layout:"fitDataStretch", height,
+      pagination:true, paginationSize:pageSize, paginationSizeSelector:[25,50,100,500],
+      movableColumns:true, columnDefaults:{ headerSort:true, tooltip:true },
+      placeholder:"No data", initialSort, responsiveLayout:"collapse"
+    });
+
+    search.addEventListener('input', () => {
+    const q = search.value.trim().toLowerCase();
+    if (!q){ grid.clearFilter(); return; }
+
+    const fields = grid.getColumns().map(c => c.getField()).filter(Boolean);
+
+    grid.setFilter((data) => {        // <-- data is the plain row object
+        for (const f of fields){
+        const v = data[f];
+        if (v != null && String(v).toLowerCase().includes(q)) return true;
+        }
+        return false;
+    });
+});
+
+    // Download
+    dlBtn.addEventListener('click', ()=> grid.download("csv", "table.csv"));
+  }
+})();
+</script>

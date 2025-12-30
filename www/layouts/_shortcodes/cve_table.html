@@ -1,0 +1,146 @@
+{{/* cve_table shortcode (robust JSON handling) */}}
+{{ $src      := .Get "src" }}
+{{ $type     := or (.Get "type") "csv" }}
+{{ $height   := or (.Get "height") "600" }}
+{{ $pageSize := or (.Get "pagesize") "50" }}
+{{ $layout   := or (.Get "layout") "fitDataStretch" }}
+{{ $columns  := .Get "columns" }}  {{/* optional JSON array string */}}
+
+{{ if not $src }}
+  <div style="color:#b00020">cve_table: missing required param <code>src</code></div>
+{{ else }}
+  {{ $id := printf "cve-table-%d" (now.UnixNano) }}
+
+<div
+  id="{{ $id }}"
+  class="cve-pm"
+  style="height:{{ $height }}px"
+  data-src="{{ $src }}"
+  data-type="{{ $type }}"
+  data-pagesize="{{ $pageSize }}"
+  data-layout="{{ $layout }}"
+></div>
+
+  {{ if $columns }}
+    {{/* Put column defs as raw JSON in a script tag to avoid breaking JS with quoting. */}}
+    <script type="application/json" id="{{ $id }}-columns">
+      {{- $columns -}}
+    </script>
+  {{ end }}
+
+  <script>
+  (function(){
+    // Load Tabulator CSS/JS once
+    function ensureTabulator(cb){
+      if (window.Tabulator){ cb(); return; }
+      var l=document.createElement('link'); l.rel='stylesheet';
+      l.href='https://unpkg.com/tabulator-tables@6.3.0/dist/css/tabulator.min.css';
+      document.head.appendChild(l);
+      var s=document.createElement('script');
+      s.src='https://unpkg.com/tabulator-tables@6.3.0/dist/js/tabulator.min.js';
+      s.onload=cb; document.head.appendChild(s);
+    }
+
+    // Load D3 only if not already present (used for CSV parsing convenience)
+    if(!window.d3){
+      var d3s=document.createElement('script');
+      d3s.src='https://unpkg.com/d3@7/dist/d3.min.js';
+      document.head.appendChild(d3s);
+    }
+
+    ensureTabulator(init);
+
+    function readColumns(id){
+      var el=document.getElementById(id+'-columns');
+      if(!el) return null;
+      try { return JSON.parse(el.textContent); }
+      catch(e){ console.warn('cve_table: columns JSON parse failed', e); return null; }
+    }
+
+    function inferColumns(rows){
+      var sample = rows && rows[0] ? rows[0] : {};
+      return Object.keys(sample).map(function(k){
+        return {
+          title: k.replace(/_/g,' ').replace(/\b\w/g, function(c){return c.toUpperCase()}),
+          field: k, headerFilter: "input",
+          sorter: isNumeric(rows, k) ? "number" : "string"
+        };
+      });
+      function isNumeric(rows,key){
+        var count=0, num=0;
+        for (var i=0;i<Math.min(rows.length,50);i++){
+          var v=rows[i][key]; if(v===null||v===undefined||v==='') continue;
+          count++; if(!isNaN(Number(v))) num++;
+        }
+        return num >= Math.max(3, Math.ceil(count*0.6));
+      }
+    }
+
+    function csvParse(text){
+      if (window.d3 && d3.csvParse) return d3.csvParse(text);
+      // very basic fallback
+      var lines=text.trim().split(/\r?\n/); if(!lines.length) return [];
+      var headers=lines.shift().split(',');
+      return lines.map(function(line){
+        var cells=line.split(','); var o={};
+        headers.forEach(function(h,i){ o[h]=cells[i]; });
+        return o;
+      });
+    }
+
+    function init(){
+      var el = document.getElementById('{{ $id }}');
+      var src = el.dataset.src;
+      var type = el.dataset.type || 'csv';
+      var pageSize = parseInt(el.dataset.pagesize || '50', 10);
+      var layout = el.dataset.layout || 'fitDataStretch';
+      var userCols = readColumns('{{ $id }}');
+
+      if (type === 'json-paged'){
+        // Expect static files like ..._page_1.json, ..._page_2.json
+        new Tabulator(el, {
+          height: el.style.height,
+          layout: layout,
+          pagination: true,
+          paginationMode: "remote",
+          paginationSize: pageSize,
+          ajaxURL: src,                        // include {page} token in src
+          ajaxURLGenerator: function(url, cfg, params){
+            return url.replace("{page}", params.page);
+          },
+          ajaxResponse: function(url, params, resp){ return resp; },
+          columns: userCols || []
+        });
+        return;
+      }
+
+      if (type === 'json'){
+        fetch(src).then(r=>r.json()).then(function(rows){
+          new Tabulator(el, {
+            height: el.style.height,
+            layout: layout,
+            data: rows,
+            pagination: "local",
+            paginationSize: pageSize,
+            columns: userCols || inferColumns(rows)
+          });
+        });
+        return;
+      }
+
+      // default: csv
+      fetch(src).then(r=>r.text()).then(function(text){
+        var rows = csvParse(text);
+        new Tabulator(el, {
+          height: el.style.height,
+          layout: layout,
+          data: rows,
+          pagination: "local",
+          paginationSize: pageSize,
+          columns: userCols || inferColumns(rows)
+        });
+      });
+    }
+  })();
+  </script>
+{{ end }}

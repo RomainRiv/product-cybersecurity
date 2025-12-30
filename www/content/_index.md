@@ -18,13 +18,7 @@ type: page
 - ⚠️ This is quite resource heavy
 - [CAPECs + CWE Graph](visualizer.html?jsonfile=FULL-FULL.json)
 
-{{< datagrid src="/data/MOCKUP_cves_by_product.csv" useLocal="true" initialSortCol="count" initialSortDir="desc" >}}
-[
-  {"title":"Product","field":"product"},
-  {"title":"CVEs","field":"count","hozAlign":"right"}
-]
-{{< /datagrid >}}
-
+{{< cve_grid src="/data/MOCKUP_cves_by_product.csv" type="csv" height="600" pagesize="100" >}}
 
 ## CVEs
 ### CVEs, per CNA, per Year since 2015 (excluding MITRE)

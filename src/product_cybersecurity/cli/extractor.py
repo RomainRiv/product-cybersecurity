@@ -23,6 +23,7 @@ class CveData(BaseModel):
     adp_cvss_v4: Optional[float]
     date_reserved: Optional[str]
     date_published: Optional[str]
+    cna_provider: Optional[str]
 
 # New model for CVE-CWE pairs
 class CveCweData(BaseModel):
@@ -30,9 +31,17 @@ class CveCweData(BaseModel):
     cwe: str
 
 
+# New model for CVE affected vendor/product pairs
+class AffectedProductData(BaseModel):
+    cve_id: str
+    vendor: str
+    product: str
+
+
 class ExtractedCveData(NamedTuple):
     cve_data: CveData
     cwe_list: List[str]
+    affected_products: List[AffectedProductData]
 
 def extract_cve_data(cve: CveJsonRecordFormat) -> ExtractedCveData:
     id = str(cve.root.cveMetadata.cveId.root)
@@ -50,6 +59,7 @@ def extract_cve_data(cve: CveJsonRecordFormat) -> ExtractedCveData:
     date_published = cve.root.cveMetadata.datePublished.root if cve.root.cveMetadata.datePublished else None
 
     cwe_list: List[str] = []
+    affected_products: List[AffectedProductData] = []
     # Extract CWEs from CNA container if present
     if isinstance(cve.root.containers.cna, CnaPublishedContainer):
         if cve.root.containers.cna.metrics:
@@ -92,6 +102,42 @@ def extract_cve_data(cve: CveJsonRecordFormat) -> ExtractedCveData:
                                 if hasattr(desc, "cweId") and desc.cweId:
                                     cwe_list.append(str(desc.cweId))
 
+    # Extract affected vendor/product pairs using typed Pydantic models (CNA + ADP)
+    seen_pairs = set()
+    # From CNA container
+    if isinstance(cve.root.containers.cna, CnaPublishedContainer):
+        if getattr(cve.root.containers.cna, "affected", None):
+            for prod in cve.root.containers.cna.affected.root:
+                vendor = str(prod.vendor) if prod.vendor else None
+                product = str(prod.product) if prod.product else None
+                if vendor and product:
+                    key = (vendor, product)
+                    if key not in seen_pairs:
+                        seen_pairs.add(key)
+                        affected_products.append(
+                            AffectedProductData(cve_id=id, vendor=vendor, product=product)
+                        )
+        
+    # Safely get provider shortName (may be None or missing). Keep the shortName object
+    # so we can access its .root later when present.
+    provider = getattr(getattr(cve.root.containers.cna, "providerMetadata", None), "shortName", None)
+
+    # From ADP containers (if present)
+    if isinstance(cve.root.containers, Containers) and cve.root.containers.adp:
+        for a in cve.root.containers.adp:
+            aff = a.affected
+            if aff is not None and getattr(aff, "root", None):
+                for prod in aff.root:
+                    vendor = str(prod.vendor) if prod.vendor else None
+                    product = str(prod.product) if prod.product else None
+                    if vendor and product:
+                        key = (vendor, product)
+                        if key not in seen_pairs:
+                            seen_pairs.add(key)
+                            affected_products.append(
+                                AffectedProductData(cve_id=id, vendor=vendor, product=product)
+                            )
+
     cve_data = CveData(
         id=id,
         assigner=str(assigner),
@@ -105,9 +151,12 @@ def extract_cve_data(cve: CveJsonRecordFormat) -> ExtractedCveData:
         adp_cvss_v3_1=adp_cvss_v3_1,
         adp_cvss_v4=adp_cvss_v4,
         date_reserved=date_reserved,
-        date_published=date_published
+        date_published=date_published,
+        # If provider is an object with a .root attribute, use that. Otherwise fall back to
+        # str(provider) if provider is truthy, or None when it's missing.
+        cna_provider=(str(provider.root) if provider and getattr(provider, "root", None) else (str(provider) if provider else None))
     )
-    return ExtractedCveData(cve_data=cve_data, cwe_list=cwe_list)
+    return ExtractedCveData(cve_data=cve_data, cwe_list=cwe_list, affected_products=affected_products)
 
 def process_cve_file(args) -> Optional[ExtractedCveData]:
     year, file_path = args
@@ -161,6 +210,7 @@ def main():
 
     cve_compact_data: List[CveData] = []
     cve_cwe_data: List[CveCweData] = []
+    affected_product_rows: List[AffectedProductData] = []
 
     # Collect subdirectories (years), sort, and process in order
     year_dirs = []
@@ -189,9 +239,12 @@ def main():
             continue
         cve_data_obj = result.cve_data
         cwe_list = result.cwe_list
+        aff_list = result.affected_products
         cve_compact_data.append(cve_data_obj)
         for cwe in cwe_list:
             cve_cwe_data.append(CveCweData(cve_id=cve_data_obj.id, cwe=cwe))
+        for ap in aff_list:
+            affected_product_rows.append(ap)
 
     df = pl.DataFrame(cve_compact_data)
     print(df)
@@ -204,7 +257,7 @@ def main():
         df_cwe = pl.DataFrame(cve_cwe_data)
         print(df_cwe)
         df_cwe.write_parquet(os.path.join(args.output_dir, "cve_cwe.parquet"))
-
+    
 
 if __name__ == "__main__":
     main()
