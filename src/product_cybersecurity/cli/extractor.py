@@ -258,6 +258,11 @@ def main():
         print(df_cwe)
         df_cwe.write_parquet(os.path.join(args.output_dir, "cve_cwe.parquet"))
     
+    # Write CVE affected products to a separate Parquet file
+    if affected_product_rows:
+        df_products = pl.DataFrame(affected_product_rows)
+        print(df_products)
+        df_products.write_parquet(os.path.join(args.output_dir, "cve_affected_products.parquet"))
 
 if __name__ == "__main__":
     main()
