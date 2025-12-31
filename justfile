@@ -1,31 +1,44 @@
-# Justfile for temp-product-cyber-data
+# Justfile for CVE Analyzer
 
 # Show help when running 'just' with no arguments
 default:
     @just --list
 
-# Run all steps in order
-all: download install generate
+# Run all steps: download and extract CVE data
+all: download extract
 
 # Download CAPEC, CWE and CVE data
 download:
-    uv run src/product_cybersecurity/cli/downloader.py --capec-output download/capec/attack_patterns.xml --cwe-output download/cwe/cwec_v4.13.xml --cve-github-download-dir download/cve_github 
+    uv run cve download --all
 
-
-# Install (convert) CAPEC and CWE data to JSON and decompress CVEs
-install: 
-    uv run src/product_cybersecurity/cli/installer.py --capec-xml download/capec/attack_patterns.xml --capec-json data/capec.json --cwe-xml download/cwe/cwec_v4.13.xml --cwe-json data/cwe.json --github-cve-zip download/cve_github/cvelistV5-main.zip --github-cve-output-dir data/cve_github
-
-# Generate graphs from JSON data
-generate:
-    uv run src/product_cybersecurity/cli/graph.py --capec-json data/capec.json --cwe-json data/cwe.json --graph-dir www/static/gen/graphs --md-dir www/content/gen/
-
+# Extract CVE data to Parquet format
 extract:
-    uv run src/product_cybersecurity/cli/extractor.py --cve-dir data/cve_github/individual/ --output-dir www/static/gen/data/
+    uv run cve extract --verbose
 
-build-local:
-    hugo server -s www -D --disableFastRender -b http://localhost:1313/
+# Search CVEs by product name
+search product:
+    uv run cve search "{{product}}"
+
+# Get details for a specific CVE
+get cve_id:
+    uv run cve get "{{cve_id}}"
+
+# Show database statistics
+stats:
+    uv run cve stats
+
+# Show recent CVEs (last 30 days)
+recent:
+    uv run cve recent
+
+# Search CVEs in JSON format (for LLM consumption)
+search-json product:
+    uv run cve search "{{product}}" --format json
 
 # Clean all generated artifacts
 clean:
-    rm -rf download data www/public/ docs/
+    rm -rf download data/*.parquet
+
+# Full clean including all data
+clean-all:
+    rm -rf download data

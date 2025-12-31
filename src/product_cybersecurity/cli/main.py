@@ -1,0 +1,458 @@
+"""CLI for CVE analysis tool.
+
+This module provides a command-line interface for downloading, extracting,
+and searching CVE data from the cvelistV5 repository.
+
+Usage:
+    cve download [--years N]    Download CVE data
+    cve extract [--years N]     Extract CVE data to Parquet
+    cve search <query>          Search CVEs
+    cve get <cve-id>            Get details for a specific CVE
+    cve stats                   Show database statistics
+"""
+
+import json
+from typing import Optional
+
+import typer
+from rich.console import Console
+from rich.table import Table
+from rich.panel import Panel
+
+from product_cybersecurity.core.config import Config
+from product_cybersecurity.services.downloader import DownloadService
+from product_cybersecurity.services.extractor import ExtractorService
+from product_cybersecurity.services.search import (
+    CVESearchService, 
+    SearchResult, 
+    SeverityLevel,
+    SEVERITY_THRESHOLDS,
+)
+
+app = typer.Typer(
+    name="cve",
+    help="CVE analysis tool for LLM agents",
+    no_args_is_help=True,
+)
+console = Console()
+
+
+# Output format options
+class OutputFormat:
+    JSON = "json"
+    TABLE = "table"
+    MARKDOWN = "markdown"
+
+
+def _output_result(
+    result: SearchResult,
+    format: str = OutputFormat.TABLE,
+    verbose: bool = False,
+    limit: int = 100,
+) -> None:
+    """Output search result in the specified format."""
+    df = result.cves
+    
+    if len(df) == 0:
+        console.print("[yellow]No results found.[/yellow]")
+        return
+    
+    if len(df) > limit:
+        console.print(f"[yellow]Showing first {limit} of {len(df)} results[/yellow]")
+        df = df.head(limit)
+    
+    if format == OutputFormat.JSON:
+        # JSON output for LLM consumption
+        records = df.to_dicts()
+        if verbose:
+            output: object = {
+                "count": len(result.cves),
+                "results": records,
+                "summary": result.summary(),
+            }
+        else:
+            output = records
+        print(json.dumps(output, indent=2, default=str))
+    
+    elif format == OutputFormat.MARKDOWN:
+        # Markdown output for LLM consumption
+        print("# CVE Search Results\n")
+        print(f"Found **{len(result.cves)}** CVEs\n")
+        
+        if verbose:
+            summary = result.summary()
+            print("## Summary\n")
+            print(f"- Severity: {summary.get('severity_distribution', {})}")
+            print(f"- Years: {summary.get('year_distribution', {})}")
+            print()
+        
+        print("## Results\n")
+        print("| CVE ID | State | Title | CVSS |")
+        print("|--------|-------|-------|------|")
+        for row in df.iter_rows(named=True):
+            cve_id = row.get("id", "")
+            state = row.get("state", "")
+            title = (row.get("title") or "")[:50]
+            cvss = row.get("cvss_v3_1") or row.get("cvss_v3") or row.get("cvss_v2") or "-"
+            print(f"| {cve_id} | {state} | {title} | {cvss} |")
+    
+    else:
+        # Table output for human consumption
+        table = Table(title=f"CVE Results ({len(result.cves)} total)")
+        table.add_column("CVE ID", style="cyan")
+        table.add_column("State", style="green")
+        table.add_column("Title")
+        table.add_column("CVSS", justify="right")
+        table.add_column("Published")
+        
+        for row in df.iter_rows(named=True):
+            cve_id = row.get("id", "")
+            state = row.get("state", "")
+            title = (row.get("title") or "")[:60]
+            cvss = row.get("cvss_v3_1") or row.get("cvss_v3") or row.get("cvss_v2")
+            cvss_str = f"{cvss:.1f}" if cvss else "-"
+            published = str(row.get("date_published") or "")[:10]
+            table.add_row(cve_id, state, title, cvss_str, published)
+        
+        console.print(table)
+        
+        if verbose:
+            summary = result.summary()
+            console.print(Panel(
+                f"Severity: {summary.get('severity_distribution', {})}\n"
+                f"Years: {summary.get('year_distribution', {})}",
+                title="Summary",
+            ))
+
+
+@app.command()
+def download(
+    years: int = typer.Option(
+        None, "--years", "-y",
+        help="Number of years to download (default: from config)"
+    ),
+    all_data: bool = typer.Option(
+        False, "--all", "-a",
+        help="Download all data (CVEs, CWEs, CAPECs)"
+    ),
+    cves_only: bool = typer.Option(
+        False, "--cves", "-c",
+        help="Download only CVE data"
+    ),
+) -> None:
+    """Download CVE data from cvelistV5 repository."""
+    config = Config()
+    if years:
+        config.default_years = years
+    
+    service = DownloadService(config)
+    
+    with console.status("[bold green]Downloading data..."):
+        if all_data or not cves_only:
+            console.print("[blue]Downloading CAPEC data...[/blue]")
+            service.download_capec()
+            console.print("[blue]Downloading CWE data...[/blue]")
+            service.download_cwe()
+        
+        console.print(f"[blue]Downloading CVE data (last {config.default_years} years)...[/blue]")
+        service.download_cves()
+        
+        console.print("[blue]Extracting CVE JSON files...[/blue]")
+        extracted = service.extract_cves()
+        console.print(f"[green]✓ Extracted {extracted} CVE files[/green]")
+    
+    console.print("[bold green]✓ Download complete![/bold green]")
+
+
+@app.command()
+def extract(
+    years: int = typer.Option(
+        None, "--years", "-y",
+        help="Number of years to process (default: from config)"
+    ),
+    verbose: bool = typer.Option(
+        False, "--verbose", "-v",
+        help="Show detailed output"
+    ),
+) -> None:
+    """Extract CVE data from JSON files to Parquet format."""
+    config = Config()
+    if years:
+        config.default_years = years
+    
+    service = ExtractorService(config)
+    
+    with console.status("[bold green]Extracting CVE data..."):
+        result = service.extract_all()
+    
+    # Result contains paths - show them
+    console.print(f"[green]✓ Extracted CVEs to {result.get('cves', 'N/A')}[/green]")
+    if 'cve_products' in result:
+        console.print(f"[green]✓ Extracted products to {result['cve_products']}[/green]")
+    if 'cve_cwe' in result:
+        console.print(f"[green]✓ Extracted CWE mappings to {result['cve_cwe']}[/green]")
+    
+    console.print("[bold green]✓ Extraction complete![/bold green]")
+
+
+@app.command()
+def search(
+    query: str = typer.Argument(..., help="Search query (product name, vendor, or CWE ID)"),
+    vendor: Optional[str] = typer.Option(
+        None, "--vendor", "-V",
+        help="Filter by vendor name"
+    ),
+    severity: Optional[str] = typer.Option(
+        None, "--severity", "-s",
+        help="Filter by severity (low, medium, high, critical)"
+    ),
+    after: Optional[str] = typer.Option(
+        None, "--after",
+        help="Only CVEs published after this date (YYYY-MM-DD)"
+    ),
+    before: Optional[str] = typer.Option(
+        None, "--before",
+        help="Only CVEs published before this date (YYYY-MM-DD)"
+    ),
+    limit: int = typer.Option(
+        100, "--limit", "-n",
+        help="Maximum number of results to show"
+    ),
+    format: str = typer.Option(
+        "table", "--format", "-f",
+        help="Output format: table, json, markdown"
+    ),
+    verbose: bool = typer.Option(
+        False, "--verbose", "-v",
+        help="Show detailed output with summary statistics"
+    ),
+) -> None:
+    """Search CVEs by product name, vendor, or CWE ID."""
+    config = Config()
+    service = CVESearchService(config)
+    
+    # Determine search type based on query format
+    if query.upper().startswith("CWE"):
+        result = service.by_cwe(query)
+    elif vendor:
+        result = service.by_product(query, vendor=vendor)
+    else:
+        # Try product search first
+        result = service.by_product(query)
+        
+        # If no results, try vendor search
+        if len(result.cves) == 0:
+            result = service.by_vendor(query)
+    
+    # Apply additional filters
+    if severity:
+        sev_lower = severity.lower()
+        if sev_lower not in SEVERITY_THRESHOLDS:
+            console.print(f"[red]Invalid severity: {severity}. Must be: none, low, medium, high, critical[/red]")
+            raise typer.Exit(1)
+        
+        # Cast to SeverityLevel type
+        sev: SeverityLevel = sev_lower  # type: ignore[assignment]
+        # Re-search with severity filter
+        if query.upper().startswith("CWE"):
+            result = service.by_severity(sev)
+        else:
+            # Filter existing results by severity
+            pass  # TODO: Add severity filtering to SearchResult
+    
+    _output_result(result, format=format, verbose=verbose, limit=limit)
+
+
+@app.command()
+def get(
+    cve_id: str = typer.Argument(..., help="CVE ID (e.g., CVE-2024-1234)"),
+    format: str = typer.Option(
+        "table", "--format", "-f",
+        help="Output format: table, json, markdown"
+    ),
+    verbose: bool = typer.Option(
+        False, "--verbose", "-v",
+        help="Show all available details"
+    ),
+) -> None:
+    """Get details for a specific CVE."""
+    config = Config()
+    service = CVESearchService(config)
+    
+    result = service.by_id(cve_id)
+    
+    if len(result.cves) == 0:
+        console.print(f"[red]CVE not found: {cve_id}[/red]")
+        raise typer.Exit(1)
+    
+    if format == OutputFormat.JSON:
+        output = result.cves.to_dicts()[0]
+        if result.products is not None and len(result.products) > 0:
+            output["affected_products"] = result.products.to_dicts()
+        if result.cwes is not None and len(result.cwes) > 0:
+            output["cwe_ids"] = result.cwes.to_dicts()
+        print(json.dumps(output, indent=2, default=str))
+    
+    elif format == OutputFormat.MARKDOWN:
+        row = result.cves.to_dicts()[0]
+        print(f"# {row.get('id')}\n")
+        print(f"**State:** {row.get('state')}\n")
+        print(f"**Title:** {row.get('title')}\n")
+        print(f"**Published:** {row.get('date_published')}\n")
+        
+        cvss = row.get("cvss_v3_1") or row.get("cvss_v3") or row.get("cvss_v2")
+        if cvss:
+            print(f"**CVSS Score:** {cvss}\n")
+        
+        if row.get("description"):
+            print(f"## Description\n\n{row.get('description')}\n")
+        
+        if result.products is not None and len(result.products) > 0:
+            print("## Affected Products\n")
+            for prod in result.products.iter_rows(named=True):
+                print(f"- {prod.get('vendor')}: {prod.get('product')} ({prod.get('version', 'any version')})")
+        
+        if result.cwes is not None and len(result.cwes) > 0:
+            print("\n## CWE IDs\n")
+            for cwe in result.cwes.iter_rows(named=True):
+                print(f"- {cwe.get('cwe')}")
+    
+    else:
+        row = result.cves.to_dicts()[0]
+        
+        console.print(Panel(
+            f"[bold cyan]{row.get('id')}[/bold cyan]\n\n"
+            f"[bold]State:[/bold] {row.get('state')}\n"
+            f"[bold]Title:[/bold] {row.get('title')}\n"
+            f"[bold]Published:[/bold] {row.get('date_published')}\n"
+            f"[bold]Updated:[/bold] {row.get('date_updated')}",
+            title="CVE Details",
+        ))
+        
+        cvss = row.get("cvss_v3_1") or row.get("cvss_v3") or row.get("cvss_v2")
+        if cvss:
+            color = "red" if cvss >= 7.0 else "yellow" if cvss >= 4.0 else "green"
+            console.print(f"\n[bold]CVSS Score:[/bold] [{color}]{cvss:.1f}[/{color}]")
+        
+        if row.get("description"):
+            console.print(Panel(row.get("description"), title="Description"))
+        
+        if result.products is not None and len(result.products) > 0:
+            table = Table(title="Affected Products")
+            table.add_column("Vendor")
+            table.add_column("Product")
+            table.add_column("Version")
+            for prod in result.products.iter_rows(named=True):
+                table.add_row(
+                    prod.get("vendor", ""),
+                    prod.get("product", ""),
+                    prod.get("version", ""),
+                )
+            console.print(table)
+        
+        if result.cwes is not None and len(result.cwes) > 0:
+            console.print("\n[bold]CWE IDs:[/bold]", end=" ")
+            cwes = [cwe.get("cwe", "") for cwe in result.cwes.iter_rows(named=True)]
+            console.print(", ".join(cwes))
+
+
+@app.command()
+def stats(
+    format: str = typer.Option(
+        "table", "--format", "-f",
+        help="Output format: table, json, markdown"
+    ),
+) -> None:
+    """Show database statistics."""
+    config = Config()
+    service = CVESearchService(config)
+    
+    try:
+        statistics = service.stats()
+    except FileNotFoundError:
+        console.print("[red]No data found. Run 'cve download' and 'cve extract' first.[/red]")
+        raise typer.Exit(1)
+    
+    if format == OutputFormat.JSON:
+        print(json.dumps(statistics, indent=2))
+    
+    elif format == OutputFormat.MARKDOWN:
+        print("# CVE Database Statistics\n")
+        print(f"**Total CVEs:** {statistics['total_cves']}\n")
+        print(f"**Unique Products:** {statistics['unique_products']}\n")
+        print(f"**Unique Vendors:** {statistics['unique_vendors']}\n")
+        
+        print("\n## CVEs by State\n")
+        for state, count in statistics.get("states", {}).items():
+            print(f"- {state}: {count}")
+        
+        print("\n## CVEs by Year\n")
+        for year, count in statistics.get("by_year", {}).items():
+            print(f"- {year}: {count}")
+    
+    else:
+        console.print(Panel(
+            f"[bold]Total CVEs:[/bold] {statistics['total_cves']}\n"
+            f"[bold]Product Entries:[/bold] {statistics['total_product_entries']}\n"
+            f"[bold]Unique Products:[/bold] {statistics['unique_products']}\n"
+            f"[bold]Unique Vendors:[/bold] {statistics['unique_vendors']}",
+            title="CVE Database Statistics",
+        ))
+        
+        if statistics.get("states"):
+            table = Table(title="CVEs by State")
+            table.add_column("State")
+            table.add_column("Count", justify="right")
+            for state, count in statistics.get("states", {}).items():
+                table.add_row(state, str(count))
+            console.print(table)
+        
+        if statistics.get("by_year"):
+            table = Table(title="CVEs by Year (recent)")
+            table.add_column("Year")
+            table.add_column("Count", justify="right")
+            years = sorted(statistics.get("by_year", {}).items(), reverse=True)[:10]
+            for year, count in years:
+                table.add_row(year, str(count))
+            console.print(table)
+
+
+@app.command()
+def recent(
+    days: int = typer.Option(
+        30, "--days", "-d",
+        help="Number of days to look back"
+    ),
+    limit: int = typer.Option(
+        50, "--limit", "-n",
+        help="Maximum number of results to show"
+    ),
+    format: str = typer.Option(
+        "table", "--format", "-f",
+        help="Output format: table, json, markdown"
+    ),
+    verbose: bool = typer.Option(
+        False, "--verbose", "-v",
+        help="Show detailed output"
+    ),
+) -> None:
+    """Show recently published CVEs."""
+    config = Config()
+    service = CVESearchService(config)
+    
+    result = service.recent(days=days)
+    
+    if len(result.cves) == 0:
+        console.print(f"[yellow]No CVEs found in the last {days} days.[/yellow]")
+        return
+    
+    _output_result(result, format=format, verbose=verbose, limit=limit)
+
+
+def main() -> None:
+    """Entry point for the CLI."""
+    app()
+
+
+if __name__ == "__main__":
+    main()

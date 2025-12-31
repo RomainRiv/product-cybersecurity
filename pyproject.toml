@@ -1,7 +1,7 @@
 [project]
 name = "product-cybersecurity"
 version = "0.1.0"
-description = "Add your description here"
+description = "LLM-oriented CVE analyzer tool for querying and analyzing vulnerability data"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
@@ -17,6 +17,12 @@ dependencies = [
     "tdqm>=0.0.1",
     "types-tqdm>=4.67.0.20250516",
     "xlsxwriter>=3.2.5",
+    "typer>=0.16.0",
+    "rich>=14.0.0",
 ]
+
+[project.scripts]
+cve = "product_cybersecurity.cli.main:main"
+
 [tool.uv]
 package = true
