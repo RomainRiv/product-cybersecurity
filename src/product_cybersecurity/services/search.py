@@ -673,3 +673,67 @@ class CVESearchService:
             return None
 
         return desc.head(1).get_column("value").to_list()[0]
+
+    def filter_by_date(
+        self,
+        result: SearchResult,
+        after: Optional[str] = None,
+        before: Optional[str] = None,
+    ) -> SearchResult:
+        """Filter an existing SearchResult by date range.
+
+        Args:
+            result: SearchResult to filter.
+            after: Only include CVEs published after this date (YYYY-MM-DD).
+            before: Only include CVEs published before this date (YYYY-MM-DD).
+
+        Returns:
+            New SearchResult with filtered CVEs and related data.
+        """
+        filtered_cves = result.cves
+
+        if after:
+            filtered_cves = filtered_cves.filter(pl.col("date_published") >= after)
+        if before:
+            filtered_cves = filtered_cves.filter(pl.col("date_published") <= before)
+
+        # Get related data for filtered CVEs
+        cve_ids = filtered_cves.get_column("cve_id").to_list()
+        related = self._get_related_data(cve_ids)
+
+        return SearchResult(filtered_cves, **related)
+
+    def filter_by_severity(
+        self, result: SearchResult, severity: SeverityLevel
+    ) -> SearchResult:
+        """Filter an existing SearchResult by severity level.
+
+        Args:
+            result: SearchResult to filter.
+            severity: Severity level (none, low, medium, high, critical).
+
+        Returns:
+            New SearchResult with CVEs matching severity level.
+        """
+        if result.metrics is None or len(result.metrics) == 0:
+            return SearchResult(pl.DataFrame(schema=result.cves.schema))
+
+        min_score, max_score = SEVERITY_THRESHOLDS[severity]
+
+        # Get CVE IDs with matching severity from the result's metrics
+        cve_ids_in_result = set(result.cves.get_column("cve_id").to_list())
+
+        matching_metrics = result.metrics.filter(
+            pl.col("cve_id").is_in(cve_ids_in_result)
+            & pl.col("metric_type").str.starts_with("cvss")
+            & pl.col("base_score").is_not_null()
+            & (pl.col("base_score") >= min_score)
+            & (pl.col("base_score") <= max_score)
+        )
+
+        cve_ids = matching_metrics.get_column("cve_id").unique().to_list()
+
+        filtered_cves = result.cves.filter(pl.col("cve_id").is_in(cve_ids))
+        related = self._get_related_data(cve_ids)
+
+        return SearchResult(filtered_cves, **related)

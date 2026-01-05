@@ -296,7 +296,11 @@ def search(
         if len(result.cves) == 0:
             result = service.by_vendor(query)
 
-    # Apply additional filters
+    # Apply date filters
+    if after or before:
+        result = service.filter_by_date(result, after=after, before=before)
+
+    # Apply severity filter
     if severity:
         sev_lower = severity.lower()
         if sev_lower not in SEVERITY_THRESHOLDS:
@@ -307,12 +311,7 @@ def search(
 
         # Cast to SeverityLevel type
         sev: SeverityLevel = sev_lower  # type: ignore[assignment]
-        # Re-search with severity filter
-        if query.upper().startswith("CWE"):
-            result = service.by_severity(sev)
-        else:
-            # Filter existing results by severity
-            pass  # TODO: Add severity filtering to SearchResult
+        result = service.filter_by_severity(result, sev)
 
     _output_result(
         result, format=format, verbose=verbose, limit=limit, search_service=service
