@@ -29,6 +29,12 @@ product-cybersecurity/
 │   ├── capec.json            # CAPEC attack patterns
 │   └── cwe.json              # CWE weakness definitions
 ├── download/                 # Temporary download location
+├── tests/                    # Test suite
+│   ├── conftest.py           # Shared fixtures and sample data
+│   ├── test_cli.py           # CLI helper unit tests
+│   ├── test_extractor.py     # Extractor service tests
+│   ├── test_search.py        # Search service tests
+│   └── test_integration.py   # End-to-end pipeline tests
 └── src/product_cybersecurity/
     ├── __init__.py
     ├── cli/                  # CLI commands (Typer-based)
@@ -232,11 +238,17 @@ Configuration is managed via environment variables or `~/.config/cve-analyzer/co
 ## Development
 
 ```bash
-# Install dependencies
-uv sync
+# Install dependencies (including dev dependencies)
+uv sync --extra dev
 
-# Run tests
+# Run all tests
 just test
+
+# Run tests with coverage
+just test-cov
+
+# Run a specific test file
+just test-file tests/test_cli.py
 
 # Download and extract fresh data
 just download
@@ -245,6 +257,49 @@ just extract
 # Full pipeline
 just all
 ```
+
+## Testing
+
+### Test Structure
+
+| File | Description | Tests |
+|------|-------------|-------|
+| `tests/conftest.py` | Shared fixtures with sample CVE JSON data | 8 fixtures |
+| `tests/test_extractor.py` | Extractor service unit tests | 22 tests |
+| `tests/test_search.py` | Search service unit tests | 25 tests |
+| `tests/test_cli.py` | CLI helper unit tests | 11 tests |
+| `tests/test_integration.py` | Full pipeline integration tests | 14 tests |
+
+### Running Tests
+
+```bash
+# Via justfile (recommended)
+just test                              # Run all tests
+just test-cov                          # Run with coverage report
+just test-file tests/test_search.py    # Run specific file
+
+# Via pytest directly
+uv run --extra dev pytest tests/ -v    # All tests, verbose
+uv run --extra dev pytest tests/test_cli.py::TestGetSeverity  # Specific class
+```
+
+### Key Test Fixtures
+
+The `tests/conftest.py` provides:
+
+- `temp_config`: Temporary Config pointing to test directories
+- `sample_cve_files`: Creates sample CVE JSON files for extraction tests
+- `sample_parquet_data`: Pre-built Parquet files for search tests
+- `mock_row_*`: Sample row dicts for testing severity formatting
+
+### Sample CVE Data
+
+Test fixtures include realistic CVE samples:
+
+- `SAMPLE_CVE_2022_2196`: Full CVE with CVSS v3.1 score
+- `SAMPLE_CVE_TEXT_SEVERITY`: CVE with text severity only (no CVSS)
+- `SAMPLE_CVE_NO_SEVERITY`: CVE with no severity information
+- `SAMPLE_CVE_WITH_ADP`: CVE with ADP-provided CVSS metrics
 
 ## Extending This Project
 

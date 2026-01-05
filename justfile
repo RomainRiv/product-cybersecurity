@@ -42,3 +42,15 @@ clean:
 # Full clean including all data
 clean-all:
     rm -rf download data
+
+# Run tests
+test:
+    uv run --extra dev pytest
+
+# Run tests with coverage
+test-cov:
+    uv run --extra dev pytest --cov=product_cybersecurity --cov-report=term-missing
+
+# Run a specific test file
+test-file file:
+    uv run --extra dev pytest "{{file}}" -v

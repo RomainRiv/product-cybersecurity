@@ -44,6 +44,40 @@ class OutputFormat:
     MARKDOWN = "markdown"
 
 
+def _get_severity(row: dict) -> tuple[str, str]:
+    """Get severity score and version as separate values.
+    
+    Returns a tuple of (score_str, version_str).
+    - score_str: "8.1" or "High" or "-"
+    - version_str: "v3.1", "v4.0*", "text", or "-"
+    
+    ADP scores are marked with * (e.g., "v3.1*").
+    """
+    # Check CVSS scores in preference order (newest versions first)
+    cvss_fields = [
+        ("cvss_v4", "v4.0"),
+        ("cvss_v3_1", "v3.1"),
+        ("cvss_v3", "v3.0"),
+        ("adp_cvss_v4", "v4.0*"),
+        ("adp_cvss_v3_1", "v3.1*"),
+        ("adp_cvss_v3", "v3.0*"),
+        ("cvss_v2", "v2.0"),
+        ("adp_cvss_v2", "v2.0*"),
+    ]
+    
+    for field, version in cvss_fields:
+        score = row.get(field)
+        if score is not None:
+            return f"{score:.1f}", version
+    
+    # Fall back to text severity if available
+    severity_text = row.get("severity_text")
+    if severity_text:
+        return severity_text, "text"
+    
+    return "-", "-"
+
+
 def _output_result(
     result: SearchResult,
     format: str = OutputFormat.TABLE,
@@ -87,14 +121,14 @@ def _output_result(
             print()
         
         print("## Results\n")
-        print("| CVE ID | State | Title | CVSS |")
-        print("|--------|-------|-------|------|")
+        print("| CVE ID | State | Title | Severity | Version |")
+        print("|--------|-------|-------|----------|---------|")
         for row in df.iter_rows(named=True):
             cve_id = row.get("id", "")
             state = row.get("state", "")
             title = (row.get("title") or "")[:50]
-            cvss = row.get("cvss_v3_1") or row.get("cvss_v3") or row.get("cvss_v2") or "-"
-            print(f"| {cve_id} | {state} | {title} | {cvss} |")
+            severity, version = _get_severity(row)
+            print(f"| {cve_id} | {state} | {title} | {severity} | {version} |")
     
     else:
         # Table output for human consumption
@@ -102,17 +136,17 @@ def _output_result(
         table.add_column("CVE ID", style="cyan")
         table.add_column("State", style="green")
         table.add_column("Title")
-        table.add_column("CVSS", justify="right")
+        table.add_column("Severity", justify="right")
+        table.add_column("Version", justify="center")
         table.add_column("Published")
         
         for row in df.iter_rows(named=True):
             cve_id = row.get("id", "")
             state = row.get("state", "")
             title = (row.get("title") or "")[:60]
-            cvss = row.get("cvss_v3_1") or row.get("cvss_v3") or row.get("cvss_v2")
-            cvss_str = f"{cvss:.1f}" if cvss else "-"
+            severity, version = _get_severity(row)
             published = str(row.get("date_published") or "")[:10]
-            table.add_row(cve_id, state, title, cvss_str, published)
+            table.add_row(cve_id, state, title, severity, version, published)
         
         console.print(table)
         
