@@ -1,7 +1,11 @@
-"""CVE search service."""
+"""CVE search service.
 
-from datetime import datetime
-from typing import List, Literal, Optional
+This service provides search capabilities over the normalized CVE parquet files.
+It supports searching by CVE ID, product, vendor, CWE, severity, and date range.
+"""
+
+from datetime import datetime, timedelta
+from typing import Dict, List, Literal, Optional
 
 import polars as pl
 
@@ -25,12 +29,22 @@ class SearchResult:
     def __init__(
         self,
         cves: pl.DataFrame,
+        descriptions: Optional[pl.DataFrame] = None,
+        metrics: Optional[pl.DataFrame] = None,
         products: Optional[pl.DataFrame] = None,
+        versions: Optional[pl.DataFrame] = None,
         cwes: Optional[pl.DataFrame] = None,
+        references: Optional[pl.DataFrame] = None,
+        credits: Optional[pl.DataFrame] = None,
     ):
         self.cves = cves
+        self.descriptions = descriptions
+        self.metrics = metrics
         self.products = products
+        self.versions = versions
         self.cwes = cwes
+        self.references = references
+        self.credits = credits
 
     @property
     def count(self) -> int:
@@ -50,32 +64,14 @@ class SearchResult:
         if self.count == 0:
             return {"count": 0, "cves": []}
 
-        # Get best CVSS score for each CVE
-        df = self.cves.with_columns(
-            [
-                pl.coalesce(
-                    [
-                        "cvss_v4",
-                        "cvss_v3_1",
-                        "cvss_v3",
-                        "adp_cvss_v4",
-                        "adp_cvss_v3_1",
-                        "adp_cvss_v3",
-                        "cvss_v2",
-                        "adp_cvss_v2",
-                    ]
-                ).alias("best_cvss")
-            ]
-        )
-
         return {
             "count": self.count,
-            "severity_distribution": self._get_severity_distribution(df),
-            "year_distribution": self._get_year_distribution(df),
+            "severity_distribution": self._get_severity_distribution(),
+            "year_distribution": self._get_year_distribution(),
         }
 
-    def _get_severity_distribution(self, df: pl.DataFrame) -> dict:
-        """Get count of CVEs by severity."""
+    def _get_severity_distribution(self) -> dict:
+        """Get count of CVEs by severity based on metrics."""
         result = {
             "critical": 0,
             "high": 0,
@@ -85,8 +81,55 @@ class SearchResult:
             "unknown": 0,
         }
 
-        for row in df.iter_rows(named=True):
-            score = row.get("best_cvss")
+        if self.metrics is None or len(self.metrics) == 0:
+            result["unknown"] = self.count
+            return result
+
+        # Get best score per CVE from metrics
+        cve_ids = set(self.cves.get_column("cve_id").to_list())
+
+        # Filter metrics for our CVEs and get best score per CVE
+        relevant_metrics = self.metrics.filter(
+            pl.col("cve_id").is_in(cve_ids)
+            & pl.col("base_score").is_not_null()
+            & pl.col("metric_type").str.starts_with("cvss")
+        )
+
+        if len(relevant_metrics) == 0:
+            result["unknown"] = self.count
+            return result
+
+        # Preference order for metrics (prefer CNA over ADP, prefer newer versions)
+        best_scores = (
+            relevant_metrics.with_columns(
+                [
+                    # Score metrics by preference (higher = better)
+                    pl.when(pl.col("source") == "cna")
+                    .then(100)
+                    .otherwise(0)
+                    .alias("source_pref"),
+                    pl.when(pl.col("metric_type") == "cvssV4_0")
+                    .then(40)
+                    .when(pl.col("metric_type") == "cvssV3_1")
+                    .then(30)
+                    .when(pl.col("metric_type") == "cvssV3_0")
+                    .then(20)
+                    .otherwise(10)
+                    .alias("version_pref"),
+                ]
+            )
+            .with_columns(
+                [(pl.col("source_pref") + pl.col("version_pref")).alias("preference")]
+            )
+            .sort(["cve_id", "preference"], descending=[False, True])
+            .group_by("cve_id")
+            .first()
+        )
+
+        cves_with_scores = set(best_scores.get_column("cve_id").to_list())
+
+        for row in best_scores.iter_rows(named=True):
+            score = row.get("base_score")
             if score is None:
                 result["unknown"] += 1
             elif score >= 9.0:
@@ -100,13 +143,16 @@ class SearchResult:
             else:
                 result["none"] += 1
 
+        # Count CVEs without any score
+        result["unknown"] += len(cve_ids - cves_with_scores)
+
         return result
 
-    def _get_year_distribution(self, df: pl.DataFrame) -> dict[str, int]:
+    def _get_year_distribution(self) -> dict[str, int]:
         """Get count of CVEs by year."""
         result: dict[str, int] = {}
-        for row in df.iter_rows(named=True):
-            cve_id = row.get("id", "")
+        for row in self.cves.iter_rows(named=True):
+            cve_id = row.get("cve_id", "")
             if cve_id.startswith("CVE-"):
                 parts = cve_id.split("-")
                 if len(parts) >= 2:
@@ -126,8 +172,13 @@ class CVESearchService:
         """
         self.config = config or get_config()
         self._cves_df: Optional[pl.DataFrame] = None
+        self._descriptions_df: Optional[pl.DataFrame] = None
+        self._metrics_df: Optional[pl.DataFrame] = None
         self._products_df: Optional[pl.DataFrame] = None
-        self._cwe_df: Optional[pl.DataFrame] = None
+        self._versions_df: Optional[pl.DataFrame] = None
+        self._cwes_df: Optional[pl.DataFrame] = None
+        self._references_df: Optional[pl.DataFrame] = None
+        self._credits_df: Optional[pl.DataFrame] = None
 
     def _load_data(self) -> None:
         """Load data from Parquet files if not already loaded."""
@@ -139,21 +190,100 @@ class CVESearchService:
                 )
             self._cves_df = pl.read_parquet(cves_path)
 
+        if self._descriptions_df is None:
+            desc_path = self.config.cve_descriptions_parquet
+            if desc_path.exists():
+                self._descriptions_df = pl.read_parquet(desc_path)
+
+        if self._metrics_df is None:
+            metrics_path = self.config.cve_metrics_parquet
+            if metrics_path.exists():
+                self._metrics_df = pl.read_parquet(metrics_path)
+
         if self._products_df is None:
             products_path = self.config.cve_products_parquet
             if products_path.exists():
                 self._products_df = pl.read_parquet(products_path)
 
-        if self._cwe_df is None:
-            cwe_path = self.config.cve_cwe_parquet
+        if self._versions_df is None:
+            versions_path = self.config.cve_versions_parquet
+            if versions_path.exists():
+                self._versions_df = pl.read_parquet(versions_path)
+
+        if self._cwes_df is None:
+            cwe_path = self.config.cve_cwes_parquet
             if cwe_path.exists():
-                self._cwe_df = pl.read_parquet(cwe_path)
+                self._cwes_df = pl.read_parquet(cwe_path)
+
+        if self._references_df is None:
+            refs_path = self.config.cve_references_parquet
+            if refs_path.exists():
+                self._references_df = pl.read_parquet(refs_path)
+
+        if self._credits_df is None:
+            credits_path = self.config.cve_credits_parquet
+            if credits_path.exists():
+                self._credits_df = pl.read_parquet(credits_path)
 
     def _ensure_cves_loaded(self) -> pl.DataFrame:
         """Load data and return CVEs dataframe (guaranteed non-None)."""
         self._load_data()
         assert self._cves_df is not None
         return self._cves_df
+
+    def _get_related_data(
+        self, cve_ids: List[str]
+    ) -> Dict[str, Optional[pl.DataFrame]]:
+        """Get all related data for a set of CVE IDs."""
+        result: Dict[str, Optional[pl.DataFrame]] = {
+            "descriptions": None,
+            "metrics": None,
+            "products": None,
+            "versions": None,
+            "cwes": None,
+            "references": None,
+            "credits": None,
+        }
+
+        if not cve_ids:
+            return result
+
+        cve_id_set = set(cve_ids)
+
+        if self._descriptions_df is not None:
+            result["descriptions"] = self._descriptions_df.filter(
+                pl.col("cve_id").is_in(cve_id_set)
+            )
+
+        if self._metrics_df is not None:
+            result["metrics"] = self._metrics_df.filter(
+                pl.col("cve_id").is_in(cve_id_set)
+            )
+
+        if self._products_df is not None:
+            result["products"] = self._products_df.filter(
+                pl.col("cve_id").is_in(cve_id_set)
+            )
+
+        if self._versions_df is not None:
+            result["versions"] = self._versions_df.filter(
+                pl.col("cve_id").is_in(cve_id_set)
+            )
+
+        if self._cwes_df is not None:
+            result["cwes"] = self._cwes_df.filter(pl.col("cve_id").is_in(cve_id_set))
+
+        if self._references_df is not None:
+            result["references"] = self._references_df.filter(
+                pl.col("cve_id").is_in(cve_id_set)
+            )
+
+        if self._credits_df is not None:
+            result["credits"] = self._credits_df.filter(
+                pl.col("cve_id").is_in(cve_id_set)
+            )
+
+        return result
 
     def by_id(self, cve_id: str) -> SearchResult:
         """Search for a specific CVE by ID.
@@ -171,17 +301,11 @@ class CVESearchService:
         if not cve_id.startswith("CVE-"):
             cve_id = f"CVE-{cve_id}"
 
-        result = cves_df.filter(pl.col("id") == cve_id)
+        result = cves_df.filter(pl.col("cve_id") == cve_id)
+        cve_ids = result.get_column("cve_id").to_list()
+        related = self._get_related_data(cve_ids)
 
-        # Get related products and CWEs
-        products = None
-        cwes = None
-        if self._products_df is not None:
-            products = self._products_df.filter(pl.col("cve_id") == cve_id)
-        if self._cwe_df is not None:
-            cwes = self._cwe_df.filter(pl.col("cve_id") == cve_id)
-
-        return SearchResult(result, products, cwes)
+        return SearchResult(result, **related)
 
     def by_product(
         self, product: str, vendor: Optional[str] = None, fuzzy: bool = True
@@ -199,7 +323,7 @@ class CVESearchService:
         cves_df = self._ensure_cves_loaded()
 
         if self._products_df is None:
-            return SearchResult(pl.DataFrame())
+            return SearchResult(pl.DataFrame(schema=cves_df.schema))
 
         # Filter products
         if fuzzy:
@@ -219,12 +343,13 @@ class CVESearchService:
             product_filter = product_filter & vendor_filter
 
         matching_products = self._products_df.filter(product_filter)
-        cve_ids = matching_products.select("cve_id").unique()
+        cve_ids = matching_products.get_column("cve_id").unique().to_list()
 
         # Get CVE details
-        result = cves_df.filter(pl.col("id").is_in(cve_ids.to_series()))
+        result = cves_df.filter(pl.col("cve_id").is_in(cve_ids))
+        related = self._get_related_data(cve_ids)
 
-        return SearchResult(result, matching_products)
+        return SearchResult(result, **related)
 
     def by_vendor(self, vendor: str, fuzzy: bool = True) -> SearchResult:
         """Search CVEs affecting products from a vendor.
@@ -239,7 +364,7 @@ class CVESearchService:
         cves_df = self._ensure_cves_loaded()
 
         if self._products_df is None:
-            return SearchResult(pl.DataFrame())
+            return SearchResult(pl.DataFrame(schema=cves_df.schema))
 
         if fuzzy:
             vendor_filter = (
@@ -249,11 +374,12 @@ class CVESearchService:
             vendor_filter = pl.col("vendor") == vendor
 
         matching_products = self._products_df.filter(vendor_filter)
-        cve_ids = matching_products.select("cve_id").unique()
+        cve_ids = matching_products.get_column("cve_id").unique().to_list()
 
-        result = cves_df.filter(pl.col("id").is_in(cve_ids.to_series()))
+        result = cves_df.filter(pl.col("cve_id").is_in(cve_ids))
+        related = self._get_related_data(cve_ids)
 
-        return SearchResult(result, matching_products)
+        return SearchResult(result, **related)
 
     def by_cwe(self, cwe_id: str) -> SearchResult:
         """Search CVEs by CWE identifier.
@@ -266,20 +392,21 @@ class CVESearchService:
         """
         cves_df = self._ensure_cves_loaded()
 
-        if self._cwe_df is None:
-            return SearchResult(pl.DataFrame())
+        if self._cwes_df is None:
+            return SearchResult(pl.DataFrame(schema=cves_df.schema))
 
         # Normalize CWE ID
         cwe_id = cwe_id.upper()
         if not cwe_id.startswith("CWE-"):
             cwe_id = f"CWE-{cwe_id}"
 
-        matching_cwes = self._cwe_df.filter(pl.col("cwe_id") == cwe_id)
-        cve_ids = matching_cwes.select("cve_id").unique()
+        matching_cwes = self._cwes_df.filter(pl.col("cwe_id") == cwe_id)
+        cve_ids = matching_cwes.get_column("cve_id").unique().to_list()
 
-        result = cves_df.filter(pl.col("id").is_in(cve_ids.to_series()))
+        result = cves_df.filter(pl.col("cve_id").is_in(cve_ids))
+        related = self._get_related_data(cve_ids)
 
-        return SearchResult(result, cwes=matching_cwes)
+        return SearchResult(result, **related)
 
     def by_severity(
         self,
@@ -299,30 +426,23 @@ class CVESearchService:
         """
         cves_df = self._ensure_cves_loaded()
 
+        if self._metrics_df is None:
+            return SearchResult(pl.DataFrame(schema=cves_df.schema))
+
         min_score, max_score = SEVERITY_THRESHOLDS[severity]
 
-        # Create best CVSS score column
-        df = cves_df.with_columns(
-            [
-                pl.coalesce(
-                    [
-                        "cvss_v4",
-                        "cvss_v3_1",
-                        "cvss_v3",
-                        "adp_cvss_v4",
-                        "adp_cvss_v3_1",
-                        "adp_cvss_v3",
-                        "cvss_v2",
-                        "adp_cvss_v2",
-                    ]
-                ).alias("best_cvss")
-            ]
+        # Get CVE IDs with matching severity from metrics
+        # Filter to CVSS metrics only (not "other" type)
+        cvss_metrics = self._metrics_df.filter(
+            pl.col("metric_type").str.starts_with("cvss")
+            & pl.col("base_score").is_not_null()
+            & (pl.col("base_score") >= min_score)
+            & (pl.col("base_score") <= max_score)
         )
 
-        # Filter by severity
-        result = df.filter(
-            (pl.col("best_cvss") >= min_score) & (pl.col("best_cvss") <= max_score)
-        )
+        cve_ids = cvss_metrics.get_column("cve_id").unique().to_list()
+
+        result = cves_df.filter(pl.col("cve_id").is_in(cve_ids))
 
         # Apply date filters
         if after:
@@ -330,10 +450,10 @@ class CVESearchService:
         if before:
             result = result.filter(pl.col("date_published") <= before)
 
-        # Remove temporary column
-        result = result.drop("best_cvss")
+        filtered_cve_ids = result.get_column("cve_id").to_list()
+        related = self._get_related_data(filtered_cve_ids)
 
-        return SearchResult(result)
+        return SearchResult(result, **related)
 
     def by_date_range(
         self, after: Optional[str] = None, before: Optional[str] = None
@@ -356,7 +476,10 @@ class CVESearchService:
         if before:
             result = result.filter(pl.col("date_published") <= before)
 
-        return SearchResult(result)
+        cve_ids = result.get_column("cve_id").to_list()
+        related = self._get_related_data(cve_ids)
+
+        return SearchResult(result, **related)
 
     def recent(self, days: int = 30) -> SearchResult:
         """Get recently published CVEs.
@@ -367,14 +490,15 @@ class CVESearchService:
         Returns:
             SearchResult with recent CVEs.
         """
-        from datetime import timedelta
-
         cves_df = self._ensure_cves_loaded()
 
         cutoff = (datetime.now() - timedelta(days=days)).strftime("%Y-%m-%d")
         result = cves_df.filter(pl.col("date_published") >= cutoff)
 
-        return SearchResult(result)
+        cve_ids = result.get_column("cve_id").to_list()
+        related = self._get_related_data(cve_ids)
+
+        return SearchResult(result, **related)
 
     def stats(self) -> dict:
         """Get overall statistics about the CVE database.
@@ -392,7 +516,7 @@ class CVESearchService:
         # Count by year
         year_counts: dict[str, int] = {}
         for row in cves_df.iter_rows(named=True):
-            cve_id = row.get("id", "")
+            cve_id = row.get("cve_id", "")
             if cve_id.startswith("CVE-"):
                 parts = cve_id.split("-")
                 if len(parts) >= 2:
@@ -407,6 +531,30 @@ class CVESearchService:
             unique_products = self._products_df.select("product").n_unique()
             unique_vendors = self._products_df.select("vendor").n_unique()
 
+        # Metrics stats
+        metrics_count = len(self._metrics_df) if self._metrics_df is not None else 0
+        cves_with_cvss = 0
+        if self._metrics_df is not None:
+            cvss_metrics = self._metrics_df.filter(
+                pl.col("metric_type").str.starts_with("cvss")
+            )
+            cves_with_cvss = cvss_metrics.select("cve_id").n_unique()
+
+        # CWE stats
+        cwe_count = len(self._cwes_df) if self._cwes_df is not None else 0
+        unique_cwes = 0
+        if self._cwes_df is not None:
+            unique_cwes = (
+                self._cwes_df.filter(pl.col("cwe_id").is_not_null())
+                .select("cwe_id")
+                .n_unique()
+            )
+
+        # Reference stats
+        reference_count = (
+            len(self._references_df) if self._references_df is not None else 0
+        )
+
         return {
             "total_cves": total_cves,
             "states": {d["state"]: d["count"] for d in state_counts},
@@ -414,4 +562,114 @@ class CVESearchService:
             "total_product_entries": product_count,
             "unique_products": unique_products,
             "unique_vendors": unique_vendors,
+            "total_metrics": metrics_count,
+            "cves_with_cvss": cves_with_cvss,
+            "total_cwe_mappings": cwe_count,
+            "unique_cwes": unique_cwes,
+            "total_references": reference_count,
         }
+
+    def get_best_metric(self, cve_id: str) -> Optional[dict]:
+        """Get the best (most preferred) metric for a CVE.
+
+        Preference order:
+        1. CNA metrics over ADP metrics
+        2. Newer CVSS versions over older (v4 > v3.1 > v3 > v2)
+        3. Falls back to text severity metrics if no CVSS found
+
+        Args:
+            cve_id: CVE identifier.
+
+        Returns:
+            Dictionary with metric data, or None if no metrics found.
+        """
+        self._load_data()
+
+        if self._metrics_df is None:
+            return None
+
+        # First try CVSS metrics with numeric scores
+        cve_metrics = self._metrics_df.filter(
+            (pl.col("cve_id") == cve_id)
+            & pl.col("metric_type").str.starts_with("cvss")
+            & pl.col("base_score").is_not_null()
+        )
+
+        if len(cve_metrics) > 0:
+            # Score by preference
+            scored = cve_metrics.with_columns(
+                [
+                    pl.when(pl.col("source") == "cna")
+                    .then(100)
+                    .otherwise(0)
+                    .alias("source_pref"),
+                    pl.when(pl.col("metric_type") == "cvssV4_0")
+                    .then(40)
+                    .when(pl.col("metric_type") == "cvssV3_1")
+                    .then(30)
+                    .when(pl.col("metric_type") == "cvssV3_0")
+                    .then(20)
+                    .otherwise(10)
+                    .alias("version_pref"),
+                ]
+            ).with_columns(
+                [(pl.col("source_pref") + pl.col("version_pref")).alias("preference")]
+            )
+
+            best = scored.sort("preference", descending=True).head(1)
+
+            if len(best) > 0:
+                return best.to_dicts()[0]
+
+        # Fall back to text severity metrics (type="other")
+        text_metrics = self._metrics_df.filter(
+            (pl.col("cve_id") == cve_id)
+            & (pl.col("metric_type") == "other")
+            & pl.col("base_severity").is_not_null()
+        )
+
+        if len(text_metrics) > 0:
+            # Prefer CNA
+            cna_text = text_metrics.filter(pl.col("source") == "cna")
+            if len(cna_text) > 0:
+                return cna_text.head(1).to_dicts()[0]
+            return text_metrics.head(1).to_dicts()[0]
+
+        return None
+
+    def get_description(self, cve_id: str, lang: str = "en") -> Optional[str]:
+        """Get the description for a CVE in a specific language.
+
+        Args:
+            cve_id: CVE identifier.
+            lang: Language code (default: "en").
+
+        Returns:
+            Description string, or None if not found.
+        """
+        self._load_data()
+
+        if self._descriptions_df is None:
+            return None
+
+        # Prefer CNA descriptions over ADP
+        desc = self._descriptions_df.filter(
+            (pl.col("cve_id") == cve_id)
+            & (pl.col("lang") == lang)
+            & (pl.col("source") == "cna")
+        )
+
+        if len(desc) == 0:
+            # Fall back to any source
+            desc = self._descriptions_df.filter(
+                (pl.col("cve_id") == cve_id) & (pl.col("lang") == lang)
+            )
+
+        if len(desc) == 0:
+            # Fall back to any language
+            desc = self._descriptions_df.filter(pl.col("cve_id") == cve_id)
+
+        if len(desc) == 0:
+            return None
+
+        return desc.head(1).get_column("value").to_list()[0]

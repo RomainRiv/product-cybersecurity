@@ -16,17 +16,17 @@ from typing import Optional
 
 import typer
 from rich.console import Console
-from rich.table import Table
 from rich.panel import Panel
+from rich.table import Table
 
 from product_cybersecurity.core.config import Config
 from product_cybersecurity.services.downloader import DownloadService
 from product_cybersecurity.services.extractor import ExtractorService
 from product_cybersecurity.services.search import (
-    CVESearchService, 
-    SearchResult, 
-    SeverityLevel,
     SEVERITY_THRESHOLDS,
+    CVESearchService,
+    SearchResult,
+    SeverityLevel,
 )
 
 app = typer.Typer(
@@ -44,37 +44,51 @@ class OutputFormat:
     MARKDOWN = "markdown"
 
 
-def _get_severity(row: dict) -> tuple[str, str]:
+def _get_severity(
+    row: dict, search_service: Optional[CVESearchService] = None
+) -> tuple[str, str]:
     """Get severity score and version as separate values.
-    
+
     Returns a tuple of (score_str, version_str).
     - score_str: "8.1" or "High" or "-"
     - version_str: "v3.1", "v4.0*", "text", or "-"
-    
+
     ADP scores are marked with * (e.g., "v3.1*").
     """
-    # Check CVSS scores in preference order (newest versions first)
-    cvss_fields = [
-        ("cvss_v4", "v4.0"),
-        ("cvss_v3_1", "v3.1"),
-        ("cvss_v3", "v3.0"),
-        ("adp_cvss_v4", "v4.0*"),
-        ("adp_cvss_v3_1", "v3.1*"),
-        ("adp_cvss_v3", "v3.0*"),
-        ("cvss_v2", "v2.0"),
-        ("adp_cvss_v2", "v2.0*"),
-    ]
-    
-    for field, version in cvss_fields:
-        score = row.get(field)
-        if score is not None:
-            return f"{score:.1f}", version
-    
-    # Fall back to text severity if available
-    severity_text = row.get("severity_text")
-    if severity_text:
-        return severity_text, "text"
-    
+    cve_id = row.get("cve_id", "")
+
+    # If we have a search service, use it to get the best metric
+    if search_service:
+        metric = search_service.get_best_metric(cve_id)
+        if metric:
+            score = metric.get("base_score")
+            metric_type = metric.get("metric_type", "")
+            source = metric.get("source", "cna")
+            base_severity = metric.get("base_severity")
+
+            # Build version string
+            version = "v?"
+            if "V4" in metric_type.upper():
+                version = "v4.0"
+            elif "V3_1" in metric_type.upper():
+                version = "v3.1"
+            elif "V3_0" in metric_type.upper():
+                version = "v3.0"
+            elif "V2" in metric_type.upper():
+                version = "v2.0"
+            elif metric_type == "other" or not metric_type.startswith("cvss"):
+                version = "text"
+
+            # Mark ADP scores with *
+            if source.startswith("adp:"):
+                version = f"{version}*"
+
+            if score is not None:
+                return f"{score:.1f}", version
+            elif base_severity:
+                # Text severity only (no numeric score)
+                return str(base_severity), "text"
+
     return "-", "-"
 
 
@@ -83,18 +97,19 @@ def _output_result(
     format: str = OutputFormat.TABLE,
     verbose: bool = False,
     limit: int = 100,
+    search_service: Optional[CVESearchService] = None,
 ) -> None:
     """Output search result in the specified format."""
     df = result.cves
-    
+
     if len(df) == 0:
         console.print("[yellow]No results found.[/yellow]")
         return
-    
+
     if len(df) > limit:
         console.print(f"[yellow]Showing first {limit} of {len(df)} results[/yellow]")
         df = df.head(limit)
-    
+
     if format == OutputFormat.JSON:
         # JSON output for LLM consumption
         records = df.to_dicts()
@@ -107,29 +122,29 @@ def _output_result(
         else:
             output = records
         print(json.dumps(output, indent=2, default=str))
-    
+
     elif format == OutputFormat.MARKDOWN:
         # Markdown output for LLM consumption
         print("# CVE Search Results\n")
         print(f"Found **{len(result.cves)}** CVEs\n")
-        
+
         if verbose:
             summary = result.summary()
             print("## Summary\n")
             print(f"- Severity: {summary.get('severity_distribution', {})}")
             print(f"- Years: {summary.get('year_distribution', {})}")
             print()
-        
+
         print("## Results\n")
         print("| CVE ID | State | Title | Severity | Version |")
         print("|--------|-------|-------|----------|---------|")
         for row in df.iter_rows(named=True):
-            cve_id = row.get("id", "")
+            cve_id = row.get("cve_id", "")
             state = row.get("state", "")
-            title = (row.get("title") or "")[:50]
-            severity, version = _get_severity(row)
+            title = (row.get("cna_title") or "")[:50]
+            severity, version = _get_severity(row, search_service)
             print(f"| {cve_id} | {state} | {title} | {severity} | {version} |")
-    
+
     else:
         # Table output for human consumption
         table = Table(title=f"CVE Results ({len(result.cves)} total)")
@@ -139,132 +154,135 @@ def _output_result(
         table.add_column("Severity", justify="right")
         table.add_column("Version", justify="center")
         table.add_column("Published")
-        
+
         for row in df.iter_rows(named=True):
-            cve_id = row.get("id", "")
+            cve_id = row.get("cve_id", "")
             state = row.get("state", "")
-            title = (row.get("title") or "")[:60]
-            severity, version = _get_severity(row)
+            title = (row.get("cna_title") or "")[:60]
+            severity, version = _get_severity(row, search_service)
             published = str(row.get("date_published") or "")[:10]
             table.add_row(cve_id, state, title, severity, version, published)
-        
+
         console.print(table)
-        
+
         if verbose:
             summary = result.summary()
-            console.print(Panel(
-                f"Severity: {summary.get('severity_distribution', {})}\n"
-                f"Years: {summary.get('year_distribution', {})}",
-                title="Summary",
-            ))
+            console.print(
+                Panel(
+                    f"Severity: {summary.get('severity_distribution', {})}\n"
+                    f"Years: {summary.get('year_distribution', {})}",
+                    title="Summary",
+                )
+            )
 
 
 @app.command()
 def download(
     years: int = typer.Option(
-        None, "--years", "-y",
-        help="Number of years to download (default: from config)"
+        None, "--years", "-y", help="Number of years to download (default: from config)"
     ),
     all_data: bool = typer.Option(
-        False, "--all", "-a",
-        help="Download all data (CVEs, CWEs, CAPECs)"
+        False, "--all", "-a", help="Download all data (CVEs, CWEs, CAPECs)"
     ),
     cves_only: bool = typer.Option(
-        False, "--cves", "-c",
-        help="Download only CVE data"
+        False, "--cves", "-c", help="Download only CVE data"
     ),
 ) -> None:
     """Download CVE data from cvelistV5 repository."""
     config = Config()
     if years:
         config.default_years = years
-    
+
     service = DownloadService(config)
-    
+
     with console.status("[bold green]Downloading data..."):
         if all_data or not cves_only:
             console.print("[blue]Downloading CAPEC data...[/blue]")
             service.download_capec()
             console.print("[blue]Downloading CWE data...[/blue]")
             service.download_cwe()
-        
-        console.print(f"[blue]Downloading CVE data (last {config.default_years} years)...[/blue]")
+
+        console.print(
+            f"[blue]Downloading CVE data (last {config.default_years} years)...[/blue]"
+        )
         service.download_cves()
-        
+
         console.print("[blue]Extracting CVE JSON files...[/blue]")
         extracted = service.extract_cves()
         console.print(f"[green]✓ Extracted {extracted} CVE files[/green]")
-    
+
     console.print("[bold green]✓ Download complete![/bold green]")
 
 
 @app.command()
 def extract(
     years: int = typer.Option(
-        None, "--years", "-y",
-        help="Number of years to process (default: from config)"
+        None, "--years", "-y", help="Number of years to process (default: from config)"
     ),
-    verbose: bool = typer.Option(
-        False, "--verbose", "-v",
-        help="Show detailed output"
-    ),
+    verbose: bool = typer.Option(False, "--verbose", "-v", help="Show detailed output"),
 ) -> None:
     """Extract CVE data from JSON files to Parquet format."""
     config = Config()
     if years:
         config.default_years = years
-    
+
     service = ExtractorService(config)
-    
+
     with console.status("[bold green]Extracting CVE data..."):
         result = service.extract_all()
-    
-    # Result contains paths - show them
-    console.print(f"[green]✓ Extracted CVEs to {result.get('cves', 'N/A')}[/green]")
-    if 'cve_products' in result:
-        console.print(f"[green]✓ Extracted products to {result['cve_products']}[/green]")
-    if 'cve_cwe' in result:
-        console.print(f"[green]✓ Extracted CWE mappings to {result['cve_cwe']}[/green]")
-    
+
+    stats = result.get("stats", {})
+    paths = result.get("paths", {})
+
+    console.print(f"[green]✓ Extracted {stats.get('cves', 0)} CVEs[/green]")
+
+    if verbose:
+        console.print(f"  - Descriptions: {stats.get('descriptions', 0)}")
+        console.print(f"  - Metrics: {stats.get('metrics', 0)}")
+        console.print(f"  - Products: {stats.get('products', 0)}")
+        console.print(f"  - Versions: {stats.get('versions', 0)}")
+        console.print(f"  - CWEs: {stats.get('cwes', 0)}")
+        console.print(f"  - References: {stats.get('references', 0)}")
+        console.print(f"  - Credits: {stats.get('credits', 0)}")
+        console.print(f"  - Tags: {stats.get('tags', 0)}")
+
     console.print("[bold green]✓ Extraction complete![/bold green]")
 
 
 @app.command()
 def search(
-    query: str = typer.Argument(..., help="Search query (product name, vendor, or CWE ID)"),
+    query: str = typer.Argument(
+        ..., help="Search query (product name, vendor, or CWE ID)"
+    ),
     vendor: Optional[str] = typer.Option(
-        None, "--vendor", "-V",
-        help="Filter by vendor name"
+        None, "--vendor", "-V", help="Filter by vendor name"
     ),
     severity: Optional[str] = typer.Option(
-        None, "--severity", "-s",
-        help="Filter by severity (low, medium, high, critical)"
+        None,
+        "--severity",
+        "-s",
+        help="Filter by severity (low, medium, high, critical)",
     ),
     after: Optional[str] = typer.Option(
-        None, "--after",
-        help="Only CVEs published after this date (YYYY-MM-DD)"
+        None, "--after", help="Only CVEs published after this date (YYYY-MM-DD)"
     ),
     before: Optional[str] = typer.Option(
-        None, "--before",
-        help="Only CVEs published before this date (YYYY-MM-DD)"
+        None, "--before", help="Only CVEs published before this date (YYYY-MM-DD)"
     ),
     limit: int = typer.Option(
-        100, "--limit", "-n",
-        help="Maximum number of results to show"
+        100, "--limit", "-n", help="Maximum number of results to show"
     ),
     format: str = typer.Option(
-        "table", "--format", "-f",
-        help="Output format: table, json, markdown"
+        "table", "--format", "-f", help="Output format: table, json, markdown"
     ),
     verbose: bool = typer.Option(
-        False, "--verbose", "-v",
-        help="Show detailed output with summary statistics"
+        False, "--verbose", "-v", help="Show detailed output with summary statistics"
     ),
 ) -> None:
     """Search CVEs by product name, vendor, or CWE ID."""
     config = Config()
     service = CVESearchService(config)
-    
+
     # Determine search type based on query format
     if query.upper().startswith("CWE"):
         result = service.by_cwe(query)
@@ -273,18 +291,20 @@ def search(
     else:
         # Try product search first
         result = service.by_product(query)
-        
+
         # If no results, try vendor search
         if len(result.cves) == 0:
             result = service.by_vendor(query)
-    
+
     # Apply additional filters
     if severity:
         sev_lower = severity.lower()
         if sev_lower not in SEVERITY_THRESHOLDS:
-            console.print(f"[red]Invalid severity: {severity}. Must be: none, low, medium, high, critical[/red]")
+            console.print(
+                f"[red]Invalid severity: {severity}. Must be: none, low, medium, high, critical[/red]"
+            )
             raise typer.Exit(1)
-        
+
         # Cast to SeverityLevel type
         sev: SeverityLevel = sev_lower  # type: ignore[assignment]
         # Re-search with severity filter
@@ -293,146 +313,210 @@ def search(
         else:
             # Filter existing results by severity
             pass  # TODO: Add severity filtering to SearchResult
-    
-    _output_result(result, format=format, verbose=verbose, limit=limit)
+
+    _output_result(
+        result, format=format, verbose=verbose, limit=limit, search_service=service
+    )
 
 
 @app.command()
 def get(
     cve_id: str = typer.Argument(..., help="CVE ID (e.g., CVE-2024-1234)"),
     format: str = typer.Option(
-        "table", "--format", "-f",
-        help="Output format: table, json, markdown"
+        "table", "--format", "-f", help="Output format: table, json, markdown"
     ),
     verbose: bool = typer.Option(
-        False, "--verbose", "-v",
-        help="Show all available details"
+        False, "--verbose", "-v", help="Show all available details"
     ),
 ) -> None:
     """Get details for a specific CVE."""
     config = Config()
     service = CVESearchService(config)
-    
+
     result = service.by_id(cve_id)
-    
+
     if len(result.cves) == 0:
         console.print(f"[red]CVE not found: {cve_id}[/red]")
         raise typer.Exit(1)
-    
+
+    row = result.cves.to_dicts()[0]
+    description = service.get_description(row.get("cve_id", ""))
+    best_metric = service.get_best_metric(row.get("cve_id", ""))
+
     if format == OutputFormat.JSON:
-        output = result.cves.to_dicts()[0]
+        output = row.copy()
+        if description:
+            output["description"] = description
+        if best_metric:
+            output["best_metric"] = best_metric
         if result.products is not None and len(result.products) > 0:
             output["affected_products"] = result.products.to_dicts()
         if result.cwes is not None and len(result.cwes) > 0:
-            output["cwe_ids"] = result.cwes.to_dicts()
+            output["cwes"] = result.cwes.to_dicts()
+        if result.references is not None and len(result.references) > 0:
+            output["references"] = result.references.to_dicts()
         print(json.dumps(output, indent=2, default=str))
-    
+
     elif format == OutputFormat.MARKDOWN:
-        row = result.cves.to_dicts()[0]
-        print(f"# {row.get('id')}\n")
+        print(f"# {row.get('cve_id')}\n")
         print(f"**State:** {row.get('state')}\n")
-        print(f"**Title:** {row.get('title')}\n")
+        if row.get("cna_title"):
+            print(f"**Title:** {row.get('cna_title')}\n")
         print(f"**Published:** {row.get('date_published')}\n")
-        
-        cvss = row.get("cvss_v3_1") or row.get("cvss_v3") or row.get("cvss_v2")
-        if cvss:
-            print(f"**CVSS Score:** {cvss}\n")
-        
-        if row.get("description"):
-            print(f"## Description\n\n{row.get('description')}\n")
-        
+
+        if best_metric:
+            score = best_metric.get("base_score")
+            metric_type = best_metric.get("metric_type", "")
+            if score:
+                print(f"**CVSS Score:** {score} ({metric_type})\n")
+
+        if description:
+            print(f"## Description\n\n{description}\n")
+
         if result.products is not None and len(result.products) > 0:
             print("## Affected Products\n")
             for prod in result.products.iter_rows(named=True):
-                print(f"- {prod.get('vendor')}: {prod.get('product')} ({prod.get('version', 'any version')})")
-        
+                vendor = prod.get("vendor", "")
+                product = prod.get("product", "")
+                print(f"- {vendor}: {product}")
+
         if result.cwes is not None and len(result.cwes) > 0:
-            print("\n## CWE IDs\n")
+            print("\n## CWEs\n")
             for cwe in result.cwes.iter_rows(named=True):
-                print(f"- {cwe.get('cwe')}")
-    
+                cwe_id = cwe.get("cwe_id", "")
+                cwe_desc = cwe.get("description", "")
+                print(f"- {cwe_id}: {cwe_desc}")
+
+        if result.references is not None and len(result.references) > 0:
+            print("\n## References\n")
+            for ref in result.references.iter_rows(named=True):
+                url = ref.get("url", "")
+                tags = ref.get("tags", "")
+                print(f"- {url}" + (f" ({tags})" if tags else ""))
+
     else:
-        row = result.cves.to_dicts()[0]
-        
-        console.print(Panel(
-            f"[bold cyan]{row.get('id')}[/bold cyan]\n\n"
-            f"[bold]State:[/bold] {row.get('state')}\n"
-            f"[bold]Title:[/bold] {row.get('title')}\n"
-            f"[bold]Published:[/bold] {row.get('date_published')}\n"
-            f"[bold]Updated:[/bold] {row.get('date_updated')}",
-            title="CVE Details",
-        ))
-        
-        cvss = row.get("cvss_v3_1") or row.get("cvss_v3") or row.get("cvss_v2")
-        if cvss:
-            color = "red" if cvss >= 7.0 else "yellow" if cvss >= 4.0 else "green"
-            console.print(f"\n[bold]CVSS Score:[/bold] [{color}]{cvss:.1f}[/{color}]")
-        
-        if row.get("description"):
-            console.print(Panel(row.get("description"), title="Description"))
-        
+        title = row.get("cna_title") or "(No title)"
+        console.print(
+            Panel(
+                f"[bold cyan]{row.get('cve_id')}[/bold cyan]\n\n"
+                f"[bold]State:[/bold] {row.get('state')}\n"
+                f"[bold]Title:[/bold] {title}\n"
+                f"[bold]Published:[/bold] {row.get('date_published')}\n"
+                f"[bold]Updated:[/bold] {row.get('date_updated')}",
+                title="CVE Details",
+            )
+        )
+
+        if best_metric:
+            score = best_metric.get("base_score")
+            if score:
+                color = "red" if score >= 7.0 else "yellow" if score >= 4.0 else "green"
+                metric_type = best_metric.get("metric_type", "")
+                source = best_metric.get("source", "cna")
+                source_label = "" if source == "cna" else f" (from {source})"
+                console.print(
+                    f"\n[bold]CVSS Score:[/bold] [{color}]{score:.1f}[/{color}] ({metric_type}){source_label}"
+                )
+
+        if description:
+            console.print(Panel(description, title="Description"))
+
         if result.products is not None and len(result.products) > 0:
             table = Table(title="Affected Products")
             table.add_column("Vendor")
             table.add_column("Product")
-            table.add_column("Version")
+            table.add_column("Package")
+            table.add_column("Default Status")
             for prod in result.products.iter_rows(named=True):
                 table.add_row(
                     prod.get("vendor", ""),
                     prod.get("product", ""),
-                    prod.get("version", ""),
+                    prod.get("package_name", ""),
+                    prod.get("default_status", ""),
                 )
             console.print(table)
-        
+
+        if result.versions is not None and len(result.versions) > 0 and verbose:
+            table = Table(title="Affected Versions")
+            table.add_column("Version")
+            table.add_column("Type")
+            table.add_column("Status")
+            table.add_column("Less Than")
+            for ver in result.versions.iter_rows(named=True):
+                table.add_row(
+                    ver.get("version", ""),
+                    ver.get("version_type", ""),
+                    ver.get("status", ""),
+                    ver.get("less_than", "") or ver.get("less_than_or_equal", ""),
+                )
+            console.print(table)
+
         if result.cwes is not None and len(result.cwes) > 0:
-            console.print("\n[bold]CWE IDs:[/bold]", end=" ")
-            cwes = [cwe.get("cwe", "") for cwe in result.cwes.iter_rows(named=True)]
-            console.print(", ".join(cwes))
+            console.print("\n[bold]CWEs:[/bold]")
+            for cwe in result.cwes.iter_rows(named=True):
+                cwe_id = cwe.get("cwe_id", "")
+                cwe_desc = cwe.get("description", "")[:80]
+                console.print(f"  - {cwe_id}: {cwe_desc}")
+
+        if result.references is not None and len(result.references) > 0 and verbose:
+            console.print("\n[bold]References:[/bold]")
+            for ref in result.references.iter_rows(named=True):
+                url = ref.get("url", "")
+                console.print(f"  - {url}")
 
 
 @app.command()
 def stats(
     format: str = typer.Option(
-        "table", "--format", "-f",
-        help="Output format: table, json, markdown"
+        "table", "--format", "-f", help="Output format: table, json, markdown"
     ),
 ) -> None:
     """Show database statistics."""
     config = Config()
     service = CVESearchService(config)
-    
+
     try:
         statistics = service.stats()
     except FileNotFoundError:
-        console.print("[red]No data found. Run 'cve download' and 'cve extract' first.[/red]")
+        console.print(
+            "[red]No data found. Run 'cve download' and 'cve extract' first.[/red]"
+        )
         raise typer.Exit(1)
-    
+
     if format == OutputFormat.JSON:
         print(json.dumps(statistics, indent=2))
-    
+
     elif format == OutputFormat.MARKDOWN:
         print("# CVE Database Statistics\n")
         print(f"**Total CVEs:** {statistics['total_cves']}\n")
+        print(f"**CVEs with CVSS:** {statistics['cves_with_cvss']}\n")
         print(f"**Unique Products:** {statistics['unique_products']}\n")
         print(f"**Unique Vendors:** {statistics['unique_vendors']}\n")
-        
+        print(f"**Unique CWEs:** {statistics['unique_cwes']}\n")
+        print(f"**Total References:** {statistics['total_references']}\n")
+
         print("\n## CVEs by State\n")
         for state, count in statistics.get("states", {}).items():
             print(f"- {state}: {count}")
-        
+
         print("\n## CVEs by Year\n")
         for year, count in statistics.get("by_year", {}).items():
             print(f"- {year}: {count}")
-    
+
     else:
-        console.print(Panel(
-            f"[bold]Total CVEs:[/bold] {statistics['total_cves']}\n"
-            f"[bold]Product Entries:[/bold] {statistics['total_product_entries']}\n"
-            f"[bold]Unique Products:[/bold] {statistics['unique_products']}\n"
-            f"[bold]Unique Vendors:[/bold] {statistics['unique_vendors']}",
-            title="CVE Database Statistics",
-        ))
-        
+        console.print(
+            Panel(
+                f"[bold]Total CVEs:[/bold] {statistics['total_cves']}\n"
+                f"[bold]CVEs with CVSS:[/bold] {statistics['cves_with_cvss']}\n"
+                f"[bold]Product Entries:[/bold] {statistics['total_product_entries']}\n"
+                f"[bold]Unique Products:[/bold] {statistics['unique_products']}\n"
+                f"[bold]Unique Vendors:[/bold] {statistics['unique_vendors']}\n"
+                f"[bold]Unique CWEs:[/bold] {statistics['unique_cwes']}\n"
+                f"[bold]Total References:[/bold] {statistics['total_references']}",
+                title="CVE Database Statistics",
+            )
+        )
+
         if statistics.get("states"):
             table = Table(title="CVEs by State")
             table.add_column("State")
@@ -440,7 +524,7 @@ def stats(
             for state, count in statistics.get("states", {}).items():
                 table.add_row(state, str(count))
             console.print(table)
-        
+
         if statistics.get("by_year"):
             table = Table(title="CVEs by Year (recent)")
             table.add_column("Year")
@@ -453,34 +537,28 @@ def stats(
 
 @app.command()
 def recent(
-    days: int = typer.Option(
-        30, "--days", "-d",
-        help="Number of days to look back"
-    ),
+    days: int = typer.Option(30, "--days", "-d", help="Number of days to look back"),
     limit: int = typer.Option(
-        50, "--limit", "-n",
-        help="Maximum number of results to show"
+        50, "--limit", "-n", help="Maximum number of results to show"
     ),
     format: str = typer.Option(
-        "table", "--format", "-f",
-        help="Output format: table, json, markdown"
+        "table", "--format", "-f", help="Output format: table, json, markdown"
     ),
-    verbose: bool = typer.Option(
-        False, "--verbose", "-v",
-        help="Show detailed output"
-    ),
+    verbose: bool = typer.Option(False, "--verbose", "-v", help="Show detailed output"),
 ) -> None:
     """Show recently published CVEs."""
     config = Config()
     service = CVESearchService(config)
-    
+
     result = service.recent(days=days)
-    
+
     if len(result.cves) == 0:
         console.print(f"[yellow]No CVEs found in the last {days} days.[/yellow]")
         return
-    
-    _output_result(result, format=format, verbose=verbose, limit=limit)
+
+    _output_result(
+        result, format=format, verbose=verbose, limit=limit, search_service=service
+    )
 
 
 def main() -> None:

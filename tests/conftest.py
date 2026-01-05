@@ -262,157 +262,358 @@ def sample_cve_files(temp_config: Config) -> Config:
 
 @pytest.fixture
 def sample_parquet_data(temp_config: Config) -> Config:
-    """Create sample Parquet files for search tests."""
-    # CVEs table
+    """Create sample Parquet files for search tests using the new normalized schema."""
+    # CVEs table (main table)
     cves_data = [
         {
-            "id": "CVE-2022-2196",
-            "assigner": "Google",
+            "cve_id": "CVE-2022-2196",
             "state": "PUBLISHED",
-            "date_published": "2023-01-09",
-            "title": "KVM nVMX Spectre v2 vulnerability",
-            "description": "A regression exists in the Linux Kernel within KVM.",
-            "cvss_v3_1": 5.8,
-            "cvss_v3_1_vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:L/I:H/A:L",
-            "severity_text": None,
+            "assigner_org_id": "14ed7db2-1595-443d-9d34-6215bf890778",
+            "assigner_short_name": "Google",
+            "date_reserved": "2022-06-24T13:29:09.969Z",
+            "date_published": "2023-01-09T10:59:53.099Z",
+            "date_updated": "2025-02-13T16:28:57.097Z",
+            "cna_title": "KVM nVMX Spectre v2 vulnerability",
         },
         {
-            "id": "CVE-2016-7054",
-            "assigner": "openssl",
+            "cve_id": "CVE-2016-7054",
             "state": "PUBLISHED",
-            "date_published": "2017-05-04",
-            "title": "ChaCha20/Poly1305 heap-buffer-overflow",
-            "description": "Heap buffer overflow in OpenSSL",
-            "cvss_v3_1": None,
-            "cvss_v3_1_vector": None,
-            "severity_text": "High",
+            "assigner_org_id": "3a12439a-4ef3-4c79-92e6-6081a721f1e5",
+            "assigner_short_name": "openssl",
+            "date_reserved": None,
+            "date_published": "2017-05-04T00:00:00.000Z",
+            "date_updated": None,
+            "cna_title": "ChaCha20/Poly1305 heap-buffer-overflow",
         },
         {
-            "id": "CVE-2023-0001",
-            "assigner": "test",
+            "cve_id": "CVE-2023-0001",
             "state": "PUBLISHED",
-            "date_published": "2023-01-01",
-            "title": "Test vulnerability",
-            "description": "Test vulnerability with no severity",
-            "cvss_v3_1": None,
-            "cvss_v3_1_vector": None,
-            "severity_text": None,
+            "assigner_org_id": "14ed7db2-4595-443d-9d34-6215bf890778",
+            "assigner_short_name": "test",
+            "date_reserved": None,
+            "date_published": "2023-01-01T00:00:00.000Z",
+            "date_updated": None,
+            "cna_title": None,
         },
         {
-            "id": "CVE-2024-1234",
-            "assigner": "test",
+            "cve_id": "CVE-2024-1234",
             "state": "PUBLISHED",
-            "date_published": "2024-06-01",
-            "title": "Test with ADP",
-            "description": "Test with ADP metrics",
-            "cvss_v3_1": None,
-            "cvss_v3_1_vector": None,
-            "adp_cvss_v3_1": 9.8,
-            "severity_text": None,
+            "assigner_org_id": "14ed7db2-4595-443d-9d34-6215bf890778",
+            "assigner_short_name": "test",
+            "date_reserved": None,
+            "date_published": "2024-06-01T00:00:00.000Z",
+            "date_updated": None,
+            "cna_title": "Test with ADP",
         },
     ]
-
-    # Add missing columns to all rows
-    for row in cves_data:
-        for col in [
-            "cvss_v2",
-            "cvss_v3",
-            "cvss_v4",
-            "adp_cvss_v2",
-            "adp_cvss_v3",
-            "adp_cvss_v3_1",
-            "adp_cvss_v4",
-        ]:
-            if col not in row:
-                row[col] = None
-
     cves_df = pl.DataFrame(cves_data)
     cves_df.write_parquet(temp_config.cves_parquet)
 
+    # Descriptions table
+    descriptions_data = [
+        {
+            "cve_id": "CVE-2022-2196",
+            "lang": "en",
+            "value": "A regression exists in the Linux Kernel within KVM.",
+            "source": "cna",
+        },
+        {
+            "cve_id": "CVE-2016-7054",
+            "lang": "en",
+            "value": "ChaCha20/Poly1305 heap-buffer-overflow",
+            "source": "cna",
+        },
+        {
+            "cve_id": "CVE-2023-0001",
+            "lang": "en",
+            "value": "Test vulnerability with no severity",
+            "source": "cna",
+        },
+        {
+            "cve_id": "CVE-2024-1234",
+            "lang": "en",
+            "value": "Test with ADP metrics",
+            "source": "cna",
+        },
+    ]
+    descriptions_df = pl.DataFrame(descriptions_data)
+    descriptions_df.write_parquet(temp_config.cve_descriptions_parquet)
+
+    # Metrics table
+    metrics_data = [
+        {
+            "cve_id": "CVE-2022-2196",
+            "metric_type": "cvssV3_1",
+            "source": "cna",
+            "base_score": 5.8,
+            "base_severity": "MEDIUM",
+            "vector_string": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:L/I:H/A:L",
+            "attack_vector": "LOCAL",
+            "attack_complexity": "HIGH",
+            "privileges_required": "LOW",
+            "user_interaction": "NONE",
+            "scope": "UNCHANGED",
+            "confidentiality_impact": "LOW",
+            "integrity_impact": "HIGH",
+            "availability_impact": "LOW",
+            "exploit_maturity": None,
+            "exploitability_score": None,
+            "impact_score": None,
+        },
+        {
+            "cve_id": "CVE-2016-7054",
+            "metric_type": "other",
+            "source": "cna",
+            "base_score": None,
+            "base_severity": "High",
+            "vector_string": None,
+            "attack_vector": None,
+            "attack_complexity": None,
+            "privileges_required": None,
+            "user_interaction": None,
+            "scope": None,
+            "confidentiality_impact": None,
+            "integrity_impact": None,
+            "availability_impact": None,
+            "exploit_maturity": None,
+            "exploitability_score": None,
+            "impact_score": None,
+        },
+        {
+            "cve_id": "CVE-2024-1234",
+            "metric_type": "cvssV3_1",
+            "source": "adp:CISA-ADP",
+            "base_score": 9.8,
+            "base_severity": "CRITICAL",
+            "vector_string": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "attack_vector": "NETWORK",
+            "attack_complexity": "LOW",
+            "privileges_required": "NONE",
+            "user_interaction": "NONE",
+            "scope": "UNCHANGED",
+            "confidentiality_impact": "HIGH",
+            "integrity_impact": "HIGH",
+            "availability_impact": "HIGH",
+            "exploit_maturity": None,
+            "exploitability_score": None,
+            "impact_score": None,
+        },
+    ]
+    metrics_df = pl.DataFrame(metrics_data)
+    metrics_df.write_parquet(temp_config.cve_metrics_parquet)
+
     # Products table
     products_data = [
-        {"cve_id": "CVE-2022-2196", "vendor": "Linux", "product": "Linux Kernel"},
-        {"cve_id": "CVE-2016-7054", "vendor": "OpenSSL", "product": "OpenSSL"},
-        {"cve_id": "CVE-2023-0001", "vendor": "TestVendor", "product": "TestProduct"},
-        {"cve_id": "CVE-2024-1234", "vendor": "SomeVendor", "product": "SomeProduct"},
+        {
+            "cve_id": "CVE-2022-2196",
+            "product_id": 1,
+            "vendor": "Linux",
+            "product": "Linux Kernel",
+            "package_name": "KVM",
+            "cpes": None,
+            "modules": None,
+            "program_files": None,
+            "program_routines": None,
+            "platforms": None,
+            "repo": None,
+            "default_status": "unaffected",
+            "source": "cna",
+        },
+        {
+            "cve_id": "CVE-2016-7054",
+            "product_id": 2,
+            "vendor": "OpenSSL",
+            "product": "OpenSSL",
+            "package_name": None,
+            "cpes": None,
+            "modules": None,
+            "program_files": None,
+            "program_routines": None,
+            "platforms": None,
+            "repo": None,
+            "default_status": None,
+            "source": "cna",
+        },
+        {
+            "cve_id": "CVE-2023-0001",
+            "product_id": 3,
+            "vendor": "TestVendor",
+            "product": "TestProduct",
+            "package_name": None,
+            "cpes": None,
+            "modules": None,
+            "program_files": None,
+            "program_routines": None,
+            "platforms": None,
+            "repo": None,
+            "default_status": None,
+            "source": "cna",
+        },
+        {
+            "cve_id": "CVE-2024-1234",
+            "product_id": 4,
+            "vendor": "SomeVendor",
+            "product": "SomeProduct",
+            "package_name": None,
+            "cpes": None,
+            "modules": None,
+            "program_files": None,
+            "program_routines": None,
+            "platforms": None,
+            "repo": None,
+            "default_status": None,
+            "source": "cna",
+        },
     ]
     products_df = pl.DataFrame(products_data)
     products_df.write_parquet(temp_config.cve_products_parquet)
 
-    # CWE table
+    # Versions table
+    versions_data = [
+        {
+            "cve_id": "CVE-2022-2196",
+            "product_id": 1,
+            "version": "0",
+            "version_type": "custom",
+            "status": "affected",
+            "less_than": "6.2",
+            "less_than_or_equal": None,
+            "source": "cna",
+        },
+        {
+            "cve_id": "CVE-2016-7054",
+            "product_id": 2,
+            "version": "1.1.0",
+            "version_type": None,
+            "status": "affected",
+            "less_than": None,
+            "less_than_or_equal": None,
+            "source": "cna",
+        },
+    ]
+    versions_df = pl.DataFrame(versions_data)
+    versions_df.write_parquet(temp_config.cve_versions_parquet)
+
+    # CWEs table
     cwe_data = [
-        {"cve_id": "CVE-2022-2196", "cwe_id": "CWE-1188"},
-        {"cve_id": "CVE-2016-7054", "cwe_id": "CWE-119"},
+        {
+            "cve_id": "CVE-2022-2196",
+            "cwe_id": "CWE-1188",
+            "description": "CWE-1188 Insecure Default Initialization",
+            "lang": "en",
+            "type": "CWE",
+            "source": "cna",
+        },
+        {
+            "cve_id": "CVE-2016-7054",
+            "cwe_id": "CWE-119",
+            "description": "CWE-119 Buffer Errors",
+            "lang": "en",
+            "type": "CWE",
+            "source": "cna",
+        },
     ]
     cwe_df = pl.DataFrame(cwe_data)
-    cwe_df.write_parquet(temp_config.cve_cwe_parquet)
+    cwe_df.write_parquet(temp_config.cve_cwes_parquet)
+
+    # References table
+    references_data = [
+        {
+            "cve_id": "CVE-2022-2196",
+            "url": "https://kernel.dance/#2e7eab81425a",
+            "name": None,
+            "tags": None,
+            "source": "cna",
+        },
+        {
+            "cve_id": "CVE-2016-7054",
+            "url": "https://www.openssl.org/news/secadv/20161110.txt",
+            "name": None,
+            "tags": None,
+            "source": "cna",
+        },
+        {
+            "cve_id": "CVE-2023-0001",
+            "url": "https://example.com/advisory",
+            "name": None,
+            "tags": None,
+            "source": "cna",
+        },
+        {
+            "cve_id": "CVE-2024-1234",
+            "url": "https://example.com/advisory",
+            "name": None,
+            "tags": None,
+            "source": "cna",
+        },
+    ]
+    references_df = pl.DataFrame(references_data)
+    references_df.write_parquet(temp_config.cve_references_parquet)
+
+    # Credits table (empty for tests)
+    credits_data: list[dict] = []
+    credits_df = pl.DataFrame(
+        credits_data,
+        schema={
+            "cve_id": pl.Utf8,
+            "lang": pl.Utf8,
+            "value": pl.Utf8,
+            "type": pl.Utf8,
+            "user_uuid": pl.Utf8,
+            "source": pl.Utf8,
+        },
+    )
+    credits_df.write_parquet(temp_config.cve_credits_parquet)
+
+    # Tags table (empty for tests)
+    tags_data: list[dict] = []
+    tags_df = pl.DataFrame(
+        tags_data,
+        schema={
+            "cve_id": pl.Utf8,
+            "tag": pl.Utf8,
+            "source": pl.Utf8,
+        },
+    )
+    tags_df.write_parquet(temp_config.cve_tags_parquet)
 
     return temp_config
 
 
 @pytest.fixture
-def mock_row_with_cvss() -> dict:
-    """Sample row with CVSS v3.1 score."""
+def mock_metric_with_cvss() -> dict:
+    """Sample metric dict with CVSS v3.1 score."""
     return {
-        "id": "CVE-2022-2196",
-        "cvss_v4": None,
-        "cvss_v3_1": 5.8,
-        "cvss_v3": None,
-        "cvss_v2": None,
-        "adp_cvss_v4": None,
-        "adp_cvss_v3_1": None,
-        "adp_cvss_v3": None,
-        "adp_cvss_v2": None,
-        "severity_text": None,
+        "cve_id": "CVE-2022-2196",
+        "metric_type": "cvssV3_1",
+        "source": "cna",
+        "base_score": 5.8,
+        "base_severity": "MEDIUM",
+        "vector_string": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:L/I:H/A:L",
     }
 
 
 @pytest.fixture
-def mock_row_with_text_severity() -> dict:
-    """Sample row with text severity only."""
+def mock_metric_with_text_severity() -> dict:
+    """Sample metric dict with text severity only."""
     return {
-        "id": "CVE-2016-7054",
-        "cvss_v4": None,
-        "cvss_v3_1": None,
-        "cvss_v3": None,
-        "cvss_v2": None,
-        "adp_cvss_v4": None,
-        "adp_cvss_v3_1": None,
-        "adp_cvss_v3": None,
-        "adp_cvss_v2": None,
-        "severity_text": "High",
+        "cve_id": "CVE-2016-7054",
+        "metric_type": "other",
+        "source": "cna",
+        "base_score": None,
+        "base_severity": "High",
+        "vector_string": None,
     }
 
 
 @pytest.fixture
-def mock_row_no_severity() -> dict:
-    """Sample row with no severity information."""
+def mock_metric_adp() -> dict:
+    """Sample metric dict with ADP CVSS score."""
     return {
-        "id": "CVE-2023-0001",
-        "cvss_v4": None,
-        "cvss_v3_1": None,
-        "cvss_v3": None,
-        "cvss_v2": None,
-        "adp_cvss_v4": None,
-        "adp_cvss_v3_1": None,
-        "adp_cvss_v3": None,
-        "adp_cvss_v2": None,
-        "severity_text": None,
-    }
-
-
-@pytest.fixture
-def mock_row_with_adp() -> dict:
-    """Sample row with ADP CVSS score."""
-    return {
-        "id": "CVE-2024-1234",
-        "cvss_v4": None,
-        "cvss_v3_1": None,
-        "cvss_v3": None,
-        "cvss_v2": None,
-        "adp_cvss_v4": None,
-        "adp_cvss_v3_1": 9.8,
-        "adp_cvss_v3": None,
-        "adp_cvss_v2": None,
-        "severity_text": None,
+        "cve_id": "CVE-2024-1234",
+        "metric_type": "cvssV3_1",
+        "source": "adp:CISA-ADP",
+        "base_score": 9.8,
+        "base_severity": "CRITICAL",
+        "vector_string": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
     }

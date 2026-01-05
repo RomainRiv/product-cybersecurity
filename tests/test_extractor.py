@@ -2,6 +2,9 @@
 
 from product_cybersecurity.models.cve_model import CveJsonRecordFormat
 from product_cybersecurity.services.extractor import (
+    CVECWE,
+    CVEDescription,
+    CVEMetric,
     CVEProduct,
     CVERecord,
     ExtractedData,
@@ -107,26 +110,74 @@ class TestCVERecordModel:
 
     def test_minimal_record(self):
         """Test creating a minimal CVE record."""
-        record = CVERecord(id="CVE-2024-1234", state="PUBLISHED")
-        assert record.id == "CVE-2024-1234"
+        record = CVERecord(
+            cve_id="CVE-2024-1234",
+            state="PUBLISHED",
+            data_type="CVE_RECORD",
+            data_version="5.1",
+        )
+        assert record.cve_id == "CVE-2024-1234"
         assert record.state == "PUBLISHED"
-        assert record.cvss_v3_1 is None
-        assert record.severity_text is None
+        assert record.cna_title is None
+        assert record.date_published is None
 
     def test_full_record(self):
         """Test creating a full CVE record."""
         record = CVERecord(
-            id="CVE-2024-1234",
+            cve_id="CVE-2024-1234",
             state="PUBLISHED",
-            assigner="test",
-            title="Test vulnerability",
-            description="This is a test",
-            cvss_v3_1=7.5,
-            cvss_v3_1_vector="CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
-            severity_text=None,
+            data_type="CVE_RECORD",
+            data_version="5.1",
+            assigner_org_id="14ed7db2-1595-443d-9d34-6215bf890778",
+            assigner_short_name="Google",
+            date_published="2024-01-01T00:00:00.000Z",
+            cna_title="Test vulnerability",
         )
-        assert record.cvss_v3_1 == 7.5
-        assert record.description == "This is a test"
+        assert record.assigner_short_name == "Google"
+        assert record.cna_title == "Test vulnerability"
+
+
+class TestCVEMetricModel:
+    """Tests for CVEMetric model."""
+
+    def test_cvss_v3_1_metric(self):
+        """Test creating a CVSS v3.1 metric."""
+        metric = CVEMetric(
+            cve_id="CVE-2024-1234",
+            metric_type="cvssV3_1",
+            source="cna",
+            base_score=7.5,
+            base_severity="HIGH",
+            vector_string="CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+        )
+        assert metric.base_score == 7.5
+        assert metric.metric_type == "cvssV3_1"
+
+    def test_text_severity_metric(self):
+        """Test creating a text severity metric."""
+        metric = CVEMetric(
+            cve_id="CVE-2024-1234",
+            metric_type="other",
+            source="cna",
+            base_severity="High",
+        )
+        assert metric.base_score is None
+        assert metric.base_severity == "High"
+
+
+class TestCVEDescriptionModel:
+    """Tests for CVEDescription model."""
+
+    def test_basic_description(self):
+        """Test creating a description."""
+        desc = CVEDescription(
+            cve_id="CVE-2024-1234",
+            lang="en",
+            value="Test vulnerability description",
+            source="cna",
+        )
+        assert desc.lang == "en"
+        assert desc.value == "Test vulnerability description"
 
 
 class TestCVEProductModel:
@@ -135,24 +186,29 @@ class TestCVEProductModel:
     def test_minimal_product(self):
         """Test creating a minimal product record."""
         product = CVEProduct(
-            cve_id="CVE-2024-1234", vendor="TestVendor", product="TestProduct"
+            cve_id="CVE-2024-1234",
+            product_id="1",
+            vendor="TestVendor",
+            product="TestProduct",
+            source="cna",
         )
         assert product.cve_id == "CVE-2024-1234"
         assert product.vendor == "TestVendor"
         assert product.product == "TestProduct"
 
-    def test_product_with_version(self):
-        """Test creating a product with version info."""
+    def test_product_with_package_name(self):
+        """Test creating a product with package name."""
         product = CVEProduct(
             cve_id="CVE-2024-1234",
+            product_id="1",
             vendor="Linux",
             product="Linux Kernel",
-            version="5.0",
-            less_than="6.2",
-            status="affected",
+            package_name="KVM",
+            default_status="unaffected",
+            source="cna",
         )
-        assert product.less_than == "6.2"
-        assert product.status == "affected"
+        assert product.package_name == "KVM"
+        assert product.default_status == "unaffected"
 
 
 class TestExtractSingleCVE:
@@ -165,11 +221,19 @@ class TestExtractSingleCVE:
         cve_model = CveJsonRecordFormat.model_validate(SAMPLE_CVE_2022_2196)
         result = _extract_single_cve(cve_model)
 
-        assert result.cve.id == "CVE-2022-2196"
+        assert result.cve.cve_id == "CVE-2022-2196"
         assert result.cve.state == "PUBLISHED"
-        assert result.cve.cvss_v3_1 == 5.8
-        assert result.cve.title == "KVM nVMX Spectre v2 vulnerability"
-        assert "KVM" in (result.cve.description or "")
+        assert result.cve.cna_title == "KVM nVMX Spectre v2 vulnerability"
+
+        # Check metrics
+        cvss_metrics = [m for m in result.metrics if m.metric_type == "cvssV3_1"]
+        assert len(cvss_metrics) >= 1
+        assert cvss_metrics[0].base_score == 5.8
+
+        # Check descriptions
+        en_desc = [d for d in result.descriptions if d.lang == "en"]
+        assert len(en_desc) >= 1
+        assert "KVM" in en_desc[0].value
 
     def test_extract_products(self):
         """Test extracting affected products."""
@@ -199,8 +263,10 @@ class TestExtractSingleCVE:
         cve_model = CveJsonRecordFormat.model_validate(SAMPLE_CVE_TEXT_SEVERITY)
         result = _extract_single_cve(cve_model)
 
-        assert result.cve.cvss_v3_1 is None
-        assert result.cve.severity_text == "High"
+        # Should have an "other" metric with text severity
+        other_metrics = [m for m in result.metrics if m.metric_type == "other"]
+        assert len(other_metrics) >= 1
+        assert other_metrics[0].base_severity == "High"
 
     def test_extract_no_severity(self):
         """Test extracting CVE with no severity info."""
@@ -209,9 +275,8 @@ class TestExtractSingleCVE:
         cve_model = CveJsonRecordFormat.model_validate(SAMPLE_CVE_NO_SEVERITY)
         result = _extract_single_cve(cve_model)
 
-        assert result.cve.cvss_v3_1 is None
-        assert result.cve.cvss_v2 is None
-        assert result.cve.severity_text is None
+        # Should have no metrics
+        assert len(result.metrics) == 0
 
     def test_extract_adp_metrics(self):
         """Test extracting ADP metrics."""
@@ -220,6 +285,8 @@ class TestExtractSingleCVE:
         cve_model = CveJsonRecordFormat.model_validate(SAMPLE_CVE_WITH_ADP)
         result = _extract_single_cve(cve_model)
 
-        # CNA has no CVSS, but ADP should
-        assert result.cve.cvss_v3_1 is None
-        assert result.cve.adp_cvss_v3_1 == 9.8
+        # CNA has no CVSS, but ADP should have one
+        adp_metrics = [m for m in result.metrics if m.source.startswith("adp:")]
+        assert len(adp_metrics) >= 1
+        assert adp_metrics[0].base_score == 9.8
+        assert adp_metrics[0].source == "adp:CISA-ADP"
