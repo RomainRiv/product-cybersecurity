@@ -420,6 +420,99 @@ def get(
         if description:
             console.print(Panel(description, title="Description"))
 
+        # Show detailed CVSS metrics in verbose mode (after description)
+        if verbose and best_metric:
+            score = best_metric.get("base_score")
+            metric_type = best_metric.get("metric_type", "")
+
+            if score or best_metric.get("base_severity"):
+                cvss_details = []
+
+                vector = best_metric.get("vector_string")
+                severity = best_metric.get("base_severity")
+
+                if vector:
+                    cvss_details.append(f"[bold]Vector:[/bold] {vector}")
+                if severity:
+                    cvss_details.append(f"[bold]Severity:[/bold] {severity}")
+
+                # Show CVSS v3.x/v4 specific metrics
+                if metric_type.startswith("cvssV3") or metric_type.startswith("cvssV4"):
+                    cvss_details.append("")  # Empty line for spacing
+
+                    av = best_metric.get("attack_vector")
+                    if av:
+                        cvss_details.append(f"[dim]Attack Vector:[/dim] {av}")
+
+                    ac = best_metric.get("attack_complexity")
+                    if ac:
+                        cvss_details.append(f"[dim]Attack Complexity:[/dim] {ac}")
+
+                    pr = best_metric.get("privileges_required")
+                    if pr:
+                        cvss_details.append(f"[dim]Privileges Required:[/dim] {pr}")
+
+                    ui = best_metric.get("user_interaction")
+                    if ui:
+                        cvss_details.append(f"[dim]User Interaction:[/dim] {ui}")
+
+                    scope = best_metric.get("scope")
+                    if scope:
+                        cvss_details.append(f"[dim]Scope:[/dim] {scope}")
+
+                    cvss_details.append("")  # Empty line for spacing
+
+                    c = best_metric.get("confidentiality_impact")
+                    if c:
+                        cvss_details.append(f"[dim]Confidentiality Impact:[/dim] {c}")
+
+                    i = best_metric.get("integrity_impact")
+                    if i:
+                        cvss_details.append(f"[dim]Integrity Impact:[/dim] {i}")
+
+                    a = best_metric.get("availability_impact")
+                    if a:
+                        cvss_details.append(f"[dim]Availability Impact:[/dim] {a}")
+
+                    # CVSS v4 additional metrics
+                    if metric_type.startswith("cvssV4"):
+                        ar = best_metric.get("attack_requirements")
+                        if ar:
+                            cvss_details.append(f"[dim]Attack Requirements:[/dim] {ar}")
+
+                # Show CVSS v2 specific metrics
+                elif metric_type == "cvssV2":
+                    cvss_details.append("")  # Empty line for spacing
+
+                    av = best_metric.get("access_vector")
+                    if av:
+                        cvss_details.append(f"[dim]Access Vector:[/dim] {av}")
+
+                    ac = best_metric.get("access_complexity")
+                    if ac:
+                        cvss_details.append(f"[dim]Access Complexity:[/dim] {ac}")
+
+                    auth = best_metric.get("authentication")
+                    if auth:
+                        cvss_details.append(f"[dim]Authentication:[/dim] {auth}")
+
+                    cvss_details.append("")  # Empty line for spacing
+
+                    c = best_metric.get("confidentiality_impact")
+                    if c:
+                        cvss_details.append(f"[dim]Confidentiality Impact:[/dim] {c}")
+
+                    i = best_metric.get("integrity_impact")
+                    if i:
+                        cvss_details.append(f"[dim]Integrity Impact:[/dim] {i}")
+
+                    a = best_metric.get("availability_impact")
+                    if a:
+                        cvss_details.append(f"[dim]Availability Impact:[/dim] {a}")
+
+                if cvss_details:
+                    console.print(Panel("\n".join(cvss_details), title="CVSS Details"))
+
         if result.products is not None and len(result.products) > 0:
             table = Table(title="Affected Products")
             table.add_column("Vendor")
