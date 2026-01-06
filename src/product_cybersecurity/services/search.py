@@ -4,6 +4,7 @@ This service provides search capabilities over the normalized CVE parquet files.
 It supports searching by CVE ID, product, vendor, CWE, severity, and date range.
 """
 
+import re
 from datetime import datetime, timedelta
 from typing import Dict, List, Literal, Optional
 
@@ -308,7 +309,11 @@ class CVESearchService:
         return SearchResult(result, **related)
 
     def by_product(
-        self, product: str, vendor: Optional[str] = None, fuzzy: bool = True
+        self,
+        product: str,
+        vendor: Optional[str] = None,
+        fuzzy: bool = True,
+        exact: bool = False,
     ) -> SearchResult:
         """Search CVEs affecting a product.
 
@@ -316,6 +321,7 @@ class CVESearchService:
             product: Product name to search for.
             vendor: Optional vendor name to filter by.
             fuzzy: If True, use case-insensitive substring matching.
+            exact: If True, use literal string matching (no regex).
 
         Returns:
             SearchResult with matching CVEs.
@@ -327,16 +333,30 @@ class CVESearchService:
 
         # Filter products
         if fuzzy:
+            # When exact=True, use literal matching (no regex)
+            # When exact=False, use regex matching (escape special chars for safety)
+            if exact:
+                search_product = product.lower()
+            else:
+                search_product = re.escape(product.lower())
             product_filter = (
-                pl.col("product").str.to_lowercase().str.contains(product.lower())
+                pl.col("product")
+                .str.to_lowercase()
+                .str.contains(search_product, literal=exact)
             )
         else:
             product_filter = pl.col("product") == product
 
         if vendor:
             if fuzzy:
+                if exact:
+                    search_vendor = vendor.lower()
+                else:
+                    search_vendor = re.escape(vendor.lower())
                 vendor_filter = (
-                    pl.col("vendor").str.to_lowercase().str.contains(vendor.lower())
+                    pl.col("vendor")
+                    .str.to_lowercase()
+                    .str.contains(search_vendor, literal=exact)
                 )
             else:
                 vendor_filter = pl.col("vendor") == vendor
@@ -351,12 +371,15 @@ class CVESearchService:
 
         return SearchResult(result, **related)
 
-    def by_vendor(self, vendor: str, fuzzy: bool = True) -> SearchResult:
+    def by_vendor(
+        self, vendor: str, fuzzy: bool = True, exact: bool = False
+    ) -> SearchResult:
         """Search CVEs affecting products from a vendor.
 
         Args:
             vendor: Vendor name to search for.
             fuzzy: If True, use case-insensitive substring matching.
+            exact: If True, use literal string matching (no regex).
 
         Returns:
             SearchResult with matching CVEs.
@@ -367,8 +390,16 @@ class CVESearchService:
             return SearchResult(pl.DataFrame(schema=cves_df.schema))
 
         if fuzzy:
+            # When exact=True, use literal matching (no regex)
+            # When exact=False, use regex matching (escape special chars for safety)
+            if exact:
+                search_vendor = vendor.lower()
+            else:
+                search_vendor = re.escape(vendor.lower())
             vendor_filter = (
-                pl.col("vendor").str.to_lowercase().str.contains(vendor.lower())
+                pl.col("vendor")
+                .str.to_lowercase()
+                .str.contains(search_vendor, literal=exact)
             )
         else:
             vendor_filter = pl.col("vendor") == vendor
@@ -674,6 +705,137 @@ class CVESearchService:
 
         return desc.head(1).get_column("value").to_list()[0]
 
+    def get_kev_info(self, cve_id: str) -> Optional[dict]:
+        """Get CISA Known Exploited Vulnerability (KEV) info for a CVE.
+
+        Args:
+            cve_id: CVE identifier.
+
+        Returns:
+            Dictionary with KEV data including dateAdded and reference, or None if not in KEV.
+        """
+        self._load_data()
+
+        if self._metrics_df is None:
+            return None
+
+        kev_metrics = self._metrics_df.filter(
+            (pl.col("cve_id") == cve_id) & (pl.col("other_type") == "kev")
+        )
+
+        if len(kev_metrics) == 0:
+            return None
+
+        kev_row = kev_metrics.head(1).to_dicts()[0]
+        other_content = kev_row.get("other_content")
+
+        if other_content:
+            import json as json_module
+
+            try:
+                return json_module.loads(other_content)
+            except (json_module.JSONDecodeError, TypeError):
+                return {"raw": other_content}
+        return None
+
+    def get_ssvc_info(self, cve_id: str) -> Optional[dict]:
+        """Get CISA SSVC (Stakeholder-Specific Vulnerability Categorization) info for a CVE.
+
+        Args:
+            cve_id: CVE identifier.
+
+        Returns:
+            Dictionary with SSVC data, or None if not available.
+        """
+        self._load_data()
+
+        if self._metrics_df is None:
+            return None
+
+        ssvc_metrics = self._metrics_df.filter(
+            (pl.col("cve_id") == cve_id) & (pl.col("other_type") == "ssvc")
+        )
+
+        if len(ssvc_metrics) == 0:
+            return None
+
+        ssvc_row = ssvc_metrics.head(1).to_dicts()[0]
+        other_content = ssvc_row.get("other_content")
+
+        if other_content:
+            import json as json_module
+
+            try:
+                return json_module.loads(other_content)
+            except (json_module.JSONDecodeError, TypeError):
+                return {"raw": other_content}
+        return None
+
+    def filter_by_state(self, result: SearchResult, state: str) -> SearchResult:
+        """Filter an existing SearchResult by CVE state.
+
+        Args:
+            result: SearchResult to filter.
+            state: CVE state to filter by (e.g., "PUBLISHED", "REJECTED").
+
+        Returns:
+            New SearchResult with filtered CVEs and related data.
+        """
+        filtered_cves = result.cves.filter(
+            pl.col("state").str.to_uppercase() == state.upper()
+        )
+
+        cve_ids = filtered_cves.get_column("cve_id").to_list()
+        related = self._get_related_data(cve_ids)
+
+        return SearchResult(filtered_cves, **related)
+
+    def filter_by_kev(self, result: SearchResult) -> SearchResult:
+        """Filter an existing SearchResult to only include CVEs in CISA KEV.
+
+        Args:
+            result: SearchResult to filter.
+
+        Returns:
+            New SearchResult with only KEV CVEs.
+        """
+        self._load_data()
+
+        if self._metrics_df is None:
+            return SearchResult(pl.DataFrame(schema=result.cves.schema))
+
+        # Get CVE IDs that have KEV entries
+        kev_cves = (
+            self._metrics_df.filter(pl.col("other_type") == "kev")
+            .get_column("cve_id")
+            .unique()
+            .to_list()
+        )
+
+        cve_ids_in_result = set(result.cves.get_column("cve_id").to_list())
+        kev_cve_ids = [cve_id for cve_id in kev_cves if cve_id in cve_ids_in_result]
+
+        filtered_cves = result.cves.filter(pl.col("cve_id").is_in(kev_cve_ids))
+        related = self._get_related_data(kev_cve_ids)
+
+        return SearchResult(filtered_cves, **related)
+
+    @staticmethod
+    def validate_date(date_str: str) -> bool:
+        """Validate a date string is in YYYY-MM-DD format.
+
+        Args:
+            date_str: Date string to validate.
+
+        Returns:
+            True if valid, False otherwise.
+        """
+        try:
+            datetime.strptime(date_str, "%Y-%m-%d")
+            return True
+        except ValueError:
+            return False
+
     def filter_by_date(
         self,
         result: SearchResult,
@@ -689,7 +851,15 @@ class CVESearchService:
 
         Returns:
             New SearchResult with filtered CVEs and related data.
+
+        Raises:
+            ValueError: If date format is invalid.
         """
+        if after and not self.validate_date(after):
+            raise ValueError(f"Invalid date format: {after}. Expected YYYY-MM-DD.")
+        if before and not self.validate_date(before):
+            raise ValueError(f"Invalid date format: {before}. Expected YYYY-MM-DD.")
+
         filtered_cves = result.cves
 
         if after:

@@ -12,6 +12,7 @@ Usage:
 """
 
 import json
+import re
 from typing import Optional
 
 import typer
@@ -28,6 +29,9 @@ from product_cybersecurity.services.search import (
     SearchResult,
     SeverityLevel,
 )
+
+# Regex pattern to match CVE IDs
+CVE_ID_PATTERN = re.compile(r"^CVE-\d{4}-\d{4,}$", re.IGNORECASE)
 
 app = typer.Typer(
     name="cve",
@@ -98,56 +102,114 @@ def _output_result(
     verbose: bool = False,
     limit: int = 100,
     search_service: Optional[CVESearchService] = None,
+    output_file: Optional[str] = None,
 ) -> None:
-    """Output search result in the specified format."""
+    """Output search result in the specified format.
+
+    Args:
+        result: Search results to output
+        format: Output format (table, json, markdown)
+        verbose: Include detailed information
+        limit: Maximum number of results (ignored when output_file is specified)
+        search_service: Service for getting severity info
+        output_file: Path to write output file (if specified, no truncation)
+    """
     df = result.cves
 
     if len(df) == 0:
-        console.print("[yellow]No results found.[/yellow]")
-        return
+        if output_file:
+            # Still write empty result to file
+            pass
+        else:
+            console.print("[yellow]No results found.[/yellow]")
+            return
 
-    if len(df) > limit:
-        console.print(f"[yellow]Showing first {limit} of {len(df)} results[/yellow]")
+    # When writing to file, don't truncate
+    truncated = False if output_file else len(df) > limit
+    total_count = len(df)
+    if truncated:
         df = df.head(limit)
 
     if format == OutputFormat.JSON:
-        # JSON output for LLM consumption
-        records = df.to_dicts()
+        # JSON output for LLM consumption - add severity info to each record
+        records = []
+        for row in df.iter_rows(named=True):
+            record = dict(row)
+            if search_service:
+                severity, version = _get_severity(row, search_service)
+                record["severity"] = severity
+                record["cvss_version"] = version
+            records.append(record)
+
         if verbose:
             output: object = {
-                "count": len(result.cves),
+                "count": total_count,
+                "showing": len(records),
+                "truncated": truncated,
                 "results": records,
                 "summary": result.summary(),
             }
         else:
-            output = records
-        print(json.dumps(output, indent=2, default=str))
+            output = {
+                "count": total_count,
+                "showing": len(records),
+                "truncated": truncated,
+                "results": records,
+            }
+
+        json_output = json.dumps(output, indent=2, default=str)
+        if output_file:
+            from pathlib import Path
+
+            Path(output_file).write_text(json_output)
+            console.print(f"[green]Output written to {output_file}[/green]")
+        else:
+            print(json_output)
 
     elif format == OutputFormat.MARKDOWN:
         # Markdown output for LLM consumption
-        print("# CVE Search Results\n")
-        print(f"Found **{len(result.cves)}** CVEs\n")
+        lines = []
+        lines.append("# CVE Search Results\n")
+        lines.append(
+            f"Found **{total_count}** CVEs"
+            + (f" (showing first {limit})" if truncated else "")
+            + "\n"
+        )
 
         if verbose:
             summary = result.summary()
-            print("## Summary\n")
-            print(f"- Severity: {summary.get('severity_distribution', {})}")
-            print(f"- Years: {summary.get('year_distribution', {})}")
-            print()
+            lines.append("## Summary\n")
+            lines.append(f"- Severity: {summary.get('severity_distribution', {})}")
+            lines.append(f"- Years: {summary.get('year_distribution', {})}")
+            lines.append("")
 
-        print("## Results\n")
-        print("| CVE ID | State | Title | Severity | Version |")
-        print("|--------|-------|-------|----------|---------|")
+        lines.append("## Results\n")
+        lines.append("| CVE ID | State | Title | Severity | Version |")
+        lines.append("|--------|-------|-------|----------|---------|")
         for row in df.iter_rows(named=True):
             cve_id = row.get("cve_id", "")
             state = row.get("state", "")
             title = (row.get("cna_title") or "")[:50]
             severity, version = _get_severity(row, search_service)
-            print(f"| {cve_id} | {state} | {title} | {severity} | {version} |")
+            lines.append(f"| {cve_id} | {state} | {title} | {severity} | {version} |")
+
+        markdown_output = "\n".join(lines)
+        if output_file:
+            from pathlib import Path
+
+            Path(output_file).write_text(markdown_output)
+            console.print(f"[green]Output written to {output_file}[/green]")
+        else:
+            print(markdown_output)
 
     else:
         # Table output for human consumption
-        table = Table(title=f"CVE Results ({len(result.cves)} total)")
+        if truncated:
+            console.print(
+                f"[yellow]Showing first {limit} of {total_count} results[/yellow]"
+            )
+
+        table = Table(title=f"CVE Results ({total_count} total)")
         table.add_column("CVE ID", style="cyan")
         table.add_column("State", style="green")
         table.add_column("Title")
@@ -263,11 +325,26 @@ def search(
         "-s",
         help="Filter by severity (low, medium, high, critical)",
     ),
+    state: Optional[str] = typer.Option(
+        None,
+        "--state",
+        "-S",
+        help="Filter by CVE state (published, rejected)",
+    ),
     after: Optional[str] = typer.Option(
         None, "--after", help="Only CVEs published after this date (YYYY-MM-DD)"
     ),
     before: Optional[str] = typer.Option(
         None, "--before", help="Only CVEs published before this date (YYYY-MM-DD)"
+    ),
+    kev: bool = typer.Option(
+        False,
+        "--kev",
+        "-k",
+        help="Only show CVEs in CISA Known Exploited Vulnerabilities",
+    ),
+    exact: bool = typer.Option(
+        False, "--exact", "-e", help="Use exact literal matching (no regex)"
     ),
     limit: int = typer.Option(
         100, "--limit", "-n", help="Maximum number of results to show"
@@ -278,27 +355,55 @@ def search(
     verbose: bool = typer.Option(
         False, "--verbose", "-v", help="Show detailed output with summary statistics"
     ),
+    output: Optional[str] = typer.Option(
+        None, "--output", "-o", help="Write output to file (no truncation when used)"
+    ),
 ) -> None:
     """Search CVEs by product name, vendor, or CWE ID."""
     config = Config()
     service = CVESearchService(config)
 
+    # Validate non-empty query
+    if not query or not query.strip():
+        console.print("[red]Error: Search query cannot be empty.[/red]")
+        raise typer.Exit(1)
+
+    query = query.strip()
+
+    # Auto-detect CVE ID format and redirect to get command behavior
+    if CVE_ID_PATTERN.match(query):
+        result = service.by_id(query)
+        if len(result.cves) == 0:
+            console.print(f"[red]CVE not found: {query}[/red]")
+            raise typer.Exit(1)
     # Determine search type based on query format
-    if query.upper().startswith("CWE"):
+    elif query.upper().startswith("CWE"):
         result = service.by_cwe(query)
     elif vendor:
-        result = service.by_product(query, vendor=vendor)
+        result = service.by_product(query, vendor=vendor, exact=exact)
     else:
         # Try product search first
-        result = service.by_product(query)
+        result = service.by_product(query, exact=exact)
 
         # If no results, try vendor search
         if len(result.cves) == 0:
-            result = service.by_vendor(query)
+            result = service.by_vendor(query, exact=exact)
+
+    # Apply state filter
+    if state:
+        result = service.filter_by_state(result, state)
+
+    # Apply KEV filter
+    if kev:
+        result = service.filter_by_kev(result)
 
     # Apply date filters
     if after or before:
-        result = service.filter_by_date(result, after=after, before=before)
+        try:
+            result = service.filter_by_date(result, after=after, before=before)
+        except ValueError as e:
+            console.print(f"[red]Error: {e}[/red]")
+            raise typer.Exit(1)
 
     # Apply severity filter
     if severity:
@@ -314,7 +419,12 @@ def search(
         result = service.filter_by_severity(result, sev)
 
     _output_result(
-        result, format=format, verbose=verbose, limit=limit, search_service=service
+        result,
+        format=format,
+        verbose=verbose,
+        limit=limit,
+        search_service=service,
+        output_file=output,
     )
 
 
@@ -326,6 +436,9 @@ def get(
     ),
     verbose: bool = typer.Option(
         False, "--verbose", "-v", help="Show all available details"
+    ),
+    output: Optional[str] = typer.Option(
+        None, "--output", "-o", help="Write output to file"
     ),
 ) -> None:
     """Get details for a specific CVE."""
@@ -341,57 +454,111 @@ def get(
     row = result.cves.to_dicts()[0]
     description = service.get_description(row.get("cve_id", ""))
     best_metric = service.get_best_metric(row.get("cve_id", ""))
+    kev_info = service.get_kev_info(row.get("cve_id", ""))
+    ssvc_info = service.get_ssvc_info(row.get("cve_id", ""))
+
+    # Deduplicate references by URL
+    unique_refs: list[dict] = []
+    seen_urls: set[str] = set()
+    if result.references is not None and len(result.references) > 0:
+        for ref in result.references.iter_rows(named=True):
+            url = ref.get("url", "")
+            if url and url not in seen_urls:
+                seen_urls.add(url)
+                unique_refs.append(dict(ref))
 
     if format == OutputFormat.JSON:
-        output = row.copy()
+        output_data = row.copy()
         if description:
-            output["description"] = description
+            output_data["description"] = description
         if best_metric:
-            output["best_metric"] = best_metric
+            output_data["best_metric"] = best_metric
+        if kev_info:
+            output_data["kev_info"] = kev_info
+        if ssvc_info:
+            output_data["ssvc_info"] = ssvc_info
         if result.products is not None and len(result.products) > 0:
-            output["affected_products"] = result.products.to_dicts()
+            output_data["affected_products"] = result.products.to_dicts()
         if result.cwes is not None and len(result.cwes) > 0:
-            output["cwes"] = result.cwes.to_dicts()
-        if result.references is not None and len(result.references) > 0:
-            output["references"] = result.references.to_dicts()
-        print(json.dumps(output, indent=2, default=str))
+            output_data["cwes"] = result.cwes.to_dicts()
+        if unique_refs:
+            output_data["references"] = unique_refs
+
+        json_output = json.dumps(output_data, indent=2, default=str)
+        if output:
+            from pathlib import Path
+
+            Path(output).write_text(json_output)
+            console.print(f"[green]Output written to {output}[/green]")
+        else:
+            print(json_output)
 
     elif format == OutputFormat.MARKDOWN:
-        print(f"# {row.get('cve_id')}\n")
-        print(f"**State:** {row.get('state')}\n")
+        lines = []
+        lines.append(f"# {row.get('cve_id')}\n")
+        lines.append(f"**State:** {row.get('state')}\n")
         if row.get("cna_title"):
-            print(f"**Title:** {row.get('cna_title')}\n")
-        print(f"**Published:** {row.get('date_published')}\n")
+            lines.append(f"**Title:** {row.get('cna_title')}\n")
+        lines.append(f"**Published:** {row.get('date_published')}\n")
 
         if best_metric:
             score = best_metric.get("base_score")
             metric_type = best_metric.get("metric_type", "")
             if score:
-                print(f"**CVSS Score:** {score} ({metric_type})\n")
+                lines.append(f"**CVSS Score:** {score} ({metric_type})\n")
+
+        if kev_info:
+            date_added = kev_info.get("dateAdded", "Unknown")
+            lines.append(
+                f"**⚠️ Known Exploited Vulnerability:** Added to KEV on {date_added}\n"
+            )
 
         if description:
-            print(f"## Description\n\n{description}\n")
+            lines.append(f"## Description\n\n{description}\n")
 
         if result.products is not None and len(result.products) > 0:
-            print("## Affected Products\n")
+            lines.append("## Affected Products\n")
             for prod in result.products.iter_rows(named=True):
                 vendor = prod.get("vendor", "")
                 product = prod.get("product", "")
-                print(f"- {vendor}: {product}")
+                lines.append(f"- {vendor}: {product}")
 
         if result.cwes is not None and len(result.cwes) > 0:
-            print("\n## CWEs\n")
+            lines.append("\n## CWEs\n")
             for cwe in result.cwes.iter_rows(named=True):
-                cwe_id = cwe.get("cwe_id", "")
+                cwe_id = cwe.get("cwe_id")
                 cwe_desc = cwe.get("description", "")
-                print(f"- {cwe_id}: {cwe_desc}")
+                # Handle missing CWE IDs
+                if cwe_id:
+                    lines.append(f"- {cwe_id}: {cwe_desc}")
+                elif cwe_desc:
+                    lines.append(f"- (No CWE ID): {cwe_desc}")
 
-        if result.references is not None and len(result.references) > 0:
-            print("\n## References\n")
-            for ref in result.references.iter_rows(named=True):
+        if unique_refs:
+            lines.append("\n## References\n")
+            for ref in unique_refs:
                 url = ref.get("url", "")
                 tags = ref.get("tags", "")
-                print(f"- {url}" + (f" ({tags})" if tags else ""))
+                # Filter out x_transferred tags for cleaner output
+                if tags:
+                    clean_tags = ",".join(
+                        t for t in tags.split(",") if "x_transferred" not in t
+                    )
+                    if clean_tags:
+                        lines.append(f"- {url} ({clean_tags})")
+                    else:
+                        lines.append(f"- {url}")
+                else:
+                    lines.append(f"- {url}")
+
+        markdown_output = "\n".join(lines)
+        if output:
+            from pathlib import Path
+
+            Path(output).write_text(markdown_output)
+            console.print(f"[green]Output written to {output}[/green]")
+        else:
+            print(markdown_output)
 
     else:
         title = row.get("cna_title") or "(No title)"
@@ -513,6 +680,28 @@ def get(
                 if cvss_details:
                     console.print(Panel("\n".join(cvss_details), title="CVSS Details"))
 
+        # Show KEV info if present
+        if kev_info:
+            date_added = kev_info.get("dateAdded", "Unknown")
+            console.print(
+                Panel(
+                    f"[bold red]⚠️ This CVE is in CISA's Known Exploited Vulnerabilities catalog[/bold red]\n\n"
+                    f"[bold]Date Added:[/bold] {date_added}",
+                    title="Known Exploited Vulnerability",
+                    border_style="red",
+                )
+            )
+
+        # Show SSVC info if present and verbose
+        if ssvc_info and verbose:
+            ssvc_details = []
+            options = ssvc_info.get("options", [])
+            for opt in options:
+                for key, value in opt.items():
+                    ssvc_details.append(f"[bold]{key}:[/bold] {value}")
+            if ssvc_details:
+                console.print(Panel("\n".join(ssvc_details), title="SSVC Assessment"))
+
         if result.products is not None and len(result.products) > 0:
             table = Table(title="Affected Products")
             table.add_column("Vendor")
@@ -546,13 +735,17 @@ def get(
         if result.cwes is not None and len(result.cwes) > 0:
             console.print("\n[bold]CWEs:[/bold]")
             for cwe in result.cwes.iter_rows(named=True):
-                cwe_id = cwe.get("cwe_id", "")
+                cwe_id = cwe.get("cwe_id")
                 cwe_desc = cwe.get("description", "")[:80]
-                console.print(f"  - {cwe_id}: {cwe_desc}")
+                # Handle missing CWE IDs
+                if cwe_id:
+                    console.print(f"  - {cwe_id}: {cwe_desc}")
+                elif cwe_desc:
+                    console.print(f"  - [dim](No CWE ID):[/dim] {cwe_desc}")
 
-        if result.references is not None and len(result.references) > 0 and verbose:
+        if unique_refs and verbose:
             console.print("\n[bold]References:[/bold]")
-            for ref in result.references.iter_rows(named=True):
+            for ref in unique_refs:
                 url = ref.get("url", "")
                 console.print(f"  - {url}")
 
@@ -637,6 +830,9 @@ def recent(
         "table", "--format", "-f", help="Output format: table, json, markdown"
     ),
     verbose: bool = typer.Option(False, "--verbose", "-v", help="Show detailed output"),
+    output: Optional[str] = typer.Option(
+        None, "--output", "-o", help="Write output to file (no truncation when used)"
+    ),
 ) -> None:
     """Show recently published CVEs."""
     config = Config()
@@ -649,7 +845,12 @@ def recent(
         return
 
     _output_result(
-        result, format=format, verbose=verbose, limit=limit, search_service=service
+        result,
+        format=format,
+        verbose=verbose,
+        limit=limit,
+        search_service=service,
+        output_file=output,
     )
 
 

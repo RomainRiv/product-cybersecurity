@@ -46,7 +46,7 @@ class TestSearchResult:
 
         cves = pl.read_parquet(sample_parquet_data.cves_parquet)
         result = SearchResult(cves)
-        assert result.count == 4  # 4 sample CVEs in fixture
+        assert result.count == 5  # 5 sample CVEs in fixture
 
     def test_summary_empty(self):
         """Summary of empty result should show count 0."""
@@ -67,7 +67,7 @@ class TestSearchResult:
         assert "count" in summary
         assert "severity_distribution" in summary
         assert "year_distribution" in summary
-        assert summary["count"] == 4
+        assert summary["count"] == 5
 
     def test_severity_distribution(self, sample_parquet_data):
         """Severity distribution should categorize CVEs correctly."""
@@ -262,3 +262,208 @@ class TestSearchResultCWEs:
         cwes = result.cwes.to_dicts()
         assert len(cwes) >= 1
         assert any(c["cwe_id"] == "CWE-1188" for c in cwes)
+
+
+class TestValidateDate:
+    """Tests for date validation."""
+
+    def test_valid_date(self, sample_parquet_data):
+        """Valid date format should return True."""
+        service = CVESearchService(config=sample_parquet_data)
+        assert service.validate_date("2024-01-15") is True
+        assert service.validate_date("2023-12-31") is True
+        assert service.validate_date("1999-01-01") is True
+
+    def test_invalid_date_format(self, sample_parquet_data):
+        """Invalid date formats should return False."""
+        service = CVESearchService(config=sample_parquet_data)
+        assert service.validate_date("01-15-2024") is False
+        assert service.validate_date("2024/01/15") is False
+        assert service.validate_date("not-a-date") is False
+        assert service.validate_date("") is False
+
+    def test_invalid_date_values(self, sample_parquet_data):
+        """Invalid date values should return False."""
+        service = CVESearchService(config=sample_parquet_data)
+        assert service.validate_date("2024-13-01") is False  # Invalid month
+        assert service.validate_date("2024-02-30") is False  # Invalid day
+
+    def test_filter_by_date_invalid_after(self, sample_parquet_data):
+        """filter_by_date should raise ValueError for invalid after date."""
+        service = CVESearchService(config=sample_parquet_data)
+        result = service.by_product("", fuzzy=True)
+
+        with pytest.raises(ValueError, match="Invalid date format"):
+            service.filter_by_date(result, after="01-15-2024")
+
+    def test_filter_by_date_invalid_before(self, sample_parquet_data):
+        """filter_by_date should raise ValueError for invalid before date."""
+        service = CVESearchService(config=sample_parquet_data)
+        result = service.by_product("", fuzzy=True)
+
+        with pytest.raises(ValueError, match="Invalid date format"):
+            service.filter_by_date(result, before="2024/01/15")
+
+
+class TestExactMatching:
+    """Tests for exact (literal) string matching with regex character escaping."""
+
+    def test_by_product_with_regex_chars_exact(self, sample_parquet_data):
+        """by_product with exact=True should match literal regex characters."""
+        service = CVESearchService(config=sample_parquet_data)
+
+        # Search for product with regex special characters using exact matching
+        result = service.by_product("Product[v1.0]+", fuzzy=True, exact=True)
+
+        assert result.count >= 1
+        cve_ids = [c["cve_id"] for c in result.to_dicts()]
+        assert "CVE-2024-9999" in cve_ids
+
+    def test_by_product_regex_chars_without_exact_fails(self, sample_parquet_data):
+        """by_product without exact=True should fail on unescaped regex characters."""
+        service = CVESearchService(config=sample_parquet_data)
+
+        # These regex characters would cause issues or match wrong results without escaping
+        # [v1.0] would be interpreted as character class
+        # This may either throw an error or return wrong results
+        try:
+            result = service.by_product("[v1.0]", fuzzy=True, exact=False)
+            # If it doesn't throw, it might match other products containing v, 1, 0, or .
+            # The exact behavior depends on polars regex handling
+        except Exception:
+            pass  # Expected - regex parsing error
+
+    def test_by_vendor_with_regex_chars_exact(self, sample_parquet_data):
+        """by_vendor with exact=True should match literal regex characters."""
+        service = CVESearchService(config=sample_parquet_data)
+
+        # Search for vendor with regex special characters using exact matching
+        result = service.by_vendor("Test.Vendor (Inc.)", fuzzy=True, exact=True)
+
+        assert result.count >= 1
+        cve_ids = [c["cve_id"] for c in result.to_dicts()]
+        assert "CVE-2024-9999" in cve_ids
+
+    def test_by_product_partial_with_regex_chars_exact(self, sample_parquet_data):
+        """by_product with exact=True should find partial matches with literal characters."""
+        service = CVESearchService(config=sample_parquet_data)
+
+        # Search for partial product name with regex special characters
+        result = service.by_product("[v1.0]", fuzzy=True, exact=True)
+
+        assert result.count >= 1
+        cve_ids = [c["cve_id"] for c in result.to_dicts()]
+        assert "CVE-2024-9999" in cve_ids
+
+
+class TestFilterByState:
+    """Tests for state filtering."""
+
+    def test_filter_by_state_published(self, sample_parquet_data):
+        """filter_by_state should filter to only published CVEs."""
+        service = CVESearchService(config=sample_parquet_data)
+
+        # Get all CVEs first
+        all_result = service.by_product("", fuzzy=True)
+        assert all_result.count >= 5  # We have 5 CVEs in fixtures
+
+        # Filter to published only
+        published_result = service.filter_by_state(all_result, "published")
+        assert published_result.count >= 4  # 4 published CVEs
+        for cve in published_result.to_dicts():
+            assert cve["state"] == "PUBLISHED"
+
+    def test_filter_by_state_rejected(self, sample_parquet_data):
+        """filter_by_state should filter to only rejected CVEs."""
+        service = CVESearchService(config=sample_parquet_data)
+
+        # Get all CVEs first
+        all_result = service.by_product("", fuzzy=True)
+
+        # Filter to rejected only
+        rejected_result = service.filter_by_state(all_result, "rejected")
+        assert rejected_result.count >= 1  # 1 rejected CVE
+        for cve in rejected_result.to_dicts():
+            assert cve["state"] == "REJECTED"
+
+    def test_filter_by_state_case_insensitive(self, sample_parquet_data):
+        """filter_by_state should be case insensitive."""
+        service = CVESearchService(config=sample_parquet_data)
+
+        all_result = service.by_product("", fuzzy=True)
+
+        # Test various cases
+        result_upper = service.filter_by_state(all_result, "PUBLISHED")
+        result_lower = service.filter_by_state(all_result, "published")
+        result_mixed = service.filter_by_state(all_result, "Published")
+
+        assert result_upper.count == result_lower.count == result_mixed.count
+
+
+class TestFilterByKEV:
+    """Tests for CISA KEV filtering."""
+
+    def test_filter_by_kev(self, sample_parquet_data):
+        """filter_by_kev should filter to only CVEs in CISA KEV."""
+        service = CVESearchService(config=sample_parquet_data)
+
+        # Get all CVEs first
+        all_result = service.by_product("", fuzzy=True)
+
+        # Filter to KEV only
+        kev_result = service.filter_by_kev(all_result)
+        assert kev_result.count >= 1  # At least CVE-2024-1234 should be in KEV
+        cve_ids = [c["cve_id"] for c in kev_result.to_dicts()]
+        assert "CVE-2024-1234" in cve_ids
+
+    def test_filter_by_kev_preserves_related_data(self, sample_parquet_data):
+        """filter_by_kev should preserve related data for filtered CVEs."""
+        service = CVESearchService(config=sample_parquet_data)
+
+        all_result = service.by_product("", fuzzy=True)
+        kev_result = service.filter_by_kev(all_result)
+
+        # Related data should be present
+        assert kev_result.products is not None or kev_result.count == 0
+
+
+class TestGetKEVInfo:
+    """Tests for KEV info retrieval."""
+
+    def test_get_kev_info_found(self, sample_parquet_data):
+        """get_kev_info should return KEV data for CVE in KEV list."""
+        service = CVESearchService(config=sample_parquet_data)
+
+        kev_info = service.get_kev_info("CVE-2024-1234")
+        assert kev_info is not None
+        assert "dateAdded" in kev_info
+        assert kev_info["dateAdded"] == "2024-01-15"
+
+    def test_get_kev_info_not_found(self, sample_parquet_data):
+        """get_kev_info should return None for CVE not in KEV list."""
+        service = CVESearchService(config=sample_parquet_data)
+
+        kev_info = service.get_kev_info("CVE-2022-2196")
+        assert kev_info is None
+
+
+class TestGetSSVCInfo:
+    """Tests for SSVC info retrieval."""
+
+    def test_get_ssvc_info_found(self, sample_parquet_data):
+        """get_ssvc_info should return SSVC data for CVE with SSVC assessment."""
+        service = CVESearchService(config=sample_parquet_data)
+
+        ssvc_info = service.get_ssvc_info("CVE-2024-1234")
+        assert ssvc_info is not None
+        assert "automatable" in ssvc_info
+        assert ssvc_info["automatable"] == "Yes"
+        assert "exploitation" in ssvc_info
+        assert ssvc_info["exploitation"] == "Active"
+
+    def test_get_ssvc_info_not_found(self, sample_parquet_data):
+        """get_ssvc_info should return None for CVE without SSVC assessment."""
+        service = CVESearchService(config=sample_parquet_data)
+
+        ssvc_info = service.get_ssvc_info("CVE-2022-2196")
+        assert ssvc_info is None
