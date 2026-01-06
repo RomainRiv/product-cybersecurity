@@ -303,6 +303,7 @@ class CVESearchService:
             cve_id = f"CVE-{cve_id}"
 
         result = cves_df.filter(pl.col("cve_id") == cve_id)
+        result = result.sort("date_published", descending=True)
         cve_ids = result.get_column("cve_id").to_list()
         related = self._get_related_data(cve_ids)
 
@@ -367,6 +368,7 @@ class CVESearchService:
 
         # Get CVE details
         result = cves_df.filter(pl.col("cve_id").is_in(cve_ids))
+        result = result.sort("date_published", descending=True)
         related = self._get_related_data(cve_ids)
 
         return SearchResult(result, **related)
@@ -408,6 +410,7 @@ class CVESearchService:
         cve_ids = matching_products.get_column("cve_id").unique().to_list()
 
         result = cves_df.filter(pl.col("cve_id").is_in(cve_ids))
+        result = result.sort("date_published", descending=True)
         related = self._get_related_data(cve_ids)
 
         return SearchResult(result, **related)
@@ -435,6 +438,7 @@ class CVESearchService:
         cve_ids = matching_cwes.get_column("cve_id").unique().to_list()
 
         result = cves_df.filter(pl.col("cve_id").is_in(cve_ids))
+        result = result.sort("date_published", descending=True)
         related = self._get_related_data(cve_ids)
 
         return SearchResult(result, **related)
@@ -481,6 +485,7 @@ class CVESearchService:
         if before:
             result = result.filter(pl.col("date_published") <= before)
 
+        result = result.sort("date_published", descending=True)
         filtered_cve_ids = result.get_column("cve_id").to_list()
         related = self._get_related_data(filtered_cve_ids)
 
@@ -507,6 +512,7 @@ class CVESearchService:
         if before:
             result = result.filter(pl.col("date_published") <= before)
 
+        result = result.sort("date_published", descending=True)
         cve_ids = result.get_column("cve_id").to_list()
         related = self._get_related_data(cve_ids)
 
@@ -525,6 +531,7 @@ class CVESearchService:
 
         cutoff = (datetime.now() - timedelta(days=days)).strftime("%Y-%m-%d")
         result = cves_df.filter(pl.col("date_published") >= cutoff)
+        result = result.sort("date_published", descending=True)
 
         cve_ids = result.get_column("cve_id").to_list()
         related = self._get_related_data(cve_ids)
